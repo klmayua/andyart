@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useAppStore } from '@/stores/useAppStore';
-import { Gallery, Calendar, Wrench, User, MessageCircle } from 'lucide-react';
+import { Image as GalleryIcon, Calendar, Wrench, User, MessageCircle } from 'lucide-react';
 
 export default function BottomNav() {
   const pathname = usePathname();
@@ -11,7 +11,7 @@ export default function BottomNav() {
 
   const navItems = [
     {
-      icon: Gallery,
+      icon: GalleryIcon,
       label: 'Gallery',
       link: '/gallery',
     },
