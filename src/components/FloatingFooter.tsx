@@ -20,7 +20,7 @@ export default function FloatingFooter() {
       href: '#',
       external: false,
       onClick: () => {
-        openChat();
+        openChat?.();
         setIsOpen(false);
       },
     },
