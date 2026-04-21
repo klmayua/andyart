@@ -1,19 +1,30 @@
-import NextAuth, { NextAuthOptions } from 'next-auth';
+import { NextAuthOptions } from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
-import EmailProvider from 'next-auth/providers/email';
-import { PrismaAdapter } from '@auth/prisma-adapter';
-import { prisma } from './prisma';
+import CredentialsProvider from 'next-auth/providers/credentials';
 
 export const authOptions: NextAuthOptions = {
-  adapter: PrismaAdapter(prisma) as any,
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID || '',
       clientSecret: process.env.GOOGLE_CLIENT_SECRET || '',
     }),
-    EmailProvider({
-      server: process.env.EMAIL_SERVER,
-      from: process.env.EMAIL_FROM || 'noreply@andyart.gallery',
+    CredentialsProvider({
+      name: 'credentials',
+      credentials: {
+        email: { label: 'Email', type: 'email' },
+        password: { label: 'Password', type: 'password' },
+      },
+      async authorize(credentials) {
+        // Demo: accept any email for testing
+        if (credentials?.email) {
+          return {
+            id: 'user_' + Date.now(),
+            email: credentials.email,
+            name: credentials.email.split('@')[0],
+          };
+        }
+        return null;
+      },
     }),
   ],
   session: {
@@ -23,22 +34,17 @@ export const authOptions: NextAuthOptions = {
     signIn: '/auth/signin',
   },
   callbacks: {
-    async session({ session, token }) {
+    async session({ session, token }: { session: any; token: any }) {
       if (token && session.user) {
         session.user.id = token.sub as string;
       }
       return session;
     },
-    async jwt({ token, user }) {
+    async jwt({ token, user }: { token: any; user: any }) {
       if (user) {
         token.id = user.id;
       }
       return token;
     },
   },
-};
-
-export const handlers = {
-  GET: NextAuth(authOptions),
-  POST: NextAuth(authOptions),
 };
