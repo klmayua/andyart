@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useAppStore } from '@/stores/useAppStore';
-import { LayoutGrid, Calendar, Wrench, User, MessageCircle } from 'lucide-react';
+import { Home, LayoutGrid, Calendar, Wrench, MessageCircle } from 'lucide-react';
 
 export default function BottomNav() {
   const pathname = usePathname();
@@ -11,6 +11,11 @@ export default function BottomNav() {
   const openChat = store?.openChat ?? (() => {});
 
   const navItems = [
+    {
+      icon: Home,
+      label: 'Home',
+      link: '/',
+    },
     {
       icon: LayoutGrid,
       label: 'Gallery',
@@ -30,11 +35,6 @@ export default function BottomNav() {
       icon: MessageCircle,
       label: 'Chat',
       action: 'openChatbot',
-    },
-    {
-      icon: User,
-      label: 'Profile',
-      link: '/profile',
     },
   ];
 

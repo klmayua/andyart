@@ -10,6 +10,7 @@ export default function FloatingFooter() {
   const openChat = store?.openChat ?? (() => {});
 
   const links = [
+    { label: 'Profile', href: '/profile', external: false },
     { label: 'Email: hello@andyart.gallery', href: 'mailto:hello@andyart.gallery', external: true },
     { label: 'Instagram: @andyart', href: 'https://instagram.com/andyart', external: true },
     { label: 'LinkedIn: /company/andyart', href: 'https://linkedin.com/company/andyart', external: true },
