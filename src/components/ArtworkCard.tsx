@@ -46,20 +46,20 @@ export default function ArtworkCard({
 
   return (
     <Link href={`/gallery/${slug}`} className="group">
-      <div className="relative aspect-[4/5] overflow-hidden rounded-md bg-background">
+      <div className="relative aspect-[4/5] overflow-hidden rounded-md bg-gray-100">
         <Image
-          src={images[0] || '/placeholder-artwork.jpg'}
+          src={images[0] || 'https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=800'}
           alt={title}
           fill
           sizes="(max-width: 768px) 50vw, (max-width: 1280px) 33vw, 25vw"
-          className="object-cover transition-transform duration-300 group-hover:scale-102"
+          className="object-cover transition-transform duration-300 group-hover:scale-105"
           loading="lazy"
         />
         
         {/* Wishlist button */}
         <button
           onClick={handleWishlistToggle}
-          className="absolute top-3 right-3 w-9 h-9 bg-surface rounded-full shadow-medium flex items-center justify-center hover:shadow-large transition-shadow"
+          className="absolute top-3 right-3 w-9 h-9 bg-white/95 backdrop-blur-sm rounded-full shadow-medium flex items-center justify-center hover:shadow-large transition-shadow"
           aria-label={inWishlist ? 'Remove from wishlist' : 'Add to wishlist'}
         >
           <Heart
@@ -70,7 +70,7 @@ export default function ArtworkCard({
 
         {/* Out of stock badge */}
         {!inStock && (
-          <div className="absolute top-3 left-3 bg-text-primary text-surface text-xs px-2 py-1 rounded-sm">
+          <div className="absolute top-3 left-3 bg-text-primary text-white text-xs px-2 py-1 rounded-sm">
             Sold
           </div>
         )}

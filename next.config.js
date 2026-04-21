@@ -4,16 +4,19 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
+        hostname: 'images.unsplash.com',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
         hostname: 'res.cloudinary.com',
         pathname: '/**',
       },
     ],
   },
-  // Ignore TypeScript errors during build
   typescript: {
     ignoreBuildErrors: true,
   },
-  // Ignore ESLint errors during build  
   eslint: {
     ignoreDuringBuilds: true,
   },
