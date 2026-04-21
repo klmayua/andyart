@@ -180,10 +180,10 @@ export default function Chatbot() {
     return (
       <button
         onClick={openChat}
-        className="fixed bottom-24 right-4 w-14 h-14 bg-primary rounded-full shadow-large flex items-center justify-center text-surface hover:bg-text-primary transition-colors z-30"
+        className="fixed bottom-28 right-4 w-14 h-14 bg-primary/95 backdrop-blur-sm rounded-full shadow-large flex items-center justify-center text-white hover:bg-primary hover:scale-105 transition-all z-30"
         aria-label="Open chat"
       >
-        <MessageCircle size={24} />
+        <MessageCircle size={24} className="text-white" />
       </button>
     );
   }
@@ -192,19 +192,19 @@ export default function Chatbot() {
     <>
       <button
         onClick={openChat}
-        className="fixed bottom-24 right-4 w-14 h-14 bg-primary rounded-full shadow-large flex items-center justify-center text-surface hover:bg-text-primary transition-colors z-30"
+        className="fixed bottom-28 right-4 w-14 h-14 bg-primary/95 backdrop-blur-sm rounded-full shadow-large flex items-center justify-center text-white hover:bg-primary hover:scale-105 transition-all z-30"
         aria-label="Open chat"
       >
-        <MessageCircle size={24} />
+        <MessageCircle size={24} className="text-white" />
       </button>
 
-      <div className="fixed bottom-24 right-4 w-[320px] md:w-[400px] bg-surface rounded-lg shadow-large border border-border-light overflow-hidden z-30">
+      <div className="fixed bottom-28 right-4 w-[320px] md:w-[400px] bg-white/95 backdrop-blur-md rounded-xl shadow-large border border-border-light overflow-hidden z-30">
         {/* Header */}
-        <div className="bg-primary text-surface px-4 py-3 flex items-center justify-between">
+        <div className="bg-primary/95 backdrop-blur-sm text-white px-4 py-3 flex items-center justify-between">
           <h3 className="font-serif text-lg font-semibold">Andy – Gallery Assistant</h3>
           <button
             onClick={closeChat}
-            className="text-surface hover:text-accent transition-colors"
+            className="text-white/80 hover:text-white transition-colors"
             aria-label="Close chat"
           >
             <X size={20} />
@@ -212,17 +212,17 @@ export default function Chatbot() {
         </div>
 
         {/* Messages */}
-        <div className="h-[400px] overflow-y-auto p-4 space-y-4">
+        <div className="h-[400px] overflow-y-auto p-4 space-y-4 bg-gradient-to-b from-background/50 to-transparent">
           {chatMessages.map((message) => (
             <div
               key={message.id}
               className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
             >
               <div
-                className={`max-w-[80%] px-4 py-2 rounded-lg ${
+                className={`max-w-[80%] px-4 py-2 rounded-lg backdrop-blur-sm ${
                   message.role === 'user'
-                    ? 'bg-primary text-surface'
-                    : 'bg-background text-text-primary'
+                    ? 'bg-primary/90 text-white'
+                    : 'bg-white/80 text-text-primary border border-border-light'
                 }`}
               >
                 <p className="text-sm">{message.content}</p>
@@ -232,7 +232,7 @@ export default function Chatbot() {
                       <button
                         key={reply.action}
                         onClick={() => handleQuickReply(reply.action)}
-                        className="text-xs bg-surface text-text-primary px-3 py-1 rounded-pill border border-border-light hover:bg-accent transition-colors"
+                        className="text-xs bg-white/90 text-text-primary px-3 py-1 rounded-full border border-border-light hover:bg-accent/50 transition-colors"
                       >
                         {reply.text}
                       </button>
@@ -257,21 +257,21 @@ export default function Chatbot() {
         </div>
 
         {/* Input */}
-        <form onSubmit={handleSubmit} className="border-t border-border-light p-3 flex items-center gap-2">
+        <form onSubmit={handleSubmit} className="border-t border-border-light p-3 flex items-center gap-2 bg-white/50 backdrop-blur-sm">
           <input
             type="text"
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             placeholder="Type your message..."
-            className="flex-1 bg-background px-4 py-2 rounded-pill text-sm focus:outline-none focus:ring-2 focus:ring-success-gold"
+            className="flex-1 bg-white/80 px-4 py-2 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-success-gold border border-border-light"
             disabled={isLoading}
           />
           <button
             type="submit"
             disabled={isLoading || !inputValue.trim()}
-            className="w-10 h-10 bg-primary text-surface rounded-full flex items-center justify-center hover:bg-text-primary transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-10 h-10 bg-primary/90 text-white rounded-full flex items-center justify-center hover:bg-primary transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            <Send size={18} />
+            <Send size={18} className="text-white" />
           </button>
         </form>
       </div>
