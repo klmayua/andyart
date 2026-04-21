@@ -28,7 +28,6 @@ model Artwork {
   category          String   // painting, sculpture, digital, etc.
   curatorNote       String?
   createdAt         DateTime @default(now())
-  wishlistUsers     User[]
 }
 
 model Artist {
