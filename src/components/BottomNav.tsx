@@ -7,7 +7,8 @@ import { LayoutGrid, Calendar, Wrench, User, MessageCircle } from 'lucide-react'
 
 export default function BottomNav() {
   const pathname = usePathname();
-  const { openChat } = useAppStore();
+  const store = useAppStore();
+  const openChat = store?.openChat ?? (() => {});
 
   const navItems = [
     {

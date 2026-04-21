@@ -6,7 +6,8 @@ import { MoreHorizontal, X, ExternalLink } from 'lucide-react';
 
 export default function FloatingFooter() {
   const [isOpen, setIsOpen] = useState(false);
-  const { openChat } = useAppStore();
+  const store = useAppStore();
+  const openChat = store?.openChat ?? (() => {});
 
   const links = [
     { label: 'Email: hello@andyart.gallery', href: 'mailto:hello@andyart.gallery', external: true },

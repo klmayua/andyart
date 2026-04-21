@@ -29,7 +29,16 @@ const INITIAL_MESSAGE: ChatMessage = {
 };
 
 export default function Chatbot() {
-  const { isChatOpen, closeChat, chatMessages, addMessage, chatSessionId, setChatSessionId } = useAppStore();
+  const store = useAppStore();
+  // Safely access store methods with defaults
+  const isChatOpen = store?.isChatOpen ?? false;
+  const closeChat = store?.closeChat ?? (() => {});
+  const chatMessages = store?.chatMessages ?? [];
+  const addMessage = store?.addMessage ?? (() => {});
+  const chatSessionId = store?.chatSessionId ?? null;
+  const setChatSessionId = store?.setChatSessionId ?? (() => {});
+  const openChat = store?.openChat ?? (() => {});
+  
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
