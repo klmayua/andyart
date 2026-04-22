@@ -180,10 +180,10 @@ export default function Chatbot() {
     return (
       <button
         onClick={openChat}
-        className="fixed bottom-[150px] right-4 w-14 h-14 bg-primary/95 backdrop-blur-sm rounded-full shadow-large flex items-center justify-center hover:scale-105 transition-all z-30"
+        className="fixed bottom-[150px] right-4 w-14 h-14 bg-white/90 backdrop-blur-xl rounded-full shadow-lg border border-white/30 flex items-center justify-center hover:scale-105 transition-all z-30"
         aria-label="Open chat"
       >
-        <MessageCircle size={24} className="text-white" />
+        <MessageCircle size={24} className="text-primary" />
       </button>
     );
   }
@@ -192,19 +192,19 @@ export default function Chatbot() {
     <>
       <button
         onClick={openChat}
-        className="fixed bottom-[150px] right-4 w-14 h-14 bg-primary/95 backdrop-blur-sm rounded-full shadow-large flex items-center justify-center hover:scale-105 transition-all z-30"
+        className="fixed bottom-[150px] right-4 w-14 h-14 bg-white/90 backdrop-blur-xl rounded-full shadow-lg border border-white/30 flex items-center justify-center hover:scale-105 transition-all z-30"
         aria-label="Open chat"
       >
-        <MessageCircle size={24} className="text-white" />
+        <MessageCircle size={24} className="text-primary" />
       </button>
 
-      <div className="fixed bottom-[150px] right-4 w-[300px] md:w-[380px] bg-white/95 backdrop-blur-md rounded-xl shadow-large border border-border-light overflow-hidden z-30">
+      <div className="fixed bottom-[150px] right-4 w-[300px] md:w-[380px] bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/30 overflow-hidden z-30">
         {/* Header */}
-        <div className="bg-primary/95 backdrop-blur-sm text-white px-4 py-3 flex items-center justify-between">
-          <h3 className="font-serif text-lg font-semibold">Andy – Gallery Assistant</h3>
+        <div className="bg-white/90 backdrop-blur-xl border-b border-white/20 px-4 py-3 flex items-center justify-between">
+          <h3 className="font-serif text-lg font-semibold text-primary">Andy – Gallery Assistant</h3>
           <button
             onClick={closeChat}
-            className="text-white/80 hover:text-white transition-colors"
+            className="text-text-secondary hover:text-primary transition-colors"
             aria-label="Close chat"
           >
             <X size={20} />
@@ -212,17 +212,17 @@ export default function Chatbot() {
         </div>
 
         {/* Messages */}
-        <div className="h-[400px] overflow-y-auto p-4 space-y-4 bg-gradient-to-b from-background/50 to-transparent">
+        <div className="h-[400px] overflow-y-auto p-4 space-y-4">
           {chatMessages.map((message) => (
             <div
               key={message.id}
               className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
             >
               <div
-                className={`max-w-[80%] px-4 py-2 rounded-lg backdrop-blur-sm ${
+                className={`max-w-[80%] px-4 py-2.5 rounded-2xl backdrop-blur-sm ${
                   message.role === 'user'
-                    ? 'bg-primary/90 text-white'
-                    : 'bg-white/80 text-text-primary border border-border-light'
+                    ? 'bg-primary text-white'
+                    : 'bg-accent text-primary border border-white/20'
                 }`}
               >
                 <p className="text-sm">{message.content}</p>
@@ -232,7 +232,7 @@ export default function Chatbot() {
                       <button
                         key={reply.action}
                         onClick={() => handleQuickReply(reply.action)}
-                        className="text-xs bg-white/90 text-text-primary px-3 py-1 rounded-full border border-border-light hover:bg-accent/50 transition-colors"
+                        className="text-xs bg-white text-primary px-3 py-1.5 rounded-full border border-white/30 hover:bg-accent transition-colors"
                       >
                         {reply.text}
                       </button>
@@ -257,19 +257,19 @@ export default function Chatbot() {
         </div>
 
         {/* Input */}
-        <form onSubmit={handleSubmit} className="border-t border-border-light p-3 flex items-center gap-2 bg-white/50 backdrop-blur-sm">
+        <form onSubmit={handleSubmit} className="border-t border-white/20 p-3 flex items-center gap-2 bg-white/50 backdrop-blur-xl">
           <input
             type="text"
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             placeholder="Type your message..."
-            className="flex-1 bg-white/80 px-4 py-2 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-success-gold border border-border-light"
+            className="flex-1 bg-accent px-4 py-2.5 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 border border-white/30"
             disabled={isLoading}
           />
           <button
             type="submit"
             disabled={isLoading || !inputValue.trim()}
-            className="w-10 h-10 bg-primary/90 text-white rounded-full flex items-center justify-center hover:bg-primary transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center hover:bg-primary/80 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <Send size={18} className="text-white" />
           </button>

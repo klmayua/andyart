@@ -8,21 +8,21 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        background: '#F9F8F6',
+        background: '#FAFAFA',
         surface: '#FFFFFF',
-        accent: '#E6DCC3',
-        primary: '#2B1B2E',
+        accent: '#F5F5F5',
+        primary: '#1A1A1A',
         text: {
-          primary: '#1E1E1E',
-          secondary: '#5A5A5A',
+          primary: '#0A0A0A',
+          secondary: '#737373',
         },
         success: {
-          gold: '#C5A572',
+          gold: '#B8860B',
         },
         border: {
-          light: '#EDE8E0',
+          light: '#E5E5E5',
         },
-        error: '#B00020',
+        error: '#DC2626',
       },
       fontFamily: {
         serif: ['Playfair Display', 'Georgia', 'serif'],

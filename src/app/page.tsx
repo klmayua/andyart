@@ -7,20 +7,19 @@ export default function HomePage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative h-[80vh] min-h-[600px] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-accent/30 to-background" />
+      <section className="relative h-[80vh] min-h-[600px] flex items-center justify-center overflow-hidden bg-gradient-to-br from-accent/20 to-background">
         <Image
-          src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=1920"
+          src={IMAGES.hero}
           alt="Art Gallery Hero"
           fill
-          className="object-cover opacity-20"
+          className="object-cover opacity-15"
           priority
         />
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-          <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl font-bold text-text-primary mb-6">
+          <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl font-bold text-primary mb-6">
             Your digital gallery.
             <br />
-            <span className="text-success-gold">Your art business.</span>
+            <span className="text-primary/60">Your art business.</span>
             <br />
             Elevated.
           </h1>
@@ -30,14 +29,14 @@ export default function HomePage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/gallery"
-              className="bg-primary text-white px-8 py-4 rounded-md font-medium text-lg hover:bg-text-primary transition-colors inline-flex items-center justify-center gap-2"
+              className="bg-primary text-white px-8 py-4 rounded-full font-medium text-lg hover:bg-primary/80 transition-all shadow-lg hover:shadow-xl inline-flex items-center justify-center gap-2"
             >
               Explore Gallery
               <ArrowRight size={20} />
             </Link>
             <Link
               href="/events"
-              className="bg-white text-text-primary border border-border-light px-8 py-4 rounded-md font-medium text-lg hover:bg-background transition-colors inline-flex items-center justify-center"
+              className="bg-white text-primary border border-white/30 px-8 py-4 rounded-full font-medium text-lg hover:bg-accent transition-all inline-flex items-center justify-center"
             >
               View Events
             </Link>
