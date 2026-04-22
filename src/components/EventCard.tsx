@@ -71,7 +71,7 @@ export default function EventCard({
         <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-transparent pointer-events-none" />
         
         {/* Gold border on hover */}
-        <div className="absolute inset-0 rounded-t-2xl border-t border-x border-transparent group-hover:border-primary/20 transition-colors pointer-events-none" />
+        <div className="absolute inset-0 rounded-t-2xl border-t-2 border-x-2 border-transparent group-hover:border-[#C5A572]/40 transition-colors pointer-events-none" />
         
         {remainingTickets !== null && remainingTickets < 10 && (
           <div className="absolute top-3 right-3 bg-error/95 backdrop-blur-md text-white text-xs px-3 py-1.5 rounded-full shadow-lg font-medium">
@@ -91,14 +91,14 @@ export default function EventCard({
 
         <div className="space-y-2.5 text-sm">
           <div className="flex items-center gap-2.5 text-text-secondary">
-            <div className="w-8 h-8 rounded-full bg-accent flex items-center justify-center flex-shrink-0">
-              <Calendar size={15} className="text-primary" />
+            <div className="w-8 h-8 rounded-full bg-[#C5A572]/15 flex items-center justify-center flex-shrink-0">
+              <Calendar size={15} className="text-[#C5A572]" />
             </div>
             <span>{formatDate(startDatetime)}</span>
           </div>
           <div className="flex items-center gap-2.5 text-text-secondary">
-            <div className="w-8 h-8 rounded-full bg-accent flex items-center justify-center flex-shrink-0">
-              <Clock size={15} className="text-primary" />
+            <div className="w-8 h-8 rounded-full bg-[#C5A572]/15 flex items-center justify-center flex-shrink-0">
+              <Clock size={15} className="text-[#C5A572]" />
             </div>
             <span>
               {formatTime(startDatetime)} - {formatTime(endDatetime)}
@@ -106,8 +106,8 @@ export default function EventCard({
             </span>
           </div>
           <div className="flex items-center gap-2.5 text-text-secondary">
-            <div className="w-8 h-8 rounded-full bg-accent flex items-center justify-center flex-shrink-0">
-              <MapPin size={15} className="text-primary" />
+            <div className="w-8 h-8 rounded-full bg-[#C5A572]/15 flex items-center justify-center flex-shrink-0">
+              <MapPin size={15} className="text-[#C5A572]" />
             </div>
             <span>{isVirtual ? 'Virtual Event (Zoom)' : location}</span>
           </div>
@@ -115,7 +115,7 @@ export default function EventCard({
 
         <div className="flex items-center justify-between pt-3 border-t border-gray-200">
           <div>
-            <span className="text-2xl font-bold text-primary">
+            <span className="text-2xl font-bold text-[#C5A572]">
               {ticketPrice === null || ticketPrice === 0 ? 'Free' : `$${ticketPrice}`}
             </span>
             {ticketPrice && ticketPrice > 0 && (

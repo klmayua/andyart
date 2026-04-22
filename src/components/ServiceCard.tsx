@@ -45,10 +45,10 @@ export default function ServiceCard({
   if (!isActive) return null;
 
   return (
-    <div className="rounded-2xl border border-gray-200 bg-gradient-to-br from-white via-gray-50 to-white shadow-xl hover:shadow-2xl transition-all duration-300 p-6 group hover:scale-[1.02] hover:border-primary/30">
-      {/* Icon with gold accent background */}
-      <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-accent via-gray-100 to-accent flex items-center justify-center mb-5 group-hover:scale-110 transition-transform shadow-md">
-        <IconComponent className="w-8 h-8 text-primary" />
+    <div className="rounded-2xl border border-gray-200 bg-gradient-to-br from-white via-gray-50 to-white shadow-xl hover:shadow-2xl transition-all duration-300 p-6 group hover:scale-[1.02] hover:border-[#C5A572]/40">
+      {/* Icon with gold gradient background */}
+      <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#C5A572]/20 via-[#C5A572]/10 to-[#C5A572]/20 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform shadow-md group-hover:shadow-lg group-hover:shadow-[#C5A572]/20">
+        <IconComponent className="w-8 h-8 text-[#C5A572]" />
       </div>
 
       <h3 className="font-serif text-xl font-bold text-primary mb-2 group-hover:text-primary/80 transition-colors">
@@ -61,7 +61,7 @@ export default function ServiceCard({
 
       <div className="flex items-center justify-between pt-4 border-t border-gray-200">
         <div>
-          <span className="text-lg font-bold text-primary">
+          <span className="text-lg font-bold text-[#C5A572]">
             {formatPrice()}
           </span>
         </div>

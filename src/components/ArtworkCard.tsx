@@ -48,7 +48,7 @@ export default function ArtworkCard({
     <Link href={`/gallery/${slug}`} className="group">
       <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-gradient-to-br from-white via-gray-50 to-gray-100 shadow-xl hover:shadow-2xl transition-all duration-300 group-hover:scale-[1.02] group-hover:shadow-primary/20">
         {/* Gold accent border on hover */}
-        <div className="absolute inset-0 rounded-2xl border border-gray-200 group-hover:border-primary/30 transition-colors z-20 pointer-events-none" />
+        <div className="absolute inset-0 rounded-2xl border-2 border-gray-200 group-hover:border-[#C5A572]/50 transition-colors z-20 pointer-events-none" />
         
         {/* Gradient overlay for depth */}
         <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-transparent to-black/15 pointer-events-none z-10" />
@@ -68,12 +68,12 @@ export default function ArtworkCard({
         {/* Wishlist button with gold accent */}
         <button
           onClick={handleWishlistToggle}
-          className="absolute top-3 right-3 w-10 h-10 bg-white/95 backdrop-blur-md rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all z-30 flex items-center justify-center group-hover:border group-hover:border-primary/20"
+          className="absolute top-3 right-3 w-10 h-10 bg-white/95 backdrop-blur-md rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all z-30 flex items-center justify-center"
           aria-label={inWishlist ? 'Remove from wishlist' : 'Add to wishlist'}
         >
           <Heart
             size={18}
-            className={inWishlist ? 'fill-error text-error' : 'text-text-secondary group-hover:text-primary'}
+            className={inWishlist ? 'fill-[#C5A572] text-[#C5A572]' : 'text-text-secondary hover:text-[#C5A572] transition-colors'}
           />
         </button>
 
@@ -97,11 +97,11 @@ export default function ArtworkCard({
           {artist.name}
         </Link>
         <div className="flex items-center gap-2">
-          <p className="text-sm font-bold text-primary">
+          <p className="text-base font-bold text-[#C5A572]">
             {isPriceOnRequest ? 'Price on request' : price ? `$${price.toLocaleString()}` : 'Inquire'}
           </p>
           {/* Gold accent line */}
-          <div className="flex-1 h-px bg-gradient-to-r from-primary/40 to-transparent" />
+          <div className="flex-1 h-px bg-gradient-to-r from-[#C5A572]/60 to-transparent" />
         </div>
       </div>
     </Link>
