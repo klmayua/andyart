@@ -51,10 +51,10 @@ export const IMAGES = {
     },
   ],
 
-  // Service icons (emoji or image URLs)
+  // Service icons (using Lucide React icon names)
   services: [
-    { name: 'Art Consultation', icon: '🎨' },
-    { name: 'Corporate Curation', icon: '🏢' },
-    { name: 'Paint & Sip Events', icon: '🍷' },
+    { name: 'Art Consultation', icon: 'Paintbrush' },
+    { name: 'Corporate Curation', icon: 'Building' },
+    { name: 'Paint & Sip Events', icon: 'Wine' },
   ],
 };

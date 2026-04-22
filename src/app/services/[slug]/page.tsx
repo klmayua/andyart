@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
-import { Calendar, Clock, ChevronLeft, CheckCircle } from 'lucide-react';
+import { Calendar, Clock, ChevronLeft, CheckCircle, Paintbrush } from 'lucide-react';
 
 // Mock data - will be replaced with API call
 const service = {
@@ -13,7 +13,7 @@ const service = {
   description: 'One-on-one session with our expert curators to help you find the perfect pieces for your space. We\'ll discuss your style, budget, and vision to create a personalized art acquisition plan.\n\nDuring this session, we will:\n- Review your space and existing decor\n- Discuss your artistic preferences and goals\n- Present curated options from our gallery and network\n- Create a customized acquisition roadmap\n- Provide guidance on framing, placement, and lighting\n\nWhether you\'re a first-time collector or expanding your collection, our consultation will set you on the right path.',
   priceType: 'hourly',
   price: 150,
-  icon: '🎨',
+  icon: 'Paintbrush',
   isActive: true,
   duration: '60 minutes',
   availability: 'Monday - Saturday, 10am - 6pm',

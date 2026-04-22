@@ -1,4 +1,5 @@
 import ServiceCard from '@/components/ServiceCard';
+import { Paintbrush, Building, Wine, Hammer, Clipboard, GlassWater } from 'lucide-react';
 
 // Mock data - will be replaced with API call
 const services = [
@@ -9,7 +10,7 @@ const services = [
     description: 'One-on-one session with our expert curators to help you find the perfect pieces for your space. We\'ll discuss your style, budget, and vision to create a personalized art acquisition plan.',
     priceType: 'hourly',
     price: 150,
-    icon: '🎨',
+    icon: 'Paintbrush',
     isActive: true,
   },
   {
@@ -19,7 +20,7 @@ const services = [
     description: 'Full-service art selection and installation for offices, hotels, restaurants, and commercial spaces. We handle everything from concept to installation.',
     priceType: 'quote',
     price: null,
-    icon: '🏢',
+    icon: 'Building',
     isActive: true,
   },
   {
@@ -29,7 +30,7 @@ const services = [
     description: 'Private or public painting events with wine and expert instruction. Perfect for team building, celebrations, or just a fun night out.',
     priceType: 'fixed',
     price: 75,
-    icon: '🍷',
+    icon: 'Wine',
     isActive: true,
   },
   {
@@ -39,7 +40,7 @@ const services = [
     description: 'Professional hanging and installation of artwork in your home or office. Includes proper placement consultation and all necessary hardware.',
     priceType: 'hourly',
     price: 100,
-    icon: '🔨',
+    icon: 'Hammer',
     isActive: true,
   },
   {
@@ -49,7 +50,7 @@ const services = [
     description: 'Ongoing management of your art collection including cataloging, condition reports, insurance documentation, and rotation scheduling.',
     priceType: 'quote',
     price: null,
-    icon: '📋',
+    icon: 'Clipboard',
     isActive: true,
   },
   {
@@ -59,7 +60,7 @@ const services = [
     description: 'Exclusive after-hours gallery access for you and your guests. Enjoy wine, cheese, and personalized attention from our curators.',
     priceType: 'fixed',
     price: 500,
-    icon: '🥂',
+    icon: 'GlassWater',
     isActive: true,
   },
 ];
