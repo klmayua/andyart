@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight, Palette, Calendar, Users, Award } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
+import { IMAGES } from '@/lib/images';
 
 export default function HomePage() {
   return (
@@ -90,12 +91,8 @@ export default function HomePage() {
             </Link>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
-            {[
-              { title: 'Sunset Over Mountains', artist: 'Jane Doe', price: '$2,500', image: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=800' },
-              { title: 'Urban Dreams', artist: 'John Smith', price: '$3,200', image: 'https://images.unsplash.com/photo-1541963463532-d68292c34b19?w=800' },
-              { title: 'Abstract Emotions', artist: 'Jane Doe', price: 'On request', image: 'https://images.unsplash.com/photo-1549887534-1541e9326642?w=800' },
-            ].map((artwork, index) => (
-              <Link key={index} href={`/gallery/${artwork.title.toLowerCase().replace(/\s+/g, '-')}`} className="group">
+            {IMAGES.artworks.slice(0, 3).map((artwork, index) => (
+              <Link key={artwork.id} href={`/gallery/${artwork.title.toLowerCase().replace(/\s+/g, '-')}`} className="group">
                 <div className="relative aspect-[4/5] overflow-hidden rounded-md bg-gray-100 mb-3">
                   <Image
                     src={artwork.image}
@@ -109,8 +106,8 @@ export default function HomePage() {
                 <h3 className="font-serif text-base font-semibold text-text-primary group-hover:text-success-gold transition-colors">
                   {artwork.title}
                 </h3>
-                <p className="text-sm text-text-secondary">{artwork.artist}</p>
-                <p className="text-sm font-medium text-success-gold">{artwork.price}</p>
+                <p className="text-sm text-text-secondary">{index % 2 === 0 ? 'Jane Doe' : 'John Smith'}</p>
+                <p className="text-sm font-medium text-success-gold">{index % 2 === 0 ? 'Price on request' : `$${(index + 1) * 500}`}</p>
               </Link>
             ))}
           </div>
@@ -127,10 +124,7 @@ export default function HomePage() {
             </Link>
           </div>
           <div className="grid md:grid-cols-2 gap-6">
-            {[
-              { title: 'Paint & Sip: Sunset Edition', date: 'May 15, 2026', price: '$75', image: 'https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=800' },
-              { title: 'Artist Talk: Contemporary Visions', date: 'May 22, 2026', price: 'Free', image: 'https://images.unsplash.com/photo-1518998053901-5348d3961a04?w=800' },
-            ].map((event, index) => (
+            {IMAGES.events.map((event, index) => (
               <div key={index} className="rounded-md border border-border-light bg-surface shadow-subtle overflow-hidden">
                 <div className="relative aspect-[16/9]">
                   <Image
@@ -145,8 +139,8 @@ export default function HomePage() {
                 <div className="p-4 space-y-3">
                   <h3 className="font-serif text-xl font-semibold text-text-primary">{event.title}</h3>
                   <div className="flex items-center justify-between">
-                    <span className="text-sm text-text-secondary">{event.date}</span>
-                    <span className="text-lg font-semibold text-success-gold">{event.price}</span>
+                    <span className="text-sm text-text-secondary">{index === 0 ? 'May 15, 2026' : 'May 22, 2026'}</span>
+                    <span className="text-lg font-semibold text-success-gold">{index === 0 ? '$75' : 'Free'}</span>
                   </div>
                   <Link
                     href="/events"
