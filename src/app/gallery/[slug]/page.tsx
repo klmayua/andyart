@@ -12,8 +12,8 @@ const artwork = {
   id: '1',
   title: 'Sunset Over Mountains',
   slug: 'sunset-over-mountains',
-  artist: { 
-    name: 'Jane Doe', 
+  artist: {
+    name: 'Jane Doe',
     slug: 'jane-doe',
     bio: 'Jane Doe is a contemporary artist known for her vibrant landscape paintings.',
     instagram: '@janedoeart',
@@ -21,7 +21,11 @@ const artwork = {
   },
   price: 2500,
   isPriceOnRequest: false,
-  images: ['/placeholder-artwork.jpg', '/placeholder-artwork.jpg', '/placeholder-artwork.jpg'],
+  images: [
+    'https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=800',
+    'https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=800',
+    'https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=800',
+  ],
   category: 'painting',
   inStock: true,
   medium: 'Oil on canvas',
@@ -62,10 +66,15 @@ export default function ArtworkDetailPage() {
         <div className="grid md:grid-cols-2 gap-8">
           {/* Images */}
           <div className="space-y-4">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-md bg-background">
-              <div className="absolute inset-0 bg-border-light flex items-center justify-center text-text-secondary">
-                <span className="text-sm">Artwork Image</span>
-              </div>
+            <div className="relative aspect-[4/5] overflow-hidden rounded-md bg-gray-100">
+              <Image
+                src={artwork.images[selectedImage] || artwork.images[0]}
+                alt={artwork.title}
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover"
+                priority
+              />
             </div>
             {artwork.images.length > 1 && (
               <div className="flex gap-2 overflow-x-auto">
@@ -74,10 +83,16 @@ export default function ArtworkDetailPage() {
                     key={index}
                     onClick={() => setSelectedImage(index)}
                     className={`relative w-20 h-20 flex-shrink-0 rounded-md overflow-hidden border-2 transition-colors ${
-                      selectedImage === index ? 'border-success-gold' : 'border-transparent'
+                      selectedImage === index ? 'border-primary' : 'border-transparent'
                     }`}
                   >
-                    <div className="absolute inset-0 bg-border-light" />
+                    <Image
+                      src={image}
+                      alt={`${artwork.title} thumbnail ${index + 1}`}
+                      fill
+                      sizes="80px"
+                      className="object-cover"
+                    />
                   </button>
                 ))}
               </div>
