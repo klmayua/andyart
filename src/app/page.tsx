@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Palette, Calendar, Users, Award, Paintbrush, Building, Wine } from 'lucide-react';
 import { IMAGES } from '@/lib/images';
 
 export default function HomePage() {
@@ -49,31 +49,31 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="text-center">
-              <div className="w-16 h-16 bg-accent rounded-md flex items-center justify-center text-3xl mx-auto mb-4">
-                🎨
+              <div className="w-16 h-16 bg-accent rounded-full flex items-center justify-center mx-auto mb-4">
+                <Palette className="w-8 h-8 text-primary" />
               </div>
-              <h3 className="font-serif text-lg font-semibold text-text-primary mb-2">Curated Art</h3>
+              <h3 className="font-serif text-lg font-semibold text-primary mb-2">Curated Art</h3>
               <p className="text-sm text-text-secondary">Handpicked pieces from emerging and established artists</p>
             </div>
             <div className="text-center">
-              <div className="w-16 h-16 bg-accent rounded-md flex items-center justify-center text-3xl mx-auto mb-4">
-                🖼️
+              <div className="w-16 h-16 bg-accent rounded-full flex items-center justify-center mx-auto mb-4">
+                <Paintbrush className="w-8 h-8 text-primary" />
               </div>
-              <h3 className="font-serif text-lg font-semibold text-text-primary mb-2">Art Services</h3>
+              <h3 className="font-serif text-lg font-semibold text-primary mb-2">Art Services</h3>
               <p className="text-sm text-text-secondary">Consultation, curation, and custom experiences</p>
             </div>
             <div className="text-center">
-              <div className="w-16 h-16 bg-accent rounded-md flex items-center justify-center text-3xl mx-auto mb-4">
-                📅
+              <div className="w-16 h-16 bg-accent rounded-full flex items-center justify-center mx-auto mb-4">
+                <Calendar className="w-8 h-8 text-primary" />
               </div>
-              <h3 className="font-serif text-lg font-semibold text-text-primary mb-2">Events</h3>
+              <h3 className="font-serif text-lg font-semibold text-primary mb-2">Events</h3>
               <p className="text-sm text-text-secondary">Paint & sip, artist talks, and exclusive previews</p>
             </div>
             <div className="text-center">
-              <div className="w-16 h-16 bg-accent rounded-md flex items-center justify-center text-3xl mx-auto mb-4">
-                🏆
+              <div className="w-16 h-16 bg-accent rounded-full flex items-center justify-center mx-auto mb-4">
+                <Award className="w-8 h-8 text-primary" />
               </div>
-              <h3 className="font-serif text-lg font-semibold text-text-primary mb-2">Partnerships</h3>
+              <h3 className="font-serif text-lg font-semibold text-primary mb-2">Partnerships</h3>
               <p className="text-sm text-text-secondary">Trade programs for designers and corporations</p>
             </div>
           </div>
@@ -158,26 +158,26 @@ export default function HomePage() {
       <section className="py-16 md:py-24 px-4 bg-surface">
         <div className="max-w-6xl mx-auto">
           <div className="flex items-center justify-between mb-8">
-            <h2 className="font-serif text-3xl md:text-4xl font-bold text-text-primary">Our Services</h2>
-            <Link href="/services" className="text-success-gold font-medium hover:underline flex items-center gap-2">
+            <h2 className="font-serif text-3xl md:text-4xl font-bold text-primary">Our Services</h2>
+            <Link href="/services" className="text-primary font-medium hover:underline flex items-center gap-2">
               View All <ArrowRight size={16} />
             </Link>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              { name: 'Art Consultation', price: '$150/hour', icon: '🎨', description: 'One-on-one session to find perfect pieces' },
-              { name: 'Corporate Curation', price: 'Custom quote', icon: '🏢', description: 'Full-service art for offices' },
-              { name: 'Paint & Sip Events', price: '$75/person', icon: '🍷', description: 'Private or public painting events' },
+              { name: 'Art Consultation', price: '$150/hour', icon: Paintbrush, description: 'One-on-one session to find perfect pieces' },
+              { name: 'Corporate Curation', price: 'Custom quote', icon: Building, description: 'Full-service art for offices' },
+              { name: 'Paint & Sip Events', price: '$75/person', icon: Wine, description: 'Private or public painting events' },
             ].map((service, index) => (
-              <div key={index} className="rounded-md border border-border-light bg-background p-6">
-                <div className="w-14 h-14 bg-accent rounded-md flex items-center justify-center text-2xl mb-4">
-                  {service.icon}
+              <div key={index} className="rounded-xl border border-white/20 bg-background p-6">
+                <div className="w-14 h-14 bg-accent rounded-full flex items-center justify-center mb-4">
+                  <service.icon className="w-7 h-7 text-primary" />
                 </div>
-                <h3 className="font-serif text-xl font-semibold text-text-primary mb-2">{service.name}</h3>
+                <h3 className="font-serif text-xl font-semibold text-primary mb-2">{service.name}</h3>
                 <p className="text-sm text-text-secondary mb-4">{service.description}</p>
                 <Link
                   href="/services"
-                  className="block w-full bg-primary text-white text-center px-4 py-2 rounded-md text-sm font-medium hover:bg-text-primary transition-colors"
+                  className="block w-full bg-primary text-white text-center px-4 py-2 rounded-full text-sm font-medium hover:bg-primary/80 transition-all"
                 >
                   Book Now
                 </Link>
@@ -193,19 +193,19 @@ export default function HomePage() {
           <h2 className="font-serif text-3xl md:text-5xl font-bold mb-6">
             Ready to Transform Your Space?
           </h2>
-          <p className="text-lg md:text-xl text-accent mb-8 max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl text-white/70 mb-8 max-w-2xl mx-auto">
             Whether you're collecting art for the first time or looking to partner with us for a large project, we're here to help.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/partners/apply"
-              className="bg-white text-primary px-8 py-4 rounded-md font-medium text-lg hover:bg-accent transition-colors inline-flex items-center justify-center"
+              className="bg-white text-primary px-8 py-4 rounded-full font-medium text-lg hover:bg-accent transition-all inline-flex items-center justify-center"
             >
               Become a Partner
             </Link>
             <Link
               href="/consult"
-              className="bg-primary text-white border border-accent px-8 py-4 rounded-md font-medium text-lg hover:bg-text-primary transition-colors inline-flex items-center justify-center"
+              className="bg-primary text-white border border-white/30 px-8 py-4 rounded-full font-medium text-lg hover:bg-white/10 transition-all inline-flex items-center justify-center"
             >
               Book Consultation
             </Link>
@@ -214,35 +214,35 @@ export default function HomePage() {
       </section>
 
       {/* Footer */}
-      <footer className="py-12 px-4 bg-background border-t border-border-light">
+      <footer className="py-12 px-4 bg-background border-t border-white/20">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
             <div>
-              <h4 className="font-serif text-lg font-semibold text-text-primary mb-4">Gallery</h4>
+              <h4 className="font-serif text-lg font-semibold text-primary mb-4">Gallery</h4>
               <ul className="space-y-2 text-sm text-text-secondary">
-                <li><Link href="/gallery" className="hover:text-text-primary">All Artworks</Link></li>
-                <li><Link href="/artists" className="hover:text-text-primary">Artists</Link></li>
-                <li><Link href="/viewing-rooms" className="hover:text-text-primary">Viewing Rooms</Link></li>
+                <li><Link href="/gallery" className="hover:text-primary">All Artworks</Link></li>
+                <li><Link href="/artists" className="hover:text-primary">Artists</Link></li>
+                <li><Link href="/viewing-rooms" className="hover:text-primary">Viewing Rooms</Link></li>
               </ul>
             </div>
             <div>
-              <h4 className="font-serif text-lg font-semibold text-text-primary mb-4">Events</h4>
+              <h4 className="font-serif text-lg font-semibold text-primary mb-4">Events</h4>
               <ul className="space-y-2 text-sm text-text-secondary">
-                <li><Link href="/events" className="hover:text-text-primary">Upcoming</Link></li>
-                <li><Link href="/events/past" className="hover:text-text-primary">Past Events</Link></li>
-                <li><Link href="/events/host" className="hover:text-text-primary">Host an Event</Link></li>
+                <li><Link href="/events" className="hover:text-primary">Upcoming</Link></li>
+                <li><Link href="/events/past" className="hover:text-primary">Past Events</Link></li>
+                <li><Link href="/events/host" className="hover:text-primary">Host an Event</Link></li>
               </ul>
             </div>
             <div>
-              <h4 className="font-serif text-lg font-semibold text-text-primary mb-4">Services</h4>
+              <h4 className="font-serif text-lg font-semibold text-primary mb-4">Services</h4>
               <ul className="space-y-2 text-sm text-text-secondary">
-                <li><Link href="/services" className="hover:text-text-primary">All Services</Link></li>
-                <li><Link href="/consult" className="hover:text-text-primary">Consultation</Link></li>
-                <li><Link href="/partners/apply" className="hover:text-text-primary">Partnerships</Link></li>
+                <li><Link href="/services" className="hover:text-primary">All Services</Link></li>
+                <li><Link href="/consult" className="hover:text-primary">Consultation</Link></li>
+                <li><Link href="/partners/apply" className="hover:text-primary">Partnerships</Link></li>
               </ul>
             </div>
             <div>
-              <h4 className="font-serif text-lg font-semibold text-text-primary mb-4">Contact</h4>
+              <h4 className="font-serif text-lg font-semibold text-primary mb-4">Contact</h4>
               <ul className="space-y-2 text-sm text-text-secondary">
                 <li>hello@andyart.gallery</li>
                 <li>@andyart</li>
@@ -250,13 +250,13 @@ export default function HomePage() {
               </ul>
             </div>
           </div>
-          <div className="pt-8 border-t border-border-light flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="pt-8 border-t border-white/20 flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-sm text-text-secondary">
               © {new Date().getFullYear()} AndyArt Gallery. All rights reserved.
             </p>
             <div className="flex gap-6 text-sm text-text-secondary">
-              <Link href="/legal/terms" className="hover:text-text-primary">Terms</Link>
-              <Link href="/legal/privacy" className="hover:text-text-primary">Privacy</Link>
+              <Link href="/legal/terms" className="hover:text-primary">Terms</Link>
+              <Link href="/legal/privacy" className="hover:text-primary">Privacy</Link>
             </div>
           </div>
         </div>
