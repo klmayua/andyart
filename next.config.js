@@ -13,6 +13,8 @@ const nextConfig = {
         pathname: '/**',
       },
     ],
+    // Allow local images from public folder
+    domains: ['localhost'],
   },
   typescript: {
     ignoreBuildErrors: true,

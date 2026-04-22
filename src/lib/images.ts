@@ -1,42 +1,41 @@
 // Image Configuration for AndyArt Gallery
-// Replace these URLs with your own image URLs or local paths
+// Using YOUR actual artwork images from public/images folder
 
 export const IMAGES = {
   // Hero images
-  hero: 'https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=1920',
+  hero: '/images/WhatsApp Image 2026-04-22 at 02.59.49.jpeg',
   
-  // Artwork images - Replace with your actual artwork images
+  // Artwork images - YOUR actual images
   artworks: [
     {
       id: '1',
-      title: 'Sunset Over Mountains',
-      // Replace with your image: '/images/artwork1.jpg' or a URL
-      image: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=800',
+      title: 'Abstract Sunset',
+      image: '/images/WhatsApp Image 2026-04-22 at 02.59.50.jpeg',
     },
     {
       id: '2',
       title: 'Urban Dreams',
-      image: 'https://images.unsplash.com/photo-1541963463532-d68292c34b19?w=800',
+      image: '/images/WhatsApp Image 2026-04-22 at 02.59.51.jpeg',
     },
     {
       id: '3',
-      title: 'Abstract Emotions',
-      image: 'https://images.unsplash.com/photo-1549887534-1541e9326642?w=800',
+      title: 'Modern Art',
+      image: '/images/WhatsApp Image 2026-04-22 at 02.59.52.jpeg',
     },
     {
       id: '4',
-      title: 'Ocean Waves',
-      image: 'https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=800',
+      title: 'Contemporary Piece',
+      image: '/images/WhatsApp Image 2026-04-22 at 02.59.52 (1).jpeg',
     },
     {
       id: '5',
-      title: 'City Lights',
-      image: 'https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=800',
+      title: 'Artistic Vision',
+      image: '/images/WhatsApp Image 2026-04-22 at 02.59.52 (2).jpeg',
     },
     {
       id: '6',
-      title: 'Nature\'s Whisper',
-      image: 'https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=800',
+      title: 'Creative Expression',
+      image: '/images/WhatsApp Image 2026-04-22 at 02.59.49.jpeg',
     },
   ],
 
@@ -44,11 +43,11 @@ export const IMAGES = {
   events: [
     {
       title: 'Paint & Sip: Sunset Edition',
-      image: 'https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=800',
+      image: '/images/WhatsApp Image 2026-04-22 at 02.59.49.jpeg',
     },
     {
       title: 'Artist Talk: Contemporary Visions',
-      image: 'https://images.unsplash.com/photo-1518998053901-5348d3961a04?w=800',
+      image: '/images/WhatsApp Image 2026-04-22 at 02.59.50.jpeg',
     },
   ],
 
