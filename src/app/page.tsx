@@ -7,7 +7,7 @@ export default function HomePage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative h-[80vh] min-h-[600px] flex items-center justify-center overflow-hidden bg-gradient-to-br from-accent/20 to-background">
+      <section className="relative h-[70vh] min-h-[500px] flex items-center justify-center overflow-hidden bg-gradient-to-br from-accent/20 to-background">
         <Image
           src={IMAGES.hero}
           alt="Art Gallery Hero"
@@ -17,8 +17,8 @@ export default function HomePage() {
         />
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
           {/* Logo */}
-          <div className="mb-6 flex justify-center">
-            <div className="w-24 h-24 md:w-32 md:h-32 relative">
+          <div className="mb-4 flex justify-center">
+            <div className="w-32 h-32 md:w-48 md:h-48 relative">
               <Image
                 src="/images/logo.png"
                 alt="AndyArt Logo"
@@ -28,27 +28,27 @@ export default function HomePage() {
               />
             </div>
           </div>
-          <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl font-bold text-primary mb-6">
+          <h1 className="font-serif text-3xl md:text-5xl lg:text-6xl font-bold text-primary mb-4">
             Your digital gallery.
             <br />
             <span className="text-primary/60">Your art business.</span>
             <br />
             Elevated.
           </h1>
-          <p className="text-lg md:text-xl text-text-secondary mb-8 max-w-2xl mx-auto">
+          <p className="text-base md:text-lg text-text-secondary mb-6 max-w-2xl mx-auto">
             Discover exceptional artwork, book immersive experiences, and partner with a gallery that understands your vision.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Link
               href="/gallery"
-              className="bg-primary text-white px-8 py-4 rounded-full font-medium text-lg hover:bg-primary/80 transition-all shadow-lg hover:shadow-xl inline-flex items-center justify-center gap-2"
+              className="bg-primary text-white px-6 py-3 rounded-full font-medium text-base hover:bg-primary/80 transition-all shadow-lg hover:shadow-xl inline-flex items-center justify-center gap-2"
             >
               Explore Gallery
-              <ArrowRight size={20} />
+              <ArrowRight size={18} />
             </Link>
             <Link
               href="/events"
-              className="bg-white text-primary border border-white/30 px-8 py-4 rounded-full font-medium text-lg hover:bg-accent transition-all inline-flex items-center justify-center"
+              className="bg-white text-primary border border-white/30 px-6 py-3 rounded-full font-medium text-base hover:bg-accent transition-all inline-flex items-center justify-center"
             >
               View Events
             </Link>
@@ -57,47 +57,47 @@ export default function HomePage() {
       </section>
 
       {/* Features Section */}
-      <section className="py-16 md:py-24 px-4">
+      <section className="py-12 md:py-16 px-4">
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             <div className="text-center">
-              <div className="w-16 h-16 bg-accent rounded-full flex items-center justify-center mx-auto mb-4">
-                <Palette className="w-8 h-8 text-primary" />
+              <div className="w-14 h-14 bg-accent rounded-full flex items-center justify-center mx-auto mb-3">
+                <Palette className="w-7 h-7 text-primary" />
               </div>
-              <h3 className="font-serif text-lg font-semibold text-primary mb-2">Curated Art</h3>
-              <p className="text-sm text-text-secondary">Handpicked pieces from emerging and established artists</p>
+              <h3 className="font-serif text-base font-semibold text-primary mb-1">Curated Art</h3>
+              <p className="text-xs text-text-secondary">Handpicked pieces from emerging and established artists</p>
             </div>
             <div className="text-center">
-              <div className="w-16 h-16 bg-accent rounded-full flex items-center justify-center mx-auto mb-4">
-                <Paintbrush className="w-8 h-8 text-primary" />
+              <div className="w-14 h-14 bg-accent rounded-full flex items-center justify-center mx-auto mb-3">
+                <Paintbrush className="w-7 h-7 text-primary" />
               </div>
-              <h3 className="font-serif text-lg font-semibold text-primary mb-2">Art Services</h3>
-              <p className="text-sm text-text-secondary">Consultation, curation, and custom experiences</p>
+              <h3 className="font-serif text-base font-semibold text-primary mb-1">Art Services</h3>
+              <p className="text-xs text-text-secondary">Consultation, curation, and custom experiences</p>
             </div>
             <div className="text-center">
-              <div className="w-16 h-16 bg-accent rounded-full flex items-center justify-center mx-auto mb-4">
-                <Calendar className="w-8 h-8 text-primary" />
+              <div className="w-14 h-14 bg-accent rounded-full flex items-center justify-center mx-auto mb-3">
+                <Calendar className="w-7 h-7 text-primary" />
               </div>
-              <h3 className="font-serif text-lg font-semibold text-primary mb-2">Events</h3>
-              <p className="text-sm text-text-secondary">Paint & sip, artist talks, and exclusive previews</p>
+              <h3 className="font-serif text-base font-semibold text-primary mb-1">Events</h3>
+              <p className="text-xs text-text-secondary">Paint & sip, artist talks, and exclusive previews</p>
             </div>
             <div className="text-center">
-              <div className="w-16 h-16 bg-accent rounded-full flex items-center justify-center mx-auto mb-4">
-                <Award className="w-8 h-8 text-primary" />
+              <div className="w-14 h-14 bg-accent rounded-full flex items-center justify-center mx-auto mb-3">
+                <Award className="w-7 h-7 text-primary" />
               </div>
-              <h3 className="font-serif text-lg font-semibold text-primary mb-2">Partnerships</h3>
-              <p className="text-sm text-text-secondary">Trade programs for designers and corporations</p>
+              <h3 className="font-serif text-base font-semibold text-primary mb-1">Partnerships</h3>
+              <p className="text-xs text-text-secondary">Trade programs for designers and corporations</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Featured Artworks */}
-      <section className="py-16 md:py-24 px-4 bg-surface">
+      <section className="py-12 md:py-16 px-4 bg-surface">
         <div className="max-w-6xl mx-auto">
-          <div className="flex items-center justify-between mb-8">
-            <h2 className="font-serif text-3xl md:text-4xl font-bold text-text-primary">Featured Artworks</h2>
-            <Link href="/gallery" className="text-success-gold font-medium hover:underline flex items-center gap-2">
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="font-serif text-2xl md:text-3xl font-bold text-primary">Featured Artworks</h2>
+            <Link href="/gallery" className="text-primary font-medium hover:underline flex items-center gap-2">
               View All <ArrowRight size={16} />
             </Link>
           </div>
@@ -114,11 +114,11 @@ export default function HomePage() {
                     loading="lazy"
                   />
                 </div>
-                <h3 className="font-serif text-base font-semibold text-text-primary group-hover:text-success-gold transition-colors">
+                <h3 className="font-serif text-base font-semibold text-primary group-hover:text-primary transition-colors">
                   {artwork.title}
                 </h3>
                 <p className="text-sm text-text-secondary">{index % 2 === 0 ? 'Jane Doe' : 'John Smith'}</p>
-                <p className="text-sm font-medium text-success-gold">{index % 2 === 0 ? 'Price on request' : `$${(index + 1) * 500}`}</p>
+                <p className="text-sm font-medium text-primary">{index % 2 === 0 ? 'Price on request' : `$${(index + 1) * 500}`}</p>
               </Link>
             ))}
           </div>
@@ -126,11 +126,11 @@ export default function HomePage() {
       </section>
 
       {/* Upcoming Events */}
-      <section className="py-16 md:py-24 px-4">
+      <section className="py-12 md:py-16 px-4">
         <div className="max-w-6xl mx-auto">
-          <div className="flex items-center justify-between mb-8">
-            <h2 className="font-serif text-3xl md:text-4xl font-bold text-text-primary">Upcoming Events</h2>
-            <Link href="/events" className="text-success-gold font-medium hover:underline flex items-center gap-2">
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="font-serif text-2xl md:text-3xl font-bold text-primary">Upcoming Events</h2>
+            <Link href="/events" className="text-primary font-medium hover:underline flex items-center gap-2">
               View All <ArrowRight size={16} />
             </Link>
           </div>
