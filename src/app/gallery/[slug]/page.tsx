@@ -66,7 +66,16 @@ export default function ArtworkDetailPage() {
         <div className="grid md:grid-cols-2 gap-8">
           {/* Images */}
           <div className="space-y-4">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-md bg-gray-100">
+            <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-gray-100 shadow-2xl">
+              {/* Gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-br from-white/15 via-transparent to-black/10 pointer-events-none z-10" />
+              
+              {/* Glassmorphism border */}
+              <div className="absolute inset-0 rounded-2xl border border-white/40 pointer-events-none z-20" />
+              
+              {/* Inner glow effect */}
+              <div className="absolute inset-0 rounded-2xl shadow-[inset_0_0_30px_rgba(255,255,255,0.2)] pointer-events-none z-10" />
+              
               <Image
                 src={artwork.images[selectedImage] || artwork.images[0]}
                 alt={artwork.title}
@@ -82,8 +91,8 @@ export default function ArtworkDetailPage() {
                   <button
                     key={index}
                     onClick={() => setSelectedImage(index)}
-                    className={`relative w-20 h-20 flex-shrink-0 rounded-md overflow-hidden border-2 transition-colors ${
-                      selectedImage === index ? 'border-primary' : 'border-transparent'
+                    className={`relative w-20 h-20 flex-shrink-0 rounded-xl overflow-hidden border-2 transition-all hover:scale-105 ${
+                      selectedImage === index ? 'border-primary shadow-lg shadow-primary/30' : 'border-white/50 hover:shadow-md'
                     }`}
                   >
                     <Image
