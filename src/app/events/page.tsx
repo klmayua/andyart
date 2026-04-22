@@ -13,7 +13,7 @@ const events = [
     location: 'AndyArt Studio, Downtown',
     isVirtual: false,
     ticketPrice: 75,
-    image: '/placeholder-event.jpg',
+    image: 'https://images.unsplash.com/photo-1525909002-1b05e0c869d8?w=800',
     remainingTickets: 12,
   },
   {
@@ -26,7 +26,7 @@ const events = [
     location: 'Virtual Event',
     isVirtual: true,
     ticketPrice: 0,
-    image: '/placeholder-event.jpg',
+    image: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=800',
     remainingTickets: null,
   },
   {
@@ -39,7 +39,7 @@ const events = [
     location: 'AndyArt Studio, Downtown',
     isVirtual: false,
     ticketPrice: 120,
-    image: '/placeholder-event.jpg',
+    image: 'https://images.unsplash.com/photo-1561214115-f2f134cc4912?w=800',
     remainingTickets: 6,
   },
   {

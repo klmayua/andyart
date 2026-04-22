@@ -2,8 +2,8 @@
 // Using YOUR actual artwork images from public/images folder
 
 export const IMAGES = {
-  // Hero images
-  hero: '/images/WhatsApp Image 2026-04-22 at 02.59.49.jpeg',
+  // Hero background - artistic abstract pattern
+  hero: 'https://images.unsplash.com/photo-1541963463532-d68292c34b19?w=1920',
   
   // Artwork images - YOUR actual images
   artworks: [
@@ -39,15 +39,15 @@ export const IMAGES = {
     },
   ],
 
-  // Event images
+  // Event images - artistic event backgrounds from Unsplash
   events: [
     {
       title: 'Paint & Sip: Sunset Edition',
-      image: '/images/WhatsApp Image 2026-04-22 at 02.59.49.jpeg',
+      image: 'https://images.unsplash.com/photo-1525909002-1b05e0c869d8?w=800',
     },
     {
       title: 'Artist Talk: Contemporary Visions',
-      image: '/images/WhatsApp Image 2026-04-22 at 02.59.50.jpeg',
+      image: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=800',
     },
   ],
 
