@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useAppStore } from '@/stores/useAppStore';
 import { Home, LayoutGrid, Calendar, Wrench, MessageCircle } from 'lucide-react';
