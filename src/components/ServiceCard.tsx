@@ -45,26 +45,29 @@ export default function ServiceCard({
   if (!isActive) return null;
 
   return (
-    <div className="rounded-xl border border-white/20 bg-surface shadow-subtle p-6">
-      <div className="w-14 h-14 bg-accent rounded-full flex items-center justify-center mb-4">
-        <IconComponent className="w-7 h-7 text-primary" />
+    <div className="rounded-2xl border border-gray-200 bg-gradient-to-br from-white via-gray-50 to-white shadow-xl hover:shadow-2xl transition-all duration-300 p-6 group hover:scale-[1.02] hover:border-primary/30">
+      {/* Icon with gold accent background */}
+      <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-accent via-gray-100 to-accent flex items-center justify-center mb-5 group-hover:scale-110 transition-transform shadow-md">
+        <IconComponent className="w-8 h-8 text-primary" />
       </div>
 
-      <h3 className="font-serif text-xl font-semibold text-primary mb-2">
+      <h3 className="font-serif text-xl font-bold text-primary mb-2 group-hover:text-primary/80 transition-colors">
         {name}
       </h3>
 
-      <p className="text-sm text-text-secondary mb-4 line-clamp-3">
+      <p className="text-sm text-text-secondary mb-5 line-clamp-3">
         {description}
       </p>
 
-      <div className="flex items-center justify-between">
-        <span className="text-lg font-semibold text-primary">
-          {formatPrice()}
-        </span>
+      <div className="flex items-center justify-between pt-4 border-t border-gray-200">
+        <div>
+          <span className="text-lg font-bold text-primary">
+            {formatPrice()}
+          </span>
+        </div>
         <Link
           href={`/services/${slug}`}
-          className="bg-primary text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-primary/80 transition-all"
+          className="bg-primary text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-primary/90 transition-all shadow-md hover:shadow-lg hover:scale-105"
         >
           Book this service
         </Link>

@@ -46,15 +46,15 @@ export default function ArtworkCard({
 
   return (
     <Link href={`/gallery/${slug}`} className="group">
-      <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-gray-100 shadow-lg hover:shadow-2xl transition-all duration-300 group-hover:scale-[1.02]">
-        {/* Gradient overlay for depth and pop effect */}
-        <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-black/10 pointer-events-none z-10" />
+      <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-gradient-to-br from-white via-gray-50 to-gray-100 shadow-xl hover:shadow-2xl transition-all duration-300 group-hover:scale-[1.02] group-hover:shadow-primary/20">
+        {/* Gold accent border on hover */}
+        <div className="absolute inset-0 rounded-2xl border border-gray-200 group-hover:border-primary/30 transition-colors z-20 pointer-events-none" />
         
-        {/* Glassmorphism border effect */}
-        <div className="absolute inset-0 rounded-2xl border border-white/50 pointer-events-none z-20" />
+        {/* Gradient overlay for depth */}
+        <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-transparent to-black/15 pointer-events-none z-10" />
         
         {/* Subtle inner glow */}
-        <div className="absolute inset-0 rounded-2xl shadow-[inset_0_0_20px_rgba(255,255,255,0.3)] pointer-events-none z-10" />
+        <div className="absolute inset-0 rounded-2xl shadow-[inset_0_2px_10px_rgba(255,255,255,0.4)] pointer-events-none z-10" />
         
         <Image
           src={images[0] || 'https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=800'}
@@ -65,27 +65,27 @@ export default function ArtworkCard({
           loading="lazy"
         />
         
-        {/* Wishlist button with glassmorphism */}
+        {/* Wishlist button with gold accent */}
         <button
           onClick={handleWishlistToggle}
-          className="absolute top-3 right-3 w-10 h-10 bg-white/90 backdrop-blur-md rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all z-30 flex items-center justify-center"
+          className="absolute top-3 right-3 w-10 h-10 bg-white/95 backdrop-blur-md rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all z-30 flex items-center justify-center group-hover:border group-hover:border-primary/20"
           aria-label={inWishlist ? 'Remove from wishlist' : 'Add to wishlist'}
         >
           <Heart
             size={18}
-            className={inWishlist ? 'fill-error text-error' : 'text-text-secondary'}
+            className={inWishlist ? 'fill-error text-error' : 'text-text-secondary group-hover:text-primary'}
           />
         </button>
 
-        {/* Out of stock badge with glassmorphism */}
+        {/* Out of stock badge with gold */}
         {!inStock && (
-          <div className="absolute top-3 left-3 bg-primary/90 backdrop-blur-md text-white text-xs px-3 py-1.5 rounded-full shadow-lg z-30">
+          <div className="absolute top-3 left-3 bg-primary/95 backdrop-blur-md text-white text-xs px-3 py-1.5 rounded-full shadow-lg z-30 font-medium">
             Sold
           </div>
         )}
       </div>
 
-      <div className="mt-4 space-y-1.5 px-1">
+      <div className="mt-4 space-y-2 px-1">
         <h3 className="font-serif text-base font-semibold text-primary group-hover:text-primary/80 transition-colors">
           {title}
         </h3>
@@ -96,9 +96,13 @@ export default function ArtworkCard({
         >
           {artist.name}
         </Link>
-        <p className="text-sm font-medium text-primary">
-          {isPriceOnRequest ? 'Price on request' : price ? `$${price.toLocaleString()}` : 'Inquire for price'}
-        </p>
+        <div className="flex items-center gap-2">
+          <p className="text-sm font-bold text-primary">
+            {isPriceOnRequest ? 'Price on request' : price ? `$${price.toLocaleString()}` : 'Inquire'}
+          </p>
+          {/* Gold accent line */}
+          <div className="flex-1 h-px bg-gradient-to-r from-primary/40 to-transparent" />
+        </div>
       </div>
     </Link>
   );
