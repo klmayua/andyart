@@ -45,7 +45,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} ${playfair.variable} font-sans bg-background min-h-screen`}>
-        <main className="main-content">
+        <main className="pb-[90px]">
           {children}
         </main>
         <BottomNav />

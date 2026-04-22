@@ -180,7 +180,7 @@ export default function Chatbot() {
     return (
       <button
         onClick={openChat}
-        className="fixed bottom-28 right-4 w-14 h-14 bg-primary/95 backdrop-blur-sm rounded-full shadow-large flex items-center justify-center text-white hover:bg-primary hover:scale-105 transition-all z-30"
+        className="fixed bottom-[150px] right-4 w-14 h-14 bg-primary/95 backdrop-blur-sm rounded-full shadow-large flex items-center justify-center hover:scale-105 transition-all z-30"
         aria-label="Open chat"
       >
         <MessageCircle size={24} className="text-white" />
@@ -192,13 +192,13 @@ export default function Chatbot() {
     <>
       <button
         onClick={openChat}
-        className="fixed bottom-28 right-4 w-14 h-14 bg-primary/95 backdrop-blur-sm rounded-full shadow-large flex items-center justify-center text-white hover:bg-primary hover:scale-105 transition-all z-30"
+        className="fixed bottom-[150px] right-4 w-14 h-14 bg-primary/95 backdrop-blur-sm rounded-full shadow-large flex items-center justify-center hover:scale-105 transition-all z-30"
         aria-label="Open chat"
       >
         <MessageCircle size={24} className="text-white" />
       </button>
 
-      <div className="fixed bottom-28 right-4 w-[320px] md:w-[400px] bg-white/95 backdrop-blur-md rounded-xl shadow-large border border-border-light overflow-hidden z-30">
+      <div className="fixed bottom-[150px] right-4 w-[300px] md:w-[380px] bg-white/95 backdrop-blur-md rounded-xl shadow-large border border-border-light overflow-hidden z-30">
         {/* Header */}
         <div className="bg-primary/95 backdrop-blur-sm text-white px-4 py-3 flex items-center justify-between">
           <h3 className="font-serif text-lg font-semibold">Andy – Gallery Assistant</h3>
