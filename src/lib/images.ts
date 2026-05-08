@@ -1,11 +1,10 @@
 // Image Configuration for AndyArt Gallery
-// Using YOUR actual artwork images from public/images folder
 
 export const IMAGES = {
-  // Hero background - artistic abstract pattern
-  hero: 'https://images.unsplash.com/photo-1541963463532-d68292c34b19?w=1920',
-  
-  // Artwork images - YOUR actual images
+  // Hero — luxury gallery interior, calm, warm, premium negative space
+  hero: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000&auto=format&fit=crop',
+
+  // Artwork images — YOUR actual images
   artworks: [
     {
       id: '1',
@@ -39,10 +38,10 @@ export const IMAGES = {
     },
   ],
 
-  // Event images - artistic event backgrounds from Unsplash
+  // Event images
   events: [
     {
-      title: 'Paint & Sip: Sunset Edition',
+      title: 'Art and Wine Evenings',
       image: 'https://images.unsplash.com/photo-1525909002-1b05e0c869d8?w=800',
     },
     {
@@ -51,7 +50,7 @@ export const IMAGES = {
     },
   ],
 
-  // Service icons (using Lucide React icon names)
+  // Service icons
   services: [
     { name: 'Art Consultation', icon: 'Paintbrush' },
     { name: 'Corporate Curation', icon: 'Building' },

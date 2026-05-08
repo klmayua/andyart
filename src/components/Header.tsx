@@ -38,28 +38,55 @@ export default function Header() {
     return [
       'relative',
       'text-[17px]',
-      'font-semibold',
-      'tracking-[0.01em]',
+      'font-[580]',
+      'tracking-[0.005em]',
       'transition-colors',
-      'duration-300',
-      active ? 'text-[#d4af6a]' : 'text-white/[0.94] hover:text-white',
+      'duration-[220ms]',
+      'ease-out',
+      active ? 'text-[#C6A66B]' : 'text-[#F7F2E8] hover:text-white',
     ].join(' ');
   };
 
   return (
     <>
       <header
-        className="fixed top-[42px] left-0 right-0 z-50 bg-[rgba(15,15,15,.88)] backdrop-blur-[18px] border-b border-[rgba(212,175,106,0.20)] shadow-[0_8px_24px_rgba(0,0,0,0.25)]"
+        className="fixed top-[38px] left-0 right-0 z-[100] h-[78px]"
+        style={{
+          background: 'rgba(28,24,20,.46)',
+          backdropFilter: 'blur(28px) saturate(170%)',
+          WebkitBackdropFilter: 'blur(28px) saturate(170%)',
+          borderTop: '1px solid rgba(255,255,255,.06)',
+          borderBottom: '1px solid rgba(255,255,255,.08)',
+          boxShadow: '0 12px 44px rgba(0,0,0,.10), inset 0 1px 0 rgba(255,255,255,.14)',
+        }}
       >
-        <div className="max-w-7xl mx-auto px-8 md:px-12">
-          <div className="flex items-center justify-between h-[60px] md:h-[68px]">
+        {/* Overlay highlight */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: 'linear-gradient(180deg, rgba(255,255,255,.08) 0%, rgba(255,255,255,.02) 100%)',
+          }}
+        />
+
+        <div className="relative max-w-7xl mx-auto px-8 md:px-12 h-full">
+          <div className="flex items-center justify-between h-full">
             {/* Left Nav — Desktop */}
-            <nav className="hidden md:flex items-center gap-12">
+            <nav className="hidden md:flex items-center" style={{ gap: '52px' }}>
               {leftNav.map((item) => (
-                <Link key={item.label} href={item.href} className={navItemClass(item.href)}>
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  className={navItemClass(item.href)}
+                  style={{
+                    textShadow: '0 1px 2px rgba(0,0,0,.18)',
+                  }}
+                >
                   {item.label}
                   {isActive(item.href) && (
-                    <span className="absolute -bottom-[6px] left-[16%] w-[68%] h-[2px] bg-[#d4af6a] rounded-full transition-all duration-300" />
+                    <span
+                      className="absolute left-[17.5%] w-[65%] h-[2px] bg-[#C6A66B] rounded-full"
+                      style={{ bottom: '-12px' }}
+                    />
                   )}
                 </Link>
               ))}
@@ -67,26 +94,44 @@ export default function Header() {
 
             {/* Center Logo */}
             <Link href="/" className="flex flex-col items-center scale-[1.08]">
-              <span className="font-serif text-xl md:text-[22px] font-bold tracking-tight text-white">
+              <span className="font-serif text-xl md:text-[22px] font-[650] tracking-tight text-white">
                 AndyArt
               </span>
-              <span className="text-[10px] md:text-[11px] tracking-[0.18em] text-[#d4af6a] font-medium">
+              <span
+                className="text-[10px] md:text-[11px] tracking-[0.08em] text-[#C6A66B] font-[520]"
+                style={{ opacity: 0.96 }}
+              >
                 Cultural House
               </span>
             </Link>
 
             {/* Right Nav — Desktop */}
-            <nav className="hidden md:flex items-center gap-12">
+            <nav className="hidden md:flex items-center" style={{ gap: '52px' }}>
               {rightNav.map((item) => (
-                <Link key={item.label} href={item.href} className={navItemClass(item.href)}>
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  className={navItemClass(item.href)}
+                  style={{
+                    textShadow: '0 1px 2px rgba(0,0,0,.18)',
+                  }}
+                >
                   {item.label}
                   {isActive(item.href) && (
-                    <span className="absolute -bottom-[6px] left-[16%] w-[68%] h-[2px] bg-[#d4af6a] rounded-full transition-all duration-300" />
+                    <span
+                      className="absolute left-[17.5%] w-[65%] h-[2px] bg-[#C6A66B] rounded-full"
+                      style={{ bottom: '-12px' }}
+                    />
                   )}
                 </Link>
               ))}
               <Link href="/profile" className="relative">
-                <User size={20} strokeWidth={2.1} className="text-white/[0.94] hover:text-white transition-colors duration-300" />
+                <User
+                  size={20}
+                  strokeWidth={2.2}
+                  className="text-[#F7F2E8] hover:text-white transition-colors duration-300"
+                  style={{ opacity: 0.95 }}
+                />
               </Link>
             </nav>
 
@@ -104,14 +149,20 @@ export default function Header() {
 
       {/* Mobile Menu Overlay */}
       {mobileOpen && (
-        <div className="fixed inset-0 z-40 bg-[#111111]/98 backdrop-blur-xl md:hidden pt-[110px]">
+        <div
+          className="fixed inset-0 z-40 md:hidden pt-[116px]"
+          style={{
+            background: 'rgba(17,15,12,.96)',
+            backdropFilter: 'blur(28px)',
+          }}
+        >
           <nav className="flex flex-col items-center gap-8 py-12">
             {[...leftNav, ...rightNav].map((item) => (
               <Link
                 key={item.label}
                 href={item.href}
                 className={`font-serif text-2xl tracking-wide transition-colors duration-300 ${
-                  isActive(item.href) ? 'text-[#d4af6a]' : 'text-white/[0.94]'
+                  isActive(item.href) ? 'text-[#C6A66B]' : 'text-[#F7F2E8]'
                 }`}
               >
                 {item.label}

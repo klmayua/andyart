@@ -19,8 +19,8 @@ const playfair = Playfair_Display({
 
 export const metadata: Metadata = {
   title: 'AndyArt | Collect Culture. Live Beautifully. Leave Legacy.',
-  description: 'Premium African art, curated experiences, bespoke commissions, and timeless cultural living for every generation. AndyArt is a premium cultural house where collecting, gathering, gifting, commissioning, and living with art converge.',
-  keywords: ['premium art', 'African art', 'art collection', 'bespoke commissions', 'art experiences', 'cultural house', 'collector concierge', 'corporate curation', 'art gifting'],
+  description: 'Premium African art, curated experiences, bespoke commissions, and timeless cultural living for every generation.',
+  keywords: ['premium art', 'African art', 'art collection', 'bespoke commissions', 'cultural house', 'collector concierge'],
   authors: [{ name: 'AndyArt' }],
   openGraph: {
     title: 'AndyArt | Collect Culture. Live Beautifully. Leave Legacy.',
@@ -28,11 +28,6 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     siteName: 'AndyArt',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'AndyArt | Collect Culture. Live Beautifully. Leave Legacy.',
-    description: 'Premium African art, curated experiences, bespoke commissions, and timeless cultural living for every generation.',
   },
 };
 
@@ -45,7 +40,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${playfair.variable} font-sans bg-[#fbf8f2] min-h-screen`}>
+      <body className={`${inter.variable} ${playfair.variable} font-sans bg-[#F7F2E8] min-h-screen`}>
         <Ticker />
         <Header />
         <main className="pb-[90px] md:pb-0">
