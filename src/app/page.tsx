@@ -70,6 +70,14 @@ export default function HomePage() {
           className="object-cover hero-image"
           priority
         />
+        {/* Nav readability gradient — top only */}
+        <div
+          className="absolute top-0 left-0 right-0 z-[5] pointer-events-none"
+          style={{
+            height: '180px',
+            background: 'linear-gradient(to bottom, rgba(0,0,0,0.22) 0%, rgba(0,0,0,0.03) 100%)',
+          }}
+        />
         {/* Refined overlays */}
         <div className="absolute inset-0 bg-gradient-to-b from-[rgba(0,0,0,0.18)] via-[rgba(0,0,0,0.34)] to-[rgba(0,0,0,0.42)]" />
         <div className="absolute inset-0 hero-vignette" />
