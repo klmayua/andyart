@@ -71,26 +71,26 @@ export default function HomePage() {
           priority
         />
 
-        {/* Top gradient for nav readability — 220px */}
+        {/* Top gradient for nav readability */}
         <div
           className="absolute top-0 left-0 right-0 z-[5] pointer-events-none"
           style={{
             height: '220px',
-            background: 'linear-gradient(to bottom, rgba(20,18,15,.16) 0%, rgba(20,18,15,.02) 100%)',
+            background: 'linear-gradient(to bottom, rgba(15,13,10,.28) 0%, rgba(15,13,10,.02) 100%)',
           }}
         />
 
-        {/* Center softening */}
+        {/* Center veil */}
         <div
           className="absolute inset-0 z-[3] pointer-events-none"
-          style={{ background: 'rgba(247,242,232,.06)' }}
+          style={{ background: 'rgba(18,16,12,.22)' }}
         />
 
         {/* Bottom gradient */}
         <div
           className="absolute inset-0 z-[4] pointer-events-none"
           style={{
-            background: 'linear-gradient(to bottom, rgba(20,18,15,.03) 0%, rgba(20,18,15,.14) 100%)',
+            background: 'linear-gradient(to bottom, rgba(15,13,10,.03) 0%, rgba(15,13,10,.18) 100%)',
           }}
         />
 
@@ -132,7 +132,14 @@ export default function HomePage() {
             </Link>
             <Link
               href="/consult"
-              className="bg-[rgba(255,255,255,.08)] backdrop-blur-[18px] text-[#FFFDF9] border border-[rgba(255,255,255,.16)] px-8 py-[14px] rounded-full font-semibold text-sm tracking-wide hover:bg-[rgba(255,255,255,.14)] transition-all duration-300 inline-flex items-center justify-center"
+              className="text-[#FFFDF9] px-8 py-[14px] rounded-full font-semibold text-sm tracking-wide transition-all duration-300 inline-flex items-center justify-center"
+              style={{
+                background: 'rgba(255,255,255,.10)',
+                backdropFilter: 'blur(22px) saturate(150%)',
+                WebkitBackdropFilter: 'blur(22px) saturate(150%)',
+                border: '1px solid rgba(255,255,255,.18)',
+                boxShadow: '0 8px 28px rgba(0,0,0,.10), inset 0 1px 0 rgba(255,255,255,.20)',
+              }}
             >
               Book Private Viewing
             </Link>

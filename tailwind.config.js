@@ -92,7 +92,7 @@ module.exports = {
         },
       },
       animation: {
-        marquee: 'marquee 35s linear infinite',
+        marquee: 'marquee 62s linear infinite',
         'fade-up': 'fade-up 0.8s ease-out forwards',
       },
     },

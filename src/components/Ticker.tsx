@@ -10,27 +10,48 @@ const items = [
 ];
 
 const itemColors = [
-  '#C6A66B',   // heritage gold
-  '#D7CEC1',   // warm stone
-  '#88A087',   // muted sage
-  '#B48A72',   // terracotta bronze
-  '#C8B4A3',   // warm sand
-  '#A8BAC5',   // soft slate blue
+  '#C6A66B',
+  '#D7CEC1',
+  '#88A087',
+  '#B48A72',
+  '#C8B4A3',
+  '#A8BAC5',
 ];
 
 export default function Ticker() {
   return (
-    <div className="fixed top-0 left-0 right-0 z-[60] h-[38px] bg-[rgba(17,15,12,.96)] border-b border-[rgba(198,166,107,0.12)] overflow-hidden flex items-center">
-      <div className="animate-marquee whitespace-nowrap flex items-center px-8">
+    <div
+      className="fixed top-0 left-0 right-0 z-[60] overflow-hidden flex items-center"
+      style={{
+        height: '52px',
+        background: 'rgba(13,11,9,.96)',
+        borderBottom: '1px solid rgba(198,166,107,.12)',
+      }}
+    >
+      <div className="animate-marquee whitespace-nowrap flex items-center" style={{ paddingInline: '40px' }}>
         {[...Array(2)].map((_, i) => (
           <div key={i} className="flex items-center">
             {items.map((text, idx) => (
               <span
                 key={`${i}-${text}`}
-                className="text-[13px] font-medium tracking-[0.02em] leading-none flex items-center shrink-0"
-                style={{ color: itemColors[idx] }}
+                className="flex items-center shrink-0 leading-none"
+                style={{
+                  fontSize: '14px',
+                  fontWeight: 550,
+                  letterSpacing: '0.02em',
+                  color: itemColors[idx],
+                  marginRight: '72px',
+                }}
               >
-                <span className="text-[rgba(255,255,255,.25)] text-[10px] mx-7">&bull;</span>
+                <span
+                  className="text-[10px]"
+                  style={{
+                    color: 'rgba(255,255,255,.25)',
+                    marginRight: '34px',
+                  }}
+                >
+                  &bull;
+                </span>
                 {text}
               </span>
             ))}

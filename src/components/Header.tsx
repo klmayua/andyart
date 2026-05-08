@@ -50,21 +50,20 @@ export default function Header() {
   return (
     <>
       <header
-        className="fixed top-[38px] left-0 right-0 z-[100] h-[78px]"
+        className="fixed top-[52px] left-0 right-0 z-[100] h-[78px]"
         style={{
-          background: 'rgba(28,24,20,.46)',
-          backdropFilter: 'blur(28px) saturate(170%)',
-          WebkitBackdropFilter: 'blur(28px) saturate(170%)',
-          borderTop: '1px solid rgba(255,255,255,.06)',
-          borderBottom: '1px solid rgba(255,255,255,.08)',
-          boxShadow: '0 12px 44px rgba(0,0,0,.10), inset 0 1px 0 rgba(255,255,255,.14)',
+          background: 'rgba(42,31,22,.34)',
+          backdropFilter: 'blur(28px) saturate(165%)',
+          WebkitBackdropFilter: 'blur(28px) saturate(165%)',
+          border: '1px solid rgba(255,255,255,.14)',
+          boxShadow: '0 12px 42px rgba(0,0,0,.14), inset 0 1px 0 rgba(255,255,255,.18)',
         }}
       >
-        {/* Overlay highlight */}
+        {/* Sheen overlay */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
-            background: 'linear-gradient(180deg, rgba(255,255,255,.08) 0%, rgba(255,255,255,.02) 100%)',
+            background: 'linear-gradient(180deg, rgba(255,255,255,.08) 0%, rgba(255,255,255,.01) 100%)',
           }}
         />
 

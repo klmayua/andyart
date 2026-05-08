@@ -78,15 +78,15 @@ body {
   text-wrap: balance;
 }
 
-/* Hero image treatment — subtle blur + desat */
+/* Hero image treatment — exact spec */
 .hero-image {
-  filter: saturate(0.92) blur(1.5px);
+  filter: brightness(0.86) contrast(1.12) saturate(0.92) blur(2.5px);
   transform: scale(1.04);
 }
 
-/* Hero vignette — subtle */
+/* Hero vignette — 14% strength */
 .hero-vignette {
-  background: radial-gradient(ellipse at center, transparent 55%, rgba(20,18,15,0.18) 100%);
+  background: radial-gradient(ellipse at center, transparent 50%, rgba(15,13,10,0.14) 100%);
 }
 
 /* Gold accent line */
