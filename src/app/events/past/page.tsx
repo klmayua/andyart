@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ChevronLeft } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 export default function PastEventsPage() {
   const pastEvents = [
@@ -9,7 +9,6 @@ export default function PastEventsPage() {
       slug: 'holiday-gala-2025',
       date: 'December 15, 2025',
       description: 'Our annual holiday celebration featuring live music, art auctions, and festive refreshments.',
-      image: '/placeholder-event.jpg',
     },
     {
       id: '2',
@@ -17,56 +16,41 @@ export default function PastEventsPage() {
       slug: 'fall-exhibition-opening',
       date: 'October 5, 2025',
       description: 'Preview of our fall collection with artist meet-and-greet and wine tasting.',
-      image: '/placeholder-event.jpg',
     },
     {
       id: '3',
-      title: 'Summer Paint & Sip Series',
-      slug: 'summer-paint-sip-series',
+      title: 'Summer Heritage Workshop Series',
+      slug: 'summer-heritage-workshop-series',
       date: 'August 20, 2025',
-      description: 'A month-long series of painting workshops with local artists.',
-      image: '/placeholder-event.jpg',
+      description: 'A month-long series of heritage workshops for children and families.',
     },
   ];
 
   return (
-    <div className="min-h-screen py-8 px-container-mobile">
+    <div className="min-h-screen py-8 px-4 pt-24">
       <div className="max-w-4xl mx-auto">
-        <Link
-          href="/events"
-          className="inline-flex items-center gap-2 text-text-secondary hover:text-text-primary mb-6"
-        >
-          <ChevronLeft size={20} />
-          Back to Events
-        </Link>
+        <div className="mb-8">
+          <p className="text-andy-bronze text-xs uppercase tracking-[0.25em] mb-2 font-medium">Archive</p>
+          <h1 className="font-serif text-3xl md:text-5xl font-bold text-andy-black editorial-headline mb-3">
+            Past Experiences
+          </h1>
+        </div>
 
-        <h1 className="font-serif text-3xl md:text-4xl font-bold text-text-primary mb-8">
-          Past Events
-        </h1>
-
-        <div className="space-y-6">
+        <div className="space-y-4">
           {pastEvents.map((event) => (
-            <div
-              key={event.id}
-              className="bg-surface border border-border-light rounded-lg overflow-hidden"
-            >
+            <div key={event.id} className="bg-white border border-andy-stone/30 rounded-2xl overflow-hidden hover:border-andy-gold/30 transition-colors">
               <div className="grid md:grid-cols-3 gap-0">
-                <div className="relative aspect-square md:aspect-auto bg-background">
-                  <div className="absolute inset-0 flex items-center justify-center text-text-secondary">
-                    <span className="text-sm">Event Image</span>
+                <div className="relative aspect-square md:aspect-auto bg-andy-stone/20">
+                  <div className="absolute inset-0 flex items-center justify-center text-andy-bronze">
+                    <span className="text-sm">Experience</span>
                   </div>
                 </div>
                 <div className="md:col-span-2 p-6">
-                  <h2 className="font-serif text-xl font-semibold text-text-primary mb-2">
-                    {event.title}
-                  </h2>
-                  <p className="text-sm text-success-gold mb-3">{event.date}</p>
-                  <p className="text-text-secondary mb-4">{event.description}</p>
-                  <Link
-                    href={`/events/${event.slug}`}
-                    className="text-primary font-medium hover:underline text-sm"
-                  >
-                    View event details
+                  <h2 className="font-serif text-xl font-semibold text-andy-black mb-2">{event.title}</h2>
+                  <p className="text-sm text-andy-gold mb-3">{event.date}</p>
+                  <p className="text-andy-bronze mb-4 text-sm leading-relaxed">{event.description}</p>
+                  <Link href={`/events/${event.slug}`} className="text-andy-black font-medium hover:text-andy-gold transition-colors text-sm flex items-center gap-1">
+                    View details <ArrowRight size={14} />
                   </Link>
                 </div>
               </div>

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter, Playfair_Display } from 'next/font/google';
 import './globals.css';
+import Header from '@/components/Header';
 import BottomNav from '@/components/BottomNav';
 import FloatingFooter from '@/components/FloatingFooter';
 import Chatbot from '@/components/Chatbot';
@@ -16,21 +17,21 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: 'AndyArt | Your digital gallery. Your art business. Elevated.',
-  description: 'A premium mobile-first art gallery platform. Buy art, book services, host events, and manage partnerships.',
-  keywords: ['art gallery', 'buy art', 'art services', 'paint and sip', 'art events', 'interior design'],
-  authors: [{ name: 'AndyArt Gallery' }],
+  title: 'AndyArt | Collect Culture. Live Beautifully. Leave Legacy.',
+  description: 'Premium African art, curated experiences, bespoke commissions, and timeless cultural living for every generation. AndyArt is a premium cultural house where collecting, gathering, gifting, commissioning, and living with art converge.',
+  keywords: ['premium art', 'African art', 'art collection', 'bespoke commissions', 'art experiences', 'cultural house', 'collector concierge', 'corporate curation', 'art gifting'],
+  authors: [{ name: 'AndyArt' }],
   openGraph: {
-    title: 'AndyArt | Your digital gallery. Your art business. Elevated.',
-    description: 'A premium mobile-first art gallery platform.',
+    title: 'AndyArt | Collect Culture. Live Beautifully. Leave Legacy.',
+    description: 'Premium African art, curated experiences, bespoke commissions, and timeless cultural living for every generation.',
     type: 'website',
     locale: 'en_US',
     siteName: 'AndyArt',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AndyArt | Your digital gallery. Your art business. Elevated.',
-    description: 'A premium mobile-first art gallery platform.',
+    title: 'AndyArt | Collect Culture. Live Beautifully. Leave Legacy.',
+    description: 'Premium African art, curated experiences, bespoke commissions, and timeless cultural living for every generation.',
   },
 };
 
@@ -44,8 +45,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${playfair.variable} font-sans bg-background min-h-screen`}>
-        <main className="pb-[90px]">
+      <body className={`${inter.variable} ${playfair.variable} font-sans bg-andy-ivory min-h-screen`}>
+        <Header />
+        <main className="pb-[90px] md:pb-0">
           {children}
         </main>
         <BottomNav />

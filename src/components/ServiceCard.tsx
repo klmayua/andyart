@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Paintbrush, Building, Wine, Hammer, Clipboard, GlassWater } from 'lucide-react';
+import { Paintbrush, Building, Wine, Hammer, Clipboard, GlassWater, Gift, Compass } from 'lucide-react';
 
 interface ServiceCardProps {
   id: string;
@@ -21,6 +21,8 @@ const iconMap: Record<string, any> = {
   Hammer,
   Clipboard,
   GlassWater,
+  Gift,
+  Compass,
 };
 
 export default function ServiceCard({
@@ -45,31 +47,30 @@ export default function ServiceCard({
   if (!isActive) return null;
 
   return (
-    <div className="rounded-2xl border border-gray-200 bg-gradient-to-br from-white via-gray-50 to-white shadow-xl hover:shadow-2xl transition-all duration-300 p-6 group hover:scale-[1.02] hover:border-[#C5A572]/40">
-      {/* Icon with gold gradient background */}
-      <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#C5A572]/20 via-[#C5A572]/10 to-[#C5A572]/20 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform shadow-md group-hover:shadow-lg group-hover:shadow-[#C5A572]/20">
-        <IconComponent className="w-8 h-8 text-[#C5A572]" />
+    <div className="rounded-2xl border border-andy-stone/30 bg-white p-6 hover:border-andy-gold/30 hover:shadow-premium transition-all duration-500 group hover:-translate-y-1">
+      <div className="w-14 h-14 rounded-xl bg-andy-stone/30 flex items-center justify-center mb-5 group-hover:bg-andy-gold/10 transition-colors">
+        <IconComponent className="w-7 h-7 text-andy-bronze group-hover:text-andy-gold transition-colors" />
       </div>
 
-      <h3 className="font-serif text-xl font-bold text-primary mb-2 group-hover:text-primary/80 transition-colors">
+      <h3 className="font-serif text-xl font-bold text-andy-black mb-2 group-hover:text-andy-bronze transition-colors">
         {name}
       </h3>
 
-      <p className="text-sm text-text-secondary mb-5 line-clamp-3">
+      <p className="text-sm text-andy-bronze mb-5 leading-relaxed line-clamp-3">
         {description}
       </p>
 
-      <div className="flex items-center justify-between pt-4 border-t border-gray-200">
+      <div className="flex items-center justify-between pt-4 border-t border-andy-stone/20">
         <div>
-          <span className="text-lg font-bold text-[#C5A572]">
+          <span className="text-lg font-bold text-andy-gold">
             {formatPrice()}
           </span>
         </div>
         <Link
           href={`/services/${slug}`}
-          className="bg-primary text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-primary/90 transition-all shadow-md hover:shadow-lg hover:scale-105"
+          className="bg-andy-black text-andy-ivory px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-andy-black/80 transition-all"
         >
-          Book this service
+          Book
         </Link>
       </div>
     </div>

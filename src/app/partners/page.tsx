@@ -42,50 +42,51 @@ export default function PartnersPage() {
   ];
 
   return (
-    <div className="min-h-screen py-8 px-container-mobile">
+    <div className="min-h-screen py-8 px-4 pt-24">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="font-serif text-3xl md:text-5xl font-bold text-text-primary mb-4">
+          <p className="text-andy-bronze text-xs uppercase tracking-[0.25em] mb-3 font-medium">Collaboration</p>
+          <h1 className="font-serif text-3xl md:text-5xl font-bold text-andy-black editorial-headline mb-4">
             Partnership Program
           </h1>
-          <p className="text-lg text-text-secondary max-w-2xl mx-auto">
+          <p className="text-lg text-andy-bronze max-w-2xl mx-auto">
             Join our network of interior designers, corporate clients, and venues. Get exclusive benefits and elevate your projects with curated art.
           </p>
         </div>
 
         {/* CTA */}
-        <div className="bg-primary text-surface rounded-lg p-8 mb-12 text-center">
+        <div className="bg-andy-black text-andy-ivory rounded-2xl p-8 mb-12 text-center">
           <h2 className="font-serif text-2xl font-bold mb-4">Ready to Partner With Us?</h2>
-          <p className="text-accent mb-6 max-w-xl mx-auto">
+          <p className="text-andy-ivory/60 mb-6 max-w-xl mx-auto">
             Apply now to join our trade program and start enjoying exclusive benefits.
           </p>
           <Link
             href="/partners/apply"
-            className="bg-surface text-primary px-8 py-4 rounded-md font-medium text-lg hover:bg-accent transition-colors inline-flex items-center gap-2"
+            className="bg-andy-gold text-andy-black px-8 py-4 rounded-full font-medium hover:bg-andy-ivory transition-all inline-flex items-center gap-2 text-sm"
           >
             Apply Now
-            <ArrowRight size={20} />
+            <ArrowRight size={18} />
           </Link>
         </div>
 
         {/* Partner Types */}
         <div className="mb-12">
-          <h2 className="font-serif text-2xl font-bold text-text-primary mb-8 text-center">
+          <h2 className="font-serif text-2xl font-bold text-andy-black mb-8 text-center">
             Partnership Opportunities
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
             {partnerTypes.map((type, index) => (
-              <div key={index} className="bg-surface border border-border-light rounded-lg p-6">
-                <div className="text-success-gold mb-4">{type.icon}</div>
-                <h3 className="font-serif text-xl font-semibold text-text-primary mb-3">
+              <div key={index} className="bg-white border border-andy-stone/30 rounded-2xl p-6 hover:border-andy-gold/30 hover:shadow-premium transition-all">
+                <div className="text-andy-gold mb-4">{type.icon}</div>
+                <h3 className="font-serif text-xl font-semibold text-andy-black mb-3">
                   {type.title}
                 </h3>
-                <p className="text-text-secondary mb-4">{type.description}</p>
+                <p className="text-andy-bronze mb-4 text-sm leading-relaxed">{type.description}</p>
                 <ul className="space-y-2">
                   {type.benefits.map((benefit, i) => (
-                    <li key={i} className="flex items-start gap-2 text-sm text-text-secondary">
-                      <span className="text-success-gold mt-0.5">•</span>
+                    <li key={i} className="flex items-start gap-2 text-sm text-andy-bronze">
+                      <span className="text-andy-gold mt-0.5">•</span>
                       {benefit}
                     </li>
                   ))}
@@ -96,8 +97,8 @@ export default function PartnersPage() {
         </div>
 
         {/* How It Works */}
-        <div className="bg-background rounded-lg p-8 mb-12">
-          <h2 className="font-serif text-2xl font-bold text-text-primary mb-8 text-center">
+        <div className="bg-andy-ivory rounded-2xl p-8 mb-12 border border-andy-stone/20">
+          <h2 className="font-serif text-2xl font-bold text-andy-black mb-8 text-center">
             How It Works
           </h2>
           <div className="grid md:grid-cols-4 gap-6">
@@ -108,22 +109,23 @@ export default function PartnersPage() {
               { step: '4', title: 'Create', description: 'Start sourcing art for your projects' },
             ].map((item, index) => (
               <div key={index} className="text-center">
-                <div className="w-12 h-12 bg-primary text-surface rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">
+                <div className="w-12 h-12 bg-andy-black text-andy-ivory rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">
                   {item.step}
                 </div>
-                <h3 className="font-semibold text-text-primary mb-2">{item.title}</h3>
-                <p className="text-sm text-text-secondary">{item.description}</p>
+                <h3 className="font-semibold text-andy-black mb-2">{item.title}</h3>
+                <p className="text-sm text-andy-bronze">{item.description}</p>
               </div>
             ))}
           </div>
         </div>
 
         {/* Testimonial */}
-        <div className="bg-surface border border-border-light rounded-lg p-8 text-center">
-          <blockquote className="font-serif text-xl text-text-primary mb-4 italic">
+        <div className="bg-white border border-andy-stone/30 rounded-2xl p-8 text-center">
+          <div className="w-8 h-px bg-andy-gold mx-auto mb-6" />
+          <blockquote className="font-serif text-xl text-andy-black mb-4 italic leading-relaxed">
             "AndyArt's trade program has transformed how we source art for our clients. The team is responsive, the collection is exceptional, and the trade pricing makes high-quality art accessible."
           </blockquote>
-          <cite className="text-text-secondary not-italic">
+          <cite className="text-andy-bronze not-italic text-sm">
             — Sarah Johnson, Principal Designer at Johnson Interiors
           </cite>
         </div>

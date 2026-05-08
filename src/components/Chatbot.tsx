@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { useAppStore } from '@/stores/useAppStore';
-import { X, Send, MessageCircle } from 'lucide-react';
+import { X, Send, MessageCircle, Phone } from 'lucide-react';
 
 interface ChatMessage {
   id: string;
@@ -13,24 +13,23 @@ interface ChatMessage {
 }
 
 const QUICK_REPLIES = [
-  { text: '🖼️ Buy art', action: 'show_art_categories' },
-  { text: '🎨 Paint & sip event', action: 'show_upcoming_events' },
-  { text: '🏢 Corporate / interior decor', action: 'show_partnership_form' },
-  { text: '📅 Book a consultation', action: 'open_calendar' },
-  { text: '📞 Talk to a human', action: 'show_human_contact_form' },
+  { text: 'Collect Art', action: 'show_art_categories' },
+  { text: 'Book Experience', action: 'show_upcoming_events' },
+  { text: 'Commission Work', action: 'show_commission_form' },
+  { text: 'Private Viewing', action: 'open_calendar' },
+  { text: 'Talk to Concierge', action: 'show_human_contact_form' },
 ];
 
 const INITIAL_MESSAGE: ChatMessage = {
   id: '1',
   role: 'assistant',
-  content: "Hi, I'm Andy. Looking to acquire art, book a service, or partner with us?",
+  content: "Welcome to AndyArt Circle. I'm your collector concierge. How may I assist you today?",
   timestamp: new Date(),
   actions: QUICK_REPLIES.map((r) => r.action),
 };
 
 export default function Chatbot() {
   const store = useAppStore();
-  // Safely access store methods with defaults
   const isChatOpen = store?.isChatOpen ?? false;
   const closeChat = store?.closeChat ?? (() => {});
   const chatMessages = store?.chatMessages ?? [];
@@ -38,7 +37,7 @@ export default function Chatbot() {
   const chatSessionId = store?.chatSessionId ?? null;
   const setChatSessionId = store?.setChatSessionId ?? (() => {});
   const openChat = store?.openChat ?? (() => {});
-  
+
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -102,7 +101,7 @@ export default function Chatbot() {
       const errorMessage: ChatMessage = {
         id: (Date.now() + 1).toString(),
         role: 'assistant',
-        content: "I apologize, I'm having trouble connecting. Please try again or contact us at hello@andyart.gallery",
+        content: "I apologize, I'm having trouble connecting. Please reach us at hello@andyart.gallery or via WhatsApp.",
         timestamp: new Date(),
       };
       addMessage(errorMessage);
@@ -113,11 +112,11 @@ export default function Chatbot() {
 
   const getActionResponse = (action: string): string => {
     const responses: Record<string, string> = {
-      show_art_categories: "Great! We offer paintings, sculptures, digital art, and mixed media. What style are you interested in? You can browse our full gallery at /gallery",
-      show_upcoming_events: "We have exciting paint & sip events coming up! Check out our Events page to see dates and RSVP. Would you like me to share the link?",
-      show_partnership_form: "Wonderful! We partner with interior designers, corporations, and venues. Please visit /partners/apply to submit your application.",
-      open_calendar: "Perfect! You can book a consultation directly through our calendar. Visit /consult to see available times.",
-      show_human_contact_form: "Of course! You can reach us at hello@andyart.gallery or call us directly. Would you like to leave a message?",
+      show_art_categories: "We curate paintings, sculptures, digital art, and mixed media from exceptional African artists. Browse our collection at /gallery or I can connect you with a specialist.",
+      show_upcoming_events: "Our upcoming experiences include Collector Salons, Artist Conversations, and Private Dinners. Visit /events to see availability.",
+      show_commission_form: "Bespoke commissions are one of our specialties. Visit /consult to schedule a consultation with our curation team.",
+      open_calendar: "Private viewings are available by appointment. Visit /consult to reserve your exclusive session.",
+      show_human_contact_form: "Our concierge team is available Monday–Saturday, 10am–6pm. Reach us at hello@andyart.gallery or request a callback.",
     };
     return responses[action] || "Thank you for your message. How can I help you today?";
   };
@@ -180,10 +179,10 @@ export default function Chatbot() {
     return (
       <button
         onClick={openChat}
-        className="fixed bottom-[150px] right-4 w-14 h-14 bg-white/90 backdrop-blur-xl rounded-full shadow-lg border border-white/30 flex items-center justify-center hover:scale-105 transition-all z-30"
-        aria-label="Open chat"
+        className="fixed bottom-[150px] right-4 w-14 h-14 bg-andy-black/90 backdrop-blur-xl rounded-full shadow-premium border border-andy-gold/20 flex items-center justify-center hover:scale-105 transition-all z-30"
+        aria-label="Open Circle concierge chat"
       >
-        <MessageCircle size={24} className="text-primary" />
+        <MessageCircle size={24} className="text-andy-gold" />
       </button>
     );
   }
@@ -192,19 +191,22 @@ export default function Chatbot() {
     <>
       <button
         onClick={openChat}
-        className="fixed bottom-[150px] right-4 w-14 h-14 bg-white/90 backdrop-blur-xl rounded-full shadow-lg border border-white/30 flex items-center justify-center hover:scale-105 transition-all z-30"
-        aria-label="Open chat"
+        className="fixed bottom-[150px] right-4 w-14 h-14 bg-andy-black/90 backdrop-blur-xl rounded-full shadow-premium border border-andy-gold/20 flex items-center justify-center hover:scale-105 transition-all z-30"
+        aria-label="Open Circle concierge chat"
       >
-        <MessageCircle size={24} className="text-primary" />
+        <MessageCircle size={24} className="text-andy-gold" />
       </button>
 
-      <div className="fixed bottom-[150px] right-4 w-[300px] md:w-[380px] bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/30 overflow-hidden z-30">
+      <div className="fixed bottom-[150px] right-4 w-[300px] md:w-[380px] bg-andy-ivory/98 backdrop-blur-xl rounded-2xl shadow-premium border border-andy-stone/30 overflow-hidden z-30">
         {/* Header */}
-        <div className="bg-white/90 backdrop-blur-xl border-b border-white/20 px-4 py-3 flex items-center justify-between">
-          <h3 className="font-serif text-lg font-semibold text-primary">Andy – Gallery Assistant</h3>
+        <div className="bg-andy-black px-4 py-3 flex items-center justify-between">
+          <div>
+            <h3 className="font-serif text-lg font-semibold text-andy-gold">Circle Concierge</h3>
+            <p className="text-[10px] text-andy-ivory/60 uppercase tracking-wider">Premium Support</p>
+          </div>
           <button
             onClick={closeChat}
-            className="text-text-secondary hover:text-primary transition-colors"
+            className="text-andy-ivory/60 hover:text-andy-ivory transition-colors"
             aria-label="Close chat"
           >
             <X size={20} />
@@ -219,20 +221,20 @@ export default function Chatbot() {
               className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
             >
               <div
-                className={`max-w-[80%] px-4 py-2.5 rounded-2xl backdrop-blur-sm ${
+                className={`max-w-[80%] px-4 py-2.5 rounded-2xl ${
                   message.role === 'user'
-                    ? 'bg-primary text-white'
-                    : 'bg-accent text-primary border border-white/20'
+                    ? 'bg-andy-black text-andy-ivory'
+                    : 'bg-andy-stone/40 text-andy-black border border-andy-stone/30'
                 }`}
               >
-                <p className="text-sm">{message.content}</p>
+                <p className="text-sm leading-relaxed">{message.content}</p>
                 {message.actions && (
                   <div className="mt-2 flex flex-wrap gap-2">
                     {QUICK_REPLIES.filter((r) => message.actions?.includes(r.action)).map((reply) => (
                       <button
                         key={reply.action}
                         onClick={() => handleQuickReply(reply.action)}
-                        className="text-xs bg-white text-primary px-3 py-1.5 rounded-full border border-white/30 hover:bg-accent transition-colors"
+                        className="text-xs bg-white text-andy-black px-3 py-1.5 rounded-full border border-andy-stone/30 hover:bg-andy-gold hover:text-white transition-colors"
                       >
                         {reply.text}
                       </button>
@@ -244,11 +246,11 @@ export default function Chatbot() {
           ))}
           {isLoading && (
             <div className="flex justify-start">
-              <div className="bg-background px-4 py-2 rounded-lg">
+              <div className="bg-andy-stone/30 px-4 py-2 rounded-lg">
                 <div className="flex space-x-1">
-                  <div className="w-2 h-2 bg-text-secondary rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
-                  <div className="w-2 h-2 bg-text-secondary rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
-                  <div className="w-2 h-2 bg-text-secondary rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+                  <div className="w-2 h-2 bg-andy-bronze rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+                  <div className="w-2 h-2 bg-andy-bronze rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+                  <div className="w-2 h-2 bg-andy-bronze rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
                 </div>
               </div>
             </div>
@@ -257,21 +259,21 @@ export default function Chatbot() {
         </div>
 
         {/* Input */}
-        <form onSubmit={handleSubmit} className="border-t border-white/20 p-3 flex items-center gap-2 bg-white/50 backdrop-blur-xl">
+        <form onSubmit={handleSubmit} className="border-t border-andy-stone/20 p-3 flex items-center gap-2 bg-white/50 backdrop-blur-xl">
           <input
             type="text"
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             placeholder="Type your message..."
-            className="flex-1 bg-accent px-4 py-2.5 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 border border-white/30"
+            className="flex-1 bg-andy-stone/20 px-4 py-2.5 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-andy-gold/30 border border-andy-stone/20 text-andy-black placeholder:text-andy-bronze/60"
             disabled={isLoading}
           />
           <button
             type="submit"
             disabled={isLoading || !inputValue.trim()}
-            className="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center hover:bg-primary/80 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-10 h-10 bg-andy-black text-andy-gold rounded-full flex items-center justify-center hover:bg-andy-black/80 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            <Send size={18} className="text-white" />
+            <Send size={18} />
           </button>
         </form>
       </div>
