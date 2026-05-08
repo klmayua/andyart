@@ -163,228 +163,28 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* PERSONA GATEWAY — Five Ways to Begin */}
-      <section
-        className="relative py-24 md:py-32 px-4 overflow-hidden"
-        style={{
-          background: 'linear-gradient(180deg, #F7F2E8 0%, #F1E8D9 100%)',
-        }}
-      >
-        {/* Fine grain texture overlay */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            opacity: 0.035,
-            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
-            backgroundRepeat: 'repeat',
-            backgroundSize: '256px 256px',
-          }}
-        />
-
-        {/* Subtle radial depth glow */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background: 'radial-gradient(ellipse at 50% 30%, rgba(255,255,255,.35) 0%, transparent 60%)',
-          }}
-        />
-
-        {/* Top separator */}
-        <div className="absolute top-0 left-0 right-0 h-px" style={{ background: 'rgba(198,166,107,.18)' }} />
-
-        {/* Bottom separator */}
-        <div className="absolute bottom-0 left-0 right-0 h-px" style={{ background: 'rgba(93,70,51,.08)' }} />
-
-        <div className="relative max-w-6xl mx-auto">
-          {/* Section Header */}
-          <div className="mb-14">
-            <p
-              className="font-medium"
-              style={{
-                fontSize: '15px',
-                color: '#A78345',
-                letterSpacing: '0.08em',
-              }}
-            >
-              How we serve
-            </p>
-            <h2
-              className="font-serif font-[650] text-[#171614] editorial-headline leading-[1.05] mt-4"
-              style={{
-                fontSize: 'clamp(48px, 5vw, 82px)',
-                maxWidth: '760px',
-              }}
-            >
+      {/* PERSONA GATEWAY */}
+      <section className="py-24 md:py-32 px-4 bg-[#F7F2E8]">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <p className="text-[#A78345] text-[13px] tracking-[0.04em] mb-3 font-medium">How we serve</p>
+            <h2 className="font-serif text-3xl md:text-[44px] font-bold text-[#171614] editorial-headline leading-[1.1]">
               Five ways to begin
             </h2>
           </div>
-
-          {/* Desktop: Featured left + Supporting 2x2 right */}
-          <div className="hidden md:grid" style={{ gridTemplateColumns: '1.35fr 2fr', gap: '32px' }}>
-            {/* Featured Card — Collect */}
-            <Link
-              href={personaCards[0].href}
-              className="group relative flex flex-col"
-              style={{
-                minHeight: '460px',
-                borderRadius: '28px',
-                padding: '36px',
-                background: 'rgba(255,255,255,.55)',
-                backdropFilter: 'blur(20px) saturate(150%)',
-                WebkitBackdropFilter: 'blur(20px) saturate(150%)',
-                border: '1px solid rgba(255,255,255,.65)',
-                boxShadow: 'inset 0 1px 0 rgba(255,255,255,.8), 0 18px 48px rgba(80,55,25,.08)',
-                transition: 'transform 300ms cubic-bezier(.2,.8,.2,1), box-shadow 300ms cubic-bezier(.2,.8,.2,1)',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-8px)';
-                e.currentTarget.style.boxShadow = 'inset 0 1px 0 rgba(255,255,255,.8), 0 28px 60px rgba(80,55,25,.14)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = 'inset 0 1px 0 rgba(255,255,255,.8), 0 18px 48px rgba(80,55,25,.08)';
-              }}
-            >
-              {/* Subtle bronze linework decoration */}
-              <div
-                className="absolute top-6 right-6 w-24 h-24 pointer-events-none opacity-[0.08]"
-                style={{
-                  background: 'linear-gradient(135deg, transparent 40%, #C6A66B 45%, transparent 50%)',
-                }}
-              />
-
-              <div
-                className="flex items-center justify-center mb-8"
-                style={{
-                  width: '64px',
-                  height: '64px',
-                  borderRadius: '18px',
-                  background: 'rgba(198,166,107,.10)',
-                  border: '1px solid rgba(198,166,107,.18)',
-                }}
-              >
-                <Palette size={28} style={{ color: '#A78345' }} />
-              </div>
-
-              <h3
-                className="font-serif font-bold text-[#171614] mb-3"
-                style={{ fontSize: '42px' }}
-              >
-                {personaCards[0].title}
-              </h3>
-              <p
-                className="text-[#5D4633] leading-relaxed"
-                style={{ fontSize: '19px', maxWidth: '320px' }}
-              >
-                {personaCards[0].desc}
-              </p>
-
-              <div className="mt-auto pt-10 flex items-center gap-2 text-[#A78345] text-sm font-medium">
-                <span>Explore</span>
-                <ArrowRight size={14} />
-              </div>
-            </Link>
-
-            {/* Supporting Cards — 2x2 Grid */}
-            <div className="grid grid-cols-2 gap-5">
-              {personaCards.slice(1).map((card) => (
-                <Link
-                  key={card.title}
-                  href={card.href}
-                  className="group relative flex flex-col"
-                  style={{
-                    minHeight: '215px',
-                    borderRadius: '28px',
-                    padding: '36px',
-                    background: 'rgba(255,255,255,.55)',
-                    backdropFilter: 'blur(20px) saturate(150%)',
-                    WebkitBackdropFilter: 'blur(20px) saturate(150%)',
-                    border: '1px solid rgba(255,255,255,.65)',
-                    boxShadow: 'inset 0 1px 0 rgba(255,255,255,.8), 0 18px 48px rgba(80,55,25,.08)',
-                    transition: 'transform 300ms cubic-bezier(.2,.8,.2,1), box-shadow 300ms cubic-bezier(.2,.8,.2,1)',
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = 'translateY(-8px)';
-                    e.currentTarget.style.boxShadow = 'inset 0 1px 0 rgba(255,255,255,.8), 0 28px 60px rgba(80,55,25,.14)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = 'translateY(0)';
-                    e.currentTarget.style.boxShadow = 'inset 0 1px 0 rgba(255,255,255,.8), 0 18px 48px rgba(80,55,25,.08)';
-                  }}
-                >
-                  <div
-                    className="flex items-center justify-center mb-5"
-                    style={{
-                      width: '64px',
-                      height: '64px',
-                      borderRadius: '18px',
-                      background: 'rgba(198,166,107,.10)',
-                      border: '1px solid rgba(198,166,107,.18)',
-                    }}
-                  >
-                    <card.icon size={26} style={{ color: '#A78345' }} />
-                  </div>
-
-                  <h3
-                    className="font-serif font-bold text-[#171614] mb-2"
-                    style={{ fontSize: '28px' }}
-                  >
-                    {card.title}
-                  </h3>
-                  <p
-                    className="text-[#5D4633] leading-relaxed"
-                    style={{ fontSize: '17px' }}
-                  >
-                    {card.desc}
-                  </p>
-
-                  <div className="mt-auto pt-6 flex items-center gap-2 text-[#A78345] text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <span>Explore</span>
-                    <ArrowRight size={14} />
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
-
-          {/* Mobile: Vertical Stack */}
-          <div className="md:hidden flex flex-col gap-4">
-            {personaCards.map((card, idx) => (
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-5 md:gap-6">
+            {personaCards.map((card) => (
               <Link
                 key={card.title}
                 href={card.href}
-                className="group relative flex items-center gap-5"
-                style={{
-                  borderRadius: '28px',
-                  padding: '28px',
-                  background: 'rgba(255,255,255,.55)',
-                  backdropFilter: 'blur(20px) saturate(150%)',
-                  WebkitBackdropFilter: 'blur(20px) saturate(150%)',
-                  border: '1px solid rgba(255,255,255,.65)',
-                  boxShadow: 'inset 0 1px 0 rgba(255,255,255,.8), 0 18px 48px rgba(80,55,25,.08)',
-                }}
+                className="group relative bg-[#FFFDF9] rounded-2xl p-7 md:p-8 border border-[rgba(0,0,0,0.04)] shadow-[0_14px_35px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_45px_rgba(0,0,0,0.08)] transition-all duration-500 hover:-translate-y-[6px] hover:border-[rgba(198,166,107,0.22)]"
               >
-                <div
-                  className="flex-shrink-0 flex items-center justify-center"
-                  style={{
-                    width: '56px',
-                    height: '56px',
-                    borderRadius: '18px',
-                    background: 'rgba(198,166,107,.10)',
-                    border: '1px solid rgba(198,166,107,.18)',
-                  }}
-                >
-                  <card.icon size={24} style={{ color: '#A78345' }} />
+                <div className="w-14 h-14 rounded-xl bg-[#F7F2E8] flex items-center justify-center mb-5 group-hover:bg-[rgba(198,166,107,0.08)] transition-colors duration-500">
+                  <card.icon size={24} className="text-[#B69357] group-hover:text-[#A78345] transition-colors duration-500" />
                 </div>
-                <div>
-                  <h3
-                    className="font-serif font-bold text-[#171614] mb-1"
-                    style={{ fontSize: idx === 0 ? '28px' : '22px' }}
-                  >
-                    {card.title}
-                  </h3>
-                  <p className="text-[15px] text-[#5D4633] leading-relaxed">{card.desc}</p>
-                </div>
+                <h3 className="font-serif text-lg font-bold text-[#171614] mb-1">{card.title}</h3>
+                <p className="text-[13px] text-[#5D4633] leading-relaxed">{card.desc}</p>
+                <div className="mt-5 w-10 h-px bg-[#D7CEC1] group-hover:w-14 group-hover:bg-[#C6A66B] transition-all duration-500" />
               </Link>
             ))}
           </div>
@@ -392,7 +192,7 @@ export default function HomePage() {
       </section>
 
       {/* FEATURED COLLECTION */}
-      <section className="py-24 md:py-32 px-4 bg-[#FCFAF6]">
+      <section className="py-24 md:py-32 px-4 bg-[#FFFDF9]">
         <div className="max-w-6xl mx-auto">
           <div className="flex items-end justify-between mb-14">
             <div>
