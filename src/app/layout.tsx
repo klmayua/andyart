@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter, Playfair_Display } from 'next/font/google';
 import './globals.css';
+import Ticker from '@/components/Ticker';
 import Header from '@/components/Header';
 import BottomNav from '@/components/BottomNav';
 import FloatingFooter from '@/components/FloatingFooter';
@@ -35,7 +36,6 @@ export const metadata: Metadata = {
   },
 };
 
-// Force dynamic rendering for client components
 export const dynamic = 'force-dynamic';
 
 export default function RootLayout({
@@ -45,7 +45,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${playfair.variable} font-sans bg-andy-ivory min-h-screen`}>
+      <body className={`${inter.variable} ${playfair.variable} font-sans bg-[#fbf8f2] min-h-screen`}>
+        <Ticker />
         <Header />
         <main className="pb-[90px] md:pb-0">
           {children}

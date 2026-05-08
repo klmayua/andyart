@@ -8,29 +8,29 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Legacy tokens — preserved for backward compatibility
-        background: '#F8F6F1',
+        // Refined Luxury Palette — surgical upgrade
+        background: '#fbf8f2',
         surface: '#FFFFFF',
-        accent: '#E7E1D6',
-        primary: '#0B0B0B',
+        accent: '#f6f1e8',
+        primary: '#111111',
         text: {
-          primary: '#1E1E1E',
-          secondary: '#5A5A5A',
+          primary: '#2b2b2b',
+          secondary: '#5c5c5c',
         },
         success: {
-          gold: '#C6A66A',
+          gold: '#caa25d',
         },
         border: {
           light: '#E7E1D6',
         },
         error: '#B00020',
 
-        // New Luxury Palette — AndyArt Premium Cultural House
-        'andy-black': '#0B0B0B',
-        'andy-ivory': '#F8F6F1',
-        'andy-gold': '#C6A66A',
-        'andy-bronze': '#8B6E46',
-        'andy-green': '#123629',
+        'andy-black': '#111111',
+        'andy-charcoal': '#1b1b1b',
+        'andy-ivory': '#fbf8f2',
+        'andy-gold': '#caa25d',
+        'andy-bronze': '#9f7b43',
+        'andy-green': '#173126',
         'andy-wine': '#4B1E25',
         'andy-stone': '#E7E1D6',
         'andy-smoke': '#D7D6D2',
@@ -74,8 +74,9 @@ module.exports = {
         subtle: '0 2px 8px rgba(0,0,0,0.04)',
         medium: '0 4px 16px rgba(0,0,0,0.06)',
         large: '0 8px 24px rgba(0,0,0,0.08)',
-        premium: '0 12px 40px rgba(11,11,11,0.10)',
-        'gold-soft': '0 4px 20px rgba(198,166,106,0.15)',
+        premium: '0 12px 40px rgba(17,17,17,0.10)',
+        'gold-soft': '0 4px 20px rgba(202,162,93,0.15)',
+        richer: '0 14px 35px rgba(0,0,0,0.06)',
       },
       transitionTimingFunction: {
         'premium': 'cubic-bezier(0.25, 0.1, 0.25, 1)',
@@ -91,7 +92,7 @@ module.exports = {
         },
       },
       animation: {
-        marquee: 'marquee 30s linear infinite',
+        marquee: 'marquee 35s linear infinite',
         'fade-up': 'fade-up 0.8s ease-out forwards',
       },
     },

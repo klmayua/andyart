@@ -62,101 +62,94 @@ export default function HomePage() {
   return (
     <div className="min-h-screen">
       {/* HERO CINEMATIC */}
-      <section className="relative h-[85vh] min-h-[600px] flex items-center justify-center overflow-hidden">
+      <section className="relative h-[92vh] min-h-[640px] flex items-center justify-center overflow-hidden">
         <Image
           src={IMAGES.hero}
           alt="AndyArt Cultural House"
           fill
-          className="object-cover"
+          className="object-cover hero-image"
           priority
         />
-        <div className="absolute inset-0 cinematic-overlay" />
+        {/* Refined overlays */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[rgba(0,0,0,0.18)] via-[rgba(0,0,0,0.34)] to-[rgba(0,0,0,0.42)]" />
+        <div className="absolute inset-0 hero-vignette" />
+
         <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
-          <p className="text-andy-gold text-xs md:text-sm uppercase tracking-[0.3em] mb-6 font-medium">
+          <p
+            className="text-[#d4af6a] text-[13px] md:text-sm tracking-[0.08em] mb-6 font-medium"
+            style={{ opacity: 0.95 }}
+          >
             Premium African Art & Cultural Living
           </p>
-          <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl font-bold text-andy-ivory mb-6 leading-[1.05] editorial-headline">
+          <h1
+            className="font-serif text-4xl md:text-6xl lg:text-[76px] font-bold text-white mb-6 leading-[1.02] editorial-headline"
+            style={{ textShadow: '0 8px 30px rgba(0,0,0,0.25)' }}
+          >
             Collect culture.
             <br />
-            <span className="text-andy-ivory/80">Live beautifully.</span>
+            <span style={{ color: 'rgba(255,255,255,0.82)' }}>Live beautifully.</span>
             <br />
             Leave legacy.
           </h1>
-          <p className="text-base md:text-lg text-andy-ivory/70 mb-10 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-base md:text-lg text-white/[0.92] mb-10 max-w-[720px] mx-auto leading-[1.7] font-normal">
             Premium African art, curated experiences, bespoke commissions, and timeless cultural living for every generation.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Link
               href="/gallery"
-              className="bg-andy-gold text-andy-black px-8 py-4 rounded-full font-semibold text-sm tracking-wide hover:bg-andy-ivory transition-all shadow-gold-soft inline-flex items-center justify-center gap-2"
+              className="bg-[#caa25d] text-[#111111] px-8 py-[14px] rounded-full font-semibold text-sm tracking-wide hover:brightness-105 transition-all shadow-[0_10px_30px_rgba(202,162,93,0.25)] inline-flex items-center justify-center gap-2 hover:-translate-y-0.5"
             >
               Explore Collection
               <ArrowRight size={16} />
             </Link>
             <Link
               href="/consult"
-              className="bg-transparent text-andy-ivory border border-andy-ivory/30 px-8 py-4 rounded-full font-semibold text-sm tracking-wide hover:bg-andy-ivory/10 transition-all inline-flex items-center justify-center"
+              className="bg-[rgba(255,255,255,0.08)] text-white border border-[rgba(255,255,255,0.28)] backdrop-blur-[8px] px-8 py-[14px] rounded-full font-semibold text-sm tracking-wide hover:bg-[rgba(255,255,255,0.14)] transition-all inline-flex items-center justify-center"
             >
               Book Private Viewing
             </Link>
             <Link
               href="/circle"
-              className="bg-transparent text-andy-ivory border border-andy-ivory/30 px-8 py-4 rounded-full font-semibold text-sm tracking-wide hover:bg-andy-ivory/10 transition-all inline-flex items-center justify-center"
+              className="bg-transparent text-white border border-[rgba(255,255,255,0.18)] px-8 py-[14px] rounded-full font-semibold text-sm tracking-wide hover:bg-[rgba(255,255,255,0.06)] transition-all inline-flex items-center justify-center"
             >
               Join Circle
             </Link>
           </div>
 
           {/* Trust Strip */}
-          <div className="mt-16 flex flex-wrap justify-center gap-6 md:gap-10">
+          <div className="mt-20 flex flex-wrap justify-center gap-8 md:gap-12">
             {trustStrip.map((item) => (
-              <div key={item.label} className="flex items-center gap-2 text-andy-ivory/60">
-                <item.icon size={16} className="text-andy-gold" />
-                <span className="text-xs uppercase tracking-wider font-medium">{item.label}</span>
+              <div key={item.label} className="flex items-center gap-2.5">
+                <item.icon size={18} className="text-[#d4af6a]" />
+                <span className="text-[13px] text-white/[0.90] tracking-wide font-medium">{item.label}</span>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* LIVE MARKET TICKER */}
-      <section className="bg-andy-black py-3 overflow-hidden">
-        <div className="animate-marquee whitespace-nowrap flex gap-12">
-          {[...Array(2)].map((_, i) => (
-            <div key={i} className="flex gap-12 items-center">
-              {['New Collection Released', 'Collector Preview Open', 'Private Viewing Slots Available', 'Corporate Leasing Open', 'Featured Artist Spotlight', 'New Experience Dates Released'].map((text) => (
-                <span key={text} className="text-andy-ivory/80 text-xs uppercase tracking-[0.2em] font-medium flex items-center gap-3">
-                  <span className="w-1.5 h-1.5 rounded-full bg-andy-gold" />
-                  {text}
-                </span>
-              ))}
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* PERSONA GATEWAY */}
-      <section className="py-20 md:py-28 px-4 bg-andy-ivory">
+      <section className="py-24 md:py-32 px-4 surface-warm">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <p className="text-andy-bronze text-xs uppercase tracking-[0.25em] mb-3 font-medium">How We Serve You</p>
-            <h2 className="font-serif text-3xl md:text-5xl font-bold text-andy-black editorial-headline">
-              Five ways to enter
+            <p className="text-[#9f7b43] text-[13px] tracking-[0.04em] mb-3 font-medium">How we serve</p>
+            <h2 className="font-serif text-3xl md:text-[44px] font-bold text-[#111111] editorial-headline leading-[1.1]">
+              Five ways to begin
             </h2>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-5 md:gap-6">
             {personaCards.map((card) => (
               <Link
                 key={card.title}
                 href={card.href}
-                className="group relative bg-white rounded-2xl p-6 md:p-8 border border-andy-stone/30 hover:border-andy-gold/30 hover:shadow-premium transition-all duration-500 hover:-translate-y-1"
+                className="group relative bg-white rounded-2xl p-7 md:p-8 border border-[rgba(0,0,0,0.05)] shadow-[0_14px_35px_rgba(0,0,0,0.06)] hover:shadow-[0_20px_45px_rgba(0,0,0,0.10)] transition-all duration-500 hover:-translate-y-[6px] hover:border-[rgba(202,162,93,0.28)]"
               >
-                <div className="w-12 h-12 rounded-xl bg-andy-stone/40 flex items-center justify-center mb-5 group-hover:bg-andy-gold/10 transition-colors">
-                  <card.icon size={22} className="text-andy-bronze group-hover:text-andy-gold transition-colors" />
+                <div className="w-14 h-14 rounded-xl bg-[#f6f1e8] flex items-center justify-center mb-5 group-hover:bg-[rgba(202,162,93,0.10)] transition-colors duration-500">
+                  <card.icon size={24} className="text-[#b89249] group-hover:text-[#9f7b43] transition-colors duration-500" />
                 </div>
-                <h3 className="font-serif text-lg font-bold text-andy-black mb-1">{card.title}</h3>
-                <p className="text-sm text-andy-bronze">{card.desc}</p>
-                <div className="mt-4 w-8 h-px bg-andy-stone group-hover:w-12 group-hover:bg-andy-gold transition-all" />
+                <h3 className="font-serif text-lg font-bold text-[#111111] mb-1">{card.title}</h3>
+                <p className="text-[13px] text-[#5c5c5c] leading-relaxed">{card.desc}</p>
+                <div className="mt-5 w-10 h-px bg-[#e7e1d6] group-hover:w-14 group-hover:bg-[#caa25d] transition-all duration-500" />
               </Link>
             ))}
           </div>
@@ -164,44 +157,44 @@ export default function HomePage() {
       </section>
 
       {/* FEATURED COLLECTION */}
-      <section className="py-20 md:py-28 px-4 tactile-surface">
+      <section className="py-24 md:py-32 px-4 surface-rich">
         <div className="max-w-6xl mx-auto">
-          <div className="flex items-end justify-between mb-12">
+          <div className="flex items-end justify-between mb-14">
             <div>
-              <p className="text-andy-bronze text-xs uppercase tracking-[0.25em] mb-3 font-medium">Curated Selection</p>
-              <h2 className="font-serif text-3xl md:text-5xl font-bold text-andy-black editorial-headline">
+              <p className="text-[#9f7b43] text-[13px] tracking-[0.04em] mb-3 font-medium">Curated Selection</p>
+              <h2 className="font-serif text-3xl md:text-[44px] font-bold text-[#111111] editorial-headline leading-[1.1]">
                 Featured Works
               </h2>
             </div>
-            <Link href="/gallery" className="hidden md:flex items-center gap-2 text-andy-black font-medium text-sm hover:text-andy-gold transition-colors">
+            <Link href="/gallery" className="hidden md:flex items-center gap-2 text-[#2b2b2b] font-medium text-sm hover:text-[#9f7b43] transition-colors duration-300">
               View Collection <ArrowRight size={16} />
             </Link>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-5 md:gap-7">
             {IMAGES.artworks.slice(0, 3).map((artwork, index) => (
               <Link key={artwork.id} href={`/gallery/${artwork.title.toLowerCase().replace(/\s+/g, '-')}`} className="group">
-                <div className="relative aspect-[4/5] overflow-hidden rounded-xl bg-andy-stone/30 mb-4">
+                <div className="relative aspect-[3/4] overflow-hidden rounded-xl bg-[#e7e1d6]/50 mb-5 shadow-[0_8px_24px_rgba(0,0,0,0.06)] group-hover:shadow-[0_14px_40px_rgba(0,0,0,0.10)] transition-shadow duration-500">
                   <Image
                     src={artwork.image}
                     alt={artwork.title}
                     fill
                     sizes="(max-width: 768px) 50vw, 33vw"
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-andy-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <div className="w-9 h-9 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-subtle">
-                      <Heart size={16} className="text-andy-black" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[rgba(0,0,0,0.35)] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="w-9 h-9 bg-white/95 backdrop-blur-sm rounded-full flex items-center justify-center shadow-subtle">
+                      <Heart size={16} className="text-[#111111]" />
                     </div>
                   </div>
                 </div>
-                <h3 className="font-serif text-base font-semibold text-andy-black group-hover:text-andy-bronze transition-colors">
+                <h3 className="font-serif text-base font-semibold text-[#111111] group-hover:text-[#9f7b43] transition-colors duration-300">
                   {artwork.title}
                 </h3>
-                <p className="text-sm text-andy-bronze">{index % 2 === 0 ? 'Ngozi Okeke' : 'Kofi Asante'}</p>
-                <p className="text-sm font-medium text-andy-gold mt-1">
+                <p className="text-sm text-[#5c5c5c]">{index % 2 === 0 ? 'Ngozi Okeke' : 'Kofi Asante'}</p>
+                <p className="text-sm font-semibold text-[#caa25d] mt-1">
                   {index % 3 === 0 ? 'Price on request' : `$${(index + 1) * 2500}`}
                 </p>
               </Link>
@@ -209,7 +202,7 @@ export default function HomePage() {
           </div>
 
           <div className="mt-8 text-center md:hidden">
-            <Link href="/gallery" className="inline-flex items-center gap-2 text-andy-black font-medium text-sm">
+            <Link href="/gallery" className="inline-flex items-center gap-2 text-[#2b2b2b] font-medium text-sm">
               View Collection <ArrowRight size={16} />
             </Link>
           </div>
@@ -217,33 +210,33 @@ export default function HomePage() {
       </section>
 
       {/* HERITAGE / MODERN BRIDGE */}
-      <section className="py-20 md:py-28 px-4 bg-andy-black text-andy-ivory">
+      <section className="py-24 md:py-32 px-4 bg-[#111111] text-[#fbf8f2]">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <p className="text-andy-gold text-xs uppercase tracking-[0.25em] mb-3 font-medium">Our Curation Philosophy</p>
-            <h2 className="font-serif text-3xl md:text-5xl font-bold editorial-headline">
+            <p className="text-[#d4af6a] text-[13px] tracking-[0.04em] mb-3 font-medium">Our Curation Philosophy</p>
+            <h2 className="font-serif text-3xl md:text-[44px] font-bold editorial-headline leading-[1.1]">
               Heritage informs.
               <br />
-              <span className="text-andy-ivory/70">Modern excites.</span>
+              <span className="text-[#fbf8f2]/70">Modern excites.</span>
             </h2>
           </div>
 
           <div className="grid md:grid-cols-5 gap-4">
-            {collectionPillars.map((pillar, idx) => (
+            {collectionPillars.map((pillar) => (
               <div key={pillar.name} className="group relative aspect-[3/4] rounded-xl overflow-hidden cursor-pointer">
                 <Image
                   src={pillar.image || IMAGES.hero}
                   alt={pillar.name}
                   fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  className="object-cover transition-transform duration-700 group-hover:scale-[1.06]"
                   sizes="20vw"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-andy-black/80 via-andy-black/20 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[rgba(0,0,0,0.85)] via-[rgba(0,0,0,0.25)] to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-5">
-                  <div className="w-8 h-px bg-andy-gold mb-3" />
-                  <h3 className="font-serif text-lg font-bold text-andy-ivory mb-1">{pillar.name}</h3>
-                  <p className="text-xs text-andy-ivory/60 leading-relaxed">{pillar.desc}</p>
+                  <div className="w-8 h-px bg-[#caa25d] mb-3" />
+                  <h3 className="font-serif text-lg font-bold text-[#fbf8f2] mb-1">{pillar.name}</h3>
+                  <p className="text-xs text-[#fbf8f2]/55 leading-relaxed">{pillar.desc}</p>
                 </div>
               </div>
             ))}
@@ -252,35 +245,35 @@ export default function HomePage() {
       </section>
 
       {/* SIGNATURE EXPERIENCES */}
-      <section className="py-20 md:py-28 px-4 bg-andy-ivory">
+      <section className="py-24 md:py-32 px-4 surface-warm">
         <div className="max-w-6xl mx-auto">
-          <div className="flex items-end justify-between mb-12">
+          <div className="flex items-end justify-between mb-14">
             <div>
-              <p className="text-andy-bronze text-xs uppercase tracking-[0.25em] mb-3 font-medium">Gatherings</p>
-              <h2 className="font-serif text-3xl md:text-5xl font-bold text-andy-black editorial-headline">
+              <p className="text-[#9f7b43] text-[13px] tracking-[0.04em] mb-3 font-medium">Gatherings</p>
+              <h2 className="font-serif text-3xl md:text-[44px] font-bold text-[#111111] editorial-headline leading-[1.1]">
                 AndyArt Experiences
               </h2>
             </div>
-            <Link href="/events" className="hidden md:flex items-center gap-2 text-andy-black font-medium text-sm hover:text-andy-gold transition-colors">
+            <Link href="/events" className="hidden md:flex items-center gap-2 text-[#2b2b2b] font-medium text-sm hover:text-[#9f7b43] transition-colors duration-300">
               All Experiences <ArrowRight size={16} />
             </Link>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
             {experiences.map((exp) => (
-              <Link key={exp.title} href="/events" className="group relative aspect-[4/5] rounded-xl overflow-hidden">
+              <Link key={exp.title} href="/events" className="group relative aspect-[4/5] rounded-xl overflow-hidden shadow-[0_8px_24px_rgba(0,0,0,0.06)] hover:shadow-[0_14px_40px_rgba(0,0,0,0.10)] transition-shadow duration-500">
                 <Image
                   src={exp.image}
                   alt={exp.title}
                   fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
                   sizes="25vw"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-andy-black/70 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[rgba(0,0,0,0.70)] via-[rgba(0,0,0,0.15)] to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-5">
-                  <h3 className="font-serif text-lg font-bold text-andy-ivory">{exp.title}</h3>
-                  <div className="mt-2 flex items-center gap-2 text-andy-gold text-xs uppercase tracking-wider font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+                  <h3 className="font-serif text-lg font-bold text-[#fbf8f2]">{exp.title}</h3>
+                  <div className="mt-2 flex items-center gap-2 text-[#d4af6a] text-[13px] tracking-wide font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <span>Discover</span>
                     <ArrowRight size={12} />
                   </div>
@@ -292,43 +285,43 @@ export default function HomePage() {
       </section>
 
       {/* SPACES BY ANDYART */}
-      <section className="py-20 md:py-28 px-4 tactile-surface">
+      <section className="py-24 md:py-32 px-4 tactile-surface">
         <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="grid md:grid-cols-2 gap-14 items-center">
             <div>
-              <p className="text-andy-bronze text-xs uppercase tracking-[0.25em] mb-3 font-medium">B2B Curation</p>
-              <h2 className="font-serif text-3xl md:text-5xl font-bold text-andy-black editorial-headline mb-6">
+              <p className="text-[#9f7b43] text-[13px] tracking-[0.04em] mb-3 font-medium">B2B Curation</p>
+              <h2 className="font-serif text-3xl md:text-[44px] font-bold text-[#111111] editorial-headline leading-[1.1] mb-6">
                 Spaces by AndyArt
               </h2>
-              <p className="text-andy-bronze leading-relaxed mb-8">
-                We curate art environments for offices, hotels, executive suites, and hospitality spaces. 
+              <p className="text-[#5c5c5c] leading-[1.7] mb-8 text-[15px]">
+                We curate art environments for offices, hotels, executive suites, and hospitality spaces.
                 From single statement pieces to rotating leasing programs, we transform how your space speaks.
               </p>
-              <div className="space-y-4 mb-8">
+              <div className="space-y-3 mb-8">
                 {['Office Curation', 'Hospitality Art Programs', 'Executive Suite Collections', 'Rotating Leasing', 'Bespoke Installations', 'Luxury Gifting'].map((item) => (
                   <div key={item} className="flex items-center gap-3">
-                    <div className="w-1.5 h-1.5 rounded-full bg-andy-gold" />
-                    <span className="text-sm text-andy-black font-medium">{item}</span>
+                    <div className="w-[5px] h-[5px] rounded-full bg-[#caa25d]" />
+                    <span className="text-sm text-[#2b2b2b] font-medium">{item}</span>
                   </div>
                 ))}
               </div>
               <div className="flex flex-col sm:flex-row gap-3">
                 <Link
                   href="/spaces"
-                  className="bg-andy-black text-andy-ivory px-6 py-3 rounded-full font-medium text-sm tracking-wide hover:bg-andy-black/80 transition-all inline-flex items-center justify-center gap-2"
+                  className="bg-[#111111] text-[#fbf8f2] px-7 py-[14px] rounded-full font-medium text-sm tracking-wide hover:bg-[#1b1b1b] transition-all duration-300 inline-flex items-center justify-center gap-2"
                 >
                   Explore Spaces
                   <ArrowRight size={14} />
                 </Link>
                 <Link
                   href="/consult"
-                  className="border border-andy-black/20 text-andy-black px-6 py-3 rounded-full font-medium text-sm tracking-wide hover:bg-andy-black/5 transition-all inline-flex items-center justify-center"
+                  className="border border-[rgba(0,0,0,0.10)] text-[#111111] px-7 py-[14px] rounded-full font-medium text-sm tracking-wide hover:bg-[rgba(0,0,0,0.03)] transition-all duration-300 inline-flex items-center justify-center"
                 >
                   Request Consultation
                 </Link>
               </div>
             </div>
-            <div className="relative aspect-[4/5] rounded-2xl overflow-hidden">
+            <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-[0_14px_40px_rgba(0,0,0,0.10)]">
               <Image
                 src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800"
                 alt="Corporate art curation"
@@ -337,17 +330,17 @@ export default function HomePage() {
                 sizes="50vw"
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-gradient-to-tr from-andy-black/30 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-tr from-[rgba(0,0,0,0.35)] to-transparent" />
             </div>
           </div>
         </div>
       </section>
 
       {/* FEATURED ARTIST STORY */}
-      <section className="py-20 md:py-28 px-4 bg-andy-ivory">
+      <section className="py-24 md:py-32 px-4 surface-warm">
         <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="relative aspect-square rounded-2xl overflow-hidden order-2 md:order-1">
+          <div className="grid md:grid-cols-2 gap-14 items-center">
+            <div className="relative aspect-square rounded-2xl overflow-hidden shadow-[0_14px_40px_rgba(0,0,0,0.10)] order-2 md:order-1">
               <Image
                 src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=800"
                 alt="Featured artist"
@@ -358,21 +351,21 @@ export default function HomePage() {
               />
             </div>
             <div className="order-1 md:order-2">
-              <p className="text-andy-bronze text-xs uppercase tracking-[0.25em] mb-3 font-medium">Artist Spotlight</p>
-              <h2 className="font-serif text-3xl md:text-5xl font-bold text-andy-black editorial-headline mb-6">
+              <p className="text-[#9f7b43] text-[13px] tracking-[0.04em] mb-3 font-medium">Artist Spotlight</p>
+              <h2 className="font-serif text-3xl md:text-[44px] font-bold text-[#111111] editorial-headline leading-[1.1] mb-6">
                 Ngozi Okeke
               </h2>
-              <p className="text-andy-bronze leading-relaxed mb-6">
-                Born in Enugu and trained in London, Ngozi Okeke works in bronze and reclaimed timber to create 
+              <p className="text-[#5c5c5c] leading-[1.7] mb-5 text-[15px]">
+                Born in Enugu and trained in London, Ngozi Okeke works in bronze and reclaimed timber to create
                 sculptures that speak to identity, memory, and the quiet strength of women across generations.
               </p>
-              <p className="text-andy-bronze leading-relaxed mb-8">
-                Her work has been acquired by collectors in Lagos, New York, and Paris. 
+              <p className="text-[#5c5c5c] leading-[1.7] mb-8 text-[15px]">
+                Her work has been acquired by collectors in Lagos, New York, and Paris.
                 We are honored to represent her latest collection, <em>Roots That Whisper</em>.
               </p>
               <Link
                 href="/artists"
-                className="inline-flex items-center gap-2 text-andy-black font-medium text-sm hover:text-andy-gold transition-colors"
+                className="inline-flex items-center gap-2 text-[#111111] font-medium text-sm hover:text-[#9f7b43] transition-colors duration-300"
               >
                 View Artist Profile <ArrowRight size={16} />
               </Link>
@@ -382,31 +375,31 @@ export default function HomePage() {
       </section>
 
       {/* PRIVATE VIEWING ROOMS */}
-      <section className="py-20 md:py-28 px-4 bg-andy-black text-andy-ivory">
+      <section className="py-24 md:py-32 px-4 bg-[#111111] text-[#fbf8f2]">
         <div className="max-w-6xl mx-auto text-center">
-          <p className="text-andy-gold text-xs uppercase tracking-[0.25em] mb-3 font-medium">Exclusive Access</p>
-          <h2 className="font-serif text-3xl md:text-5xl font-bold editorial-headline mb-6">
+          <p className="text-[#d4af6a] text-[13px] tracking-[0.04em] mb-3 font-medium">Exclusive Access</p>
+          <h2 className="font-serif text-3xl md:text-[44px] font-bold editorial-headline leading-[1.1] mb-6">
             Private Viewing Rooms
           </h2>
-          <p className="text-andy-ivory/60 max-w-2xl mx-auto mb-10 leading-relaxed">
-            Experience art in an intimate setting. Our private viewing rooms are available 
+          <p className="text-[#fbf8f2]/55 max-w-[640px] mx-auto mb-12 leading-[1.7] text-[15px]">
+            Experience art in an intimate setting. Our private viewing rooms are available
             by appointment for collectors, corporate clients, and Circle members.
           </p>
-          <div className="grid md:grid-cols-3 gap-6 mb-10">
+          <div className="grid md:grid-cols-3 gap-5 mb-12">
             {[
               { title: 'The Heritage Room', desc: 'Traditional and classical works in a quiet, contemplative space.' },
               { title: 'The Contemporary Room', desc: 'Bold, modern pieces with dramatic lighting and scale.' },
               { title: 'The Commission Suite', desc: 'Private consultations for bespoke commissions and large acquisitions.' },
             ].map((room) => (
-              <div key={room.title} className="bg-andy-ivory/5 border border-andy-ivory/10 rounded-xl p-6 text-left hover:border-andy-gold/30 transition-colors">
-                <h3 className="font-serif text-xl font-bold text-andy-ivory mb-2">{room.title}</h3>
-                <p className="text-sm text-andy-ivory/50 leading-relaxed">{room.desc}</p>
+              <div key={room.title} className="bg-[#fbf8f2]/[0.04] border border-[#fbf8f2]/[0.08] rounded-xl p-7 text-left hover:border-[rgba(212,175,106,0.25)] hover:bg-[#fbf8f2]/[0.06] transition-all duration-300">
+                <h3 className="font-serif text-xl font-bold text-[#fbf8f2] mb-2">{room.title}</h3>
+                <p className="text-[13px] text-[#fbf8f2]/50 leading-relaxed">{room.desc}</p>
               </div>
             ))}
           </div>
           <Link
             href="/consult"
-            className="bg-andy-gold text-andy-black px-8 py-4 rounded-full font-semibold text-sm tracking-wide hover:bg-andy-ivory transition-all inline-flex items-center gap-2"
+            className="bg-[#caa25d] text-[#111111] px-8 py-[14px] rounded-full font-semibold text-sm tracking-wide hover:bg-[#fbf8f2] transition-all duration-300 inline-flex items-center gap-2"
           >
             <Eye size={16} />
             Book a Private Viewing
@@ -415,24 +408,24 @@ export default function HomePage() {
       </section>
 
       {/* COLLECTOR TESTIMONIALS */}
-      <section className="py-20 md:py-28 px-4 tactile-surface">
+      <section className="py-24 md:py-32 px-4 surface-rich">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <p className="text-andy-bronze text-xs uppercase tracking-[0.25em] mb-3 font-medium">Voices</p>
-            <h2 className="font-serif text-3xl md:text-5xl font-bold text-andy-black editorial-headline">
+            <p className="text-[#9f7b43] text-[13px] tracking-[0.04em] mb-3 font-medium">Voices</p>
+            <h2 className="font-serif text-3xl md:text-[44px] font-bold text-[#111111] editorial-headline leading-[1.1]">
               From Our Collectors
             </h2>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
             {testimonials.map((t) => (
-              <div key={t.name} className="bg-white rounded-2xl p-8 border border-andy-stone/30 shadow-subtle">
-                <div className="w-8 h-px bg-andy-gold mb-6" />
-                <blockquote className="font-serif text-lg text-andy-black leading-relaxed mb-6 italic">
+              <div key={t.name} className="bg-white rounded-2xl p-8 border border-[rgba(0,0,0,0.05)] shadow-[0_14px_35px_rgba(0,0,0,0.05)]">
+                <div className="w-10 h-px bg-[#caa25d] mb-6" />
+                <blockquote className="font-serif text-lg text-[#2b2b2b] leading-relaxed mb-6 italic">
                   &ldquo;{t.quote}&rdquo;
                 </blockquote>
                 <div>
-                  <p className="font-semibold text-andy-black text-sm">{t.name}</p>
-                  <p className="text-xs text-andy-bronze uppercase tracking-wider">{t.title}</p>
+                  <p className="font-semibold text-[#111111] text-sm">{t.name}</p>
+                  <p className="text-[13px] text-[#9f7b43] font-medium">{t.title}</p>
                 </div>
               </div>
             ))}
@@ -441,30 +434,30 @@ export default function HomePage() {
       </section>
 
       {/* JOURNAL EDITORIAL */}
-      <section className="py-20 md:py-28 px-4 bg-andy-ivory">
+      <section className="py-24 md:py-32 px-4 surface-warm">
         <div className="max-w-6xl mx-auto">
-          <div className="flex items-end justify-between mb-12">
+          <div className="flex items-end justify-between mb-14">
             <div>
-              <p className="text-andy-bronze text-xs uppercase tracking-[0.25em] mb-3 font-medium">Authority Engine</p>
-              <h2 className="font-serif text-3xl md:text-5xl font-bold text-andy-black editorial-headline">
+              <p className="text-[#9f7b43] text-[13px] tracking-[0.04em] mb-3 font-medium">Authority Engine</p>
+              <h2 className="font-serif text-3xl md:text-[44px] font-bold text-[#111111] editorial-headline leading-[1.1]">
                 The Journal
               </h2>
             </div>
-            <Link href="/journal" className="hidden md:flex items-center gap-2 text-andy-black font-medium text-sm hover:text-andy-gold transition-colors">
+            <Link href="/journal" className="hidden md:flex items-center gap-2 text-[#2b2b2b] font-medium text-sm hover:text-[#9f7b43] transition-colors duration-300">
               All Stories <ArrowRight size={16} />
             </Link>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-5">
             {journalTeasers.map((article) => (
               <Link key={article.title} href="/journal" className="group">
-                <div className="bg-white rounded-2xl p-8 border border-andy-stone/30 hover:border-andy-gold/30 hover:shadow-premium transition-all duration-500">
-                  <p className="text-andy-gold text-xs uppercase tracking-wider font-medium mb-3">{article.category}</p>
-                  <h3 className="font-serif text-xl font-bold text-andy-black mb-3 group-hover:text-andy-bronze transition-colors">
+                <div className="bg-white rounded-2xl p-8 border border-[rgba(0,0,0,0.05)] shadow-[0_14px_35px_rgba(0,0,0,0.05)] hover:border-[rgba(202,162,93,0.25)] hover:shadow-[0_20px_45px_rgba(0,0,0,0.08)] transition-all duration-500 h-full">
+                  <p className="text-[#caa25d] text-[12px] tracking-[0.04em] font-semibold mb-3">{article.category}</p>
+                  <h3 className="font-serif text-xl font-bold text-[#111111] mb-3 group-hover:text-[#9f7b43] transition-colors duration-300 leading-snug">
                     {article.title}
                   </h3>
-                  <p className="text-sm text-andy-bronze leading-relaxed mb-4">{article.excerpt}</p>
-                  <span className="text-xs text-andy-black font-medium uppercase tracking-wider group-hover:text-andy-gold transition-colors flex items-center gap-2">
+                  <p className="text-[13px] text-[#5c5c5c] leading-relaxed mb-5">{article.excerpt}</p>
+                  <span className="text-[13px] text-[#111111] font-medium group-hover:text-[#caa25d] transition-colors duration-300 flex items-center gap-2">
                     Read Story <ArrowRight size={12} />
                   </span>
                 </div>
@@ -475,20 +468,20 @@ export default function HomePage() {
       </section>
 
       {/* CONCIERGE BANNER */}
-      <section className="py-20 md:py-28 px-4 bg-andy-green text-andy-ivory">
+      <section className="py-24 md:py-32 px-4 bg-[#173126] text-[#fbf8f2]">
         <div className="max-w-4xl mx-auto text-center">
-          <p className="text-andy-gold text-xs uppercase tracking-[0.25em] mb-3 font-medium">White Glove Service</p>
-          <h2 className="font-serif text-3xl md:text-5xl font-bold editorial-headline mb-6">
+          <p className="text-[#d4af6a] text-[13px] tracking-[0.04em] mb-3 font-medium">White Glove Service</p>
+          <h2 className="font-serif text-3xl md:text-[44px] font-bold editorial-headline leading-[1.1] mb-6">
             Collector Concierge
           </h2>
-          <p className="text-andy-ivory/60 max-w-2xl mx-auto mb-10 leading-relaxed">
-            Sourcing, commissioning, gifting, installation, framing, private viewings, and advisory. 
+          <p className="text-[#fbf8f2]/55 max-w-[640px] mx-auto mb-12 leading-[1.7] text-[15px]">
+            Sourcing, commissioning, gifting, installation, framing, private viewings, and advisory.
             Our concierge team is available via chat, WhatsApp, or callback.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/consult"
-              className="bg-andy-gold text-andy-black px-8 py-4 rounded-full font-semibold text-sm tracking-wide hover:bg-andy-ivory transition-all inline-flex items-center justify-center gap-2"
+              className="bg-[#caa25d] text-[#111111] px-8 py-[14px] rounded-full font-semibold text-sm tracking-wide hover:bg-[#fbf8f2] transition-all duration-300 inline-flex items-center justify-center gap-2"
             >
               <Compass size={16} />
               Start a Conversation
@@ -497,7 +490,7 @@ export default function HomePage() {
               href="https://wa.me/1234567890"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-transparent text-andy-ivory border border-andy-ivory/30 px-8 py-4 rounded-full font-semibold text-sm tracking-wide hover:bg-andy-ivory/10 transition-all inline-flex items-center justify-center gap-2"
+              className="bg-[rgba(255,255,255,0.06)] text-[#fbf8f2] border border-[rgba(255,255,255,0.18)] px-8 py-[14px] rounded-full font-semibold text-sm tracking-wide hover:bg-[rgba(255,255,255,0.10)] transition-all duration-300 inline-flex items-center justify-center gap-2"
             >
               WhatsApp Concierge
             </a>
@@ -506,64 +499,64 @@ export default function HomePage() {
       </section>
 
       {/* LUXURY FOOTER */}
-      <footer className="py-16 md:py-20 px-4 bg-andy-black text-andy-ivory border-t border-andy-ivory/10">
+      <footer className="py-20 md:py-24 px-4 bg-[#111111] text-[#fbf8f2] border-t border-[#fbf8f2]/[0.06]">
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-16">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-20">
             <div className="col-span-2 md:col-span-1">
-              <div className="mb-4">
-                <span className="font-serif text-2xl font-bold tracking-tight">AndyArt</span>
-                <span className="block text-[9px] uppercase tracking-[0.2em] text-andy-gold font-medium mt-1">
+              <div className="mb-5">
+                <span className="font-serif text-[22px] font-bold tracking-tight text-[#fbf8f2]">AndyArt</span>
+                <span className="block text-[10px] tracking-[0.18em] text-[#caa25d] font-medium mt-1">
                   Cultural House
                 </span>
               </div>
-              <p className="text-sm text-andy-ivory/40 leading-relaxed">
+              <p className="text-[13px] text-[#fbf8f2]/40 leading-relaxed">
                 A premium cultural house where collecting, gathering, gifting, commissioning, and living with art converge.
               </p>
             </div>
             <div>
-              <h4 className="font-serif text-sm font-semibold text-andy-ivory mb-4 uppercase tracking-wider">Collect</h4>
-              <ul className="space-y-2 text-sm text-andy-ivory/40">
-                <li><Link href="/gallery" className="hover:text-andy-gold transition-colors">All Works</Link></li>
-                <li><Link href="/artists" className="hover:text-andy-gold transition-colors">Artists</Link></li>
-                <li><Link href="/viewing-rooms" className="hover:text-andy-gold transition-colors">Viewing Rooms</Link></li>
-                <li><Link href="/circle" className="hover:text-andy-gold transition-colors">Circle Membership</Link></li>
+              <h4 className="font-serif text-[13px] font-semibold text-[#fbf8f2] mb-4 tracking-[0.04em]">Collect</h4>
+              <ul className="space-y-2.5 text-[13px] text-[#fbf8f2]/40">
+                <li><Link href="/gallery" className="hover:text-[#caa25d] transition-colors duration-300">All Works</Link></li>
+                <li><Link href="/artists" className="hover:text-[#caa25d] transition-colors duration-300">Artists</Link></li>
+                <li><Link href="/viewing-rooms" className="hover:text-[#caa25d] transition-colors duration-300">Viewing Rooms</Link></li>
+                <li><Link href="/circle" className="hover:text-[#caa25d] transition-colors duration-300">Circle Membership</Link></li>
               </ul>
             </div>
             <div>
-              <h4 className="font-serif text-sm font-semibold text-andy-ivory mb-4 uppercase tracking-wider">Experience</h4>
-              <ul className="space-y-2 text-sm text-andy-ivory/40">
-                <li><Link href="/events" className="hover:text-andy-gold transition-colors">Upcoming</Link></li>
-                <li><Link href="/events/past" className="hover:text-andy-gold transition-colors">Past Events</Link></li>
-                <li><Link href="/events/host" className="hover:text-andy-gold transition-colors">Host an Event</Link></li>
+              <h4 className="font-serif text-[13px] font-semibold text-[#fbf8f2] mb-4 tracking-[0.04em]">Experience</h4>
+              <ul className="space-y-2.5 text-[13px] text-[#fbf8f2]/40">
+                <li><Link href="/events" className="hover:text-[#caa25d] transition-colors duration-300">Upcoming</Link></li>
+                <li><Link href="/events/past" className="hover:text-[#caa25d] transition-colors duration-300">Past Events</Link></li>
+                <li><Link href="/events/host" className="hover:text-[#caa25d] transition-colors duration-300">Host an Event</Link></li>
               </ul>
             </div>
             <div>
-              <h4 className="font-serif text-sm font-semibold text-andy-ivory mb-4 uppercase tracking-wider">Concierge</h4>
-              <ul className="space-y-2 text-sm text-andy-ivory/40">
-                <li><Link href="/services" className="hover:text-andy-gold transition-colors">All Services</Link></li>
-                <li><Link href="/consult" className="hover:text-andy-gold transition-colors">Private Viewing</Link></li>
-                <li><Link href="/spaces" className="hover:text-andy-gold transition-colors">Corporate Curation</Link></li>
-                <li><Link href="/partners/apply" className="hover:text-andy-gold transition-colors">Partnerships</Link></li>
+              <h4 className="font-serif text-[13px] font-semibold text-[#fbf8f2] mb-4 tracking-[0.04em]">Concierge</h4>
+              <ul className="space-y-2.5 text-[13px] text-[#fbf8f2]/40">
+                <li><Link href="/services" className="hover:text-[#caa25d] transition-colors duration-300">All Services</Link></li>
+                <li><Link href="/consult" className="hover:text-[#caa25d] transition-colors duration-300">Private Viewing</Link></li>
+                <li><Link href="/spaces" className="hover:text-[#caa25d] transition-colors duration-300">Corporate Curation</Link></li>
+                <li><Link href="/partners/apply" className="hover:text-[#caa25d] transition-colors duration-300">Partnerships</Link></li>
               </ul>
             </div>
             <div>
-              <h4 className="font-serif text-sm font-semibold text-andy-ivory mb-4 uppercase tracking-wider">Connect</h4>
-              <ul className="space-y-2 text-sm text-andy-ivory/40">
-                <li><a href="mailto:hello@andyart.gallery" className="hover:text-andy-gold transition-colors">hello@andyart.gallery</a></li>
-                <li><a href="https://instagram.com/andyart" target="_blank" rel="noopener noreferrer" className="hover:text-andy-gold transition-colors">@andyart</a></li>
-                <li><a href="https://linkedin.com/company/andyart" target="_blank" rel="noopener noreferrer" className="hover:text-andy-gold transition-colors">LinkedIn</a></li>
-                <li><a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer" className="hover:text-andy-gold transition-colors">WhatsApp</a></li>
+              <h4 className="font-serif text-[13px] font-semibold text-[#fbf8f2] mb-4 tracking-[0.04em]">Connect</h4>
+              <ul className="space-y-2.5 text-[13px] text-[#fbf8f2]/40">
+                <li><a href="mailto:hello@andyart.gallery" className="hover:text-[#caa25d] transition-colors duration-300">hello@andyart.gallery</a></li>
+                <li><a href="https://instagram.com/andyart" target="_blank" rel="noopener noreferrer" className="hover:text-[#caa25d] transition-colors duration-300">@andyart</a></li>
+                <li><a href="https://linkedin.com/company/andyart" target="_blank" rel="noopener noreferrer" className="hover:text-[#caa25d] transition-colors duration-300">LinkedIn</a></li>
+                <li><a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer" className="hover:text-[#caa25d] transition-colors duration-300">WhatsApp</a></li>
               </ul>
             </div>
           </div>
-          <div className="pt-8 border-t border-andy-ivory/10 flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-xs text-andy-ivory/30">
+          <div className="pt-8 border-t border-[#fbf8f2]/[0.06] flex flex-col md:flex-row items-center justify-between gap-4">
+            <p className="text-[12px] text-[#fbf8f2]/30">
               &copy; {new Date().getFullYear()} AndyArt Cultural House. All rights reserved.
             </p>
-            <div className="flex gap-6 text-xs text-andy-ivory/30">
-              <Link href="/legal/terms" className="hover:text-andy-gold transition-colors">Terms</Link>
-              <Link href="/legal/privacy" className="hover:text-andy-gold transition-colors">Privacy</Link>
-              <Link href="/journal" className="hover:text-andy-gold transition-colors">Journal</Link>
+            <div className="flex gap-6 text-[12px] text-[#fbf8f2]/30">
+              <Link href="/legal/terms" className="hover:text-[#caa25d] transition-colors duration-300">Terms</Link>
+              <Link href="/legal/privacy" className="hover:text-[#caa25d] transition-colors duration-300">Privacy</Link>
+              <Link href="/journal" className="hover:text-[#caa25d] transition-colors duration-300">Journal</Link>
             </div>
           </div>
         </div>

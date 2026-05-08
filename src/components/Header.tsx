@@ -3,8 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, X, Search, User, ShoppingBag } from 'lucide-react';
-import { useAppStore } from '@/stores/useAppStore';
+import { Menu, X, User } from 'lucide-react';
 
 const leftNav = [
   { label: 'Home', href: '/' },
@@ -25,8 +24,6 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
-  const store = useAppStore();
-  const cartCount = store?.cart?.length ?? 0;
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -46,24 +43,24 @@ export default function Header() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        className={`fixed top-[42px] left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled
-            ? 'bg-andy-ivory/95 backdrop-blur-md shadow-premium'
+            ? 'bg-[rgba(255,248,240,.78)] backdrop-blur-[18px] border-b border-black/[0.08] shadow-[0_6px_24px_rgba(0,0,0,0.06)]'
             : 'bg-transparent'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 md:px-8">
-          <div className="flex items-center justify-between h-16 md:h-20">
+        <div className="max-w-7xl mx-auto px-6 md:px-10">
+          <div className="flex items-center justify-between h-[60px] md:h-[68px]">
             {/* Left Nav — Desktop */}
-            <nav className="hidden md:flex items-center gap-8">
+            <nav className="hidden md:flex items-center gap-9">
               {leftNav.map((item) => (
                 <Link
                   key={item.label}
                   href={item.href}
-                  className={`text-sm font-medium tracking-wide transition-colors ${
+                  className={`text-[13px] font-medium tracking-wide transition-colors duration-300 ${
                     isActive(item.href)
-                      ? 'text-andy-gold'
-                      : 'text-andy-black/80 hover:text-andy-black'
+                      ? 'text-[#b89249]'
+                      : 'text-[#151515] hover:text-[#7b6334]'
                   }`}
                 >
                   {item.label}
@@ -72,32 +69,32 @@ export default function Header() {
             </nav>
 
             {/* Center Logo */}
-            <Link href="/" className="flex flex-col items-center">
-              <span className="font-serif text-xl md:text-2xl font-bold tracking-tight text-andy-black">
+            <Link href="/" className="flex flex-col items-center scale-[1.08]">
+              <span className="font-serif text-xl md:text-[22px] font-bold tracking-tight text-[#151515]">
                 AndyArt
               </span>
-              <span className="text-[9px] md:text-[10px] uppercase tracking-[0.2em] text-andy-bronze font-medium">
+              <span className="text-[10px] md:text-[11px] tracking-[0.18em] text-[#9f7b43] font-medium">
                 Cultural House
               </span>
             </Link>
 
             {/* Right Nav — Desktop */}
-            <nav className="hidden md:flex items-center gap-8">
+            <nav className="hidden md:flex items-center gap-9">
               {rightNav.map((item) => (
                 <Link
                   key={item.label}
                   href={item.href}
-                  className={`text-sm font-medium tracking-wide transition-colors ${
+                  className={`text-[13px] font-medium tracking-wide transition-colors duration-300 ${
                     isActive(item.href)
-                      ? 'text-andy-gold'
-                      : 'text-andy-black/80 hover:text-andy-black'
+                      ? 'text-[#b89249]'
+                      : 'text-[#151515] hover:text-[#7b6334]'
                   }`}
                 >
                   {item.label}
                 </Link>
               ))}
               <Link href="/profile" className="relative">
-                <User size={20} className="text-andy-black/80 hover:text-andy-black transition-colors" />
+                <User size={20} strokeWidth={2.2} className="text-[#151515]/[0.92] hover:text-[#151515] transition-colors" />
               </Link>
             </nav>
 
@@ -107,7 +104,7 @@ export default function Header() {
               className="md:hidden p-2"
               aria-label="Toggle menu"
             >
-              {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+              {mobileOpen ? <X size={24} className="text-[#151515]" /> : <Menu size={24} className="text-[#151515]" />}
             </button>
           </div>
         </div>
@@ -115,14 +112,14 @@ export default function Header() {
 
       {/* Mobile Menu Overlay */}
       {mobileOpen && (
-        <div className="fixed inset-0 z-40 bg-andy-ivory/98 backdrop-blur-xl md:hidden pt-20">
+        <div className="fixed inset-0 z-40 bg-[#fbf8f2]/98 backdrop-blur-xl md:hidden pt-[110px]">
           <nav className="flex flex-col items-center gap-8 py-12">
             {[...leftNav, ...rightNav].map((item) => (
               <Link
                 key={item.label}
                 href={item.href}
                 className={`font-serif text-2xl tracking-wide transition-colors ${
-                  isActive(item.href) ? 'text-andy-gold' : 'text-andy-black'
+                  isActive(item.href) ? 'text-[#b89249]' : 'text-[#151515]'
                 }`}
               >
                 {item.label}
