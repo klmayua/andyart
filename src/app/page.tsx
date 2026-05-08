@@ -163,87 +163,285 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* PERSONA GATEWAY */}
+      {/* PERSONA GATEWAY — Five Ways to Begin */}
       <section
-        className="relative py-[120px] px-4 overflow-hidden"
+        className="relative px-4 overflow-hidden"
         style={{
-          background: 'linear-gradient(180deg, #F7F2E8 0%, #EFE6D7 100%)',
+          minHeight: '980px',
+          paddingTop: '140px',
+          paddingBottom: '160px',
+          background: 'linear-gradient(180deg, #F8F4EC 0%, #F1E7D8 52%, #E7D5BC 100%)',
         }}
       >
-        {/* Texture overlay */}
+        {/* Grain texture */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
-            opacity: 0.025,
+            opacity: 0.035,
             backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
             backgroundRepeat: 'repeat',
             backgroundSize: '256px 256px',
           }}
         />
 
-        {/* Radial depth */}
+        {/* Radial glow top-left */}
         <div
-          className="absolute inset-0 pointer-events-none"
+          className="absolute pointer-events-none"
           style={{
-            background: 'radial-gradient(ellipse at 50% 30%, rgba(255,255,255,0.22) 0%, transparent 60%)',
+            top: '-80px',
+            left: '-80px',
+            width: '520px',
+            height: '520px',
+            background: 'radial-gradient(circle, rgba(255,245,228,.42) 0%, transparent 70%)',
+            filter: 'blur(140px)',
           }}
         />
 
-        {/* Top divider */}
-        <div className="absolute top-0 left-0 right-0 h-px" style={{ background: 'rgba(198,166,107,0.14)' }} />
+        {/* Secondary warm mass bottom-right */}
+        <div
+          className="absolute pointer-events-none"
+          style={{
+            bottom: '-60px',
+            right: '-60px',
+            width: '600px',
+            height: '600px',
+            background: 'radial-gradient(circle, rgba(191,152,91,.10) 0%, transparent 70%)',
+            filter: 'blur(180px)',
+          }}
+        />
 
-        {/* Bottom divider */}
-        <div className="absolute bottom-0 left-0 right-0 h-px" style={{ background: 'rgba(93,70,51,0.06)' }} />
+        {/* Edge vignette */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            boxShadow: 'inset 0 0 120px rgba(78,52,22,0.06)',
+          }}
+        />
+
+        {/* Top separator */}
+        <div className="absolute top-0 left-0 right-0 h-px" style={{ background: 'rgba(178,138,75,.18)' }} />
+
+        {/* Bottom separator */}
+        <div className="absolute bottom-0 left-0 right-0 h-px" style={{ background: 'rgba(87,60,34,.08)' }} />
 
         <div className="relative max-w-6xl mx-auto">
-          <div className="text-center mb-[56px]">
-            <p className="text-[#A78345] text-[15px] tracking-[0.08em] mb-[18px] font-[520]">How we serve</p>
+          {/* Header */}
+          <div className="mb-[90px]" style={{ maxWidth: '780px' }}>
+            <p className="text-[#A57B3A] text-[15px] font-semibold tracking-[0.12em] mb-[20px]">How we serve</p>
             <h2
-              className="font-serif font-[650] text-[#171614] editorial-headline leading-[1.04]"
-              style={{ fontSize: 'clamp(56px, 6vw, 88px)' }}
+              className="font-serif font-[650] text-[#171410] editorial-headline"
+              style={{
+                fontSize: 'clamp(60px, 7vw, 110px)',
+                lineHeight: 0.95,
+                letterSpacing: '-0.035em',
+                maxWidth: '760px',
+              }}
             >
               Five ways to begin
             </h2>
+            <p className="text-[22px] text-[rgba(23,20,16,.72)] leading-[1.7] mt-[28px]" style={{ maxWidth: '640px' }}>
+              Every collector's journey starts somewhere. Choose the path that speaks to you.
+            </p>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-[18px] md:gap-[22px] lg:gap-[28px]">
-            {personaCards.map((card) => (
+
+          {/* Desktop: Editorial Hero Panel + Staggered Grid */}
+          <div className="hidden md:grid" style={{ gridTemplateColumns: '1.25fr 0.95fr', gap: '44px', alignItems: 'stretch' }}>
+            {/* Hero Panel — Collect */}
+            <Link
+              href="/gallery"
+              className="group relative flex flex-col overflow-hidden"
+              style={{
+                minHeight: '620px',
+                borderRadius: '34px',
+                padding: '54px',
+                background: 'rgba(255,251,245,.58)',
+                backdropFilter: 'blur(24px) saturate(170%)',
+                WebkitBackdropFilter: 'blur(24px) saturate(170%)',
+                border: '1px solid rgba(255,255,255,.74)',
+                boxShadow: 'inset 0 1px 0 rgba(255,255,255,.88), 0 34px 84px rgba(78,52,22,.12)',
+              }}
+            >
+              {/* Image panel */}
+              <div className="absolute right-0 top-0 h-full overflow-hidden" style={{ width: '44%' }}>
+                <Image
+                  src="https://images.unsplash.com/photo-1578321272176-b7bbc0679853?w=800&q=80"
+                  alt="Curated art collection"
+                  fill
+                  className="object-cover"
+                  style={{ transform: 'scale(1.06)' }}
+                  sizes="40vw"
+                  loading="lazy"
+                />
+                <div
+                  className="absolute inset-0"
+                  style={{
+                    background: 'linear-gradient(90deg, rgba(248,244,236,.72) 0%, rgba(248,244,236,0) 45%)',
+                  }}
+                />
+              </div>
+
+              {/* Content */}
+              <div className="relative z-10 flex flex-col h-full" style={{ width: '52%' }}>
+                <div
+                  className="flex items-center justify-center"
+                  style={{
+                    width: '82px',
+                    height: '82px',
+                    borderRadius: '22px',
+                    background: 'rgba(184,141,69,.12)',
+                    border: '1px solid rgba(184,141,69,.22)',
+                  }}
+                >
+                  <Palette size={36} style={{ color: '#A57B3A' }} />
+                </div>
+                <h3
+                  className="font-serif font-[650] text-[#171410] mt-[34px]"
+                  style={{ fontSize: '58px', lineHeight: 0.94 }}
+                >
+                  Collect
+                </h3>
+                <p className="text-[22px] text-[rgba(23,20,16,.72)] leading-[1.8] mt-[24px]" style={{ maxWidth: '420px' }}>
+                  Acquire exceptional works from Africa's most compelling artists.
+                </p>
+                <div className="mt-auto pt-10 flex items-center gap-2 text-[#9E7435] text-[17px] font-semibold">
+                  <span>Explore Collection</span>
+                  <ArrowRight size={16} />
+                </div>
+              </div>
+            </Link>
+
+            {/* Staggered Grid — 4 secondary cards */}
+            <div className="grid grid-cols-2" style={{ gap: '26px' }}>
+              {[
+                { title: 'Experience', desc: 'Gather beautifully', href: '/events', icon: Wine, img: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=400&q=80', offset: 0 },
+                { title: 'Transform Spaces', desc: 'Curate environments', href: '/spaces', icon: Building2, img: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=400&q=80', offset: 34 },
+                { title: 'Commission', desc: 'Bespoke artistic creation', href: '/consult', icon: Brush, img: 'https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=400&q=80', offset: -18 },
+                { title: 'Join Circle', desc: 'Prestige membership', href: '/circle', icon: Star, img: 'https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=400&q=80', offset: 24 },
+              ].map((card) => (
+                <Link
+                  key={card.title}
+                  href={card.href}
+                  className="group relative flex flex-col overflow-hidden"
+                  style={{
+                    minHeight: '285px',
+                    borderRadius: '28px',
+                    padding: '34px',
+                    background: 'rgba(255,255,255,.44)',
+                    backdropFilter: 'blur(18px) saturate(160%)',
+                    WebkitBackdropFilter: 'blur(18px) saturate(160%)',
+                    border: '1px solid rgba(255,255,255,.60)',
+                    boxShadow: 'inset 0 1px 0 rgba(255,255,255,.76), 0 18px 46px rgba(72,48,24,.08)',
+                    transform: `translateY(${card.offset}px)`,
+                    transition: 'transform 320ms cubic-bezier(.2,.8,.2,1), box-shadow 320ms cubic-bezier(.2,.8,.2,1)',
+                  }}
+                >
+                  {/* Visual chip */}
+                  <div
+                    className="absolute overflow-hidden"
+                    style={{
+                      top: '20px',
+                      right: '20px',
+                      width: '92px',
+                      height: '92px',
+                      borderRadius: '18px',
+                      opacity: 0.92,
+                      border: '1px solid rgba(255,255,255,.65)',
+                    }}
+                  >
+                    <Image
+                      src={card.img}
+                      alt={card.title}
+                      fill
+                      className="object-cover"
+                      sizes="100px"
+                      loading="lazy"
+                    />
+                  </div>
+
+                  <div
+                    className="flex items-center justify-center"
+                    style={{
+                      width: '62px',
+                      height: '62px',
+                      borderRadius: '18px',
+                      background: 'rgba(184,141,69,.10)',
+                      border: '1px solid rgba(184,141,69,.18)',
+                    }}
+                  >
+                    <card.icon size={26} style={{ color: '#A57B3A' }} />
+                  </div>
+
+                  <h3
+                    className="font-serif font-semibold text-[#171410] mt-[26px]"
+                    style={{ fontSize: '34px', lineHeight: 1.08 }}
+                  >
+                    {card.title}
+                  </h3>
+                  <p className="text-[18px] text-[rgba(23,20,16,.70)] leading-[1.7] mt-[16px]">
+                    {card.desc}
+                  </p>
+
+                  <div className="mt-auto pt-6 flex items-center gap-2 text-[#9E7435] text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <span>Explore</span>
+                    <ArrowRight size={14} />
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Mobile: Vertical Stack */}
+          <div className="md:hidden flex flex-col gap-6">
+            {personaCards.map((card, idx) => (
               <Link
                 key={card.title}
                 href={card.href}
-                className="group relative flex flex-col rounded-[26px] p-6 md:p-7 lg:p-[32px] transition-all duration-[280ms] ease-[cubic-bezier(.2,.8,.2,1)] hover:-translate-y-[6px] shadow-[inset_0_1px_0_rgba(255,255,255,0.90),0_16px_42px_rgba(80,55,25,0.08)] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.90),0_22px_54px_rgba(80,55,25,0.14)]"
+                className="group relative flex items-center gap-5"
                 style={{
-                  background: 'rgba(255,255,255,0.72)',
-                  backdropFilter: 'blur(18px) saturate(150%)',
-                  WebkitBackdropFilter: 'blur(18px) saturate(150%)',
-                  border: '1px solid rgba(255,255,255,0.82)',
+                  borderRadius: '28px',
+                  padding: '28px',
+                  background: 'rgba(255,255,255,.58)',
+                  backdropFilter: 'blur(18px) saturate(145%)',
+                  WebkitBackdropFilter: 'blur(18px) saturate(145%)',
+                  border: '1px solid rgba(255,255,255,.65)',
+                  boxShadow: 'inset 0 1px 0 rgba(255,255,255,.8), 0 18px 48px rgba(80,55,25,.08)',
                 }}
               >
                 <div
-                  className="flex items-center justify-center mb-[22px] group-hover:bg-[rgba(198,166,107,0.14)] transition-colors duration-[280ms]"
+                  className="flex-shrink-0 flex items-center justify-center"
                   style={{
                     width: '56px',
                     height: '56px',
-                    borderRadius: '16px',
-                    background: 'rgba(198,166,107,0.10)',
-                    border: '1px solid rgba(198,166,107,0.18)',
-                    boxShadow: '0 4px 14px rgba(167,131,69,0.08)',
+                    borderRadius: '18px',
+                    background: 'rgba(198,166,107,.10)',
+                    border: '1px solid rgba(198,166,107,.18)',
                   }}
                 >
-                  <card.icon size={24} className="text-[#A78345] group-hover:text-[#8A6B3A] transition-colors duration-[280ms]" />
+                  <card.icon size={24} style={{ color: '#A78345' }} />
                 </div>
-                <h3
-                  className="font-serif font-[620] text-[#171614] mb-[16px] leading-[1.22]"
-                  style={{ fontSize: '22px' }}
-                >
-                  {card.title}
-                </h3>
-                <p className="text-[16px] text-[#5D5245] leading-[1.62]" style={{ maxWidth: '28ch' }}>{card.desc}</p>
-                <div className="mt-[18px] w-[38px] h-px bg-[rgba(181,138,58,0.45)] group-hover:w-14 group-hover:bg-[#C6A66B] transition-all duration-[280ms]" />
+                <div>
+                  <h3
+                    className="font-serif font-semibold text-[#171410] mb-1"
+                    style={{ fontSize: idx === 0 ? '28px' : '22px' }}
+                  >
+                    {card.title}
+                  </h3>
+                  <p className="text-[15px] text-[#5D5245] leading-relaxed">{card.desc}</p>
+                </div>
               </Link>
             ))}
           </div>
         </div>
       </section>
+
+      {/* Section Transition Band */}
+      <div
+        className="hidden md:block"
+        style={{
+          height: '110px',
+          background: 'linear-gradient(180deg, rgba(230,214,189,.55) 0%, #FCF8F2 100%)',
+        }}
+      />
 
       {/* FEATURED COLLECTION */}
       <section className="py-24 md:py-32 px-4 bg-[#FCFAF6]">
