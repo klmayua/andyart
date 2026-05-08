@@ -37,9 +37,9 @@ export default function Header() {
     const active = isActive(href);
     return [
       'relative',
-      'text-[17px]',
-      'font-[580]',
-      'tracking-[0.005em]',
+      'text-[16px]',
+      'font-[560]',
+      'tracking-[-0.01em]',
       'transition-colors',
       'duration-[220ms]',
       'ease-out',
@@ -52,18 +52,18 @@ export default function Header() {
       <header
         className="fixed top-[52px] left-0 right-0 z-[100] h-[78px]"
         style={{
-          background: 'rgba(42,31,22,.34)',
-          backdropFilter: 'blur(28px) saturate(165%)',
-          WebkitBackdropFilter: 'blur(28px) saturate(165%)',
-          border: '1px solid rgba(255,255,255,.14)',
-          boxShadow: '0 12px 42px rgba(0,0,0,.14), inset 0 1px 0 rgba(255,255,255,.18)',
+          background: 'rgba(28,22,16,0.56)',
+          backdropFilter: 'blur(30px) saturate(185%)',
+          WebkitBackdropFilter: 'blur(30px) saturate(185%)',
+          borderBottom: '1px solid rgba(255,255,255,0.10)',
+          boxShadow: '0 12px 40px rgba(0,0,0,0.14), inset 0 1px 0 rgba(255,255,255,0.14)',
         }}
       >
         {/* Sheen overlay */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
-            background: 'linear-gradient(180deg, rgba(255,255,255,.08) 0%, rgba(255,255,255,.01) 100%)',
+            background: 'linear-gradient(180deg, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.015) 100%)',
           }}
         />
 

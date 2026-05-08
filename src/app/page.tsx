@@ -167,14 +167,14 @@ export default function HomePage() {
       <section
         className="relative py-[120px] px-4 overflow-hidden"
         style={{
-          background: 'linear-gradient(180deg, #F8F3EA 0%, #EFE6D7 100%)',
+          background: 'linear-gradient(180deg, #F7F2E8 0%, #EFE6D7 100%)',
         }}
       >
         {/* Texture overlay */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
-            opacity: 0.028,
+            opacity: 0.025,
             backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
             backgroundRepeat: 'repeat',
             backgroundSize: '256px 256px',
@@ -185,22 +185,22 @@ export default function HomePage() {
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
-            background: 'radial-gradient(ellipse at 50% 30%, rgba(255,255,255,.42) 0%, transparent 60%)',
+            background: 'radial-gradient(ellipse at 50% 30%, rgba(255,255,255,0.22) 0%, transparent 60%)',
           }}
         />
 
         {/* Top divider */}
-        <div className="absolute top-0 left-0 right-0 h-px" style={{ background: 'rgba(198,166,107,.16)' }} />
+        <div className="absolute top-0 left-0 right-0 h-px" style={{ background: 'rgba(198,166,107,0.14)' }} />
 
         {/* Bottom divider */}
-        <div className="absolute bottom-0 left-0 right-0 h-px" style={{ background: 'rgba(93,70,51,.07)' }} />
+        <div className="absolute bottom-0 left-0 right-0 h-px" style={{ background: 'rgba(93,70,51,0.06)' }} />
 
         <div className="relative max-w-6xl mx-auto">
           <div className="text-center mb-[56px]">
-            <p className="text-[#A78345] text-[15px] tracking-[0.06em] mb-[18px] font-medium">How we serve</p>
+            <p className="text-[#A78345] text-[15px] tracking-[0.08em] mb-[18px] font-[520]">How we serve</p>
             <h2
-              className="font-serif font-[650] text-[#171614] editorial-headline leading-[1.06]"
-              style={{ fontSize: 'clamp(48px, 5vw, 72px)' }}
+              className="font-serif font-[650] text-[#171614] editorial-headline leading-[1.04]"
+              style={{ fontSize: 'clamp(56px, 6vw, 88px)' }}
             >
               Five ways to begin
             </h2>
@@ -210,35 +210,35 @@ export default function HomePage() {
               <Link
                 key={card.title}
                 href={card.href}
-                className="group relative flex flex-col rounded-[26px] p-6 md:p-7 lg:p-[34px] transition-all duration-[280ms] ease-[cubic-bezier(.2,.8,.2,1)] hover:-translate-y-[6px] shadow-[inset_0_1px_0_rgba(255,255,255,0.82),0_14px_38px_rgba(80,55,25,0.08)] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.82),0_22px_56px_rgba(80,55,25,0.13)]"
+                className="group relative flex flex-col rounded-[26px] p-6 md:p-7 lg:p-[32px] transition-all duration-[280ms] ease-[cubic-bezier(.2,.8,.2,1)] hover:-translate-y-[6px] shadow-[inset_0_1px_0_rgba(255,255,255,0.90),0_16px_42px_rgba(80,55,25,0.08)] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.90),0_22px_54px_rgba(80,55,25,0.14)]"
                 style={{
-                  background: 'rgba(255,255,255,.58)',
-                  backdropFilter: 'blur(18px) saturate(145%)',
-                  WebkitBackdropFilter: 'blur(18px) saturate(145%)',
-                  border: '1px solid rgba(255,255,255,.62)',
+                  background: 'rgba(255,255,255,0.72)',
+                  backdropFilter: 'blur(18px) saturate(150%)',
+                  WebkitBackdropFilter: 'blur(18px) saturate(150%)',
+                  border: '1px solid rgba(255,255,255,0.82)',
                 }}
               >
                 <div
-                  className="flex items-center justify-center mb-6 group-hover:bg-[rgba(198,166,107,0.14)] transition-colors duration-[280ms]"
+                  className="flex items-center justify-center mb-[22px] group-hover:bg-[rgba(198,166,107,0.14)] transition-colors duration-[280ms]"
                   style={{
-                    width: '64px',
-                    height: '64px',
-                    borderRadius: '18px',
-                    background: 'rgba(198,166,107,.10)',
-                    border: '1px solid rgba(198,166,107,.18)',
-                    boxShadow: '0 6px 18px rgba(167,131,69,.08)',
+                    width: '56px',
+                    height: '56px',
+                    borderRadius: '16px',
+                    background: 'rgba(198,166,107,0.10)',
+                    border: '1px solid rgba(198,166,107,0.18)',
+                    boxShadow: '0 4px 14px rgba(167,131,69,0.08)',
                   }}
                 >
                   <card.icon size={24} className="text-[#A78345] group-hover:text-[#8A6B3A] transition-colors duration-[280ms]" />
                 </div>
                 <h3
-                  className="font-serif font-[620] text-[#171614] mb-[14px]"
-                  style={{ fontSize: '32px' }}
+                  className="font-serif font-[620] text-[#171614] mb-[16px] leading-[1.22]"
+                  style={{ fontSize: '22px' }}
                 >
                   {card.title}
                 </h3>
-                <p className="text-[17px] text-[#5D5245] leading-[1.65]">{card.desc}</p>
-                <div className="mt-5 w-10 h-px bg-[#D7CEC1] group-hover:w-14 group-hover:bg-[#C6A66B] transition-all duration-[280ms]" />
+                <p className="text-[16px] text-[#5D5245] leading-[1.62]" style={{ maxWidth: '28ch' }}>{card.desc}</p>
+                <div className="mt-[18px] w-[38px] h-px bg-[rgba(181,138,58,0.45)] group-hover:w-14 group-hover:bg-[#C6A66B] transition-all duration-[280ms]" />
               </Link>
             ))}
           </div>
