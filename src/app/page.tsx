@@ -168,64 +168,39 @@ export default function HomePage() {
         className="relative px-4 overflow-hidden"
         style={{
           paddingTop: '72px',
-          paddingBottom: '72px',
-          background: 'linear-gradient(180deg, #F8F4EC 0%, #F1E7D8 52%, #E7D5BC 100%)',
+          paddingBottom: '84px',
+          background: 'linear-gradient(180deg, #F6F1E7 0%, #EDE2CF 100%)',
         }}
       >
         {/* Grain texture */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
-            opacity: 0.035,
+            opacity: 0.03,
             backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
             backgroundRepeat: 'repeat',
             backgroundSize: '256px 256px',
           }}
         />
 
-        {/* Radial glow top-left */}
-        <div
-          className="absolute pointer-events-none"
-          style={{
-            top: '-80px',
-            left: '-80px',
-            width: '520px',
-            height: '520px',
-            background: 'radial-gradient(circle, rgba(255,245,228,.42) 0%, transparent 70%)',
-            filter: 'blur(140px)',
-          }}
-        />
-
-        {/* Secondary warm mass bottom-right */}
-        <div
-          className="absolute pointer-events-none"
-          style={{
-            bottom: '-60px',
-            right: '-60px',
-            width: '600px',
-            height: '600px',
-            background: 'radial-gradient(circle, rgba(191,152,91,.10) 0%, transparent 70%)',
-            filter: 'blur(180px)',
-          }}
-        />
-
-        {/* Edge vignette */}
+        {/* Spotlight */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
-            boxShadow: 'inset 0 0 120px rgba(78,52,22,0.06)',
+            background: 'radial-gradient(ellipse at 50% 40%, rgba(255,248,232,.45) 0%, transparent 60%)',
           }}
         />
 
-        {/* Top separator */}
-        <div className="absolute top-0 left-0 right-0 h-px" style={{ background: 'rgba(178,138,75,.18)' }} />
-
-        {/* Bottom separator */}
-        <div className="absolute bottom-0 left-0 right-0 h-px" style={{ background: 'rgba(87,60,34,.08)' }} />
-
-        <div className="relative max-w-6xl mx-auto">
+        <div
+          className="relative mx-auto"
+          style={{
+            maxWidth: '1480px',
+            paddingLeft: '56px',
+            paddingRight: '56px',
+          }}
+        >
           {/* Header */}
-          <div className="mb-[34px]" style={{ maxWidth: '780px' }}>
+          <div className="mb-[38px]">
             <p className="text-[#A57B3A] text-[15px] font-semibold tracking-[0.12em] mb-[14px]">How we serve</p>
             <h2
               className="font-serif font-[650] text-[#171410] editorial-headline"
@@ -233,175 +208,242 @@ export default function HomePage() {
                 fontSize: 'clamp(60px, 7vw, 110px)',
                 lineHeight: 0.95,
                 letterSpacing: '-0.035em',
-                maxWidth: '760px',
               }}
             >
               Five ways to begin
             </h2>
           </div>
 
-          {/* Desktop: Editorial Hero Panel + Staggered Grid */}
-          <div className="hidden md:grid" style={{ gridTemplateColumns: '1.7fr 1.3fr', gap: '34px', alignItems: 'stretch' }}>
-            {/* Hero Panel — Collect */}
+          {/* Desktop: 3-Column Gallery Editorial */}
+          <div className="hidden md:grid" style={{ gridTemplateColumns: '1.25fr 1fr 1fr', gap: '28px', alignItems: 'stretch' }}>
+            {/* Column 1 — Collect */}
             <Link
               href="/gallery"
               className="group relative flex flex-col overflow-hidden"
               style={{
-                minHeight: '640px',
+                minHeight: '760px',
                 borderRadius: '34px',
-                padding: '54px',
-                background: 'rgba(255,251,245,.58)',
-                backdropFilter: 'blur(24px) saturate(170%)',
-                WebkitBackdropFilter: 'blur(24px) saturate(170%)',
-                border: '1px solid rgba(255,255,255,.74)',
-                boxShadow: 'inset 0 1px 0 rgba(255,255,255,.88), 0 34px 84px rgba(78,52,22,.12)',
+                padding: '44px',
+                background: 'rgba(255,252,245,.74)',
+                backdropFilter: 'blur(18px)',
+                WebkitBackdropFilter: 'blur(18px)',
+                border: '1px solid rgba(210,188,152,.22)',
+                boxShadow: '0 22px 50px rgba(91,64,31,.08)',
               }}
             >
-              {/* Image panel */}
-              <div className="absolute right-0 top-0 h-full overflow-hidden" style={{ width: '44%' }}>
+              <div
+                className="flex items-center justify-center"
+                style={{
+                  width: '54px',
+                  height: '54px',
+                  borderRadius: '18px',
+                  background: 'rgba(184,141,69,.10)',
+                  border: '1px solid rgba(184,141,69,.18)',
+                }}
+              >
+                <Palette size={24} style={{ color: '#A57B3A' }} />
+              </div>
+
+              <h3
+                className="font-serif font-[650] text-[#171410] mt-[34px]"
+                style={{
+                  fontSize: 'clamp(26px, 1.8vw, 40px)',
+                  lineHeight: 1.02,
+                  letterSpacing: '-0.02em',
+                  wordBreak: 'normal',
+                  overflowWrap: 'normal',
+                  hyphens: 'none',
+                }}
+              >
+                Collect
+              </h3>
+
+              <p className="text-[18px] text-[#7A6E60] leading-[1.55] mt-[26px]" style={{ maxWidth: '24ch' }}>
+                Acquire exceptional works from Africa's most compelling artists.
+              </p>
+
+              <div className="mt-auto pt-8 flex items-center gap-2 text-[#9E7435] text-[17px] font-semibold">
+                <span>Explore Collection</span>
+                <ArrowRight size={16} />
+              </div>
+
+              {/* Artwork bottom half */}
+              <div
+                className="relative w-full overflow-hidden mt-auto"
+                style={{
+                  height: '48%',
+                  borderRadius: '26px',
+                  marginTop: '34px',
+                }}
+              >
                 <Image
                   src="https://images.unsplash.com/photo-1578321272176-b7bbc0679853?w=800&q=80"
                   alt="Curated art collection"
                   fill
                   className="object-cover"
-                  style={{ transform: 'scale(1.06)' }}
-                  sizes="40vw"
+                  sizes="33vw"
                   loading="lazy"
                 />
-                <div
-                  className="absolute inset-0"
-                  style={{
-                    background: 'linear-gradient(90deg, rgba(248,244,236,.72) 0%, rgba(248,244,236,0) 45%)',
-                  }}
-                />
-              </div>
-
-              {/* Content */}
-              <div className="relative z-10 flex flex-col justify-between h-full" style={{ width: '56%' }}>
-                <div>
-                  <div
-                    className="flex items-center justify-center"
-                    style={{
-                      width: '82px',
-                      height: '82px',
-                      borderRadius: '22px',
-                      background: 'rgba(184,141,69,.12)',
-                      border: '1px solid rgba(184,141,69,.22)',
-                    }}
-                  >
-                    <Palette size={36} style={{ color: '#A57B3A' }} />
-                  </div>
-                  <h3
-                    className="font-serif font-[650] text-[#171410] mt-[34px]"
-                    style={{
-                      fontSize: 'clamp(52px, 4vw, 64px)',
-                      lineHeight: 0.96,
-                      letterSpacing: '-0.025em',
-                      maxWidth: '360px',
-                      wordBreak: 'normal',
-                      overflowWrap: 'normal',
-                    }}
-                  >
-                    Collect
-                  </h3>
-                  <p className="text-[18px] text-[rgba(23,20,16,.72)] leading-[1.7] mt-[22px]" style={{ maxWidth: '320px' }}>
-                    Acquire exceptional works from Africa's most compelling artists.
-                  </p>
-                </div>
-                <div className="flex items-center gap-2 text-[#9E7435] text-[17px] font-semibold">
-                  <span>Explore Collection</span>
-                  <ArrowRight size={16} />
-                </div>
               </div>
             </Link>
 
-            {/* Staggered Grid — 4 secondary cards */}
-            <div className="grid grid-cols-2" style={{ gap: '22px' }}>
+            {/* Column 2 — Experience + Commission */}
+            <div className="flex flex-col" style={{ gap: '28px' }}>
               {[
-                { title: 'Experience', desc: 'Gather beautifully', href: '/events', icon: Wine, img: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=400&q=80', offset: 0 },
-                { title: 'Transform\u00A0Spaces', displayTitle: <>Transform<br />Spaces</>, desc: 'Curate environments', href: '/spaces', icon: Building2, img: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=400&q=80', offset: 34 },
-                { title: 'Commission', desc: 'Bespoke artistic creation', href: '/consult', icon: Brush, img: 'https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=400&q=80', offset: -18 },
-                { title: 'Join\u00A0Circle', displayTitle: <>Join<br />Circle</>, desc: 'Prestige membership', href: '/circle', icon: Star, img: 'https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=400&q=80', offset: 24 },
+                { title: 'Experience', desc: 'Gather beautifully', href: '/events', icon: Wine, img: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=600&q=80' },
+                { title: 'Commission', desc: 'Bespoke artistic creation', href: '/consult', icon: Brush, img: 'https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=600&q=80' },
               ].map((card) => (
                 <Link
                   key={card.title}
                   href={card.href}
                   className="group relative flex flex-col overflow-hidden"
                   style={{
-                    minHeight: '300px',
-                    borderRadius: '28px',
+                    flex: '1',
+                    minHeight: '366px',
+                    borderRadius: '30px',
                     padding: '34px',
-                    background: 'rgba(255,255,255,.44)',
-                    backdropFilter: 'blur(18px) saturate(160%)',
-                    WebkitBackdropFilter: 'blur(18px) saturate(160%)',
-                    border: '1px solid rgba(255,255,255,.60)',
-                    boxShadow: 'inset 0 1px 0 rgba(255,255,255,.76), 0 18px 46px rgba(72,48,24,.08)',
-                    transform: `translateY(${card.offset}px)`,
-                    transition: 'transform 320ms cubic-bezier(.2,.8,.2,1), box-shadow 320ms cubic-bezier(.2,.8,.2,1)',
-                    minWidth: '260px',
+                    background: 'rgba(255,252,245,.74)',
+                    backdropFilter: 'blur(18px)',
+                    WebkitBackdropFilter: 'blur(18px)',
+                    border: '1px solid rgba(210,188,152,.22)',
+                    boxShadow: '0 22px 50px rgba(91,64,31,.08)',
                   }}
                 >
-                  {/* Top row: icon + thumbnail */}
-                  <div className="flex items-start justify-between" style={{ gap: '18px' }}>
-                    <div
-                      className="flex items-center justify-center flex-shrink-0"
-                      style={{
-                        width: '56px',
-                        height: '56px',
-                        borderRadius: '18px',
-                        background: 'rgba(184,141,69,.10)',
-                        border: '1px solid rgba(184,141,69,.18)',
-                      }}
-                    >
-                      <card.icon size={24} style={{ color: '#A57B3A' }} />
-                    </div>
-
-                    <div
-                      className="flex-shrink-0 overflow-hidden"
-                      style={{
-                        width: '84px',
-                        height: '84px',
-                        borderRadius: '16px',
-                        border: '1px solid rgba(255,255,255,.65)',
-                      }}
-                    >
-                      <Image
-                        src={card.img}
-                        alt={card.title}
-                        width={84}
-                        height={84}
-                        className="object-cover"
-                        loading="lazy"
-                      />
-                    </div>
+                  <div
+                    className="flex items-center justify-center"
+                    style={{
+                      width: '54px',
+                      height: '54px',
+                      borderRadius: '18px',
+                      background: 'rgba(184,141,69,.10)',
+                      border: '1px solid rgba(184,141,69,.18)',
+                    }}
+                  >
+                    <card.icon size={24} style={{ color: '#A57B3A' }} />
                   </div>
 
-                  {/* Content block */}
-                  <div className="flex flex-col" style={{ gap: '4px', marginTop: '22px', width: '100%', minWidth: 0 }}>
-                    <h3
-                      className="font-serif font-[650] text-[#171410]"
-                      style={{
-                        fontSize: 'clamp(34px, 2vw, 44px)',
-                        lineHeight: 0.95,
-                        letterSpacing: '-0.03em',
-                        width: '100%',
-                        maxWidth: '100%',
-                        minWidth: 0,
-                        whiteSpace: 'normal',
-                        overflowWrap: 'normal',
-                        wordBreak: 'keep-all',
-                        hyphens: 'none',
-                      }}
-                    >
-                      {card.displayTitle || card.title}
-                    </h3>
-                    <p className="text-[16px] text-[#7A6E60] leading-[1.65] mt-[4px]" style={{ maxWidth: '26ch' }}>
-                      {card.desc}
-                    </p>
-                    <div className="mt-[18px] flex items-center gap-2 text-[#9E7435] text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <span>Explore</span>
-                      <ArrowRight size={14} />
-                    </div>
+                  <h3
+                    className="font-serif font-[650] text-[#171410] mt-[18px]"
+                    style={{
+                      fontSize: 'clamp(26px, 1.8vw, 40px)',
+                      lineHeight: 1.02,
+                      letterSpacing: '-0.02em',
+                      wordBreak: 'normal',
+                      overflowWrap: 'normal',
+                      hyphens: 'none',
+                    }}
+                  >
+                    {card.title}
+                  </h3>
+
+                  {/* Inline thumbnail below title */}
+                  <div
+                    className="relative w-full overflow-hidden"
+                    style={{
+                      height: '130px',
+                      borderRadius: '18px',
+                      marginTop: '18px',
+                      marginBottom: '22px',
+                    }}
+                  >
+                    <Image
+                      src={card.img}
+                      alt={card.title}
+                      fill
+                      className="object-cover"
+                      sizes="33vw"
+                      loading="lazy"
+                    />
+                  </div>
+
+                  <p className="text-[18px] text-[#7A6E60] leading-[1.55]" style={{ maxWidth: '24ch' }}>
+                    {card.desc}
+                  </p>
+
+                  <div className="mt-auto pt-4 flex items-center gap-2 text-[#9E7435] text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <span>Explore</span>
+                    <ArrowRight size={14} />
+                  </div>
+                </Link>
+              ))}
+            </div>
+
+            {/* Column 3 — Transform Spaces + Join Circle */}
+            <div className="flex flex-col" style={{ gap: '28px' }}>
+              {[
+                { title: 'Transform Spaces', displayTitle: <>Transform<br />Spaces</>, desc: 'Curate environments', href: '/spaces', icon: Building2, img: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=600&q=80' },
+                { title: 'Join Circle', displayTitle: <>Join<br />Circle</>, desc: 'Prestige membership', href: '/circle', icon: Star, img: 'https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=600&q=80' },
+              ].map((card) => (
+                <Link
+                  key={card.title}
+                  href={card.href}
+                  className="group relative flex flex-col overflow-hidden"
+                  style={{
+                    flex: '1',
+                    minHeight: '366px',
+                    borderRadius: '30px',
+                    padding: '34px',
+                    background: 'rgba(255,252,245,.74)',
+                    backdropFilter: 'blur(18px)',
+                    WebkitBackdropFilter: 'blur(18px)',
+                    border: '1px solid rgba(210,188,152,.22)',
+                    boxShadow: '0 22px 50px rgba(91,64,31,.08)',
+                  }}
+                >
+                  <div
+                    className="flex items-center justify-center"
+                    style={{
+                      width: '54px',
+                      height: '54px',
+                      borderRadius: '18px',
+                      background: 'rgba(184,141,69,.10)',
+                      border: '1px solid rgba(184,141,69,.18)',
+                    }}
+                  >
+                    <card.icon size={24} style={{ color: '#A57B3A' }} />
+                  </div>
+
+                  <h3
+                    className="font-serif font-[650] text-[#171410] mt-[18px]"
+                    style={{
+                      fontSize: 'clamp(26px, 1.8vw, 40px)',
+                      lineHeight: 1.02,
+                      letterSpacing: '-0.02em',
+                      wordBreak: 'normal',
+                      overflowWrap: 'normal',
+                      hyphens: 'none',
+                    }}
+                  >
+                    {card.displayTitle || card.title}
+                  </h3>
+
+                  {/* Inline thumbnail below title */}
+                  <div
+                    className="relative w-full overflow-hidden"
+                    style={{
+                      height: '130px',
+                      borderRadius: '18px',
+                      marginTop: '18px',
+                      marginBottom: '22px',
+                    }}
+                  >
+                    <Image
+                      src={card.img}
+                      alt={card.title}
+                      fill
+                      className="object-cover"
+                      sizes="33vw"
+                      loading="lazy"
+                    />
+                  </div>
+
+                  <p className="text-[18px] text-[#7A6E60] leading-[1.55]" style={{ maxWidth: '24ch' }}>
+                    {card.desc}
+                  </p>
+
+                  <div className="mt-auto pt-4 flex items-center gap-2 text-[#9E7435] text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <span>Explore</span>
+                    <ArrowRight size={14} />
                   </div>
                 </Link>
               ))}
@@ -418,11 +460,11 @@ export default function HomePage() {
                 style={{
                   borderRadius: '28px',
                   padding: '28px',
-                  background: 'rgba(255,255,255,.58)',
-                  backdropFilter: 'blur(18px) saturate(145%)',
-                  WebkitBackdropFilter: 'blur(18px) saturate(145%)',
-                  border: '1px solid rgba(255,255,255,.65)',
-                  boxShadow: 'inset 0 1px 0 rgba(255,255,255,.8), 0 18px 48px rgba(80,55,25,.08)',
+                  background: 'rgba(255,252,245,.74)',
+                  backdropFilter: 'blur(18px)',
+                  WebkitBackdropFilter: 'blur(18px)',
+                  border: '1px solid rgba(210,188,152,.22)',
+                  boxShadow: '0 22px 50px rgba(91,64,31,.08)',
                 }}
               >
                 <div
@@ -444,7 +486,7 @@ export default function HomePage() {
                   >
                     {card.title}
                   </h3>
-                  <p className="text-[15px] text-[#5D5245] leading-relaxed">{card.desc}</p>
+                  <p className="text-[15px] text-[#7A6E60] leading-relaxed">{card.desc}</p>
                 </div>
               </Link>
             ))}
