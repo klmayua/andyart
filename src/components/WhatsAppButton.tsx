@@ -17,18 +17,14 @@ export default function WhatsAppButton() {
 
   return (
     <div
-      className="fixed z-[1200]"
-      style={{
-        right: '24px',
-        bottom: '108px',
-      }}
+      className="relative"
       onMouseEnter={() => setShowTooltip(true)}
       onMouseLeave={() => setShowTooltip(false)}
     >
       {/* Tooltip */}
       {showTooltip && (
         <div
-          className="absolute right-[72px] top-1/2 -translate-y-1/2 whitespace-nowrap px-4 py-2 rounded-xl text-sm font-medium"
+          className="absolute right-[68px] top-1/2 -translate-y-1/2 whitespace-nowrap px-4 py-2 rounded-xl text-sm font-medium"
           style={{
             background: 'rgba(255,255,255,.88)',
             backdropFilter: 'blur(18px) saturate(150%)',
@@ -51,8 +47,8 @@ export default function WhatsAppButton() {
         aria-label="Open WhatsApp concierge chat"
         className="flex items-center justify-center transition-transform duration-200 hover:scale-[1.06] active:scale-[0.97]"
         style={{
-          width: '60px',
-          height: '60px',
+          width: '56px',
+          height: '56px',
           borderRadius: '999px',
           background: '#25D366',
           border: '1px solid rgba(255,255,255,.28)',

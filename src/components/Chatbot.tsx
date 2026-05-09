@@ -179,7 +179,7 @@ export default function Chatbot() {
     return (
       <button
         onClick={openChat}
-        className="fixed bottom-[150px] right-4 w-14 h-14 bg-andy-black/90 backdrop-blur-xl rounded-full shadow-premium border border-andy-gold/20 flex items-center justify-center hover:scale-105 transition-all z-30"
+        className="w-14 h-14 bg-andy-black/90 backdrop-blur-xl rounded-full shadow-premium border border-andy-gold/20 flex items-center justify-center hover:scale-105 transition-all"
         aria-label="Open Circle concierge chat"
       >
         <MessageCircle size={24} className="text-andy-gold" />
@@ -191,13 +191,13 @@ export default function Chatbot() {
     <>
       <button
         onClick={openChat}
-        className="fixed bottom-[150px] right-4 w-14 h-14 bg-andy-black/90 backdrop-blur-xl rounded-full shadow-premium border border-andy-gold/20 flex items-center justify-center hover:scale-105 transition-all z-30"
+        className="w-14 h-14 bg-andy-black/90 backdrop-blur-xl rounded-full shadow-premium border border-andy-gold/20 flex items-center justify-center hover:scale-105 transition-all"
         aria-label="Open Circle concierge chat"
       >
         <MessageCircle size={24} className="text-andy-gold" />
       </button>
 
-      <div className="fixed bottom-[150px] right-4 w-[300px] md:w-[380px] bg-andy-ivory/98 backdrop-blur-xl rounded-2xl shadow-premium border border-andy-stone/30 overflow-hidden z-30">
+      <div className="fixed bottom-[96px] right-6 w-[300px] md:w-[380px] bg-andy-ivory/98 backdrop-blur-xl rounded-2xl shadow-premium border border-andy-stone/30 overflow-hidden z-[10000]">
         {/* Header */}
         <div className="bg-andy-black px-4 py-3 flex items-center justify-between">
           <div>
