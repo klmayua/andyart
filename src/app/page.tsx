@@ -167,9 +167,8 @@ export default function HomePage() {
       <section
         className="relative px-4 overflow-hidden"
         style={{
-          minHeight: '980px',
-          paddingTop: '140px',
-          paddingBottom: '160px',
+          paddingTop: '88px',
+          paddingBottom: '110px',
           background: 'linear-gradient(180deg, #F8F4EC 0%, #F1E7D8 52%, #E7D5BC 100%)',
         }}
       >
@@ -226,7 +225,7 @@ export default function HomePage() {
 
         <div className="relative max-w-6xl mx-auto">
           {/* Header */}
-          <div className="mb-[90px]" style={{ maxWidth: '780px' }}>
+          <div className="mb-[54px]" style={{ maxWidth: '780px' }}>
             <p className="text-[#A57B3A] text-[15px] font-semibold tracking-[0.12em] mb-[20px]">How we serve</p>
             <h2
               className="font-serif font-[650] text-[#171410] editorial-headline"
@@ -444,9 +443,9 @@ export default function HomePage() {
       />
 
       {/* FEATURED COLLECTION */}
-      <section className="py-24 md:py-32 px-4 bg-[#FCFAF6]">
+      <section className="pt-[92px] pb-[110px] px-4 bg-[#FCFAF6]">
         <div className="max-w-6xl mx-auto">
-          <div className="flex items-end justify-between mb-14">
+          <div className="flex items-end justify-between mb-[46px]">
             <div>
               <p className="text-[#A78345] text-[13px] tracking-[0.04em] mb-3 font-medium">Curated Selection</p>
               <h2 className="font-serif text-3xl md:text-[44px] font-bold text-[#171614] editorial-headline leading-[1.1]">
@@ -497,10 +496,10 @@ export default function HomePage() {
       </section>
 
       {/* HERITAGE / MODERN BRIDGE */}
-      <section className="py-24 md:py-32 px-4 bg-[#171614] text-[#FFFDF9]">
+      <section className="pt-[96px] pb-[110px] px-4 bg-[#171614] text-[#FFFDF9]">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <p className="text-[#C6A66B] text-[13px] tracking-[0.04em] mb-3 font-medium">Our Curation Philosophy</p>
+          <div className="text-center mb-[34px]">
+            <p className="text-[#C6A66B] text-[13px] tracking-[0.04em] mb-[10px] font-medium">Our Curation Philosophy</p>
             <h2 className="font-serif text-3xl md:text-[44px] font-bold editorial-headline leading-[1.1]">
               Heritage informs.
               <br />
@@ -532,11 +531,11 @@ export default function HomePage() {
       </section>
 
       {/* SIGNATURE EXPERIENCES */}
-      <section className="py-24 md:py-32 px-4 bg-[#F7F2E8]">
+      <section className="pt-[88px] pb-[96px] px-4 bg-[#F7F2E8]">
         <div className="max-w-6xl mx-auto">
-          <div className="flex items-end justify-between mb-14">
+          <div className="flex items-end justify-between mb-[42px]">
             <div>
-              <p className="text-[#A78345] text-[13px] tracking-[0.04em] mb-3 font-medium">Gatherings</p>
+              <p className="text-[#A78345] text-[13px] tracking-[0.04em] mb-[10px] font-medium">Gatherings</p>
               <h2 className="font-serif text-3xl md:text-[44px] font-bold text-[#171614] editorial-headline leading-[1.1]">
                 AndyArt Experiences
               </h2>
@@ -572,19 +571,19 @@ export default function HomePage() {
       </section>
 
       {/* SPACES BY ANDYART */}
-      <section className="py-24 md:py-32 px-4 bg-[#FFFDF9]">
+      <section className="pt-[82px] pb-[96px] px-4 bg-[#FFFDF9]">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-14 items-center">
             <div>
-              <p className="text-[#A78345] text-[13px] tracking-[0.04em] mb-3 font-medium">B2B Curation</p>
-              <h2 className="font-serif text-3xl md:text-[44px] font-bold text-[#171614] editorial-headline leading-[1.1] mb-6">
+              <p className="text-[#A78345] text-[13px] tracking-[0.04em] mb-[10px] font-medium">B2B Curation</p>
+              <h2 className="font-serif text-3xl md:text-[44px] font-bold text-[#171614] editorial-headline leading-[1.1] mb-[32px]">
                 Spaces by AndyArt
               </h2>
-              <p className="text-[#5D4633] leading-[1.7] mb-8 text-[15px]">
+              <p className="text-[#5D4633] leading-[1.7] mb-6 text-[15px]">
                 We curate art environments for offices, hotels, executive suites, and hospitality spaces.
                 From single statement pieces to rotating leasing programs, we transform how your space speaks.
               </p>
-              <div className="space-y-3 mb-8">
+              <div className="space-y-3 mb-6">
                 {['Office Curation', 'Hospitality Art Programs', 'Executive Suite Collections', 'Rotating Leasing', 'Bespoke Installations', 'Luxury Gifting'].map((item) => (
                   <div key={item} className="flex items-center gap-3">
                     <div className="w-[5px] h-[5px] rounded-full bg-[#C6A66B]" />
@@ -624,7 +623,7 @@ export default function HomePage() {
       </section>
 
       {/* FEATURED ARTIST STORY */}
-      <section className="py-24 md:py-32 px-4 bg-[#F7F2E8]">
+      <section className="pt-[82px] pb-[96px] px-4 bg-[#F7F2E8]">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-14 items-center">
             <div className="relative aspect-square rounded-2xl overflow-hidden shadow-[0_14px_40px_rgba(0,0,0,0.08)] order-2 md:order-1">
@@ -638,15 +637,15 @@ export default function HomePage() {
               />
             </div>
             <div className="order-1 md:order-2">
-              <p className="text-[#A78345] text-[13px] tracking-[0.04em] mb-3 font-medium">Artist Spotlight</p>
-              <h2 className="font-serif text-3xl md:text-[44px] font-bold text-[#171614] editorial-headline leading-[1.1] mb-6">
+              <p className="text-[#A78345] text-[13px] tracking-[0.04em] mb-[10px] font-medium">Artist Spotlight</p>
+              <h2 className="font-serif text-3xl md:text-[44px] font-bold text-[#171614] editorial-headline leading-[1.1] mb-[32px]">
                 Ngozi Okeke
               </h2>
-              <p className="text-[#5D4633] leading-[1.7] mb-5 text-[15px]">
+              <p className="text-[#5D4633] leading-[1.7] mb-4 text-[15px]">
                 Born in Enugu and trained in London, Ngozi Okeke works in bronze and reclaimed timber to create
                 sculptures that speak to identity, memory, and the quiet strength of women across generations.
               </p>
-              <p className="text-[#5D4633] leading-[1.7] mb-8 text-[15px]">
+              <p className="text-[#5D4633] leading-[1.7] mb-6 text-[15px]">
                 Her work has been acquired by collectors in Lagos, New York, and Paris.
                 We are honored to represent her latest collection, <em>Roots That Whisper</em>.
               </p>
@@ -662,17 +661,17 @@ export default function HomePage() {
       </section>
 
       {/* PRIVATE VIEWING ROOMS */}
-      <section className="py-24 md:py-32 px-4 bg-[#171614] text-[#FFFDF9]">
+      <section className="pt-[84px] pb-[96px] px-4 bg-[#171614] text-[#FFFDF9]">
         <div className="max-w-6xl mx-auto text-center">
-          <p className="text-[#C6A66B] text-[13px] tracking-[0.04em] mb-3 font-medium">Exclusive Access</p>
-          <h2 className="font-serif text-3xl md:text-[44px] font-bold editorial-headline leading-[1.1] mb-6">
+          <p className="text-[#C6A66B] text-[13px] tracking-[0.04em] mb-[10px] font-medium">Exclusive Access</p>
+          <h2 className="font-serif text-3xl md:text-[44px] font-bold editorial-headline leading-[1.1] mb-[18px]">
             Private Viewing Rooms
           </h2>
-          <p className="text-[#FFFDF9]/50 max-w-[640px] mx-auto mb-12 leading-[1.7] text-[15px]">
+          <p className="text-[#FFFDF9]/50 max-w-[640px] mx-auto mb-[30px] leading-[1.7] text-[15px]">
             Experience art in an intimate setting. Our private viewing rooms are available
             by appointment for collectors, corporate clients, and Circle members.
           </p>
-          <div className="grid md:grid-cols-3 gap-5 mb-12">
+          <div className="grid md:grid-cols-3 gap-5 mb-[30px]">
             {[
               { title: 'The Heritage Room', desc: 'Traditional and classical works in a quiet, contemplative space.' },
               { title: 'The Contemporary Room', desc: 'Bold, modern pieces with dramatic lighting and scale.' },
@@ -695,10 +694,10 @@ export default function HomePage() {
       </section>
 
       {/* COLLECTOR TESTIMONIALS */}
-      <section className="py-24 md:py-32 px-4 bg-[#FFFDF9]">
+      <section className="pt-[84px] pb-[96px] px-4 bg-[#FFFDF9]">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <p className="text-[#A78345] text-[13px] tracking-[0.04em] mb-3 font-medium">Voices</p>
+          <div className="text-center mb-[34px]">
+            <p className="text-[#A78345] text-[13px] tracking-[0.04em] mb-[10px] font-medium">Voices</p>
             <h2 className="font-serif text-3xl md:text-[44px] font-bold text-[#171614] editorial-headline leading-[1.1]">
               From Our Collectors
             </h2>
@@ -721,11 +720,11 @@ export default function HomePage() {
       </section>
 
       {/* JOURNAL EDITORIAL */}
-      <section className="py-24 md:py-32 px-4 bg-[#F7F2E8]">
+      <section className="pt-[80px] pb-[96px] px-4 bg-[#F7F2E8]">
         <div className="max-w-6xl mx-auto">
-          <div className="flex items-end justify-between mb-14">
+          <div className="flex items-end justify-between mb-[42px]">
             <div>
-              <p className="text-[#A78345] text-[13px] tracking-[0.04em] mb-3 font-medium">Authority Engine</p>
+              <p className="text-[#A78345] text-[13px] tracking-[0.04em] mb-[10px] font-medium">Authority Engine</p>
               <h2 className="font-serif text-3xl md:text-[44px] font-bold text-[#171614] editorial-headline leading-[1.1]">
                 The Journal
               </h2>
@@ -735,7 +734,7 @@ export default function HomePage() {
             </Link>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-5">
+          <div className="grid md:grid-cols-3 gap-6">
             {journalTeasers.map((article) => (
               <Link key={article.title} href="/journal" className="group">
                 <div className="bg-[#FFFDF9] rounded-2xl p-8 border border-[rgba(0,0,0,0.03)] shadow-[0_14px_35px_rgba(0,0,0,0.04)] hover:border-[rgba(198,166,107,0.18)] hover:shadow-[0_20px_45px_rgba(0,0,0,0.06)] transition-all duration-500 h-full">
@@ -755,13 +754,13 @@ export default function HomePage() {
       </section>
 
       {/* CONCIERGE BANNER */}
-      <section className="py-24 md:py-32 px-4 bg-[#30463A] text-[#FFFDF9]">
+      <section className="pt-[84px] pb-[96px] px-4 bg-[#30463A] text-[#FFFDF9]">
         <div className="max-w-4xl mx-auto text-center">
-          <p className="text-[#C6A66B] text-[13px] tracking-[0.04em] mb-3 font-medium">White Glove Service</p>
-          <h2 className="font-serif text-3xl md:text-[44px] font-bold editorial-headline leading-[1.1] mb-6">
+          <p className="text-[#C6A66B] text-[13px] tracking-[0.04em] mb-[10px] font-medium">White Glove Service</p>
+          <h2 className="font-serif text-3xl md:text-[44px] font-bold editorial-headline leading-[1.1] mb-[18px]">
             Collector Concierge
           </h2>
-          <p className="text-[#FFFDF9]/50 max-w-[640px] mx-auto mb-12 leading-[1.7] text-[15px]">
+          <p className="text-[#FFFDF9]/50 max-w-[640px] mx-auto mb-[30px] leading-[1.7] text-[15px]">
             Sourcing, commissioning, gifting, installation, framing, private viewings, and advisory.
             Our concierge team is available via chat, WhatsApp, or callback.
           </p>
@@ -786,7 +785,7 @@ export default function HomePage() {
       </section>
 
       {/* LUXURY FOOTER */}
-      <footer className="py-20 md:py-24 px-4 bg-[#171614] text-[#FFFDF9] border-t border-[#FFFDF9]/[0.05]">
+      <footer className="pt-[68px] pb-[76px] px-4 bg-[#171614] text-[#FFFDF9] border-t border-[#FFFDF9]/[0.05]">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-20">
             <div className="col-span-2 md:col-span-1">
