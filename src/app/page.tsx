@@ -167,8 +167,8 @@ export default function HomePage() {
       <section
         className="relative px-4 overflow-hidden"
         style={{
-          paddingTop: '88px',
-          paddingBottom: '110px',
+          paddingTop: '72px',
+          paddingBottom: '72px',
           background: 'linear-gradient(180deg, #F8F4EC 0%, #F1E7D8 52%, #E7D5BC 100%)',
         }}
       >
@@ -225,8 +225,8 @@ export default function HomePage() {
 
         <div className="relative max-w-6xl mx-auto">
           {/* Header */}
-          <div className="mb-[54px]" style={{ maxWidth: '780px' }}>
-            <p className="text-[#A57B3A] text-[15px] font-semibold tracking-[0.12em] mb-[20px]">How we serve</p>
+          <div className="mb-[34px]" style={{ maxWidth: '780px' }}>
+            <p className="text-[#A57B3A] text-[15px] font-semibold tracking-[0.12em] mb-[14px]">How we serve</p>
             <h2
               className="font-serif font-[650] text-[#171410] editorial-headline"
               style={{
@@ -238,19 +238,16 @@ export default function HomePage() {
             >
               Five ways to begin
             </h2>
-            <p className="text-[22px] text-[rgba(23,20,16,.72)] leading-[1.7] mt-[28px]" style={{ maxWidth: '640px' }}>
-              Every collector's journey starts somewhere. Choose the path that speaks to you.
-            </p>
           </div>
 
           {/* Desktop: Editorial Hero Panel + Staggered Grid */}
-          <div className="hidden md:grid" style={{ gridTemplateColumns: '1.25fr 0.95fr', gap: '44px', alignItems: 'stretch' }}>
+          <div className="hidden md:grid" style={{ gridTemplateColumns: '1.7fr 1.3fr', gap: '34px', alignItems: 'stretch' }}>
             {/* Hero Panel — Collect */}
             <Link
               href="/gallery"
               className="group relative flex flex-col overflow-hidden"
               style={{
-                minHeight: '620px',
+                minHeight: '640px',
                 borderRadius: '34px',
                 padding: '54px',
                 background: 'rgba(255,251,245,.58)',
@@ -280,7 +277,7 @@ export default function HomePage() {
               </div>
 
               {/* Content */}
-              <div className="relative z-10 flex flex-col justify-between h-full" style={{ width: '58%' }}>
+              <div className="relative z-10 flex flex-col justify-between h-full" style={{ width: '56%' }}>
                 <div>
                   <div
                     className="flex items-center justify-center"
@@ -319,21 +316,21 @@ export default function HomePage() {
             </Link>
 
             {/* Staggered Grid — 4 secondary cards */}
-            <div className="grid grid-cols-2" style={{ gap: '26px' }}>
+            <div className="grid grid-cols-2" style={{ gap: '22px' }}>
               {[
-                { title: 'Experience', desc: 'Gather beautifully', href: '/events', icon: Wine, img: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=400&q=80', offset: 0, chipSize: 82, titleMaxW: '78%' },
-                { title: 'Transform\u00A0Spaces', displayTitle: <>Transform<br />Spaces</>, desc: 'Curate environments', href: '/spaces', icon: Building2, img: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=400&q=80', offset: 34, titleMaxW: '88%' },
-                { title: 'Commission', desc: 'Bespoke artistic creation', href: '/consult', icon: Brush, img: 'https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=400&q=80', offset: -18, titleMaxW: '92%', titleSize: 'clamp(24px, 1.8vw, 30px)' },
-                { title: 'Join\u00A0Circle', displayTitle: <>Join<br />Circle</>, desc: 'Prestige membership', href: '/circle', icon: Star, img: 'https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=400&q=80', offset: 24, titleMaxW: '80%' },
+                { title: 'Experience', desc: 'Gather beautifully', href: '/events', icon: Wine, img: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=400&q=80', offset: 0 },
+                { title: 'Transform\u00A0Spaces', displayTitle: <>Transform<br />Spaces</>, desc: 'Curate environments', href: '/spaces', icon: Building2, img: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=400&q=80', offset: 34 },
+                { title: 'Commission', desc: 'Bespoke artistic creation', href: '/consult', icon: Brush, img: 'https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=400&q=80', offset: -18 },
+                { title: 'Join\u00A0Circle', displayTitle: <>Join<br />Circle</>, desc: 'Prestige membership', href: '/circle', icon: Star, img: 'https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=400&q=80', offset: 24 },
               ].map((card) => (
                 <Link
                   key={card.title}
                   href={card.href}
-                  className="group relative flex flex-col justify-between overflow-hidden"
+                  className="group relative flex flex-col overflow-hidden"
                   style={{
-                    minHeight: '285px',
+                    minHeight: '300px',
                     borderRadius: '28px',
-                    padding: '28px',
+                    padding: '34px',
                     background: 'rgba(255,255,255,.44)',
                     backdropFilter: 'blur(18px) saturate(160%)',
                     WebkitBackdropFilter: 'blur(18px) saturate(160%)',
@@ -341,62 +338,64 @@ export default function HomePage() {
                     boxShadow: 'inset 0 1px 0 rgba(255,255,255,.76), 0 18px 46px rgba(72,48,24,.08)',
                     transform: `translateY(${card.offset}px)`,
                     transition: 'transform 320ms cubic-bezier(.2,.8,.2,1), box-shadow 320ms cubic-bezier(.2,.8,.2,1)',
-                    alignItems: 'flex-start',
+                    minWidth: '260px',
                   }}
                 >
-                  {/* Visual chip */}
-                  <div
-                    className="absolute overflow-hidden"
-                    style={{
-                      top: '20px',
-                      right: '20px',
-                      width: card.chipSize ? `${card.chipSize}px` : '92px',
-                      height: card.chipSize ? `${card.chipSize}px` : '92px',
-                      borderRadius: '18px',
-                      opacity: 0.92,
-                      border: '1px solid rgba(255,255,255,.65)',
-                    }}
-                  >
-                    <Image
-                      src={card.img}
-                      alt={card.title}
-                      fill
-                      className="object-cover"
-                      sizes="100px"
-                      loading="lazy"
-                    />
-                  </div>
-
-                  <div
-                    className="flex items-center justify-center"
-                    style={{
-                      width: '62px',
-                      height: '62px',
-                      borderRadius: '18px',
-                      background: 'rgba(184,141,69,.10)',
-                      border: '1px solid rgba(184,141,69,.18)',
-                    }}
-                  >
-                    <card.icon size={26} style={{ color: '#A57B3A' }} />
-                  </div>
-
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginTop: 'auto', width: '100%' }}>
-                    <h3
-                      className="font-serif font-semibold text-[#171410]"
+                  {/* Top row: icon + thumbnail */}
+                  <div className="flex items-start justify-between" style={{ gap: '18px' }}>
+                    <div
+                      className="flex items-center justify-center flex-shrink-0"
                       style={{
-                        fontSize: card.titleSize || 'clamp(26px, 2vw, 34px)',
-                        lineHeight: 1.04,
-                        letterSpacing: '-0.02em',
-                        maxWidth: card.titleMaxW || '100%',
-                        overflow: 'hidden',
-                        textOverflow: 'clip',
-                        wordBreak: 'normal',
-                        overflowWrap: 'break-word',
+                        width: '56px',
+                        height: '56px',
+                        borderRadius: '18px',
+                        background: 'rgba(184,141,69,.10)',
+                        border: '1px solid rgba(184,141,69,.18)',
+                      }}
+                    >
+                      <card.icon size={24} style={{ color: '#A57B3A' }} />
+                    </div>
+
+                    <div
+                      className="flex-shrink-0 overflow-hidden"
+                      style={{
+                        width: '84px',
+                        height: '84px',
+                        borderRadius: '16px',
+                        border: '1px solid rgba(255,255,255,.65)',
+                      }}
+                    >
+                      <Image
+                        src={card.img}
+                        alt={card.title}
+                        width={84}
+                        height={84}
+                        className="object-cover"
+                        loading="lazy"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Content block */}
+                  <div className="flex flex-col" style={{ gap: '4px', marginTop: '22px', width: '100%', minWidth: 0 }}>
+                    <h3
+                      className="font-serif font-[650] text-[#171410]"
+                      style={{
+                        fontSize: 'clamp(34px, 2vw, 44px)',
+                        lineHeight: 0.95,
+                        letterSpacing: '-0.03em',
+                        width: '100%',
+                        maxWidth: '100%',
+                        minWidth: 0,
+                        whiteSpace: 'normal',
+                        overflowWrap: 'normal',
+                        wordBreak: 'keep-all',
+                        hyphens: 'none',
                       }}
                     >
                       {card.displayTitle || card.title}
                     </h3>
-                    <p className="text-[16px] text-[rgba(23,20,16,.70)] leading-[1.6]" style={{ maxWidth: '92%' }}>
+                    <p className="text-[16px] text-[#7A6E60] leading-[1.65] mt-[4px]" style={{ maxWidth: '26ch' }}>
                       {card.desc}
                     </p>
                     <div className="mt-[18px] flex items-center gap-2 text-[#9E7435] text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
