@@ -4,7 +4,6 @@ import './globals.css';
 import Ticker from '@/components/Ticker';
 import Header from '@/components/Header';
 import BottomNav from '@/components/BottomNav';
-import FloatingFooter from '@/components/FloatingFooter';
 import FloatingActions from '@/components/FloatingActions';
 
 const inter = Inter({
@@ -47,7 +46,6 @@ export default function RootLayout({
           {children}
         </main>
         <BottomNav />
-        <FloatingFooter />
         <FloatingActions />
       </body>
     </html>
