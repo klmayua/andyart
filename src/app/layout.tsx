@@ -6,6 +6,7 @@ import Header from '@/components/Header';
 import BottomNav from '@/components/BottomNav';
 import FloatingFooter from '@/components/FloatingFooter';
 import Chatbot from '@/components/Chatbot';
+import WhatsAppButton from '@/components/WhatsAppButton';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -48,6 +49,7 @@ export default function RootLayout({
         </main>
         <BottomNav />
         <FloatingFooter />
+        <WhatsAppButton />
         <Chatbot />
       </body>
     </html>

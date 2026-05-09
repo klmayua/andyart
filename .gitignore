@@ -46,3 +46,7 @@ next-env.d.ts
 *.swp
 *.swo
 *~
+
+# dev logs
+dev-log.txt
+start-log.txt
