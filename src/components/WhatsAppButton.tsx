@@ -1,27 +1,82 @@
 'use client';
 
 import { MessageCircle } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
+
+interface WhatsAppMessageOptions {
+  artworkTitle?: string;
+  artistName?: string;
+  price?: number | null;
+  eventTitle?: string;
+  eventDate?: string;
+  serviceInterest?: string;
+  url?: string;
+}
+
+function buildWhatsAppMessage(opts: WhatsAppMessageOptions): string {
+  const base = 'Hello AndyArt,';
+  const lines: string[] = [base];
+
+  if (opts.artworkTitle) {
+    lines.push(`I'm interested in: ${opts.artworkTitle}`);
+    if (opts.artistName) lines.push(`Artist: ${opts.artistName}`);
+    if (opts.price) lines.push(`Price: $${opts.price.toLocaleString()}`);
+  }
+
+  if (opts.eventTitle) {
+    lines.push(`I'd like to know more about: ${opts.eventTitle}`);
+    if (opts.eventDate) lines.push(`Date: ${opts.eventDate}`);
+  }
+
+  if (opts.serviceInterest) {
+    lines.push(`Service inquiry: ${opts.serviceInterest}`);
+  }
+
+  if (!opts.artworkTitle && !opts.eventTitle && !opts.serviceInterest) {
+    lines.push('I would like to speak with your concierge team.');
+  }
+
+  lines.push('');
+  lines.push(`Page: ${opts.url || window.location.href}`);
+
+  return encodeURIComponent(lines.join('\n'));
+}
 
 export default function WhatsAppButton() {
   const [showTooltip, setShowTooltip] = useState(false);
 
-  const whatsappUrl = process.env.NEXT_PUBLIC_WHATSAPP_URL || '#';
+  const whatsappBase = process.env.NEXT_PUBLIC_WHATSAPP_URL || 'https://wa.me/2348002649278';
 
-  const handleClick = (e: React.MouseEvent) => {
-    if (whatsappUrl === '#') {
-      e.preventDefault();
-      alert('WhatsApp concierge coming soon. Please email hello@andyart.gallery');
-    }
-  };
+  const openWhatsApp = useCallback((opts: WhatsAppMessageOptions = {}) => {
+    const url = opts.url
+      ? `${whatsappBase}?text=${buildWhatsAppMessage({ ...opts, url: opts.url })}`
+      : `${whatsappBase}?text=${buildWhatsAppMessage(opts)}`;
+    window.open(url, '_blank', 'noopener,noreferrer');
+  }, [whatsappBase]);
 
+  return (
+    <WhatsAppButtonStandalone
+      showTooltip={showTooltip}
+      onShowTooltip={setShowTooltip}
+      onOpen={() => openWhatsApp({ url: window.location.href })}
+    />
+  );
+}
+
+interface WhatsAppButtonStandaloneProps {
+  showTooltip: boolean;
+  onShowTooltip: (v: boolean) => void;
+  onOpen: () => void;
+  messageOptions?: WhatsAppMessageOptions;
+}
+
+export function WhatsAppButtonStandalone({ showTooltip, onShowTooltip, onOpen, messageOptions }: WhatsAppButtonStandaloneProps) {
   return (
     <div
       className="relative"
-      onMouseEnter={() => setShowTooltip(true)}
-      onMouseLeave={() => setShowTooltip(false)}
+      onMouseEnter={() => onShowTooltip(true)}
+      onMouseLeave={() => onShowTooltip(false)}
     >
-      {/* Tooltip */}
       {showTooltip && (
         <div
           className="absolute right-[68px] top-1/2 -translate-y-1/2 whitespace-nowrap px-4 py-2 rounded-xl text-sm font-medium"
@@ -37,13 +92,8 @@ export default function WhatsAppButton() {
           Chat with Concierge
         </div>
       )}
-
-      {/* Button */}
-      <a
-        href={whatsappUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        onClick={handleClick}
+      <button
+        onClick={onOpen}
         aria-label="Open WhatsApp concierge chat"
         className="flex items-center justify-center transition-transform duration-200 hover:scale-[1.06] active:scale-[0.97]"
         style={{
@@ -56,7 +106,7 @@ export default function WhatsAppButton() {
         }}
       >
         <MessageCircle size={28} style={{ color: 'white' }} />
-      </a>
+      </button>
     </div>
   );
 }

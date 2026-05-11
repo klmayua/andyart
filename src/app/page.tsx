@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, Star, Gem, Shield, Sparkles, Palette, Building2, Wine, Users, Brush, Compass, Heart, Eye } from 'lucide-react';
 import { IMAGES } from '@/lib/images';
+import FooterNewsletter from '@/components/newsletter/FooterNewsletter';
 
 const trustStrip = [
   { icon: Gem, label: 'Curated Originals' },
@@ -848,6 +849,13 @@ export default function HomePage() {
       {/* LUXURY FOOTER */}
       <footer className="pt-[68px] pb-[76px] px-4 bg-[#171614] text-[#FFFDF9] border-t border-[#FFFDF9]/[0.05]">
         <div className="max-w-6xl mx-auto">
+          {/* Newsletter in footer */}
+          <div className="mb-12 pb-10 border-b border-[#FFFDF9]/[0.06]">
+            <h3 className="font-serif text-lg font-bold text-[#FFFDF9] mb-2 text-center">Join the Circle</h3>
+            <p className="text-[#FFFDF9]/40 text-sm text-center mb-6">Collector stories, artist insights, and exclusive access.</p>
+            <FooterNewsletter />
+          </div>
+
           <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-20">
             <div className="col-span-2 md:col-span-1">
               <div className="mb-5">

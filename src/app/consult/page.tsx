@@ -6,6 +6,8 @@ import { ChevronLeft, Calendar, Clock, CheckCircle, Phone, MessageCircle } from 
 
 export default function ConsultPage() {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState('');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -18,7 +20,28 @@ export default function ConsultPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitted(true);
+    setIsSubmitting(true);
+    setError('');
+
+    try {
+      const response = await fetch('/api/consult', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setIsSubmitted(true);
+      } else {
+        setError(data.error || 'Failed to submit. Please try again.');
+      }
+    } catch (err) {
+      setError('Network error. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (isSubmitted) {
@@ -195,11 +218,16 @@ export default function ConsultPage() {
             />
           </div>
 
+          {error && (
+            <p className="text-sm text-andy-wine bg-andy-wine/10 px-4 py-3 rounded-lg">{error}</p>
+          )}
+
           <button
             type="submit"
-            className="w-full bg-andy-black text-andy-ivory py-3.5 rounded-full font-medium hover:bg-andy-black/80 transition-all text-sm tracking-wide"
+            disabled={isSubmitting}
+            className="w-full bg-andy-black text-andy-ivory py-3.5 rounded-full font-medium hover:bg-andy-black/80 transition-all text-sm tracking-wide disabled:opacity-60"
           >
-            Request Consultation
+            {isSubmitting ? 'Submitting...' : 'Request Consultation'}
           </button>
 
           <div className="flex items-center justify-center gap-4 pt-2">

@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { ArrowRight, Clock, User } from 'lucide-react';
 import { journalArticles } from '@/data/journal';
 import { getAllCategories } from '@/lib/journal';
+import JournalNewsletter from '@/components/newsletter/JournalNewsletter';
 
 export default function JournalPage() {
   const categories = getAllCategories();
@@ -106,6 +107,8 @@ export default function JournalPage() {
           </div>
         </div>
       </section>
+
+      <JournalNewsletter />
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import ServiceCard from '@/components/ServiceCard';
-import { Paintbrush, Building, Wine, Hammer, Clipboard, GlassWater, Phone, MessageCircle, Calendar, Compass, Gift } from 'lucide-react';
+import ServiceChannels from '@/components/ServiceChannels';
+import { Paintbrush, Building, Wine, Hammer, Clipboard, GlassWater, Calendar, Compass, Gift } from 'lucide-react';
 
 const services = [
   {
@@ -64,12 +65,6 @@ const services = [
   },
 ];
 
-const channels = [
-  { icon: MessageCircle, label: 'Circle Chat', desc: 'Instant concierge', href: '#' },
-  { icon: Phone, label: 'WhatsApp', desc: '+234 800 ANDY ART', href: 'https://wa.me/2348002649278' },
-  { icon: Calendar, label: 'Callback', desc: 'Schedule a call', href: '/consult' },
-];
-
 export default function ServicesPage() {
   return (
     <div className="min-h-screen py-8 px-4 pt-24">
@@ -81,27 +76,12 @@ export default function ServicesPage() {
             Concierge
           </h1>
           <p className="text-andy-bronze max-w-xl leading-relaxed">
-            Sourcing, commissions, gifting, installation, framing, private viewings, and advisory. 
+            Sourcing, commissions, gifting, installation, framing, private viewings, and advisory.
             Our concierge team is at your service.
           </p>
         </div>
 
-        {/* Channels */}
-        <div className="grid grid-cols-3 gap-4 mb-12">
-          {channels.map((ch) => (
-            <a
-              key={ch.label}
-              href={ch.href}
-              target={ch.href.startsWith('http') ? '_blank' : undefined}
-              rel={ch.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-              className="bg-white rounded-xl p-5 border border-andy-stone/30 hover:border-andy-gold/30 hover:shadow-premium transition-all text-center"
-            >
-              <ch.icon size={20} className="mx-auto mb-2 text-andy-bronze" />
-              <p className="text-sm font-semibold text-andy-black">{ch.label}</p>
-              <p className="text-xs text-andy-bronze">{ch.desc}</p>
-            </a>
-          ))}
-        </div>
+        <ServiceChannels />
 
         {/* Services Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">

@@ -6,6 +6,8 @@ import { ChevronLeft, CheckCircle } from 'lucide-react';
 
 export default function HostEventPage() {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState('');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -19,7 +21,28 @@ export default function HostEventPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitted(true);
+    setIsSubmitting(true);
+    setError('');
+
+    try {
+      const response = await fetch('/api/events/host', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setIsSubmitted(true);
+      } else {
+        setError(data.error || 'Failed to submit. Please try again.');
+      }
+    } catch (err) {
+      setError('Network error. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (isSubmitted) {
@@ -125,8 +148,13 @@ export default function HostEventPage() {
             <label className="block text-sm font-medium text-andy-black mb-1">Tell Us About Your Event</label>
             <textarea rows={4} value={formData.message} onChange={(e) => setFormData({ ...formData, message: e.target.value })} className="w-full px-4 py-2 border border-andy-stone/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-andy-gold/30 bg-andy-ivory/50" placeholder="Describe your vision..." />
           </div>
-          <button type="submit" className="w-full bg-andy-black text-andy-ivory py-3 rounded-full font-medium hover:bg-andy-black/80 transition-colors text-sm tracking-wide">
-            Submit Request
+
+          {error && (
+            <p className="text-sm text-andy-wine bg-andy-wine/10 px-4 py-3 rounded-lg">{error}</p>
+          )}
+
+          <button type="submit" disabled={isSubmitting} className="w-full bg-andy-black text-andy-ivory py-3 rounded-full font-medium hover:bg-andy-black/80 transition-colors text-sm tracking-wide disabled:opacity-60">
+            {isSubmitting ? 'Submitting...' : 'Submit Request'}
           </button>
         </form>
       </div>
