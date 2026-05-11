@@ -2,12 +2,13 @@
 
 import { useMemo, useState } from 'react';
 import { Receipt, Download, Search, Send } from 'lucide-react';
+import { useClientData } from '@/hooks/useClientData';
 import { getInvoices } from '@/lib/payment';
 import { INVOICE_STATUS_LABELS, INVOICE_STATUS_COLORS } from '@/types/payment';
 import type { InvoiceStatus } from '@/types/payment';
 
 export default function OpsInvoicesPage() {
-  const invoices = useMemo(() => getInvoices(), []);
+  const invoices = useClientData(() => getInvoices(), []);
   const [search, setSearch] = useState('');
   const [filter, setFilter] = useState<InvoiceStatus | 'all'>('all');
 

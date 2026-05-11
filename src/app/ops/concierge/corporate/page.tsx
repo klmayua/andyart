@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from 'react';
 import { Building2, MapPin, X, MessageCircle, Phone, Mail } from 'lucide-react';
+import { useClientData } from '@/hooks/useClientData';
 import { getAllCorporate, updateCorporateStatus } from '@/lib/concierge';
 import type { CorporateProject } from '@/types/concierge';
 
@@ -24,7 +25,7 @@ export default function CorporatePage() {
   const [filter, setFilter] = useState('all');
   const [selected, setSelected] = useState<CorporateProject | null>(null);
 
-  const all = useMemo(() => getAllCorporate(), [selected]);
+  const all = useClientData(() => getAllCorporate(), [], [selected]);
 
   const filtered = useMemo(() => {
     if (filter === 'all') return [...all].sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());

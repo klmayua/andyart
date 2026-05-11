@@ -2,6 +2,7 @@
 
 import { useMemo } from 'react';
 import { TrendingUp, Users, DollarSign, Target, ArrowUpRight, ArrowDownRight } from 'lucide-react';
+import { useClientData } from '@/hooks/useClientData';
 import { getAllLeads } from '@/lib/leadCapture';
 import { getSubscribers, getSegmentCounts, getHottestInterest } from '@/lib/newsletterScoring';
 
@@ -10,10 +11,10 @@ function formatDate(iso: string) {
 }
 
 export default function InsightsPage() {
-  const leads = useMemo(() => getAllLeads(), []);
-  const subs = useMemo(() => getSubscribers(), []);
-  const counts = useMemo(() => getSegmentCounts(), [subs]);
-  const hottest = useMemo(() => getHottestInterest(), [subs]);
+  const leads = useClientData(() => getAllLeads(), []);
+  const subs = useClientData(() => getSubscribers(), []);
+  const counts = useClientData(() => getSegmentCounts(), [], [subs]);
+  const hottest = useClientData(() => getHottestInterest(), [], [subs]);
 
   const bySource = useMemo(() => {
     const map: Record<string, number> = {};

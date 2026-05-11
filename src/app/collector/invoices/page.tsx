@@ -1,21 +1,11 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import { Receipt, Download, Search, FileText, AlertCircle } from 'lucide-react';
-import { useAuth } from '@/hooks/useAuth';
+import { Receipt, Download, Search, Send } from 'lucide-react';
+import { useCurrentCollectorId } from '@/hooks/useCurrentCollector';
 import { getInvoices } from '@/lib/payment';
 import { INVOICE_STATUS_LABELS, INVOICE_STATUS_COLORS } from '@/types/payment';
 import type { InvoiceStatus } from '@/types/payment';
-
-function useCurrentCollectorId() {
-  const { user } = useAuth();
-  return useMemo(() => {
-    if (!user) return null;
-    const all = (() => { try { return JSON.parse(localStorage.getItem('andyart_collector_profiles') || '[]'); } catch { return []; } })();
-    const byEmail = all.find((c: any) => c.email.toLowerCase() === user.email.toLowerCase());
-    return byEmail?.id || 'col-001';
-  }, [user]);
-}
 
 export default function CollectorInvoicesPage() {
   const collectorId = useCurrentCollectorId();

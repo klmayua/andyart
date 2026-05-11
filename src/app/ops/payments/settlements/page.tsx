@@ -2,12 +2,13 @@
 
 import { useMemo, useState } from 'react';
 import { Landmark, Search, CheckCircle, ArrowUpRight } from 'lucide-react';
+import { useClientData } from '@/hooks/useClientData';
 import { getSettlements } from '@/lib/payment';
 import { SETTLEMENT_STATUS_LABELS, SETTLEMENT_STATUS_COLORS } from '@/types/payment';
 import type { SettlementStatus } from '@/types/payment';
 
 export default function OpsSettlementsPage() {
-  const settlements = useMemo(() => getSettlements(), []);
+  const settlements = useClientData(() => getSettlements(), []);
   const [search, setSearch] = useState('');
   const [filter, setFilter] = useState<SettlementStatus | 'all'>('all');
 

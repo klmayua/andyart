@@ -3,6 +3,7 @@
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useState, useEffect } from 'react';
 import { ArrowLeft, ArrowRight, Clock, User, Share2, Bookmark, MessageCircle } from 'lucide-react';
 import { getArticleBySlug, getRelatedArticles, getAdjacentArticles } from '@/lib/journal';
 import JournalArticleNewsletter from '@/components/newsletter/JournalArticleNewsletter';
@@ -11,6 +12,11 @@ export default function JournalArticleClient() {
   const params = useParams();
   const slug = params.slug as string;
   const article = getArticleBySlug(slug);
+  const [shareUrl, setShareUrl] = useState('');
+
+  useEffect(() => {
+    setShareUrl(window.location.href);
+  }, []);
 
   if (!article) return null;
 
@@ -124,7 +130,7 @@ export default function JournalArticleClient() {
                 <span>Share</span>
               </button>
               <a
-                href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(article.title)}&url=${encodeURIComponent(typeof window !== 'undefined' ? window.location.href : '')}`}
+                href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(article.title)}&url=${encodeURIComponent(shareUrl || '')}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-sm text-[#7A6E60] hover:text-[#171410] transition-colors"

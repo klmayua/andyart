@@ -1,17 +1,26 @@
 'use client';
 
-import { useMemo } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { MessageSquare, Calendar, Palette, Building2, Crown, TrendingUp, Clock, CheckCircle, ArrowRight, AlertCircle } from 'lucide-react';
 import { getAllRequests, getAllViewings, getAllCommissions, getRequestCounts, getBookingCounts, getCommissionCounts } from '@/lib/concierge';
 
 export default function ConciergeOverviewPage() {
-  const reqCounts = useMemo(() => getRequestCounts(), []);
-  const bookCounts = useMemo(() => getBookingCounts(), []);
-  const comCounts = useMemo(() => getCommissionCounts(), []);
-  const allReqs = useMemo(() => getAllRequests(), []);
-  const allViewings = useMemo(() => getAllViewings(), []);
-  const allComs = useMemo(() => getAllCommissions(), []);
+  const [reqCounts, setReqCounts] = useState({ new: 0, vip: 0, today: 0, total: 0, byStatus: {} as any });
+  const [bookCounts, setBookCounts] = useState({ today: 0, scheduled: 0 });
+  const [comCounts, setComCounts] = useState({ open: 0, inProgress: 0, delivered: 0, total: 0 });
+  const [allReqs, setAllReqs] = useState([] as any[]);
+  const [allViewings, setAllViewings] = useState([] as any[]);
+  const [allComs, setAllComs] = useState([] as any[]);
+
+  useEffect(() => {
+    setReqCounts(getRequestCounts());
+    setBookCounts(getBookingCounts());
+    setComCounts(getCommissionCounts());
+    setAllReqs(getAllRequests());
+    setAllViewings(getAllViewings());
+    setAllComs(getAllCommissions());
+  }, []);
 
   const urgent = allReqs.filter((r) => r.priority === 'vip' || r.priority === 'executive').slice(0, 4);
   const todayViewings = allViewings.filter((v) => new Date(v.date).toDateString() === new Date().toDateString());

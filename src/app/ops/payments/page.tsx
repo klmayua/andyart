@@ -1,16 +1,23 @@
 'use client';
 
-import { useMemo } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { TrendingUp, Receipt, Shield, Landmark, ArrowRight, DollarSign, AlertCircle, Clock } from 'lucide-react';
 import { getPaymentStats, getInvoices, getEscrowCases, getSettlements, getTransactions } from '@/lib/payment';
 import { INVOICE_STATUS_COLORS, INVOICE_STATUS_LABELS, ESCROW_STATUS_COLORS, ESCROW_STATUS_LABELS } from '@/types/payment';
 
 export default function OpsPaymentsPage() {
-  const stats = useMemo(() => getPaymentStats(), []);
-  const recentInvoices = useMemo(() => getInvoices().slice(0, 5), []);
-  const recentEscrow = useMemo(() => getEscrowCases().slice(0, 5), []);
-  const recentTx = useMemo(() => getTransactions().slice(0, 5), []);
+  const [stats, setStats] = useState({ totalVolume: 0, pendingVolume: 0, completedPayments: 0, pendingInvoices: 0, overdueInvoices: 0, paidInvoices: 0, escrowFunded: 0, escrowPending: 0, escrowReleased: 0, escrowDisputed: 0, escrowBalance: 0, pendingSettlements: 0, activeReservations: 0, totalReservations: 0 });
+  const [recentInvoices, setRecentInvoices] = useState([] as any[]);
+  const [recentEscrow, setRecentEscrow] = useState([] as any[]);
+  const [recentTx, setRecentTx] = useState([] as any[]);
+
+  useEffect(() => {
+    setStats(getPaymentStats());
+    setRecentInvoices(getInvoices().slice(0, 5));
+    setRecentEscrow(getEscrowCases().slice(0, 5));
+    setRecentTx(getTransactions().slice(0, 5));
+  }, []);
 
   return (
     <div>

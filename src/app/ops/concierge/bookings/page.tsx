@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from 'react';
 import { Calendar, Clock, Users, MapPin, Video, Home, Building, X, CheckCircle, Eye } from 'lucide-react';
+import { useClientData } from '@/hooks/useClientData';
 import { getAllViewings, updateViewingStatus } from '@/lib/concierge';
 import type { ViewingSession } from '@/types/concierge';
 
@@ -26,7 +27,7 @@ export default function BookingsPage() {
   const [filterType, setFilterType] = useState('all');
   const [selected, setSelected] = useState<ViewingSession | null>(null);
 
-  const all = useMemo(() => getAllViewings(), [selected]);
+  const all = useClientData(() => getAllViewings(), [], [selected]);
 
   const filtered = useMemo(() => {
     let r = [...all].sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());

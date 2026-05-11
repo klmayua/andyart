@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import {
   TrendingUp, Users, Crown, CreditCard, Shield, Calendar,
@@ -14,14 +14,25 @@ import { getAllLeads } from '@/lib/leadCapture';
 import { getActivityFeed, getActivityStats } from '@/lib/activity';
 
 export default function ExecutiveDashboardPage() {
-  const paymentStats = useMemo(() => getPaymentStats(), []);
-  const collectors = useMemo(() => getAllCollectors(), []);
-  const leads = useMemo(() => getAllLeads(), []);
-  const requests = useMemo(() => getAllRequests(), []);
-  const viewings = useMemo(() => getAllViewings(), []);
-  const commissions = useMemo(() => getAllCommissions(), []);
-  const activities = useMemo(() => getActivityFeed(20), []);
-  const activityStats = useMemo(() => getActivityStats(), []);
+  const [paymentStats, setPaymentStats] = useState({ totalVolume: 0, pendingVolume: 0, escrowBalance: 0, activeReservations: 0, completedPayments: 0, overdueInvoices: 0, escrowDisputed: 0, escrowFunded: 0, pendingSettlements: 0 });
+  const [collectors, setCollectors] = useState([] as any[]);
+  const [leads, setLeads] = useState([] as any[]);
+  const [requests, setRequests] = useState([] as any[]);
+  const [viewings, setViewings] = useState([] as any[]);
+  const [commissions, setCommissions] = useState([] as any[]);
+  const [activities, setActivities] = useState([] as any[]);
+  const [activityStats, setActivityStats] = useState({ todayEvents: 0, criticalCount: 0, warningCount: 0, successCount: 0 });
+
+  useEffect(() => {
+    setPaymentStats(getPaymentStats());
+    setCollectors(getAllCollectors());
+    setLeads(getAllLeads());
+    setRequests(getAllRequests());
+    setViewings(getAllViewings());
+    setCommissions(getAllCommissions());
+    setActivities(getActivityFeed(20));
+    setActivityStats(getActivityStats());
+  }, []);
 
   const vipLeads = leads.filter((l) => l.temperature === 'vip_priority').length;
   const hotLeads = leads.filter((l) => l.temperature === 'hot').length;

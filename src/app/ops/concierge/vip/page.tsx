@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from 'react';
 import { Crown, Globe, Calendar, Palette, Eye, MessageCircle, Star, ArrowRight, X } from 'lucide-react';
+import { useClientData } from '@/hooks/useClientData';
 import { getAllVips, saveVip } from '@/lib/concierge';
 import type { VipClient } from '@/types/concierge';
 
@@ -16,7 +17,7 @@ export default function VipClientsPage() {
   const [search, setSearch] = useState('');
   const [selected, setSelected] = useState<VipClient | null>(null);
 
-  const all = useMemo(() => getAllVips(), [selected]);
+  const all = useClientData(() => getAllVips(), [], [selected]);
 
   const filtered = useMemo(() => {
     if (!search) return [...all].sort((a, b) => b.totalAcquisitions - a.totalAcquisitions);

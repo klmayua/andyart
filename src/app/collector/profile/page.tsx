@@ -3,20 +3,9 @@
 import { useMemo } from 'react';
 import Link from 'next/link';
 import { MapPin, Calendar, Mail, Phone, Star, TrendingUp, DollarSign, Palette, Eye, ArrowRight } from 'lucide-react';
-import { useAuth } from '@/hooks/useAuth';
-import { getCollectorProfile, getCollectorStats } from '@/lib/collector';
+import { useCurrentCollector } from '@/hooks/useCurrentCollector';
+import { getCollectorStats } from '@/lib/collector';
 import { COLLECTOR_TIER_LABELS, COLLECTOR_TIER_COLORS } from '@/types/collector';
-
-function useCurrentCollector() {
-  const { user } = useAuth();
-  return useMemo(() => {
-    if (!user) return null;
-    const all = (() => { try { return JSON.parse(localStorage.getItem('andyart_collector_profiles') || '[]'); } catch { return []; } })();
-    const byEmail = all.find((c: any) => c.email.toLowerCase() === user.email.toLowerCase());
-    if (byEmail) return byEmail;
-    return getCollectorProfile('col-001');
-  }, [user]);
-}
 
 export default function CollectorProfilePage() {
   const collector = useCurrentCollector();

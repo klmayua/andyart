@@ -5,22 +5,9 @@ import Link from 'next/link';
 import {
   ShoppingBag, Award, Calendar, Heart, Lock, TrendingUp, ArrowRight, Eye,
 } from 'lucide-react';
-import { useAuth } from '@/hooks/useAuth';
+import { useCurrentCollector } from '@/hooks/useCurrentCollector';
 import { getCollectorStats, getAcquisitions, getCertificates, getViewings, getWishlist, getVault } from '@/lib/collector';
-import { getCollectorProfile } from '@/lib/collector';
 import { COLLECTOR_TIER_LABELS } from '@/types/collector';
-
-function useCurrentCollector() {
-  const { user } = useAuth();
-  return useMemo(() => {
-    if (!user) return null;
-    // Try match by email, fallback to first collector for demo
-    const all = (() => { try { return JSON.parse(localStorage.getItem('andyart_collector_profiles') || '[]'); } catch { return []; } })();
-    const byEmail = all.find((c: any) => c.email.toLowerCase() === user.email.toLowerCase());
-    if (byEmail) return byEmail;
-    return getCollectorProfile('col-001');
-  }, [user]);
-}
 
 export default function CollectorOverviewPage() {
   const collector = useCurrentCollector();

@@ -2,6 +2,7 @@
 
 import { useState, useMemo, useCallback } from 'react';
 import { Search, Filter, ChevronDown, ChevronUp, ExternalLink, MessageCircle, Calendar, X, Tag } from 'lucide-react';
+import { useClientData } from '@/hooks/useClientData';
 import { getAllLeads, updateLeadStatus } from '@/lib/leadCapture';
 import type { Lead, LeadStatus, LeadTemperature, LeadSegment, LeadSource } from '@/types/crm';
 
@@ -47,7 +48,7 @@ export default function LeadsPage() {
   const [selectedLead, setSelectedLead] = useState<Lead | null>(null);
   const [noteText, setNoteText] = useState('');
 
-  const allLeads = useMemo(() => getAllLeads(), [selectedLead]);
+  const allLeads = useClientData(() => getAllLeads(), [], [selectedLead]);
 
   const filtered = useMemo(() => {
     let result = [...allLeads];

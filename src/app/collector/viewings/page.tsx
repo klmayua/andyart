@@ -2,19 +2,9 @@
 
 import { useMemo } from 'react';
 import { Calendar, Star, MapPin, User } from 'lucide-react';
-import { useAuth } from '@/hooks/useAuth';
+import { useCurrentCollectorId } from '@/hooks/useCurrentCollector';
 import { getViewings } from '@/lib/collector';
 import { VIEWING_TYPE_LABELS } from '@/types/collector';
-
-function useCurrentCollectorId() {
-  const { user } = useAuth();
-  return useMemo(() => {
-    if (!user) return null;
-    const all = (() => { try { return JSON.parse(localStorage.getItem('andyart_collector_profiles') || '[]'); } catch { return []; } })();
-    const byEmail = all.find((c: any) => c.email.toLowerCase() === user.email.toLowerCase());
-    return byEmail?.id || 'col-001';
-  }, [user]);
-}
 
 export default function CollectorViewingsPage() {
   const collectorId = useCurrentCollectorId();

@@ -2,6 +2,7 @@
 
 import { useState, useMemo, useCallback } from 'react';
 import { Search, MessageCircle, Phone, Mail, X, ChevronDown, ChevronUp, ExternalLink } from 'lucide-react';
+import { useClientData } from '@/hooks/useClientData';
 import { getAllRequests, updateRequestStatus, assignRequest, updateRequestPriority } from '@/lib/concierge';
 import type { ConciergeRequest, RequestStatus, PriorityLevel } from '@/types/concierge';
 
@@ -32,7 +33,7 @@ export default function RequestsPage() {
   const [filterOwner, setFilterOwner] = useState('all');
   const [selected, setSelected] = useState<ConciergeRequest | null>(null);
 
-  const requests = useMemo(() => getAllRequests(), [selected]);
+  const requests = useClientData(() => getAllRequests(), [], [selected]);
 
   const filtered = useMemo(() => {
     let r = [...requests];

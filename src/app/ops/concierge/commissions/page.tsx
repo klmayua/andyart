@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from 'react';
 import { CheckCircle, Circle, AlertCircle, X, ChevronRight, MessageCircle } from 'lucide-react';
+import { useClientData } from '@/hooks/useClientData';
 import { getAllCommissions, updateCommissionStatus, updateCommissionProgress } from '@/lib/concierge';
 import type { CommissionCase } from '@/types/concierge';
 
@@ -22,7 +23,7 @@ export default function CommissionsPage() {
   const [filter, setFilter] = useState('all');
   const [selected, setSelected] = useState<CommissionCase | null>(null);
 
-  const all = useMemo(() => getAllCommissions(), [selected]);
+  const all = useClientData(() => getAllCommissions(), [], [selected]);
 
   const filtered = useMemo(() => {
     if (filter === 'all') return [...all].sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());

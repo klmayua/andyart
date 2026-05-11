@@ -37,7 +37,8 @@ function buildWhatsAppMessage(opts: WhatsAppMessageOptions): string {
   }
 
   lines.push('');
-  lines.push(`Page: ${opts.url || window.location.href}`);
+  const pageUrl = typeof window !== 'undefined' ? window.location.href : opts.url || 'andyart.gallery';
+  lines.push(`Page: ${pageUrl}`);
 
   return encodeURIComponent(lines.join('\n'));
 }
@@ -58,7 +59,7 @@ export default function WhatsAppButton() {
     <WhatsAppButtonStandalone
       showTooltip={showTooltip}
       onShowTooltip={setShowTooltip}
-      onOpen={() => openWhatsApp({ url: window.location.href })}
+      onOpen={() => openWhatsApp({ url: typeof window !== 'undefined' ? window.location.href : '' })}
     />
   );
 }

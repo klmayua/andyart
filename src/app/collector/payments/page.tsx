@@ -3,19 +3,9 @@
 import { useMemo } from 'react';
 import Link from 'next/link';
 import { CreditCard, Receipt, TrendingUp, Clock, CheckCircle, ArrowRight, AlertCircle } from 'lucide-react';
-import { useAuth } from '@/hooks/useAuth';
+import { useCurrentCollectorId } from '@/hooks/useCurrentCollector';
 import { getPayments, getInvoices, getEscrowCases, getReservations, getCollectorPaymentStats } from '@/lib/payment';
 import { PAYMENT_STATUS_LABELS, PAYMENT_STATUS_COLORS, INVOICE_STATUS_LABELS, INVOICE_STATUS_COLORS, ESCROW_STATUS_LABELS, ESCROW_STATUS_COLORS } from '@/types/payment';
-
-function useCurrentCollectorId() {
-  const { user } = useAuth();
-  return useMemo(() => {
-    if (!user) return null;
-    const all = (() => { try { return JSON.parse(localStorage.getItem('andyart_collector_profiles') || '[]'); } catch { return []; } })();
-    const byEmail = all.find((c: any) => c.email.toLowerCase() === user.email.toLowerCase());
-    return byEmail?.id || 'col-001';
-  }, [user]);
-}
 
 export default function CollectorPaymentsPage() {
   const collectorId = useCurrentCollectorId();

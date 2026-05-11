@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Users, Crown, Zap, UserCheck, TrendingUp, Eye, MessageSquare, ArrowRight, BarChart3 } from 'lucide-react';
 import { getAllLeads, getPipelineCounts } from '@/lib/leadCapture';
@@ -22,11 +22,21 @@ const TEMP_COLORS: Record<LeadTemperature, { bg: string; text: string; border: s
 };
 
 export default function CrmDashboardPage() {
-  const leads = useMemo(() => getAllLeads(), []);
-  const subs = useMemo(() => getSubscribers(), []);
-  const counts = useMemo(() => getSegmentCounts(), [subs]);
-  const hottest = useMemo(() => getHottestInterest(), [subs]);
-  const pipeline = useMemo(() => getPipelineCounts(), [leads]);
+  const [leads, setLeads] = useState([] as any[]);
+  const [subs, setSubs] = useState([] as any[]);
+  const [counts, setCounts] = useState({ vip: 0, collector: 0, prospect: 0, reader: 0 });
+  const [hottest, setHottest] = useState<string | null>(null);
+  const [pipeline, setPipeline] = useState({ new: 0, qualified: 0, contacted: 0, negotiation: 0, converted: 0, archived: 0 });
+
+  useEffect(() => {
+    const l = getAllLeads();
+    const s = getSubscribers();
+    setLeads(l);
+    setSubs(s);
+    setCounts(getSegmentCounts());
+    setHottest(getHottestInterest());
+    setPipeline(getPipelineCounts());
+  }, []);
 
   const vipLeads = leads.filter((l) => l.temperature === 'vip_priority').sort((a, b) => b.leadScore - a.leadScore);
   const hotLeads = leads.filter((l) => l.temperature === 'hot').sort((a, b) => b.leadScore - a.leadScore);

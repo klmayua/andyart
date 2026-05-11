@@ -2,6 +2,7 @@
 
 import { useMemo } from 'react';
 import { Users, TrendingUp, Globe, Zap, Crown } from 'lucide-react';
+import { useClientData } from '@/hooks/useClientData';
 import { getSubscribers, getSegmentCounts, getHottestInterest } from '@/lib/newsletterScoring';
 import type { SubscriberTier, InterestTag } from '@/types/newsletter';
 import { getTierColor, getTierLabel } from '@/lib/newsletterScoring';
@@ -22,9 +23,9 @@ const INTEREST_LABELS: Record<InterestTag, string> = {
 const TIERS: SubscriberTier[] = ['vip', 'collector', 'prospect', 'reader'];
 
 export default function SubscribersPage() {
-  const subs = useMemo(() => getSubscribers(), []);
-  const counts = useMemo(() => getSegmentCounts(), [subs]);
-  const hottest = useMemo(() => getHottestInterest(), [subs]);
+  const subs = useClientData(() => getSubscribers(), []);
+  const counts = useClientData(() => getSegmentCounts(), [], [subs]);
+  const hottest = useClientData(() => getHottestInterest(), [], [subs]);
 
   const byCountry = useMemo(() => {
     const map: Record<string, number> = {};
