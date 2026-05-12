@@ -1,5 +1,7 @@
 'use client';
 
+import { useSurfaceGuard } from '@/hooks/useSurfaceGuard';
+
 const items = [
   'Private viewing slots available',
   'Corporate leasing now open',
@@ -19,6 +21,9 @@ const itemColors = [
 ];
 
 export default function Ticker() {
+  const { isPublicSurface } = useSurfaceGuard();
+  if (!isPublicSurface) return null;
+
   return (
     <div
       className="fixed top-0 left-0 right-0 z-[60] overflow-hidden flex items-center"

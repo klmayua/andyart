@@ -1,5 +1,5 @@
 // Prisma Schema for AndyArt Gallery Platform
-// Based on comprehensive design brief specifications
+// Production-grade relational persistence
 
 generator client {
   provider = "prisma-client-js"
@@ -12,6 +12,8 @@ datasource db {
   directUrl         = env("DIRECT_URL")
 }
 
+// ─── Core Artworks ──────────────────────────────────────────────────────────
+
 model Artwork {
   id                String   @id @default(cuid())
   title             String
@@ -19,33 +21,730 @@ model Artwork {
   artistId          String
   artist            Artist   @relation(fields: [artistId], references: [id])
   medium            String
-  dimensions        String
+  dimensions        String?
   year              Int
   price             Float?
   isPriceOnRequest  Boolean  @default(false)
-  images            Json     // array of Cloudinary URLs
+  images            Json     @default("[]")
   inStock           Boolean  @default(true)
-  category          String   // painting, sculpture, digital, etc.
+  category          String
   curatorNote       String?
   createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  // Artist portal relations
+  inventoryItem     ArtistInventory?
+  consignment       Consignment?
+  acquisition       Acquisition?
+  wishlistItems     WishlistItem[]
 }
 
 model Artist {
-  id           String    @id @default(cuid())
-  name         String
-  slug         String    @unique
-  bio          String
-  profileImage String
-  instagram    String?
-  website      String?
-  artworks     Artwork[]
+  id                  String    @id @default(cuid())
+  name                String
+  slug                String    @unique
+  email               String    @unique
+  bio                 String    @default("")
+  artistStatement     String    @default("") @db.Text
+  profileImage        String?
+  instagram           String?
+  twitter             String?
+  website             String?
+  linkedin            String?
+  birthYear           Int?
+  birthPlace          String?
+  basedIn             String    @default("")
+  studioLocation      String    @default("")
+  availabilityStatus  String    @default("available") // available, in_studio, traveling, commission_only, not_accepting
+  yearsActive         Int       @default(0)
+  verifiedIdentity    Boolean   @default(false)
+  contractSigned      Boolean   @default(false)
+  insuranceCoverage   Boolean   @default(false)
+  commissionRate      Int       @default(60) // gallery split %
+  status              String    @default("active") // active, inactive, pending_onboarding, suspended
+  joinDate            DateTime  @default(now())
+  lastActive          DateTime  @default(now())
+  notes               String?   @db.Text
+
+  artworks            Artwork[]
+  studio              Studio?
+  inventory           ArtistInventory[]
+  consignments        Consignment[]
+  commissions         Commission[]
+  exhibitions         ExhibitionParticipation[]
+  payouts             ArtistPayout[]
+  analytics           ArtistAnalytics[]
+  artistAwards        ArtistAward[]
+  artistEducations    ArtistEducation[]
+  artistExhibitions   ArtistExhibition[]
 }
+
+model Studio {
+  id                  String   @id @default(cuid())
+  artistId            String   @unique
+  artist              Artist   @relation(fields: [artistId], references: [id], onDelete: Cascade)
+  name                String
+  address             String?
+  city                String
+  country             String
+  size                String?
+  type                String   @default("private") // private, shared, residency, commercial
+  accessibleToVisitors Boolean @default(false)
+  hasClimateControl   Boolean  @default(false)
+  hasSecurity         Boolean  @default(false)
+  photoUrls           Json     @default("[]")
+  description         String?  @db.Text
+  openingHours        String?
+  contactPhone        String?
+  contactEmail        String?
+}
+
+// ─── Artist Inventory ───────────────────────────────────────────────────────
+
+model ArtistInventory {
+  id              String   @id @default(cuid())
+  artistId        String
+  artist          Artist   @relation(fields: [artistId], references: [id], onDelete: Cascade)
+  artworkId       String?  @unique
+  artwork         Artwork? @relation(fields: [artworkId], references: [id])
+  title           String
+  slug            String
+  medium          String
+  dimensions      String?
+  year            Int
+  edition         String?
+  price           Float    @default(0)
+  currency        String   @default("USD")
+  status          String   @default("artist_owned") // artist_owned, gallery_consigned, sold, reserved, on_loan, in_transit
+  description     String?  @db.Text
+  provenance      String?  @db.Text
+  galleryNotes    String?  @db.Text
+  tags            Json     @default("[]")
+  images          Json     @default("[]")
+  listedAt        DateTime?
+  soldAt          DateTime?
+  soldPrice       Float?
+  collectorId     String?
+  collectorName   String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+// ─── Consignments ───────────────────────────────────────────────────────────
+
+model Consignment {
+  id              String   @id @default(cuid())
+  artistId        String
+  artist          Artist   @relation(fields: [artistId], references: [id], onDelete: Cascade)
+  artworkId       String?  @unique
+  artwork         Artwork? @relation(fields: [artworkId], references: [id])
+  agreementNumber String   @unique
+  artworkTitle    String
+  intakeDate      DateTime
+  endDate         DateTime
+  splitPercentage Int      @default(60)
+  insuranceStatus String   @default("pending") // insured, pending, not_insured
+  insuranceValue  Float?
+  releaseTerms    String?  @db.Text
+  status          String   @default("intake_pending") // intake_pending, in_gallery, sold, returned, expired
+  soldDate        DateTime?
+  soldPrice       Float?
+  notes           String?  @db.Text
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+// ─── Commissions ────────────────────────────────────────────────────────────
+
+model Commission {
+  id                  String   @id @default(cuid())
+  artistId            String
+  artist              Artist   @relation(fields: [artistId], references: [id], onDelete: Cascade)
+  collectorId         String?
+  collectorName       String
+  collectorEmail      String?
+  commissionNumber    String   @unique
+  brief               String   @db.Text
+  budget              Float    @default(0)
+  currency            String   @default("USD")
+  startDate           DateTime
+  targetDeliveryDate  DateTime
+  actualDeliveryDate  DateTime?
+  status              String   @default("inquiry") // inquiry, brief_pending, contract_sent, in_progress, milestone_1, milestone_2, milestone_3, review, approved, delivered, cancelled
+  collectorFeedback   String?  @db.Text
+  finalImages         Json     @default("[]")
+  contractUrl         String?
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+
+  milestones          CommissionMilestone[]
+  approvals           CommissionApproval[]
+}
+
+model CommissionMilestone {
+  id            String   @id @default(cuid())
+  commissionId  String
+  commission    Commission @relation(fields: [commissionId], references: [id], onDelete: Cascade)
+  title         String
+  description   String
+  dueDate       DateTime
+  completedAt   DateTime?
+  status        String   @default("pending") // pending, in_progress, completed, overdue
+  deliverables  Json     @default("[]")
+  collectorFeedback String? @db.Text
+}
+
+model CommissionApproval {
+  id          String   @id @default(cuid())
+  commissionId String
+  commission  Commission @relation(fields: [commissionId], references: [id], onDelete: Cascade)
+  stage       String
+  approvedBy  String
+  approvedAt  DateTime
+  notes       String?
+}
+
+// ─── Exhibitions ────────────────────────────────────────────────────────────
+
+model ExhibitionParticipation {
+  id                  String   @id @default(cuid())
+  artistId            String
+  artist              Artist   @relation(fields: [artistId], references: [id], onDelete: Cascade)
+  exhibitionId        String
+  exhibitionTitle     String
+  venue               String
+  location            String
+  startDate           DateTime
+  endDate             DateTime
+  status              String   @default("upcoming") // upcoming, active, past, cancelled
+  artworksSubmitted   Json     @default("[]")
+  artworksAccepted    Json     @default("[]")
+  artworksSold        Int      @default(0)
+  totalSales          Float    @default(0)
+  attendanceEstimate  Int?
+  collectorInterestCount Int @default(0)
+  marketingSupport    Boolean  @default(false)
+  shippingProvided    Boolean  @default(false)
+  insuranceProvided   Boolean  @default(false)
+  notes               String?  @db.Text
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+}
+
+// ─── Artist Payouts ─────────────────────────────────────────────────────────
+
+model ArtistPayout {
+  id                String   @id @default(cuid())
+  artistId          String
+  artist            Artist   @relation(fields: [artistId], references: [id], onDelete: Cascade)
+  payoutNumber      String   @unique
+  periodStart       DateTime
+  periodEnd         DateTime
+  totalSales        Float    @default(0)
+  grossAmount       Float    @default(0)
+  galleryFee        Float    @default(0)
+  platformFee       Float    @default(0)
+  taxWithheld       Float    @default(0)
+  netAmount         Float    @default(0)
+  currency          String   @default("USD")
+  status            String   @default("pending") // pending, processing, completed, failed, on_hold
+  processedAt       DateTime?
+  paymentMethod     String?
+  paymentReference  String?
+  taxDocumentUrl    String?
+  notes             String?  @db.Text
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  splits            PayoutSplit[]
+}
+
+model PayoutSplit {
+  id            String     @id @default(cuid())
+  payoutId      String
+  payout        ArtistPayout @relation(fields: [payoutId], references: [id], onDelete: Cascade)
+  artworkId     String?
+  artworkTitle  String
+  grossAmount   Float      @default(0)
+  galleryFee    Float      @default(0)
+  artistShare   Float      @default(0)
+}
+
+// ─── Artist Analytics ───────────────────────────────────────────────────────
+
+model ArtistAnalytics {
+  id              String   @id @default(cuid())
+  artistId        String
+  artist          Artist   @relation(fields: [artistId], references: [id], onDelete: Cascade)
+  period          String   // e.g. "2024-Q1"
+  profileViews    Int      @default(0)
+  artworkViews    Int      @default(0)
+  inquiryCount    Int      @default(0)
+  inquiryRate     Float    @default(0)
+  salesVolume     Float    @default(0)
+  salesCount      Int      @default(0)
+  averageSalePrice Float   @default(0)
+  collectorInterest Json   @default("[]")
+  topPerformingWorks Json @default("[]")
+  mediumPerformance Json  @default("[]")
+  geographicReach  Json   @default("[]")
+  updatedAt       DateTime @updatedAt
+
+  @@unique([artistId, period])
+}
+
+// ─── Artist Supporting ──────────────────────────────────────────────────────
+
+model ArtistAward {
+  id            String   @id @default(cuid())
+  artistId      String
+  artist        Artist   @relation(fields: [artistId], references: [id], onDelete: Cascade)
+  title         String
+  organization  String
+  year          Int
+  description   String?
+}
+
+model ArtistEducation {
+  id          String   @id @default(cuid())
+  artistId    String
+  artist      Artist   @relation(fields: [artistId], references: [id], onDelete: Cascade)
+  institution String
+  degree      String
+  year        Int
+}
+
+model ArtistExhibition {
+  id        String   @id @default(cuid())
+  artistId  String
+  artist    Artist   @relation(fields: [artistId], references: [id], onDelete: Cascade)
+  title     String
+  venue     String
+  location  String
+  year      Int
+  type      String   @default("group") // solo, group, fair, biennial
+}
+
+// ─── Collector System ───────────────────────────────────────────────────────
+
+model CollectorProfile {
+  id                  String   @id @default(cuid())
+  userId              String   @unique
+  email               String   @unique
+  name                String
+  phone               String?
+  tier                String   @default("patron") // patron, collector, curator_circle, founding_member, platinum
+  avatar              String?
+  bio                 String?  @db.Text
+  collectingSince     Int      @default(2020)
+  collectingFocus     Json     @default("[]")
+  preferredMediums    Json     @default("[]")
+  preferredArtists    Json     @default("[]")
+  acquisitionBudget   String   @default("emerging") // emerging, mid_market, established, blue_chip
+  privateAccessLevel  String   @default("standard") // standard, preferred, white_glove, founding
+  conciergeNotes      String?  @db.Text
+  joinDate            DateTime @default(now())
+  lastActive          DateTime @default(now())
+  totalAcquisitions   Int      @default(0)
+  totalSpent          Float    @default(0)
+  favoriteViewingTypes Json    @default("[]")
+  preferredCurrency   String   @default("USD")
+  location            String   @default("")
+  referralSource      String?
+  newsletterConsent   Boolean  @default(true)
+  curatedUpdates      Boolean  @default(true)
+
+  acquisitions        Acquisition[]
+  certificates        Certificate[]
+  viewings            Viewing[]
+  wishlist            WishlistItem[]
+  vaultDocuments      VaultDocument[]
+}
+
+model Acquisition {
+  id                String   @id @default(cuid())
+  collectorId       String
+  collector         CollectorProfile @relation(fields: [collectorId], references: [id], onDelete: Cascade)
+  artworkId         String?  @unique
+  artwork           Artwork? @relation(fields: [artworkId], references: [id])
+  artworkTitle      String
+  artistName        String
+  acquisitionDate   DateTime
+  purchasePrice     Float    @default(0)
+  currency          String   @default("USD")
+  source            String   @default("gallery") // gallery, auction, studio_visit, art_fair, private_sale, inheritance, gift
+  currentValuation  Float?
+  valuationDate     DateTime?
+  insuranceStatus   String   @default("not_insured") // active, pending, expired, not_insured
+  insurancePolicy   String?
+  insuranceExpiry   DateTime?
+  displayLocation   String?
+  framingStatus     String?
+  notes             String?  @db.Text
+  rating            Int?
+  createdAt         DateTime @default(now())
+}
+
+model Certificate {
+  id                String   @id @default(cuid())
+  collectorId       String
+  collector         CollectorProfile @relation(fields: [collectorId], references: [id], onDelete: Cascade)
+  certificateId     String   @unique
+  verificationCode  String   @unique
+  artworkId         String?
+  artworkTitle      String
+  artistName        String
+  artistSignature   String?
+  yearCreated       Int
+  medium            String
+  dimensions        String?
+  edition           String?
+  provenanceChain   String   @default("")
+  issuedDate        DateTime @default(now())
+  issuedBy          String   @default("AndyArt Gallery")
+  digitalSignature  String?
+  blockchainRef     String?
+  createdAt         DateTime @default(now())
+}
+
+model Viewing {
+  id              String   @id @default(cuid())
+  collectorId     String
+  collector       CollectorProfile @relation(fields: [collectorId], references: [id], onDelete: Cascade)
+  artworkId       String?
+  viewingType     String   @default("private_preview")
+  date            DateTime
+  location        String
+  curatorName     String?
+  notes           String?  @db.Text
+  collectorRating Int?
+  attended        Boolean  @default(false)
+  invitationSent  Boolean  @default(false)
+  feedback        String?  @db.Text
+  createdAt       DateTime @default(now())
+}
+
+model WishlistItem {
+  id                String   @id @default(cuid())
+  collectorId       String
+  collector         CollectorProfile @relation(fields: [collectorId], references: [id], onDelete: Cascade)
+  artworkId         String?
+  artwork           Artwork? @relation(fields: [artworkId], references: [id])
+  artworkTitle      String
+  artistName        String
+  artworkImage      String?
+  price             Float?
+  addedAt           DateTime @default(now())
+  priority          String   @default("medium") // low, medium, high, acquiring
+  notifyAvailable   Boolean  @default(true)
+  conciergeFollowUp Boolean  @default(false)
+  notes             String?  @db.Text
+}
+
+model VaultDocument {
+  id            String   @id @default(cuid())
+  collectorId   String
+  collector     CollectorProfile @relation(fields: [collectorId], references: [id], onDelete: Cascade)
+  type          String   @default("certificate") // certificate, invoice, provenance, valuation, insurance, appraisal, agreement
+  title         String
+  artworkId     String?
+  artworkTitle  String?
+  fileUrl       String?
+  size          Int?
+  description   String?  @db.Text
+  uploadedAt    DateTime @default(now())
+}
+
+// ─── Payment System ─────────────────────────────────────────────────────────
+
+model PaymentIntent {
+  id                String   @id @default(cuid())
+  collectorId       String?
+  collectorName     String?
+  collectorEmail    String?
+  type              String   @default("artwork_purchase") // artwork_purchase, commission_retainer, reservation, shipping, insurance, membership
+  artworkId         String?
+  artworkTitle      String?
+  artistName        String?
+  amount            Float    @default(0)
+  currency          String   @default("USD")
+  status            String   @default("pending") // pending, processing, completed, failed, refunded, cancelled
+  method            String?
+  description       String?
+  metadata          Json     @default("{}")
+  receiptUrl        String?
+  invoiceId         String?
+  escrowId          String?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  completedAt       DateTime?
+}
+
+model Invoice {
+  id                String   @id @default(cuid())
+  invoiceNumber     String   @unique
+  collectorId       String?
+  collectorName     String?
+  collectorEmail    String?
+  artworkId         String?
+  artworkTitle      String?
+  artistName        String?
+  subtotal          Float    @default(0)
+  taxRate           Float    @default(0)
+  taxAmount         Float    @default(0)
+  fees              Float    @default(0)
+  total             Float    @default(0)
+  currency          String   @default("USD")
+  status            String   @default("draft") // draft, sent, paid, overdue, cancelled
+  dueDate           DateTime?
+  issuedDate        DateTime @default(now())
+  paidDate          DateTime?
+  notes             String?  @db.Text
+  lineItems         Json     @default("[]")
+  paymentIntentId   String?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+model EscrowCase {
+  id                String   @id @default(cuid())
+  escrowNumber      String   @unique
+  buyerId           String?
+  buyerName         String?
+  sellerId          String?
+  sellerName        String?
+  artworkId         String?
+  artworkTitle      String?
+  artistName        String?
+  amount            Float    @default(0)
+  currency          String   @default("USD")
+  status            String   @default("pending") // pending, funded, released, disputed, refunded
+  fundedAt          DateTime?
+  releasedAt        DateTime?
+  releaseConditions String?  @db.Text
+  notes             String?  @db.Text
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+model SettlementRecord {
+  id                String   @id @default(cuid())
+  settlementNumber  String   @unique
+  artistId          String?
+  artistName        String?
+  collectorId       String?
+  collectorName     String?
+  artworkId         String?
+  artworkTitle      String?
+  grossAmount       Float    @default(0)
+  platformFee       Float    @default(0)
+  paymentFee        Float    @default(0)
+  taxWithheld       Float    @default(0)
+  netAmount         Float    @default(0)
+  currency          String   @default("USD")
+  status            String   @default("pending") // pending, processed
+  periodStart       DateTime
+  periodEnd         DateTime
+  processedAt       DateTime?
+  paymentMethod     String?
+  paymentReference  String?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+model TransactionRecord {
+  id                String   @id @default(cuid())
+  transactionNumber String   @unique
+  type              String   @default("payment_in") // payment_in, payment_out, fee, commission, escrow_fund, escrow_release, deposit, refund
+  paymentIntentId   String?
+  escrowId          String?
+  settlementId      String?
+  collectorId       String?
+  collectorName     String?
+  artistId          String?
+  artistName        String?
+  amount            Float    @default(0)
+  currency          String   @default("USD")
+  description       String?
+  status            String   @default("completed") // completed, pending, failed
+  method            String?
+  createdAt         DateTime @default(now())
+  processedAt       DateTime?
+}
+
+model ReservationDeposit {
+  id                String   @id @default(cuid())
+  reservationNumber String   @unique
+  collectorId       String?
+  collectorName     String?
+  artworkId         String?
+  artworkTitle      String?
+  artistName        String?
+  depositAmount     Float    @default(0)
+  fullAmount        Float    @default(0)
+  currency          String   @default("USD")
+  status            String   @default("pending") // pending, deposit_paid, full_paid, expired, refunded
+  depositPaidAt     DateTime?
+  fullPaidAt        DateTime?
+  expiryDate        DateTime
+  notes             String?  @db.Text
+  createdAt         DateTime @default(now())
+}
+
+// ─── CRM System ─────────────────────────────────────────────────────────────
+
+model Lead {
+  id              String   @id @default(cuid())
+  leadId          String   @unique
+  email           String
+  profile         Json     @default("{}")
+  interest        Json     @default("{}")
+  source          String   @default("website")
+  temperature     String   @default("cold") // vip_priority, hot, warm, cold
+  status          String   @default("new") // new, qualified, contacted, negotiation, converted, archived
+  leadScore       Int      @default(0)
+  budgetBand      String?
+  segment         String   @default("reader") // vip, collector, prospect, reader
+  assignedTo      String?
+  lastContactedAt DateTime?
+  convertedAt     DateTime?
+  notes           String?  @db.Text
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model Subscriber {
+  id              String   @id @default(cuid())
+  email           String   @unique
+  name            String?
+  segment         String   @default("reader")
+  tier            String   @default("reader")
+  interests       Json     @default("[]")
+  engagementScore Int      @default(0)
+  lastOpenedAt    DateTime?
+  source          String   @default("website")
+  consent         Boolean  @default(true)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+// ─── Concierge System ───────────────────────────────────────────────────────
+
+model ConciergeRequest {
+  id              String   @id @default(cuid())
+  requestId       String   @unique
+  type            String   @default("general")
+  collectorId     String?
+  collectorName   String?
+  collectorEmail  String?
+  subject         String
+  message         String   @db.Text
+  priority        String   @default("medium") // low, medium, high, urgent
+  status          String   @default("open") // open, in_progress, resolved, closed, escalated
+  assignedTo      String?
+  response        String?  @db.Text
+  resolvedAt      DateTime?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model ConciergeBooking {
+  id              String   @id @default(cuid())
+  bookingId       String   @unique
+  collectorId     String?
+  collectorName   String?
+  type            String   @default("viewing") // viewing, consultation, appraisal, delivery
+  date            DateTime
+  location        String
+  status          String   @default("pending") // pending, confirmed, completed, cancelled, no_show
+  notes           String?  @db.Text
+  curatorName     String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model ConciergeCommission {
+  id              String   @id @default(cuid())
+  commissionId    String   @unique
+  collectorId     String?
+  collectorName   String?
+  artistName      String?
+  brief           String   @db.Text
+  budget          Float    @default(0)
+  currency        String   @default("USD")
+  status          String   @default("inquiry") // inquiry, brief_pending, approved, in_progress, delivered, cancelled
+  deadline        DateTime?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model CorporateClient {
+  id              String   @id @default(cuid())
+  clientId        String   @unique
+  companyName     String
+  contactName     String
+  contactEmail    String
+  contactPhone    String?
+  industry        String?
+  projectType     String?
+  budget          Float    @default(0)
+  currency        String   @default("USD")
+  status          String   @default("prospect") // prospect, qualified, active, completed
+  notes           String?  @db.Text
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model VipProfile {
+  id              String   @id @default(cuid())
+  collectorId     String?
+  name            String
+  email           String
+  tier            String   @default("platinum") // platinum, diamond, royal
+  conciergeAgent  String?
+  preferences     Json     @default("{}")
+  totalSpent      Float    @default(0)
+  totalVisits     Int      @default(0)
+  lastVisit       DateTime?
+  status          String   @default("active") // active, inactive, paused
+  notes           String?  @db.Text
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+// ─── Notifications & Audit ──────────────────────────────────────────────────
+
+model Notification {
+  id          String   @id @default(cuid())
+  userId      String
+  type        String   @default("info") // info, success, warning, error
+  title       String
+  message     String   @db.Text
+  actionUrl   String?
+  read        Boolean  @default(false)
+  createdAt   DateTime @default(now())
+}
+
+model AuditLog {
+  id          String   @id @default(cuid())
+  userId      String?
+  userName    String?
+  action      String
+  entityType  String?
+  entityId    String?
+  details     Json     @default("{}")
+  ipAddress   String?
+  userAgent   String?
+  createdAt   DateTime @default(now())
+}
+
+// ─── Events (existing extended) ─────────────────────────────────────────────
 
 model Event {
   id              String       @id @default(cuid())
   title           String
   slug            String       @unique
-  description     String
+  description     String       @db.Text
   startDatetime   DateTime
   endDatetime     DateTime
   location        String
@@ -57,6 +756,7 @@ model Event {
   image           String
   isPast          Boolean      @default(false)
   rsvps           EventRsvp[]
+  createdAt       DateTime     @default(now())
 }
 
 model EventRsvp {
@@ -69,16 +769,19 @@ model EventRsvp {
   createdAt DateTime @default(now())
 }
 
+// ─── Services (existing extended) ───────────────────────────────────────────
+
 model Service {
   id          String           @id @default(cuid())
   name        String
   slug        String           @unique
-  description String
-  priceType   String           // fixed, quote, hourly
+  description String           @db.Text
+  priceType   String
   price       Float?
   icon        String
   isActive    Boolean          @default(true)
   bookings    ServiceBooking[]
+  createdAt   DateTime         @default(now())
 }
 
 model ServiceBooking {
@@ -90,10 +793,13 @@ model ServiceBooking {
   customerEmail  String
   customerPhone  String?
   preferredDate  DateTime
-  message        String?
-  status         String   @default("pending") // pending, confirmed, completed, cancelled
+  message        String?  @db.Text
+  status         String   @default("pending")
   createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
 }
+
+// ─── Partners (existing extended) ───────────────────────────────────────────
 
 model PartnerApplication {
   id            String   @id @default(cuid())
@@ -101,24 +807,28 @@ model PartnerApplication {
   contactName   String
   email         String
   phone         String
-  partnerType   String   // interior_designer, corporate, venue
-  message       String?
+  partnerType   String
+  message       String?  @db.Text
   status        String   @default("pending")
   createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
 }
+
+// ─── Auth (existing NextAuth models) ────────────────────────────────────────
 
 model User {
-  id            String   @id @default(cuid())
-  email         String   @unique
+  id            String    @id @default(cuid())
+  email         String    @unique
   name          String?
-  role          String   @default("collector") // collector, trade_partner, admin
-  wishlist      Json     @default("[]") // array of artwork IDs
-  bookings      Json     @default("[]") // array of service_booking IDs
+  role          String    @default("collector")
+  wishlist      Json      @default("[]")
+  bookings      Json      @default("[]")
   accounts      Account[]
   sessions      Session[]
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
 }
 
-// NextAuth.js models
 model Account {
   id                String  @id @default(cuid())
   userId            String
@@ -152,3 +862,18 @@ model VerificationToken {
 
   @@unique([identifier, token])
 }
+
+// ─── Indexes for performance ────────────────────────────────────────────────
+
+// Note: Prisma will auto-create indexes on @unique and @id fields.
+// Additional performance indexes should be added via migrations for:
+// - ArtistInventory.artistId + status
+// - Consignment.artistId + status
+// - Commission.artistId + status
+// - ArtistPayout.artistId + status
+// - PaymentIntent.status + createdAt
+// - Lead.status + temperature
+// - ConciergeRequest.status + priority
+// - Notification.userId + read
+// - AuditLog.userId + createdAt
+// - TransactionRecord.type + status

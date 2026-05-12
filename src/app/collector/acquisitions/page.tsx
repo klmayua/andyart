@@ -1,7 +1,8 @@
 'use client';
 
 import { useMemo } from 'react';
-import { ShoppingBag, TrendingUp, Shield, ArrowUpRight, ArrowDownRight, Minus } from 'lucide-react';
+import { ShoppingBag, TrendingUp, Shield, ArrowUpRight, ArrowDownRight, Minus, FileText } from 'lucide-react';
+import EmptyState from '@/components/EmptyState';
 import { useCurrentCollectorId } from '@/hooks/useCurrentCollector';
 import { getAcquisitions } from '@/lib/collector';
 
@@ -76,7 +77,12 @@ export default function CollectorAcquisitionsPage() {
             );
           })}
           {acq.length === 0 && (
-            <div className="px-6 py-12 text-center text-sm text-andy-bronze/40">No acquisitions yet</div>
+            <EmptyState
+              icon={FileText}
+              title="No acquisitions yet"
+              description="Your acquisition history will appear here after your first purchase."
+              action={{ label: 'Browse Works', href: '/gallery' }}
+            />
           )}
         </div>
       </div>

@@ -2,12 +2,13 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useState, useEffect } from 'react';
-import { Home, LayoutGrid, Calendar, Wrench, MessageCircle, Search, User, ShoppingBag } from 'lucide-react';
+import { Home, LayoutGrid, Calendar, Wrench, MessageCircle } from 'lucide-react';
 import { useAppStore } from '@/stores/useAppStore';
+import { useSurfaceGuard } from '@/hooks/useSurfaceGuard';
 
 export default function BottomNav() {
   const pathname = usePathname();
+  const { isPublicSurface } = useSurfaceGuard();
   const store = useAppStore();
   const openChat = store?.openChat ?? (() => {});
 
@@ -46,8 +47,8 @@ export default function BottomNav() {
     }
   };
 
-  // Hide on checkout pages
-  if (pathname?.includes('/checkout') || pathname?.includes('/api')) {
+  // Hide on protected surfaces and checkout pages
+  if (!isPublicSurface || pathname?.includes('/api')) {
     return null;
   }
 

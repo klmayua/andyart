@@ -144,12 +144,12 @@ export default function HomePage() {
             >
               Book Private Viewing
             </Link>
-            <Link
-              href="/circle"
-              className="bg-transparent text-[#FFFDF9] border border-[rgba(255,255,255,.12)] px-8 py-[14px] rounded-full font-semibold text-sm tracking-wide hover:bg-[rgba(255,255,255,.06)] transition-all duration-300 inline-flex items-center justify-center"
-            >
-              Join Circle
-            </Link>
+              <Link
+                href="/circle"
+                className="bg-transparent text-[#FFFDF9] border border-[rgba(255,255,255,.12)] px-8 py-[14px] rounded-full font-semibold text-sm tracking-wide hover:bg-[rgba(255,255,255,.06)] transition-all duration-300 inline-flex items-center justify-center"
+              >
+                Join Circle
+              </Link>
           </div>
 
           {/* Trust Strip */}
@@ -901,6 +901,7 @@ export default function HomePage() {
                 <li><a href="https://instagram.com/andyart" target="_blank" rel="noopener noreferrer" className="hover:text-[#C6A66B] transition-colors duration-300">@andyart</a></li>
                 <li><a href="https://linkedin.com/company/andyart" target="_blank" rel="noopener noreferrer" className="hover:text-[#C6A66B] transition-colors duration-300">LinkedIn</a></li>
                 <li><a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer" className="hover:text-[#C6A66B] transition-colors duration-300">WhatsApp</a></li>
+                <li><Link href="/auth/signin" className="hover:text-[#C6A66B] transition-colors duration-300">Member Access</Link></li>
               </ul>
             </div>
           </div>

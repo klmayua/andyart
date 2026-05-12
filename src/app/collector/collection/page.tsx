@@ -1,7 +1,8 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import { Layers, Plus, Lock, Globe, Eye, ChevronRight } from 'lucide-react';
+import { Layers, Plus, Lock, Globe, Eye } from 'lucide-react';
+import EmptyState from '@/components/EmptyState';
 import { useCurrentCollectorId } from '@/hooks/useCurrentCollector';
 import { getCollections, getAcquisitions, createCollection } from '@/lib/collector';
 
@@ -70,7 +71,12 @@ export default function CollectorCollectionPage() {
             </div>
           ))}
           {acq.length === 0 && (
-            <div className="px-6 py-12 text-center text-sm text-andy-bronze/40">No artworks in collection yet</div>
+            <EmptyState
+              icon={Layers}
+              title="Your collection is empty"
+              description="Begin your collecting journey by exploring our curated works."
+              action={{ label: 'Explore Collection', href: '/gallery' }}
+            />
           )}
         </div>
       </div>

@@ -1,6 +1,7 @@
 'use client';
 
 import { ConversionModalProvider } from '@/hooks/useConversionModal';
+import { useSurfaceGuard } from '@/hooks/useSurfaceGuard';
 import InquiryModal from '@/components/conversion/InquiryModal';
 import ReserveModal from '@/components/conversion/ReserveModal';
 import PrivateViewingModal from '@/components/conversion/PrivateViewingModal';
@@ -9,6 +10,9 @@ import ConciergeModal from '@/components/conversion/ConciergeModal';
 import EventRSVPModal from '@/components/conversion/EventRSVPModal';
 
 export default function ConversionLayer() {
+  const { isPublicSurface } = useSurfaceGuard();
+  if (!isPublicSurface) return null;
+
   return (
     <ConversionModalProvider>
       <ConversionModals />

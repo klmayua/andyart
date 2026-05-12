@@ -1,7 +1,8 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import { Award, Search, CheckCircle, Copy, Download } from 'lucide-react';
+import { Award, Search, CheckCircle, Copy, Download, Lock } from 'lucide-react';
+import EmptyState from '@/components/EmptyState';
 import { useCurrentCollectorId } from '@/hooks/useCurrentCollector';
 import { getCertificates, getCertificateByCode } from '@/lib/collector';
 
@@ -132,7 +133,12 @@ export default function CollectorCertificatesPage() {
           </div>
         ))}
         {filtered.length === 0 && (
-          <div className="text-center py-12 text-sm text-andy-bronze/40">No certificates found</div>
+          <EmptyState
+            icon={Lock}
+            title="No certificates yet"
+            description="Certificates of authenticity will be issued with each acquisition."
+            action={{ label: 'Explore Collection', href: '/gallery' }}
+          />
         )}
       </div>
     </div>

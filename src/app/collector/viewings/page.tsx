@@ -2,6 +2,7 @@
 
 import { useMemo } from 'react';
 import { Calendar, Star, MapPin, User } from 'lucide-react';
+import EmptyState from '@/components/EmptyState';
 import { useCurrentCollectorId } from '@/hooks/useCurrentCollector';
 import { getViewings } from '@/lib/collector';
 import { VIEWING_TYPE_LABELS } from '@/types/collector';
@@ -99,7 +100,12 @@ export default function CollectorViewingsPage() {
             </div>
           ))}
           {attended.length === 0 && (
-            <div className="px-6 py-12 text-center text-sm text-andy-bronze/40">No past viewings</div>
+            <EmptyState
+              icon={Calendar}
+              title="No past viewings"
+              description="Your viewing history will appear here after attending an event."
+              variant="compact"
+            />
           )}
         </div>
       </div>

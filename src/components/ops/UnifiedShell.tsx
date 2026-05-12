@@ -8,7 +8,7 @@ import {
   MessageSquare, Calendar, Palette, Building2, Crown,
   CreditCard, Receipt, Shield, Landmark, TrendingUp,
   Eye, LogOut, Bell, ChevronDown, Search, Command,
-  ArrowLeft, Activity,
+  ArrowLeft, Activity, Paintbrush,
 } from 'lucide-react';
 import { useAuth } from '@/hooks/useAuth';
 import { getNotifications, markRead, markAllRead, getUnreadCount } from '@/lib/notifications';
@@ -52,6 +52,12 @@ const NAV_SECTIONS: NavSection[] = [
       { href: '/ops/payments/invoices', label: 'Invoices', icon: Receipt },
       { href: '/ops/payments/escrow', label: 'Escrow', icon: Shield },
       { href: '/ops/payments/settlements', label: 'Settlements', icon: Landmark },
+    ],
+  },
+  {
+    label: 'Artists',
+    items: [
+      { href: '/ops/artists', label: 'Artist Console', icon: Paintbrush },
     ],
   },
 ];

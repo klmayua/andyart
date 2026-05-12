@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X, User } from 'lucide-react';
+import { useSurfaceGuard } from '@/hooks/useSurfaceGuard';
 
 const leftNav = [
   { label: 'Home', href: '/' },
@@ -17,12 +18,15 @@ const rightNav = [
   { label: 'Circle', href: '/circle' },
   { label: 'Journal', href: '/journal' },
   { label: 'Concierge', href: '/services' },
-  { label: 'Account', href: '/profile' },
+  { label: 'Access', href: '/auth/signin' },
 ];
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
+  const { isPublicSurface } = useSurfaceGuard();
+
+  if (!isPublicSurface) return null;
 
   useEffect(() => {
     setMobileOpen(false);
@@ -124,7 +128,7 @@ export default function Header() {
                   )}
                 </Link>
               ))}
-              <Link href="/profile" className="relative">
+              <Link href="/auth/signin" className="relative" aria-label="Member Access">
                 <User
                   size={20}
                   strokeWidth={2.2}

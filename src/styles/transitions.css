@@ -1,0 +1,121 @@
+/*
+ * AndyArt Motion System
+ * Luxury transition language for all surfaces
+ * 
+ * Duration tiers:
+ *   fast:    180ms — micro-interactions, hovers, toggles
+ *   standard: 260ms — state changes, reveals, collapses
+ *   luxury:   420ms — entrance animations, hero elements
+ * 
+ * Easing:
+ *   standard: cubic-bezier(0.2, 0.8, 0.2, 1) — smooth deceleration
+ *   premium:  cubic-bezier(0.25, 0.1, 0.25, 1) — calm, deliberate
+ */
+
+/* Duration */
+.transition-fast {
+  transition-duration: 180ms;
+}
+.transition-standard {
+  transition-duration: 260ms;
+}
+.transition-luxury {
+  transition-duration: 420ms;
+}
+
+/* Easing */
+.ease-premium {
+  transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+.ease-standard {
+  transition-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Combined motion tokens */
+.motion-hover {
+  transition: all 180ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.motion-reveal {
+  transition: all 260ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.motion-luxury {
+  transition: all 420ms cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+/* Card hover — tactile lift */
+.card-hover {
+  transition: transform 260ms cubic-bezier(0.2, 0.8, 0.2, 1),
+              box-shadow 260ms cubic-bezier(0.2, 0.8, 0.2, 1),
+              border-color 180ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 40px rgba(17, 17, 17, 0.10);
+}
+
+/* Button press — tactile press */
+.button-press {
+  transition: transform 120ms cubic-bezier(0.2, 0.8, 0.2, 1),
+              background-color 180ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.button-press:active {
+  transform: scale(0.97);
+}
+
+/* Link underline — editorial */
+.link-editorial {
+  position: relative;
+}
+.link-editorial::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 1px;
+  background: currentColor;
+  transition: width 260ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.link-editorial:hover::after {
+  width: 100%;
+}
+
+/* Fade up entrance */
+.animate-fade-up {
+  animation: fadeUp 0.8s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+}
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Glass shimmer */
+.glass-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.glass-shimmer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.03) 45%,
+    rgba(255, 255, 255, 0.06) 50%,
+    rgba(255, 255, 255, 0.03) 55%,
+    transparent 60%
+  );
+  transform: translateX(-100%);
+  transition: transform 0s;
+}
+.glass-shimmer:hover::before {
+  transform: translateX(100%);
+  transition: transform 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
+}

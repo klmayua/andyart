@@ -84,12 +84,12 @@ export default function OpsEscrowPage() {
               <p className="text-xs text-andy-bronze mb-2">{e.releaseConditions}</p>
               <div className="flex items-center gap-2">
                 {e.status === 'funded' && (
-                  <button onClick={() => handleAction(e.id, 'released')} className="flex items-center gap-1 px-3 py-1.5 bg-green-50 text-green-600 rounded-lg text-xs font-medium hover:bg-green-100">
+                  <button onClick={() => handleAction(e.id, 'released')} className="flex items-center gap-1 px-3 py-1.5 bg-green-50 text-green-700 rounded-lg text-xs font-medium hover:bg-green-100">
                     <CheckCircle size={10} /> Release
                   </button>
                 )}
                 {e.status === 'funded' && (
-                  <button onClick={() => handleAction(e.id, 'disputed')} className="flex items-center gap-1 px-3 py-1.5 bg-red-50 text-red-500 rounded-lg text-xs font-medium hover:bg-red-100">
+                  <button onClick={() => handleAction(e.id, 'disputed')} className="flex items-center gap-1 px-3 py-1.5 bg-red-50 text-red-600 rounded-lg text-xs font-medium hover:bg-red-100">
                     <XCircle size={10} /> Dispute
                   </button>
                 )}

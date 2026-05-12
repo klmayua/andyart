@@ -44,10 +44,10 @@ export default function SignInPage() {
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <h1 className="font-serif text-3xl font-bold text-andy-black mb-2">
-            Welcome back
+            Member Access
           </h1>
           <p className="text-andy-bronze">
-            Sign in to your AndyArt Circle account
+            Enter your private collection and collector services
           </p>
         </div>
 
@@ -78,7 +78,7 @@ export default function SignInPage() {
               disabled={isLoading}
               className="w-full bg-andy-black text-andy-ivory py-3 rounded-full font-medium hover:bg-andy-black/80 transition-colors disabled:opacity-50 text-sm tracking-wide"
             >
-              {isLoading ? 'Signing in...' : 'Sign In'}
+              {isLoading ? 'Entering...' : 'Enter'}
             </button>
           </form>
 
@@ -87,7 +87,7 @@ export default function SignInPage() {
               <div className="w-full border-t border-andy-stone/20" />
             </div>
             <div className="relative flex justify-center text-sm">
-              <span className="px-2 bg-white text-andy-bronze">Or continue with</span>
+              <span className="px-2 bg-white text-andy-bronze">Or enter with</span>
             </div>
           </div>
 
@@ -105,9 +105,9 @@ export default function SignInPage() {
           </button>
 
           <p className="text-center text-sm text-andy-bronze">
-            Don't have an account?{' '}
-            <Link href="/partners/apply" className="text-andy-gold hover:underline font-medium">
-              Apply as partner
+            New to AndyArt?{' '}
+            <Link href="/circle" className="text-andy-gold hover:underline font-medium">
+              Explore Circle membership
             </Link>
           </p>
         </div>
