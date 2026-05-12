@@ -1,6 +1,6 @@
 'use client';
 
-import { ConversionModalProvider } from '@/hooks/useConversionModal';
+import { ConversionModalProvider, useConversionModal } from '@/hooks/useConversionModal';
 import { useSurfaceGuard } from '@/hooks/useSurfaceGuard';
 import InquiryModal from '@/components/conversion/InquiryModal';
 import ReserveModal from '@/components/conversion/ReserveModal';

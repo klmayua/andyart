@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter, Playfair_Display } from 'next/font/google';
 import './globals.css';
+import '@/lib/runtime-boot';
 import Ticker from '@/components/Ticker';
 import Header from '@/components/Header';
 import BottomNav from '@/components/BottomNav';
