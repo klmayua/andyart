@@ -62,6 +62,21 @@
   transform: scale(0.97);
 }
 
+/* Sidebar navigation item — smooth highlight */
+.sidebar-item {
+  transition: background-color 200ms ease-out, color 180ms ease-out;
+}
+
+/* Table row — subtle highlight */
+.table-row-hover {
+  transition: background-color 150ms ease-out;
+}
+
+/* Modal backdrop — smooth fade */
+.modal-backdrop {
+  transition: opacity 260ms ease-out;
+}
+
 /* Link underline — editorial */
 .link-editorial {
   position: relative;
