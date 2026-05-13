@@ -1,66 +1,162 @@
 'use client';
 
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { DEMO_ROLES, setDemoSession } from '@/lib/demo-session';
+import { useAuth, getDemoAccounts } from '@/hooks/useAuth';
+import { loginDemoUser, loginWithDemoAccount } from '@/lib/demo-auth';
 
 export default function SignInPage() {
   const router = useRouter();
+  const { login, isLoading } = useAuth();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [activeTab, setActiveTab] = useState<'login' | 'demo'>('login');
 
-  const handleRoleSelect = (role: typeof DEMO_ROLES[0]) => {
-    setDemoSession(role);
-    router.push(role.route);
+  const demoAccounts = getDemoAccounts();
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError('');
+    setIsSubmitting(true);
+
+    const result = login(email, password);
+    
+    if (result.success) {
+      const session = loginDemoUser(email, password);
+      if (session.session) {
+        router.push(session.session.defaultRoute);
+      } else {
+        router.push('/enterprise');
+      }
+    } else {
+      setError(result.error || 'Invalid credentials');
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleDemoSelect = (account: typeof demoAccounts[0]) => {
+    const result = loginWithDemoAccount(account);
+    if (result.success) {
+      router.push(account.defaultRoute);
+    }
   };
 
   return (
-    <div className="min-h-screen bg-[#F7F2E8] px-4 py-12 pt-24">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-12">
-          <h1 className="font-serif text-4xl font-bold text-andy-black mb-3">
+    <div className="min-h-screen bg-[#0D0C0A] flex items-center justify-center px-4 py-12">
+      <div className="w-full max-w-6xl">
+        <div className="text-center mb-10">
+          <div className="w-16 h-16 bg-andy-gold rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <span className="text-[#0D0C0A] font-serif font-bold text-2xl">AA</span>
+          </div>
+          <h1 className="font-serif text-3xl font-bold text-[#FFFDF9] mb-2">
             Institutional Access
           </h1>
-          <p className="text-andy-bronze max-w-xl mx-auto">
-            Select an operational identity to explore the AndyArt ecosystem.
-            Each role provides access to its respective operational surfaces.
+          <p className="text-andy-bronze text-sm max-w-md mx-auto">
+            Access operational workspaces and private cultural systems.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-          {DEMO_ROLES.map((role) => (
+        <div className="bg-[#171614] border border-[#FFFDF9]/10 rounded-2xl p-8 max-w-md mx-auto mb-10">
+          <div className="flex border-b border-[#FFFDF9]/10 mb-6">
             <button
-              key={role.role}
-              onClick={() => handleRoleSelect(role)}
-              className="group bg-white border border-andy-stone/20 rounded-xl p-6 text-left hover:border-andy-gold/40 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+              type="button"
+              onClick={() => setActiveTab('login')}
+              className={`flex-1 pb-3 text-sm font-medium transition-colors ${
+                activeTab === 'login' 
+                  ? 'text-andy-gold border-b-2 border-andy-gold' 
+                  : 'text-andy-bronze hover:text-[#FFFDF9]'
+              }`}
             >
-              <div className="flex items-start justify-between mb-4">
-                <div className="w-12 h-12 rounded-full bg-andy-gold/10 flex items-center justify-center text-andy-gold font-serif font-bold text-lg">
-                  {role.initials}
-                </div>
-                <span className="w-2 h-2 rounded-full bg-emerald-500" />
-              </div>
-              
-              <h3 className="font-serif text-lg font-semibold text-andy-black mb-1">
-                {role.title}
-              </h3>
-              <p className="text-sm font-medium text-andy-bronze mb-3">
-                {role.name}
-              </p>
-              <p className="text-sm text-andy-stone leading-relaxed">
-                {role.context}
-              </p>
-              
-              <div className="mt-4 pt-4 border-t border-andy-stone/10 flex items-center text-andy-gold text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
-                Enter &rarr;
-              </div>
+              Sign In
             </button>
-          ))}
+            <button
+              type="button"
+              onClick={() => setActiveTab('demo')}
+              className={`flex-1 pb-3 text-sm font-medium transition-colors ${
+                activeTab === 'demo' 
+                  ? 'text-andy-gold border-b-2 border-andy-gold' 
+                  : 'text-andy-bronze hover:text-[#FFFDF9]'
+              }`}
+            >
+              Demo Access
+            </button>
+          </div>
+
+          {activeTab === 'login' && (
+            <form onSubmit={handleSubmit} className="space-y-4">
+              {error && (
+                <div className="bg-andy-wine/10 text-andy-wine text-sm px-4 py-3 rounded-lg">
+                  {error}
+                </div>
+              )}
+
+              <div>
+                <label className="block text-sm font-medium text-[#FFFDF9] mb-1.5">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="w-full px-4 py-2.5 bg-[#0D0C0A] border border-[#FFFDF9]/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-andy-gold/30 text-[#FFFDF9] placeholder:text-andy-bronze/50"
+                  placeholder="email@andyart.house"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-[#FFFDF9] mb-1.5">
+                  Password
+                </label>
+                <input
+                  type="password"
+                  required
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="w-full px-4 py-2.5 bg-[#0D0C0A] border border-[#FFFDF9]/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-andy-gold/30 text-[#FFFDF9] placeholder:text-andy-bronze/50"
+                  placeholder="Enter password"
+                />
+              </div>
+
+              <button
+                type="submit"
+                disabled={isSubmitting || isLoading}
+                className="w-full bg-andy-gold text-[#0D0C0A] py-3 rounded-lg font-medium hover:bg-andy-gold/90 transition-colors disabled:opacity-50 text-sm tracking-wide"
+              >
+                {isSubmitting ? 'Authenticating...' : 'Enter'}
+              </button>
+            </form>
+          )}
+
+          {activeTab === 'demo' && (
+            <div className="space-y-3 max-h-80 overflow-y-auto pr-2">
+              {demoAccounts.map((account) => (
+                <button
+                  key={account.id}
+                  onClick={() => handleDemoSelect(account)}
+                  className="w-full flex items-center gap-3 p-3 bg-[#0D0C0A] border border-[#FFFDF9]/10 rounded-lg hover:border-andy-gold/30 transition-all text-left group"
+                >
+                  <div className="w-10 h-10 rounded-full bg-andy-gold/10 flex items-center justify-center text-andy-gold font-serif font-bold text-sm">
+                    {account.initials}
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-[#FFFDF9] font-medium text-sm truncate">{account.title}</p>
+                    <p className="text-andy-bronze text-xs truncate">{account.email}</p>
+                  </div>
+                  <span className="text-andy-gold text-xs opacity-0 group-hover:opacity-100 transition-opacity">
+                    Enter &rarr;
+                  </span>
+                </button>
+              ))}
+            </div>
+          )}
         </div>
 
-        <div className="text-center border-t border-andy-stone/20 pt-8">
-          <p className="text-andy-bronze text-sm mb-4">
-            This is a demonstration environment. No authentication required.
-          </p>
-          <Link href="/" className="text-andy-bronze hover:text-andy-black text-sm transition-colors">
+        <div className="text-center">
+          <Link href="/" className="text-andy-bronze hover:text-[#FFFDF9] text-sm transition-colors">
             &larr; Return to public site
           </Link>
         </div>

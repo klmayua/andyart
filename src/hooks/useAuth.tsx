@@ -3,7 +3,14 @@
 import { createContext, useContext, useState, useCallback, useEffect, type ReactNode } from 'react';
 import type { User } from '@/types/auth';
 import { login as apiLogin, logout as apiLogout, getCurrentUser } from '@/lib/auth';
-import { getDemoSession, clearDemoSession, hasDemoAccess, DEMO_ROLES, type DemoRole } from '@/lib/demo-session';
+import { 
+  loginDemoUser, 
+  logoutDemoUser, 
+  getDemoUser, 
+  isDemoAuthenticated,
+  getDemoAccounts,
+  type DemoSession 
+} from '@/lib/demo-auth';
 
 interface AuthContextValue {
   user: User | null;
@@ -11,25 +18,23 @@ interface AuthContextValue {
   isAuthenticated: boolean;
   login: (email: string, password: string) => { success: boolean; error?: string };
   logout: () => void;
-  enableDemoMode: (role: DemoRole) => void;
-  disableDemoMode: () => void;
+  enableDemoMode: (email: string, password: string) => { success: boolean; error?: string };
   isDemoMode: boolean;
-  demoRole: DemoRole | null;
+  demoSession: DemoSession | null;
 }
 
 const AuthContext = createContext<AuthContextValue | null>(null);
 
-function sessionToUser(session: ReturnType<typeof getDemoSession>): User {
-  const demoRole = DEMO_ROLES.find(r => r.role === session?.role);
+function sessionToUser(session: DemoSession): User {
   return {
-    id: session?.role || 'demo-001',
-    email: `demo.${session?.role}@andyart.gallery`,
-    name: session?.name || 'Demo User',
-    role: session?.role || 'super_admin',
-    permissions: demoRole?.allowedSurfaces || ['all'],
-    department: session?.title || 'Demo',
+    id: session.id,
+    email: session.email,
+    name: session.name,
+    role: session.role,
+    permissions: session.allowedRoutes,
+    department: session.title,
     isActive: true,
-    createdAt: session?.timestamp || new Date().toISOString(),
+    createdAt: session.loggedInAt,
     updatedAt: new Date().toISOString(),
   };
 }
@@ -38,17 +43,16 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isDemoMode, setIsDemoMode] = useState(false);
-  const [demoRole, setDemoRole] = useState<DemoRole | null>(null);
+  const [demoSession, setDemoSession] = useState<DemoSession | null>(null);
 
   useEffect(() => {
-    const demoActive = hasDemoAccess();
+    const demoActive = isDemoAuthenticated();
     setIsDemoMode(demoActive);
     
     if (demoActive) {
-      const session = getDemoSession();
+      const session = getDemoUser();
       if (session) {
-        const role = DEMO_ROLES.find(r => r.role === session.role);
-        setDemoRole(role || null);
+        setDemoSession(session);
         setUser(sessionToUser(session));
       }
       setIsLoading(false);
@@ -59,29 +63,39 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   }, []);
 
-  const enableDemoMode = useCallback((role: DemoRole) => {
-    if (typeof window !== 'undefined') {
-      const session = getDemoSession();
+  const enableDemoMode = useCallback((email: string, password: string) => {
+    const result = loginDemoUser(email, password);
+    if (result.success && result.session) {
       setIsDemoMode(true);
-      setDemoRole(role);
-      setUser(sessionToUser(session));
+      setDemoSession(result.session);
+      setUser(sessionToUser(result.session));
+      return { success: true };
     }
+    return { success: false, error: result.error || 'Login failed' };
   }, []);
 
   const disableDemoMode = useCallback(() => {
-    clearDemoSession();
+    logoutDemoUser();
     setIsDemoMode(false);
-    setDemoRole(null);
+    setDemoSession(null);
     setUser(null);
   }, []);
 
   const login = useCallback((email: string, password: string) => {
+    const demoResult = loginDemoUser(email, password);
+    if (demoResult.success && demoResult.session) {
+      setIsDemoMode(true);
+      setDemoSession(demoResult.session);
+      setUser(sessionToUser(demoResult.session));
+      return { success: true };
+    }
+
     const result = apiLogin(email, password);
     if (result.success && result.user) {
       setUser(result.user);
-      clearDemoSession();
+      logoutDemoUser();
       setIsDemoMode(false);
-      setDemoRole(null);
+      setDemoSession(null);
       return { success: true };
     }
     return { success: false, error: result.error };
@@ -89,14 +103,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const logout = useCallback(() => {
     apiLogout();
+    logoutDemoUser();
     setUser(null);
-    clearDemoSession();
     setIsDemoMode(false);
-    setDemoRole(null);
+    setDemoSession(null);
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user, isLoading, isAuthenticated: !!user, login, logout, enableDemoMode, disableDemoMode, isDemoMode, demoRole }}>
+    <AuthContext.Provider value={{ user, isLoading, isAuthenticated: !!user, login, logout, enableDemoMode, isDemoMode, demoSession }}>
       {children}
     </AuthContext.Provider>
   );
@@ -107,3 +121,5 @@ export function useAuth() {
   if (!ctx) throw new Error('useAuth must be used within AuthProvider');
   return ctx;
 }
+
+export { getDemoAccounts };
