@@ -21,7 +21,10 @@ export default function OpsPaymentsPage() {
 
   return (
     <div>
-      <h1 className="font-serif text-2xl font-bold text-andy-black mb-6">Financial Console</h1>
+      <div className="mb-8">
+        <h1 className="font-serif text-2xl font-bold text-andy-black">Financial Operations</h1>
+        <p className="text-sm text-andy-bronze mt-1">Revenue management, invoicing, and settlement processing</p>
+      </div>
 
       {/* KPIs */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">

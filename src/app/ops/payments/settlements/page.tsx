@@ -27,7 +27,10 @@ export default function OpsSettlementsPage() {
 
   return (
     <div>
-      <h1 className="font-serif text-2xl font-bold text-andy-black mb-6">Settlements</h1>
+      <div className="mb-8">
+        <h1 className="font-serif text-2xl font-bold text-andy-black">Settlement Processing</h1>
+        <p className="text-sm text-andy-bronze mt-1">Artist payouts, commission distributions, and financial reconciliation</p>
+      </div>
 
       <div className="grid grid-cols-3 gap-4 mb-6">
         <div className="bg-white rounded-xl border border-andy-stone/10 p-4 text-center">
