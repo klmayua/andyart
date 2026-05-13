@@ -4,11 +4,11 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useAuth, getDemoAccounts } from '@/hooks/useAuth';
-import { loginDemoUser, loginWithDemoAccount } from '@/lib/demo-auth';
+import { loginDemoUser, loginWithDemoAccount, getDemoUser } from '@/lib/demo-auth';
 
 export default function SignInPage() {
   const router = useRouter();
-  const { login, isLoading } = useAuth();
+  const { login, enableDemoMode, isLoading } = useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -37,9 +37,11 @@ export default function SignInPage() {
     }
   };
 
-  const handleDemoSelect = (account: typeof demoAccounts[0]) => {
+  const handleDemoSelect = async (account: typeof demoAccounts[0]) => {
     const result = loginWithDemoAccount(account);
-    if (result.success) {
+    if (result.success && result.session) {
+      enableDemoMode(account.email, account.password);
+      await new Promise(resolve => setTimeout(resolve, 100));
       router.push(account.defaultRoute);
     }
   };
