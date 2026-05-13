@@ -53,7 +53,7 @@ export default function ExecutiveDashboardPage() {
       <div className="flex items-center justify-between mb-6">
         <div>
           <h1 className="font-serif text-2xl font-bold text-andy-black">Executive Command</h1>
-          <p className="text-sm text-andy-bronze mt-1">Enterprise operational overview and performance metrics</p>
+          <p className="text-sm text-andy-bronze mt-1">Operational overview</p>
         </div>
         <div className="flex items-center gap-2 text-xs text-andy-bronze">
           <Activity size={14} className="text-andy-gold" />

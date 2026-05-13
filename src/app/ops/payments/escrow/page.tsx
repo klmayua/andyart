@@ -31,8 +31,7 @@ export default function OpsEscrowPage() {
   return (
     <div>
       <div className="mb-8">
-        <h1 className="font-serif text-2xl font-bold text-andy-black">Escrow Operations</h1>
-        <p className="text-sm text-andy-bronze mt-1">Secured transactions, fund management, and release processing</p>
+        <h1 className="font-serif text-2xl font-bold text-andy-black">Escrow</h1>
       </div>
 
       <div className="grid grid-cols-3 gap-4 mb-6">

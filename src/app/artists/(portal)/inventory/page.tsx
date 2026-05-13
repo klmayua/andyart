@@ -36,9 +36,8 @@ export default function ArtistInventoryPage() {
 
   return (
     <div>
-      <div className="mb-6">
+      <div className="mb-8">
         <h1 className="font-serif text-2xl font-bold text-andy-black">Artwork Portfolio</h1>
-        <p className="text-sm text-andy-bronze mt-1">Your curated collection of works, editions, and ownership records.</p>
       </div>
 
       {/* KPIs */}

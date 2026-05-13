@@ -28,11 +28,8 @@ export default function OpsArtistsClient({
 
   return (
     <div>
-      <div className="flex items-center justify-between mb-8">
-        <div>
-          <h1 className="font-serif text-2xl font-bold text-andy-black">Artist Representation</h1>
-          <p className="text-sm text-andy-bronze mt-1">Roster management, inventory oversight, and artist compensation</p>
-        </div>
+      <div className="mb-8">
+        <h1 className="font-serif text-2xl font-bold text-andy-black">Artist Representation</h1>
       </div>
 
       {/* KPI Cards */}

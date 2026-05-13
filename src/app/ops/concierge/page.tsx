@@ -28,9 +28,8 @@ export default function ConciergeOverviewPage() {
 
   return (
     <div>
-      <div className="mb-6">
+      <div className="mb-8">
         <h1 className="font-serif text-2xl font-bold text-andy-black">Concierge Command</h1>
-        <p className="text-sm text-andy-bronze mt-1">White-glove service coordination and VIP client management</p>
       </div>
 
       {/* KPI Row */}

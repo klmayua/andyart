@@ -66,7 +66,6 @@ export default function CrmDashboardPage() {
       <div className="flex items-center justify-between mb-6">
         <div>
           <h1 className="font-serif text-2xl font-bold text-andy-black">Relationship Command</h1>
-          <p className="text-sm text-andy-bronze mt-1">Lead pipeline, subscriber insights, and collector development</p>
         </div>
       </div>
 
