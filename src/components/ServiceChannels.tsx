@@ -10,8 +10,8 @@ function buildServiceMessage(serviceName: string): string {
   return encodeURIComponent(msg);
 }
 
-const channels = [
-  { icon: MessageCircle, label: 'Circle Chat', desc: 'Instant concierge', action: 'chat' as const },
+const channels: Array<{icon: typeof MessageCircle; label: string; desc: string; action?: 'chat'; href?: string}> = [
+  { icon: MessageCircle, label: 'Circle Chat', desc: 'Instant concierge', action: 'chat' },
   { icon: Phone, label: 'WhatsApp', desc: '+234 800 ANDY ART', href: `https://wa.me/${WA_NUMBER}?text=${buildServiceMessage('general concierge')}` },
   { icon: Calendar, label: 'Callback', desc: 'Schedule a call', href: '/consult' },
 ];

@@ -8,7 +8,7 @@ import BottomNav from '@/components/BottomNav';
 import FloatingActions from '@/components/FloatingActions';
 import ConversionLayer from '@/components/conversion/ConversionLayer';
 import { AuthProvider } from '@/hooks/useAuth';
-import { NewsletterSeedProvider } from '@/hooks/useNewsletterSeed.tsx';
+import { NewsletterSeedProvider } from '@/hooks/useNewsletterSeed';
 import { ConversionModalProvider } from '@/hooks/useConversionModal';
 
 const inter = Inter({

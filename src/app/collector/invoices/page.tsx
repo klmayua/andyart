@@ -1,7 +1,7 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import { Receipt, Download, Search, Send } from 'lucide-react';
+import { Receipt, Download, Search, Send, FileText } from 'lucide-react';
 import { useCurrentCollectorId } from '@/hooks/useCurrentCollector';
 import { getInvoices } from '@/lib/payment';
 import { INVOICE_STATUS_LABELS, INVOICE_STATUS_COLORS } from '@/types/payment';

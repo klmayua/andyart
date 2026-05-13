@@ -6,7 +6,7 @@ import ArtworkCard from '@/components/ArtworkCard';
 import { useConversionModal } from '@/hooks/useConversionModal';
 import { useAnalytics } from '@/hooks/useAnalytics';
 
-export default function ViewingRoomDetailClient({ slug }: { params: { slug: string } }) {
+export default function ViewingRoomDetailClient({ slug }: { slug: string }) {
   const room = getViewingRoomBySlug(slug);
   if (!room) return null;
 

@@ -79,11 +79,11 @@ export default function JournalArticleClient() {
             <span>{formatDate(article.publishedAt)}</span>
           </div>
 
-          {article.image && (
+          {article.heroImage && (
             <div className="relative w-full rounded-2xl overflow-hidden mb-10 shadow-[0_20px_60px_rgba(0,0,0,0.12)]">
               <div style={{ paddingBottom: '52%' }} />
               <Image
-                src={article.image}
+                src={article.heroImage}
                 alt={article.title}
                 fill
                 className="object-cover"
@@ -152,9 +152,9 @@ export default function JournalArticleClient() {
               {related.map((rel) => (
                 <Link key={rel.slug} href={`/journal/${rel.slug}`} className="group">
                   <div className="bg-white rounded-xl overflow-hidden shadow-[0_8px_24px_rgba(0,0,0,0.04)] hover:shadow-[0_16px_40px_rgba(0,0,0,0.08)] transition-shadow duration-500">
-                    {rel.image && (
+                    {rel.heroImage && (
                       <div className="relative aspect-[16/9] overflow-hidden">
-                        <Image src={rel.image} alt={rel.title} fill sizes="33vw" className="object-cover group-hover:scale-[1.03] transition-transform duration-700" loading="lazy" />
+                        <Image src={rel.heroImage} alt={rel.title} fill sizes="33vw" className="object-cover group-hover:scale-[1.03] transition-transform duration-700" loading="lazy" />
                       </div>
                     )}
                     <div className="p-5">

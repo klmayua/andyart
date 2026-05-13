@@ -8,7 +8,8 @@ export type InterestTag =
   | 'interior_curation'
   | 'hospitality_design'
   | 'journal'
-  | 'investment_opportunities';
+  | 'investment_opportunities'
+  | 'institutional';
 
 export type BudgetBand = 'exploratory' | 'emerging_collector' | 'established_collector' | 'premium_collector' | 'institutional';
 

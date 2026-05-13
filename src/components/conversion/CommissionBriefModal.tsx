@@ -19,14 +19,28 @@ export default function CommissionBriefModal({ isOpen, onClose, artistName, arti
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState('');
 
-  const [form, setForm] = useState({
+  const [form, setForm] = useState<{
+    fullName: string;
+    email: string;
+    phone: string;
+    country: string;
+    city: string;
+    budgetBand: string;
+    timeline: string;
+    subject: string;
+    medium: string;
+    dimensions: string;
+    space: string;
+    inspiration: string;
+    specialRequirements: string;
+  }>({
     fullName: '',
     email: '',
     phone: '',
     country: 'Nigeria',
     city: '',
-    budgetBand: 'undisclosed' as const,
-    timeline: '90_days' as const,
+    budgetBand: 'undisclosed',
+    timeline: '90_days',
     subject: '',
     medium: '',
     dimensions: '',

@@ -6,8 +6,8 @@ import { MessageSquare, Calendar, Palette, Building2, Crown, TrendingUp, Clock, 
 import { getAllRequests, getAllViewings, getAllCommissions, getRequestCounts, getBookingCounts, getCommissionCounts } from '@/lib/concierge';
 
 export default function ConciergeOverviewPage() {
-  const [reqCounts, setReqCounts] = useState({ new: 0, vip: 0, today: 0, total: 0, byStatus: {} as any });
-  const [bookCounts, setBookCounts] = useState({ today: 0, scheduled: 0 });
+  const [reqCounts, setReqCounts] = useState<{ new: number; vip: number; total: number; assigned: number; confirmed: number; fulfilled: number; byStatus: any }>({ new: 0, vip: 0, total: 0, assigned: 0, confirmed: 0, fulfilled: 0, byStatus: {} });
+  const [bookCounts, setBookCounts] = useState<{ total: number; today: number; scheduled: number; completed: number }>({ total: 0, today: 0, scheduled: 0, completed: 0 });
   const [comCounts, setComCounts] = useState({ open: 0, inProgress: 0, delivered: 0, total: 0 });
   const [allReqs, setAllReqs] = useState([] as any[]);
   const [allViewings, setAllViewings] = useState([] as any[]);

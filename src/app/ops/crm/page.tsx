@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
 import { Users, Crown, Zap, UserCheck, TrendingUp, Eye, MessageSquare, ArrowRight, BarChart3 } from 'lucide-react';
 import { getAllLeads, getPipelineCounts } from '@/lib/leadCapture';

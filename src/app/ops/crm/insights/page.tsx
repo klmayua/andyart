@@ -13,8 +13,8 @@ function formatDate(iso: string) {
 export default function InsightsPage() {
   const leads = useClientData(() => getAllLeads(), []);
   const subs = useClientData(() => getSubscribers(), []);
-  const counts = useClientData(() => getSegmentCounts(), [], [subs]);
-  const hottest = useClientData(() => getHottestInterest(), [], [subs]);
+  const counts = useClientData(() => getSegmentCounts(), { reader: 0, prospect: 0, collector: 0, vip: 0 }, [subs]);
+  const hottest = useClientData(() => getHottestInterest(), null, [subs]);
 
   const bySource = useMemo(() => {
     const map: Record<string, number> = {};
@@ -23,7 +23,7 @@ export default function InsightsPage() {
   }, [leads]);
 
   const bySegment = useMemo(() => {
-    const map: Record<string, number & { value: number }> = {};
+    const map: Record<string, { value: number; score: number; count: number }> = {};
     for (const l of leads) {
       if (!map[l.segment]) map[l.segment] = { value: 0, score: 0, count: 0 };
       map[l.segment].value++;

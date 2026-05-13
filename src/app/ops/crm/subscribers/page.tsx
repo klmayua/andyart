@@ -18,14 +18,15 @@ const INTEREST_LABELS: Record<InterestTag, string> = {
   hospitality_design: 'Hospitality Design',
   journal: 'Journal',
   investment_opportunities: 'Investment',
+  institutional: 'Institutional',
 };
 
 const TIERS: SubscriberTier[] = ['vip', 'collector', 'prospect', 'reader'];
 
 export default function SubscribersPage() {
   const subs = useClientData(() => getSubscribers(), []);
-  const counts = useClientData(() => getSegmentCounts(), [], [subs]);
-  const hottest = useClientData(() => getHottestInterest(), [], [subs]);
+  const counts = useClientData(() => getSegmentCounts(), { reader: 0, prospect: 0, collector: 0, vip: 0 }, [subs]);
+  const hottest = useClientData(() => getHottestInterest(), null, [subs]);
 
   const byCountry = useMemo(() => {
     const map: Record<string, number> = {};
@@ -60,7 +61,6 @@ export default function SubscribersPage() {
         </div>
       </div>
 
-      {/* Tier Breakdown */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
         {TIERS.map((tier) => {
           const color = getTierColor(tier);
@@ -83,7 +83,6 @@ export default function SubscribersPage() {
       </div>
 
       <div className="grid lg:grid-cols-2 gap-6">
-        {/* Interest Distribution */}
         <div className="bg-white rounded-2xl border border-andy-stone/20 p-6">
           <div className="flex items-center gap-2 mb-5">
             <TrendingUp size={18} className="text-andy-gold" />
@@ -118,7 +117,6 @@ export default function SubscribersPage() {
           )}
         </div>
 
-        {/* Geography */}
         <div className="bg-white rounded-2xl border border-andy-stone/20 p-6">
           <div className="flex items-center gap-2 mb-5">
             <Globe size={18} className="text-andy-gold" />
@@ -142,7 +140,6 @@ export default function SubscribersPage() {
           </div>
         </div>
 
-        {/* Cadence */}
         <div className="bg-white rounded-2xl border border-andy-stone/20 p-6">
           <h2 className="font-serif text-lg font-bold text-andy-black mb-5">Email Cadence Preferences</h2>
           <div className="space-y-4">
@@ -166,7 +163,6 @@ export default function SubscribersPage() {
           </div>
         </div>
 
-        {/* Segment Summary */}
         <div className="bg-white rounded-2xl border border-andy-stone/20 p-6">
           <h2 className="font-serif text-lg font-bold text-andy-black mb-5">Segment Health</h2>
           <div className="space-y-4">

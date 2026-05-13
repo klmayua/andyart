@@ -7,8 +7,6 @@ if (typeof window !== 'undefined') {
       timestamp: new Date().toISOString()
     });
   }
-
-  window.__AA_RUNTIME_READY__ = true;
 }
 
 export const logBootStage = (stage: string, data?: Record<string, unknown>) => {
