@@ -70,7 +70,7 @@ export function notifyUrgentRequest(userId: string, subject: string, requestId: 
     message: subject,
     actionUrl: '/ops/concierge/requests',
     metadata: { requestId },
-    severity: 'warning' as never,
+    severity: 'warning',
   });
 }
 

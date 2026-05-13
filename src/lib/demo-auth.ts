@@ -1,18 +1,20 @@
 'use client';
 
+import type { RoleId, Permission } from '@/types/auth';
 import { DemoAccount, findDemoAccount, getDemoAccountById, DEMO_ACCOUNTS } from '@/data/demoAccounts';
 
 const SESSION_KEY = 'andyart-demo-session';
 
 export interface DemoSession {
   id: string;
-  role: string;
+  role: RoleId;
   name: string;
   email: string;
   title: string;
   initials: string;
   defaultRoute: string;
   allowedRoutes: string[];
+  permissions: Permission[];
   loggedInAt: string;
 }
 
@@ -25,13 +27,14 @@ export function loginDemoUser(email: string, password: string): { success: boole
 
   const session: DemoSession = {
     id: account.id,
-    role: account.role,
+    role: account.role as RoleId,
     name: account.name,
     email: account.email,
     title: account.title,
     initials: account.initials,
     defaultRoute: account.defaultRoute,
     allowedRoutes: account.allowedRoutes,
+    permissions: [],
     loggedInAt: new Date().toISOString(),
   };
 
@@ -46,13 +49,14 @@ export function loginDemoUser(email: string, password: string): { success: boole
 export function loginWithDemoAccount(account: DemoAccount): { success: boolean; session?: DemoSession } {
   const session: DemoSession = {
     id: account.id,
-    role: account.role,
+    role: account.role as RoleId,
     name: account.name,
     email: account.email,
     title: account.title,
     initials: account.initials,
     defaultRoute: account.defaultRoute,
     allowedRoutes: account.allowedRoutes,
+    permissions: [],
     loggedInAt: new Date().toISOString(),
   };
 

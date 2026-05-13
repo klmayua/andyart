@@ -1,6 +1,7 @@
 export type RoleId =
   | 'super_admin'
   | 'executive'
+  | 'executive_director'
   | 'treasury_director'
   | 'treasury_operator'
   | 'broker_manager'
@@ -8,6 +9,11 @@ export type RoleId =
   | 'concierge_director'
   | 'concierge_operator'
   | 'crm_manager'
+  | 'crm_director'
+  | 'finance_operations'
+  | 'collector'
+  | 'artist'
+  | 'gallery_partner'
   | 'compliance'
   | 'auditor'
   | 'readonly';
@@ -105,6 +111,7 @@ export interface Notification {
   createdAt: string;
   actionUrl?: string;
   metadata?: Record<string, unknown>;
+  severity?: 'info' | 'warning' | 'error';
 }
 
 export type NotificationType =
@@ -121,6 +128,7 @@ export type NotificationType =
 export const ROLE_LABELS: Record<RoleId, string> = {
   super_admin: 'Super Admin',
   executive: 'Executive',
+  executive_director: 'Executive Director',
   treasury_director: 'Treasury Director',
   treasury_operator: 'Treasury Operator',
   broker_manager: 'Broker Manager',
@@ -128,6 +136,11 @@ export const ROLE_LABELS: Record<RoleId, string> = {
   concierge_director: 'Concierge Director',
   concierge_operator: 'Concierge Operator',
   crm_manager: 'CRM Manager',
+  crm_director: 'CRM Director',
+  finance_operations: 'Finance Operations',
+  collector: 'Collector',
+  artist: 'Artist',
+  gallery_partner: 'Gallery Partner',
   compliance: 'Compliance',
   auditor: 'Auditor',
   readonly: 'Read Only',
@@ -136,6 +149,7 @@ export const ROLE_LABELS: Record<RoleId, string> = {
 export const ROLE_DEPARTMENTS: Record<RoleId, string> = {
   super_admin: 'Administration',
   executive: 'Executive',
+  executive_director: 'Executive',
   treasury_director: 'Treasury',
   treasury_operator: 'Treasury',
   broker_manager: 'Brokerage',
@@ -143,6 +157,11 @@ export const ROLE_DEPARTMENTS: Record<RoleId, string> = {
   concierge_director: 'Concierge',
   concierge_operator: 'Concierge',
   crm_manager: 'CRM',
+  crm_director: 'CRM',
+  finance_operations: 'Finance',
+  collector: 'Collector',
+  artist: 'Artist',
+  gallery_partner: 'Partners',
   compliance: 'Compliance',
   auditor: 'Audit',
   readonly: 'Read Only',
@@ -151,6 +170,7 @@ export const ROLE_DEPARTMENTS: Record<RoleId, string> = {
 export const ROLE_COLORS: Record<RoleId, string> = {
   super_admin: 'bg-red-100 text-red-700',
   executive: 'bg-andy-black text-andy-gold',
+  executive_director: 'bg-andy-black text-andy-gold',
   treasury_director: 'bg-purple-100 text-purple-700',
   treasury_operator: 'bg-purple-50 text-purple-600',
   broker_manager: 'bg-blue-100 text-blue-700',
@@ -158,6 +178,11 @@ export const ROLE_COLORS: Record<RoleId, string> = {
   concierge_director: 'bg-andy-gold/15 text-andy-gold',
   concierge_operator: 'bg-orange-50 text-orange-600',
   crm_manager: 'bg-green-100 text-green-700',
+  crm_director: 'bg-green-100 text-green-700',
+  finance_operations: 'bg-purple-100 text-purple-700',
+  collector: 'bg-andy-gold/15 text-andy-gold',
+  artist: 'bg-pink-100 text-pink-700',
+  gallery_partner: 'bg-teal-100 text-teal-700',
   compliance: 'bg-cyan-100 text-cyan-700',
   auditor: 'bg-gray-100 text-gray-600',
   readonly: 'bg-gray-50 text-gray-500',

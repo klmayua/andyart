@@ -39,7 +39,7 @@ export interface ClientProfile {
   avgBudget?: string;
   favoriteMediums?: string[];
   preferredArtists?: string[];
-  privateAccessLevel: 'standard' | 'preferred' | 'exclusive';
+  privateAccessLevel: 'standard' | 'preferred' | 'exclusive' | 'founding';
   conciergeNotes?: string;
   createdAt: string;
 }

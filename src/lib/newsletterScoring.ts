@@ -11,6 +11,7 @@ const INTEREST_SCORES: Record<InterestTag, number> = {
   hospitality_design: 15,
   journal: 5,
   investment_opportunities: 25,
+  institutional: 25,
 };
 
 const BUDGET_SCORES: Record<BudgetBand, number> = {
@@ -81,7 +82,7 @@ export function getSubscribers(): import('@/types/newsletter').NewsletterSubscri
 export function saveSubscriber(subscriber: import('@/types/newsletter').NewsletterSubscriber): void {
   if (typeof window === 'undefined') return;
   const existing = getSubscribers();
-  const idx = existing.findIndex((s) => s.email === subscriber.email);
+  const idx = existing.findIndex((s) => s.identity.email === subscriber.identity.email);
   if (idx >= 0) {
     existing[idx] = subscriber;
   } else {

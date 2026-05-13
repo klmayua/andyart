@@ -241,7 +241,7 @@ export function saveVault(vault: CollectorVault): void {
   vault.lastUpdated = new Date().toISOString();
   vault.totalDocuments = vault.documents.length;
   const all = (() => { try { return JSON.parse(localStorage.getItem(VAULT_KEY) || '[]'); } catch { return []; } })();
-  const idx = all.findIndex((v: CollectorVault) => v.collectorId === collectorId);
+  const idx = all.findIndex((v: CollectorVault) => v.collectorId === vault.collectorId);
   if (idx >= 0) all[idx] = vault; else all.push(vault);
   localStorage.setItem(VAULT_KEY, JSON.stringify(all));
 }

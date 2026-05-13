@@ -70,6 +70,34 @@ const ROLE_PERMISSIONS: Record<RoleId, Permission[]> = {
     'concierge:view_all',
     'ops:view_dashboard', 'ops:view_crm', 'ops:view_concierge',
   ],
+  artist: [
+    'crm:view',
+    'ops:view_dashboard',
+  ],
+  collector: [
+    'crm:view',
+    'ops:view_dashboard',
+  ],
+  executive_director: [
+    'crm:view', 'crm:assign', 'crm:export', 'crm:convert',
+    'concierge:manage_requests', 'concierge:manage_vips', 'concierge:manage_bookings', 'concierge:manage_commissions', 'concierge:manage_corporate', 'concierge:view_all',
+    'treasury:view_reports',
+    'whatsapp:reply', 'whatsapp:broadcast', 'whatsapp:view_conversations',
+    'ops:view_dashboard', 'ops:view_crm', 'ops:view_concierge',
+  ],
+  crm_director: [
+    'crm:view', 'crm:assign', 'crm:export', 'crm:convert', 'crm:manage_leads',
+    'concierge:view_all',
+    'ops:view_dashboard', 'ops:view_crm',
+  ],
+  finance_operations: [
+    'treasury:view_reports',
+    'ops:view_dashboard',
+  ],
+  gallery_partner: [
+    'crm:view',
+    'ops:view_dashboard',
+  ],
 };
 
 export function getPermissionsForRole(role: RoleId): Permission[] {

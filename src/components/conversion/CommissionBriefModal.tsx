@@ -4,6 +4,7 @@ import { useState } from 'react';
 import BaseModal from './BaseModal';
 import { captureLead } from '@/lib/leadCapture';
 import { useAnalytics } from '@/hooks/useAnalytics';
+import type { LeadBudgetBand } from '@/types/crm';
 
 interface CommissionBriefModalProps {
   isOpen: boolean;
@@ -25,7 +26,7 @@ export default function CommissionBriefModal({ isOpen, onClose, artistName, arti
     phone: string;
     country: string;
     city: string;
-    budgetBand: string;
+    budgetBand: LeadBudgetBand;
     timeline: string;
     subject: string;
     medium: string;
@@ -115,7 +116,7 @@ export default function CommissionBriefModal({ isOpen, onClose, artistName, arti
             <input type="text" placeholder="City" value={form.city} onChange={(e) => setForm({ ...form, city: e.target.value })} className="w-full px-4 py-2.5 border border-andy-stone/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-andy-gold/30 bg-white text-sm text-andy-black placeholder:text-andy-bronze/50" />
           </div>
           <div className="grid grid-cols-2 gap-3">
-            <select value={form.budgetBand} onChange={(e) => setForm({ ...form, budgetBand: e.target.value as typeof form.budgetBand })} className="w-full px-4 py-2.5 border border-andy-stone/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-andy-gold/30 bg-white text-sm text-andy-black">
+            <select value={form.budgetBand} onChange={(e) => setForm({ ...form, budgetBand: e.target.value as LeadBudgetBand })} className="w-full px-4 py-2.5 border border-andy-stone/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-andy-gold/30 bg-white text-sm text-andy-black">
               <option value="undisclosed">Budget — Flexible</option>
               <option value="under_1000">Under $1,000</option>
               <option value="1000_5000">$1,000 – $5,000</option>

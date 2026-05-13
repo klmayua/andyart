@@ -5,6 +5,7 @@ import { useCallback } from 'react';
 export type AnalyticsEvent =
   | 'artwork_inquire'
   | 'artwork_reserve'
+  | 'newsletter_subscribe'
   | 'artwork_private_viewing'
   | 'artwork_talk_curator'
   | 'artwork_wishlist_add'

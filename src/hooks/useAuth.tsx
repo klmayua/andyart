@@ -1,7 +1,7 @@
 'use client';
 
 import { createContext, useContext, useState, useCallback, useEffect, type ReactNode } from 'react';
-import type { User } from '@/types/auth';
+import type { User, RoleId } from '@/types/auth';
 import { login as apiLogin, logout as apiLogout, getCurrentUser } from '@/lib/auth';
 import { 
   loginDemoUser, 
@@ -30,8 +30,8 @@ function sessionToUser(session: DemoSession): User {
     id: session.id,
     email: session.email,
     name: session.name,
-    role: session.role,
-    permissions: session.allowedRoutes,
+    role: session.role as RoleId,
+    permissions: session.permissions,
     department: session.title,
     isActive: true,
     createdAt: session.loggedInAt,
