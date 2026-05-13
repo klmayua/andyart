@@ -12,7 +12,7 @@ export default function CrmLayout({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     if (isLoading) return;
-    if (!isAuthenticated) { router.push('/ops/auth/signin'); return; }
+    if (!isAuthenticated) { router.push('/auth/signin'); return; }
     setAuthorized(true);
   }, [isLoading, isAuthenticated, router]);
 
