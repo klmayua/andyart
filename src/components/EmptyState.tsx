@@ -29,19 +29,19 @@ export default function EmptyState({
     >
       {Icon && (
         <div
-          className={`flex items-center justify-center rounded-2xl bg-andy-stone/10 border border-andy-stone/20 ${
+          className={`flex items-center justify-center rounded-2xl bg-andy-gold/5 border border-andy-gold/20 ${
             isPage ? 'w-16 h-16 mb-5' : isCompact ? 'w-10 h-10 mb-3' : 'w-14 h-14 mb-4'
           }`}
         >
           <Icon
             size={isPage ? 28 : isCompact ? 18 : 22}
-            className="text-andy-bronze/40"
+            className="text-andy-gold/60"
             strokeWidth={1.5}
           />
         </div>
       )}
       <h3
-        className={`font-serif text-andy-black ${
+        className={`font-serif font-semibold text-andy-black ${
           isPage ? 'text-xl mb-2' : isCompact ? 'text-sm mb-1' : 'text-base mb-1.5'
         }`}
       >

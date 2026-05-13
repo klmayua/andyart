@@ -134,8 +134,11 @@ export default function CollectorVaultPage() {
         })}
         {filtered.length === 0 && (
           <div className="text-center py-12 bg-white rounded-2xl border border-andy-stone/20">
-            <Lock size={32} className="text-andy-stone/30 mx-auto mb-3" />
-            <p className="text-sm text-andy-bronze/40">No documents found</p>
+            <div className="w-16 h-16 bg-andy-gold/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <Lock size={24} className="text-andy-gold/50" />
+            </div>
+            <p className="text-andy-black font-medium">Your vault is empty</p>
+            <p className="text-sm text-andy-bronze/60 mt-1 max-w-xs mx-auto">Authenticated certificates and provenance documents will appear here when you acquire artworks.</p>
           </div>
         )}
       </div>

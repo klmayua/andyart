@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useMemo, useCallback } from 'react';
-import { Search, MessageCircle, Phone, Mail, X, ChevronDown, ChevronUp, ExternalLink } from 'lucide-react';
+import { Search, MessageCircle, Phone, Mail, X, ChevronDown, ChevronUp, ExternalLink, MessageSquare } from 'lucide-react';
 import { useClientData } from '@/hooks/useClientData';
 import { getAllRequests, updateRequestStatus, assignRequest, updateRequestPriority } from '@/lib/concierge';
 import type { ConciergeRequest, RequestStatus, PriorityLevel } from '@/types/concierge';
@@ -123,7 +123,13 @@ export default function RequestsPage() {
           </div>
         ))}
         {filtered.length === 0 && (
-          <div className="bg-white rounded-2xl border border-andy-stone/20 py-16 text-center text-andy-bronze/50">No requests match</div>
+          <div className="bg-white rounded-2xl border border-andy-stone/20 p-8 text-center">
+            <div className="w-12 h-12 bg-andy-stone/10 rounded-full flex items-center justify-center mx-auto mb-3">
+              <MessageSquare size={20} className="text-andy-bronze/40" />
+            </div>
+            <p className="text-andy-bronze font-medium">No service requests</p>
+            <p className="text-xs text-andy-bronze/60 mt-1">Requests will appear here when clients submit inquiries</p>
+          </div>
         )}
       </div>
 
