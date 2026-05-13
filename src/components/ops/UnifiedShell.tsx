@@ -91,7 +91,7 @@ export default function UnifiedShell({ children }: UnifiedShellProps) {
     return () => window.removeEventListener('keydown', handler);
   }, []);
 
-  const handleLogout = () => { logout(); router.push('/ops/auth/signin'); };
+  const handleLogout = () => { logout(); router.push('/auth/signin'); };
 
   return (
     <div className="min-h-screen bg-[#F7F2E8] flex">

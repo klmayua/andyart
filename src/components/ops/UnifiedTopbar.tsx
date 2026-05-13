@@ -18,7 +18,7 @@ export default function UnifiedTopbar({ opsType }: { opsType: 'crm' | 'concierge
 
   const handleLogout = () => {
     logout();
-    router.push('/ops/auth/signin');
+    router.push('/auth/signin');
   };
 
   return (
