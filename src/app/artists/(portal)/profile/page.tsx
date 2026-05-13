@@ -26,7 +26,7 @@ export default function ArtistProfilePage() {
     <div>
       <div className="mb-6">
         <h1 className="font-serif text-2xl font-bold text-andy-black">Artist Profile</h1>
-        <p className="text-sm text-andy-bronze mt-1">Manage your biography, statement, and studio information.</p>
+        <p className="text-sm text-andy-bronze mt-1">Your biographical presence, artistic statement, and studio details.</p>
       </div>
 
       <div className="grid lg:grid-cols-3 gap-6">

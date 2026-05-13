@@ -30,8 +30,8 @@ export default function ArtistCommissionsPage() {
   return (
     <div>
       <div className="mb-6">
-        <h1 className="font-serif text-2xl font-bold text-andy-black">Commissions</h1>
-        <p className="text-sm text-andy-bronze mt-1">Manage commission briefs, milestones, and collector feedback.</p>
+        <h1 className="font-serif text-2xl font-bold text-andy-black">Commissioned Works</h1>
+        <p className="text-sm text-andy-bronze mt-1">Bespoke creations, milestone tracking, and client correspondence.</p>
       </div>
 
       <div className="flex flex-wrap gap-2 mb-6">

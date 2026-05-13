@@ -65,10 +65,8 @@ export default function CrmDashboardPage() {
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h1 className="font-serif text-2xl font-bold text-andy-black">Command Center</h1>
-          <p className="text-sm text-andy-bronze mt-1">
-            {new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' })}
-          </p>
+          <h1 className="font-serif text-2xl font-bold text-andy-black">Relationship Command</h1>
+          <p className="text-sm text-andy-bronze mt-1">Lead pipeline, subscriber insights, and collector development</p>
         </div>
       </div>
 
