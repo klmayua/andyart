@@ -18,6 +18,13 @@ interface ConversionModalContextValue {
   modal: ConversionModal | null;
   openModal: (type: ModalType, data?: ModalData) => void;
   close: () => void;
+  openInquiry: (data?: ModalData) => void;
+  openReserve: (data?: ModalData) => void;
+  openPrivateViewing: (data?: ModalData) => void;
+  openCommission: (data?: ModalData) => void;
+  openConcierge: (data?: ModalData) => void;
+  openRSVP: (data?: ModalData) => void;
+  closeModal: () => void;
 }
 
 const ConversionModalContext = createContext<ConversionModalContextValue | null>(null);
@@ -33,8 +40,45 @@ export function ConversionModalProvider({ children }: { children: ReactNode }) {
     setModal(null);
   }, []);
 
+  const openInquiry = useCallback((data?: ModalData) => {
+    setModal({ type: 'inquiry', isOpen: true, data });
+  }, []);
+
+  const openReserve = useCallback((data?: ModalData) => {
+    setModal({ type: 'reserve', isOpen: true, data });
+  }, []);
+
+  const openPrivateViewing = useCallback((data?: ModalData) => {
+    setModal({ type: 'privateViewing', isOpen: true, data });
+  }, []);
+
+  const openCommission = useCallback((data?: ModalData) => {
+    setModal({ type: 'commission', isOpen: true, data });
+  }, []);
+
+  const openConcierge = useCallback((data?: ModalData) => {
+    setModal({ type: 'concierge', isOpen: true, data });
+  }, []);
+
+  const openRSVP = useCallback((data?: ModalData) => {
+    setModal({ type: 'rsvp', isOpen: true, data });
+  }, []);
+
+  const value: ConversionModalContextValue = {
+    modal,
+    openModal,
+    close,
+    openInquiry,
+    openReserve,
+    openPrivateViewing,
+    openCommission,
+    openConcierge,
+    openRSVP,
+    closeModal: close,
+  };
+
   return (
-    <ConversionModalContext.Provider value={{ modal, openModal, close }}>
+    <ConversionModalContext.Provider value={value}>
       {children}
     </ConversionModalContext.Provider>
   );
