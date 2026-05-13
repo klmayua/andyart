@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import {
-  LayoutDashboard, User, Layers, ClipboardList, Palette, Calendar, CreditCard, BarChart3, Eye, LogOut,
+  LayoutDashboard, User, Layers, ClipboardList, Palette, Calendar, CreditCard, BarChart3, Eye, LogOut, Menu, X,
 } from 'lucide-react';
 import { useAuth } from '@/hooks/useAuth';
 import { seedArtistData } from '@/data/artist.mock';
@@ -25,6 +25,7 @@ export default function ArtistPortalLayout({ children }: { children: React.React
   const router = useRouter();
   const { isLoading, isAuthenticated, logout } = useAuth();
   const [authorized, setAuthorized] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -54,8 +55,16 @@ export default function ArtistPortalLayout({ children }: { children: React.React
 
   return (
     <div className="min-h-screen bg-[#F7F2E8] flex">
+      {/* Mobile toggle */}
+      <button
+        onClick={() => setSidebarOpen(!sidebarOpen)}
+        className="lg:hidden fixed top-4 left-4 z-50 p-2 bg-white rounded-lg shadow-md border border-andy-stone/20"
+      >
+        {sidebarOpen ? <X size={20} /> : <Menu size={20} />}
+      </button>
+
       {/* Sidebar */}
-      <aside className="w-56 bg-white border-r border-andy-stone/10 flex flex-col flex-shrink-0">
+      <aside className={`${sidebarOpen ? 'w-56' : 'w-0'} lg:w-56 bg-white border-r border-andy-stone/10 flex flex-col flex-shrink-0 transition-all duration-300 overflow-hidden fixed lg:relative z-40 h-full`}>
         <div className="px-5 py-5 border-b border-andy-stone/10">
           <div className="flex items-center gap-2.5">
             <div className="w-8 h-8 bg-andy-black rounded-lg flex items-center justify-center">
@@ -101,9 +110,14 @@ export default function ArtistPortalLayout({ children }: { children: React.React
         </div>
       </aside>
 
+      {/* Mobile overlay */}
+      {sidebarOpen && (
+        <div className="lg:hidden fixed inset-0 bg-black/30 z-30" onClick={() => setSidebarOpen(false)} />
+      )}
+
       {/* Main content */}
       <main className="flex-1 overflow-auto">
-        <div className="max-w-5xl mx-auto p-6 lg:p-8">
+        <div className="max-w-5xl mx-auto p-4 md:p-6 lg:p-8">
           {children}
         </div>
       </main>

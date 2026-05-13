@@ -161,7 +161,7 @@ export default function LeadsPage() {
             </thead>
             <tbody>
               {filtered.length === 0 ? (
-                <tr><td colSpan={9} className="text-center py-16 text-andy-bronze/60">No leads match your filters</td></tr>
+                <tr><td colSpan={9} className="text-center py-12 text-andy-bronze/60">No leads match your filters</td></tr>
               ) : filtered.map((lead) => {
                 const temp = TEMPERATURE_STYLES[lead.temperature];
                 return (
