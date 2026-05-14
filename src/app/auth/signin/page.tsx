@@ -40,8 +40,6 @@ export default function SignInPage() {
   const handleDemoSelect = async (account: typeof demoAccounts[0]) => {
     const result = loginWithDemoAccount(account);
     if (result.success && result.session) {
-      enableDemoMode(account.email, account.password);
-      await new Promise(resolve => setTimeout(resolve, 100));
       router.push(account.defaultRoute);
     }
   };
