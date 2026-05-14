@@ -40,7 +40,7 @@ export default function ArtistPortalLayout({ children }: { children: React.React
       return;
     }
     setAuthorized(true);
-  }, [isLoading, isAuthenticated, router]);
+  }, [isLoading, isAuthenticated, isDemoMode, router]);
 
   if (isLoading || !authorized) {
     return (

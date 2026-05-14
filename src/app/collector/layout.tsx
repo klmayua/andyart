@@ -36,7 +36,7 @@ export default function CollectorLayout({ children }: { children: React.ReactNod
       return;
     }
     setAuthorized(true);
-  }, [isLoading, isAuthenticated, router]);
+  }, [isLoading, isAuthenticated, isDemoMode, router]);
 
   if (isLoading || !authorized) {
     return (

@@ -14,7 +14,7 @@ export default function PaymentsLayout({ children }: { children: React.ReactNode
     if (isLoading) return;
     if (!isAuthenticated && !isDemoMode) { router.push('/auth/signin'); return; }
     setAuthorized(true);
-  }, [isLoading, isAuthenticated, router]);
+  }, [isLoading, isAuthenticated, isDemoMode, router]);
 
   if (isLoading || !authorized) {
     return (
