@@ -8,11 +8,7 @@ import {
   MessageSquare, Calendar, Palette, Building2, Crown,
   CreditCard, Receipt, Shield, Landmark, TrendingUp,
   Eye, LogOut, Bell, ChevronDown, Search, Command,
-  ArrowLeft, Activity, Paintbrush,
 } from 'lucide-react';
-import { useAuth } from '@/hooks/useAuth';
-import { getNotifications, markRead, markAllRead, getUnreadCount } from '@/lib/notifications';
-import type { Notification } from '@/types/auth';
 import GlobalSearch from './GlobalSearch';
 import CommandPalette from './CommandPalette';
 import Breadcrumbs from './Breadcrumbs';
@@ -57,7 +53,7 @@ const NAV_SECTIONS: NavSection[] = [
   {
     label: 'Artists',
     items: [
-      { href: '/ops/artists', label: 'Artist Console', icon: Paintbrush },
+      { href: '/ops/artists', label: 'Artist Console', icon: Palette },
     ],
   },
 ];
@@ -69,15 +65,11 @@ interface UnifiedShellProps {
 export default function UnifiedShell({ children }: UnifiedShellProps) {
   const pathname = usePathname();
   const router = useRouter();
-  const { user, logout } = useAuth();
   const [showSearch, setShowSearch] = useState(false);
   const [showCmd, setShowCmd] = useState(false);
   const [showNotifs, setShowNotifs] = useState(false);
   const [showProfile, setShowProfile] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(true);
-
-  const notifs: Notification[] = user ? getNotifications(user.id) : [];
-  const unread = user ? getUnreadCount(user.id) : 0;
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
@@ -91,11 +83,10 @@ export default function UnifiedShell({ children }: UnifiedShellProps) {
     return () => window.removeEventListener('keydown', handler);
   }, []);
 
-  const handleLogout = () => { logout(); router.push('/auth/signin'); };
+  const handleLogout = () => { router.push('/auth/signin'); };
 
   return (
     <div className="min-h-screen bg-[#F7F2E8] flex">
-      {/* Sidebar */}
       <aside className={`${sidebarOpen ? 'w-60' : 'w-0'} bg-[#171614] text-[#FFFDF9] flex flex-col flex-shrink-0 transition-all duration-300 overflow-hidden`}>
         <div className="px-5 py-5 border-b border-[#FFFDF9]/[0.06]">
           <div className="flex items-center gap-2.5">
@@ -145,9 +136,7 @@ export default function UnifiedShell({ children }: UnifiedShellProps) {
         </div>
       </aside>
 
-      {/* Main content area */}
       <div className="flex-1 flex flex-col overflow-hidden">
-        {/* Topbar */}
         <div className="h-14 bg-white border-b border-andy-stone/10 px-4 flex items-center justify-between flex-shrink-0">
           <div className="flex items-center gap-3">
             <button onClick={() => setSidebarOpen(!sidebarOpen)} className="p-2 rounded-lg hover:bg-andy-stone/10 transition-colors">
@@ -172,45 +161,20 @@ export default function UnifiedShell({ children }: UnifiedShellProps) {
           </div>
 
           <div className="flex items-center gap-2">
-            {/* Notifications */}
-            <div className="relative">
-              <button onClick={() => { setShowNotifs(!showNotifs); setShowProfile(false); }} className="relative p-2 rounded-lg hover:bg-andy-stone/10 transition-colors">
-                <Bell size={16} className="text-andy-bronze" />
-                {unread > 0 && (
-                  <span className="absolute top-0.5 right-0.5 w-3.5 h-3.5 bg-andy-gold text-andy-black text-[9px] font-bold rounded-full flex items-center justify-center">{unread > 9 ? '9+' : unread}</span>
-                )}
-              </button>
-              {showNotifs && (
-                <div className="absolute right-0 top-full mt-1.5 w-72 bg-white rounded-2xl border border-andy-stone/20 shadow-premium z-50 overflow-hidden">
-                  <div className="px-4 py-2.5 border-b border-andy-stone/10 flex items-center justify-between">
-                    <p className="text-xs font-semibold text-andy-black">Notifications</p>
-                    {unread > 0 && <button onClick={() => user && markAllRead(user.id)} className="text-[10px] text-andy-gold hover:underline">Mark all read</button>}
-                  </div>
-                  <div className="max-h-64 overflow-y-auto">
-                    {notifs.length === 0 ? (
-                      <div className="py-6 text-center text-xs text-andy-bronze/50">No notifications</div>
-                    ) : notifs.slice(0, 6).map((n) => (
-                      <div key={n.id} onClick={() => { markRead(n.id); if (n.actionUrl) router.push(n.actionUrl); setShowNotifs(false); }} className={`px-4 py-2.5 border-b border-andy-stone/5 hover:bg-andy-stone/5 cursor-pointer transition-colors ${!n.read ? 'bg-andy-gold/5' : ''}`}>
-                        <p className="text-xs font-medium text-andy-black">{n.title}</p>
-                        <p className="text-[11px] text-andy-bronze mt-0.5 line-clamp-2">{n.message}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
+            <button onClick={() => { setShowNotifs(!showNotifs); setShowProfile(false); }} className="relative p-2 rounded-lg hover:bg-andy-stone/10 transition-colors">
+              <Bell size={16} className="text-andy-bronze" />
+            </button>
 
-            {/* Profile */}
             <div className="relative">
               <button onClick={() => { setShowProfile(!showProfile); setShowNotifs(false); }} className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg hover:bg-andy-stone/10 transition-colors">
-                <div className="w-7 h-7 bg-andy-black text-andy-gold rounded-full flex items-center justify-center text-[10px] font-bold">{user?.name.charAt(0) || 'U'}</div>
+                <div className="w-7 h-7 bg-andy-black text-andy-gold rounded-full flex items-center justify-center text-[10px] font-bold">D</div>
                 <ChevronDown size={12} className="text-andy-bronze" />
               </button>
               {showProfile && (
                 <div className="absolute right-0 top-full mt-1.5 w-52 bg-white rounded-2xl border border-andy-stone/20 shadow-premium z-50 overflow-hidden">
                   <div className="px-3 py-2.5 border-b border-andy-stone/10">
-                    <p className="text-xs font-semibold text-andy-black">{user?.name}</p>
-                    <p className="text-[10px] text-andy-bronze">{user?.email}</p>
+                    <p className="text-xs font-semibold text-andy-black">Demo User</p>
+                    <p className="text-[10px] text-andy-bronze">demo@andyart.house</p>
                   </div>
                   <div className="py-1">
                     <button onClick={handleLogout} className="flex items-center gap-2.5 w-full px-3 py-2 text-xs text-andy-wine hover:bg-andy-stone/5 transition-colors"><LogOut size={12} /> Sign Out</button>
@@ -225,7 +189,6 @@ export default function UnifiedShell({ children }: UnifiedShellProps) {
           )}
         </div>
 
-        {/* Content */}
         <main className="flex-1 overflow-auto p-6 lg:p-8">
           <Breadcrumbs />
           {children}

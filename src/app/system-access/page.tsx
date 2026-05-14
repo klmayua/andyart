@@ -126,55 +126,21 @@ const sections = [
 ];
 
 export default function SystemAccessPage() {
-  const [demoEnabled, setDemoEnabled] = useState(false);
-  const router = useRouter();
-
-  useEffect(() => {
-    const isDemo = localStorage.getItem('aa_demo_mode') === 'enabled';
-    setDemoEnabled(isDemo);
-  }, []);
-
-  const toggleDemoMode = () => {
-    if (demoEnabled) {
-      localStorage.removeItem('aa_demo_mode');
-      setDemoEnabled(false);
-    } else {
-      localStorage.setItem('aa_demo_mode', 'enabled');
-      setDemoEnabled(true);
-    }
-    router.refresh();
-  };
-
   return (
     <div className="min-h-screen bg-[#171614] text-[#F7F2E8]">
       <div className="max-w-7xl mx-auto p-6 lg:p-8">
         <div className="mb-8">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3 mb-2">
-              <div className="w-10 h-10 bg-[#C6A66B] rounded-lg flex items-center justify-center">
-                <Menu className="w-5 h-5 text-[#171614]" />
-              </div>
-              <div>
-                <h1 className="text-2xl font-serif font-bold">System Access Hub</h1>
-                <p className="text-xs text-[#A78345]">AndyArt Cultural House - Operational Surfaces</p>
-              </div>
+          <div className="flex items-center gap-3 mb-2">
+            <div className="w-10 h-10 bg-[#C6A66B] rounded-lg flex items-center justify-center">
+              <Menu className="w-5 h-5 text-[#171614]" />
             </div>
-            <button
-              onClick={toggleDemoMode}
-              className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium text-sm transition-all ${
-                demoEnabled 
-                  ? 'bg-green-600 text-white hover:bg-green-700' 
-                  : 'bg-[#333] text-[#D7CEC1] hover:bg-[#444]'
-              }`}
-            >
-              {demoEnabled ? <Power className="w-4 h-4" /> : <PowerOff className="w-4 h-4" />}
-              {demoEnabled ? 'Demo Mode ON' : 'Enable Demo Mode'}
-            </button>
+            <div>
+              <h1 className="text-2xl font-serif font-bold">System Access Hub</h1>
+              <p className="text-xs text-[#A78345]">AndyArt Cultural House - All Routes Accessible</p>
+            </div>
           </div>
           <p className="text-sm text-[#D7CEC1] mt-2">
-            {demoEnabled 
-              ? '✓ Demo mode enabled - All protected routes are accessible. Click any route card to navigate.'
-              : 'Click "Enable Demo Mode" to access protected routes for inspection. Use the browser back button to return here.'}
+            All routes are directly accessible. Click any card to navigate.
           </p>
         </div>
 
