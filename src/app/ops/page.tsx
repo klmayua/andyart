@@ -5,6 +5,11 @@ import { useRouter } from 'next/navigation';
 import { useAuth } from '@/hooks/useAuth';
 import UnifiedShell from '@/components/ops/UnifiedShell';
 
+function isDemoModeActive(): boolean {
+  if (typeof window === 'undefined') return false;
+  return localStorage.getItem('aa_demo_mode') === 'enabled' && localStorage.getItem('andyart-demo-session') !== null;
+}
+
 export default function OpsIndexPage() {
   const router = useRouter();
   const { user, isLoading, isAuthenticated, isDemoMode } = useAuth();
@@ -12,7 +17,8 @@ export default function OpsIndexPage() {
 
   useEffect(() => {
     if (isLoading) return;
-    if (!isAuthenticated && !isDemoMode) { 
+    const demoActive = isDemoModeActive();
+    if (!isAuthenticated && !isDemoMode && !demoActive) { 
       router.push('/auth/signin'); 
       return; 
     }

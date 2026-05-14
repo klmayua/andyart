@@ -9,6 +9,11 @@ import {
 import { useAuth } from '@/hooks/useAuth';
 import { seedArtistData } from '@/data/artist.mock';
 
+function isDemoModeActive(): boolean {
+  if (typeof window === 'undefined') return false;
+  return localStorage.getItem('aa_demo_mode') === 'enabled' && localStorage.getItem('andyart-demo-session') !== null;
+}
+
 const navItems = [
   { href: '/artists/portal', label: 'Overview', icon: LayoutDashboard },
   { href: '/artists/profile', label: 'Profile', icon: User },
@@ -35,7 +40,8 @@ export default function ArtistPortalLayout({ children }: { children: React.React
 
   useEffect(() => {
     if (isLoading) return;
-    if (!isAuthenticated && !isDemoMode) {
+    const demoActive = isDemoModeActive();
+    if (!isAuthenticated && !isDemoMode && !demoActive) {
       router.push('/auth/signin');
       return;
     }

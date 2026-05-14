@@ -5,6 +5,11 @@ import { useRouter } from 'next/navigation';
 import UnifiedShell from '@/components/ops/UnifiedShell';
 import { useAuth } from '@/hooks/useAuth';
 
+function isDemoModeActive(): boolean {
+  if (typeof window === 'undefined') return false;
+  return localStorage.getItem('aa_demo_mode') === 'enabled' && localStorage.getItem('andyart-demo-session') !== null;
+}
+
 export default function CrmLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const { isLoading, isAuthenticated, isDemoMode } = useAuth();
@@ -12,7 +17,9 @@ export default function CrmLayout({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     if (isLoading) return;
-    if (!isAuthenticated && !isDemoMode) { router.push('/auth/signin'); return; }
+    // Direct localStorage check is more reliable than context state
+    const demoActive = isDemoModeActive();
+    if (!isAuthenticated && !isDemoMode && !demoActive) { router.push('/auth/signin'); return; }
     setAuthorized(true);
   }, [isLoading, isAuthenticated, isDemoMode, router]);
 

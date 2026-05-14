@@ -8,6 +8,11 @@ import {
 } from 'lucide-react';
 import { useAuth } from '@/hooks/useAuth';
 
+function isDemoModeActive(): boolean {
+  if (typeof window === 'undefined') return false;
+  return localStorage.getItem('aa_demo_mode') === 'enabled' && localStorage.getItem('andyart-demo-session') !== null;
+}
+
 const navItems = [
   { href: '/collector', label: 'Overview', icon: LayoutDashboard },
   { href: '/collector/profile', label: 'Profile', icon: User },
@@ -31,7 +36,8 @@ export default function CollectorLayout({ children }: { children: React.ReactNod
 
   useEffect(() => {
     if (isLoading) return;
-    if (!isAuthenticated && !isDemoMode) {
+    const demoActive = isDemoModeActive();
+    if (!isAuthenticated && !isDemoMode && !demoActive) {
       router.push('/auth/signin');
       return;
     }

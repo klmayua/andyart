@@ -5,6 +5,11 @@ import { useRouter } from 'next/navigation';
 import UnifiedShell from '@/components/ops/UnifiedShell';
 import { useAuth } from '@/hooks/useAuth';
 
+function isDemoModeActive(): boolean {
+  if (typeof window === 'undefined') return false;
+  return localStorage.getItem('aa_demo_mode') === 'enabled' && localStorage.getItem('andyart-demo-session') !== null;
+}
+
 export default function ExecutiveLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const { isLoading, isAuthenticated, isDemoMode } = useAuth();
@@ -12,7 +17,8 @@ export default function ExecutiveLayout({ children }: { children: React.ReactNod
 
   useEffect(() => {
     if (isLoading) return;
-    if (!isAuthenticated && !isDemoMode) { router.push('/auth/signin'); return; }
+    const demoActive = isDemoModeActive();
+    if (!isAuthenticated && !isDemoMode && !demoActive) { router.push('/auth/signin'); return; }
     setAuthorized(true);
   }, [isLoading, isAuthenticated, isDemoMode, router]);
 
