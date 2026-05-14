@@ -1,7 +1,7 @@
 'use client';
 
 import type { RoleId, Permission } from '@/types/auth';
-import { DemoAccount, findDemoAccount, getDemoAccountById, DEMO_ACCOUNTS } from '@/data/demoAccounts';
+import { findDemoAccount, DEMO_ACCOUNTS } from '@/data/demoAccounts';
 
 const SESSION_KEY = 'andyart-demo-session';
 
@@ -46,28 +46,6 @@ export function loginDemoUser(email: string, password: string): { success: boole
   return { success: true, session };
 }
 
-export function loginWithDemoAccount(account: DemoAccount): { success: boolean; session?: DemoSession } {
-  const session: DemoSession = {
-    id: account.id,
-    role: account.role as RoleId,
-    name: account.name,
-    email: account.email,
-    title: account.title,
-    initials: account.initials,
-    defaultRoute: account.defaultRoute,
-    allowedRoutes: account.allowedRoutes,
-    permissions: [],
-    loggedInAt: new Date().toISOString(),
-  };
-
-  if (typeof window !== 'undefined') {
-    localStorage.setItem(SESSION_KEY, JSON.stringify(session));
-    localStorage.setItem('aa_demo_mode', 'enabled');
-  }
-
-  return { success: true, session };
-}
-
 export function logoutDemoUser(): void {
   if (typeof window !== 'undefined') {
     localStorage.removeItem(SESSION_KEY);
@@ -90,17 +68,6 @@ export function getDemoUser(): DemoSession | null {
 export function isDemoAuthenticated(): boolean {
   if (typeof window === 'undefined') return false;
   return localStorage.getItem('aa_demo_mode') === 'enabled' && getDemoUser() !== null;
-}
-
-export function hasRoleAccess(route: string): boolean {
-  const session = getDemoUser();
-  if (!session) return false;
-  
-  if (session.role === 'executive_director' || session.role === 'super_admin') {
-    return true;
-  }
-  
-  return session.allowedRoutes.some((r) => route.startsWith(r));
 }
 
 export function getDemoAccounts() {

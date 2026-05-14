@@ -95,7 +95,3 @@ export function findDemoAccount(email: string, password: string): DemoAccount | 
     (a) => a.email.toLowerCase() === email.toLowerCase() && a.password === password
   ) || null;
 }
-
-export function getDemoAccountById(id: string): DemoAccount | null {
-  return DEMO_ACCOUNTS.find((a) => a.id === id) || null;
-}

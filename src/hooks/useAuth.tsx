@@ -1,6 +1,7 @@
 'use client';
 
-import { createContext, useContext, useState, useCallback, useEffect, type ReactNode } from 'react';
+import { createContext, useContext, useState, useCallback, useEffect, useSyncExternalStore, type ReactNode } from 'react';
+import { usePathname } from 'next/navigation';
 import type { User, RoleId } from '@/types/auth';
 import { login as apiLogin, logout as apiLogout, getCurrentUser } from '@/lib/auth';
 import { 
@@ -44,8 +45,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [isLoading, setIsLoading] = useState(true);
   const [isDemoMode, setIsDemoMode] = useState(false);
   const [demoSession, setDemoSession] = useState<DemoSession | null>(null);
+  const pathname = usePathname();
 
-  useEffect(() => {
+  const syncAuth = useCallback(() => {
     const demoActive = isDemoAuthenticated();
     setIsDemoMode(demoActive);
     
@@ -55,13 +57,18 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         setDemoSession(session);
         setUser(sessionToUser(session));
       }
-      setIsLoading(false);
     } else {
       const currentUser = getCurrentUser();
-      setUser(currentUser);
-      setIsLoading(false);
+      if (currentUser) {
+        setUser(currentUser);
+      }
     }
+    setIsLoading(false);
   }, []);
+
+  useEffect(() => {
+    syncAuth();
+  }, [pathname, syncAuth]);
 
   const enableDemoMode = useCallback((email: string, password: string) => {
     const result = loginDemoUser(email, password);

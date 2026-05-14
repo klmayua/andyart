@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useAuth, getDemoAccounts } from '@/hooks/useAuth';
-import { loginDemoUser, loginWithDemoAccount, getDemoUser } from '@/lib/demo-auth';
+import { loginDemoUser } from '@/lib/demo-auth';
 
 export default function SignInPage() {
   const router = useRouter();
@@ -38,10 +38,8 @@ export default function SignInPage() {
   };
 
   const handleDemoSelect = async (account: typeof demoAccounts[0]) => {
-    const result = loginWithDemoAccount(account);
-    if (result.success && result.session) {
-      router.push(account.defaultRoute);
-    }
+    login(account.email, account.password);
+    router.push(account.defaultRoute);
   };
 
   return (

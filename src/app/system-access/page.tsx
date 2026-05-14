@@ -120,8 +120,7 @@ const sections = [
     color: 'text-slate-600',
     bgColor: 'bg-slate-50',
     routes: [
-      { path: '/auth/signin', label: 'Collector Sign In', badge: 'Public' },
-      { path: '/ops/auth/signin', label: 'Ops Sign In', badge: 'Public' },
+      { path: '/auth/signin', label: 'Sign In', badge: 'Public' },
     ]
   },
 ];
