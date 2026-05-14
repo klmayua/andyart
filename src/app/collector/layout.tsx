@@ -25,13 +25,13 @@ const navItems = [
 export default function CollectorLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const router = useRouter();
-  const { user, isLoading, isAuthenticated, logout } = useAuth();
+  const { user, isLoading, isAuthenticated, isDemoMode, logout } = useAuth();
   const [authorized, setAuthorized] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   useEffect(() => {
     if (isLoading) return;
-    if (!isAuthenticated) {
+    if (!isAuthenticated && !isDemoMode) {
       router.push('/auth/signin');
       return;
     }

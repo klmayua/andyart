@@ -23,7 +23,7 @@ const navItems = [
 export default function ArtistPortalLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const router = useRouter();
-  const { isLoading, isAuthenticated, logout } = useAuth();
+  const { isLoading, isAuthenticated, isDemoMode, logout } = useAuth();
   const [authorized, setAuthorized] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
@@ -35,7 +35,7 @@ export default function ArtistPortalLayout({ children }: { children: React.React
 
   useEffect(() => {
     if (isLoading) return;
-    if (!isAuthenticated) {
+    if (!isAuthenticated && !isDemoMode) {
       router.push('/auth/signin');
       return;
     }

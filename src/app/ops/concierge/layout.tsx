@@ -7,12 +7,12 @@ import { useAuth } from '@/hooks/useAuth';
 
 export default function ConciergeLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter();
-  const { isLoading, isAuthenticated } = useAuth();
+  const { isLoading, isAuthenticated, isDemoMode } = useAuth();
   const [authorized, setAuthorized] = useState(false);
 
   useEffect(() => {
     if (isLoading) return;
-    if (!isAuthenticated) { router.push('/auth/signin'); return; }
+    if (!isAuthenticated && !isDemoMode) { router.push('/auth/signin'); return; }
     setAuthorized(true);
   }, [isLoading, isAuthenticated, router]);
 
