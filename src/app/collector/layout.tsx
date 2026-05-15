@@ -6,6 +6,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import {
   LayoutDashboard, User, Layers, ShoppingBag, Award, Calendar, Heart, Lock, Eye, LogOut, CreditCard, Receipt, ArrowLeftRight, Menu, X,
 } from 'lucide-react';
+import { seedCollectorData } from '@/data/collector.mock';
 
 const navItems = [
   { href: '/collector', label: 'Overview', icon: LayoutDashboard },
@@ -24,6 +25,12 @@ const navItems = [
 export default function CollectorLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      seedCollectorData();
+    }
+  }, []);
 
   return (
     <div className="min-h-screen bg-[#F7F2E8] flex">
