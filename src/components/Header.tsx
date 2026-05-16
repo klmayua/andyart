@@ -24,9 +24,9 @@ const rightNav = [
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
-  const { isPublicSurface } = useSurfaceGuard();
+  const { isPublicSurface } = { isPublicSurface: true };
 
-  if (!isPublicSurface) return null;
+  // if (!isPublicSurface) return null;
 
   useEffect(() => {
     setMobileOpen(false);

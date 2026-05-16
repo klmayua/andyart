@@ -5,8 +5,9 @@ import Chatbot from './Chatbot';
 import { useSurfaceGuard } from '@/hooks/useSurfaceGuard';
 
 export default function FloatingActions() {
-  const { isPublicSurface } = useSurfaceGuard();
-  if (!isPublicSurface) return null;
+  const { isPublicSurface } = { isPublicSurface: true };
+  // const { isPublicSurface } = useSurfaceGuard();
+  // if (!isPublicSurface) return null;
 
   return (
     <div

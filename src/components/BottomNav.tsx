@@ -8,7 +8,8 @@ import { useSurfaceGuard } from '@/hooks/useSurfaceGuard';
 
 export default function BottomNav() {
   const pathname = usePathname();
-  const { isPublicSurface } = useSurfaceGuard();
+  const { isPublicSurface } = { isPublicSurface: true };
+  // const { isPublicSurface } = useSurfaceGuard();
   const store = useAppStore();
   const openChat = store?.openChat ?? (() => {});
 
