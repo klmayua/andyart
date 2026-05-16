@@ -44,12 +44,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} ${playfair.variable} font-sans bg-[#F7F2E8] min-h-screen`}>
-        <Ticker />
-        <main className="pb-[90px] md:pb-0">
-          {children}
-        </main>
-        <BottomNav />
-        <FloatingActions />
+        <ConversionModalProvider>
+          <Ticker />
+          <main className="pb-[90px] md:pb-0">
+            {children}
+          </main>
+          <BottomNav />
+          <FloatingActions />
+        </ConversionModalProvider>
       </body>
     </html>
   );
