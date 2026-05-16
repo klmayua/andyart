@@ -7,7 +7,6 @@ import Header from '@/components/Header';
 import BottomNav from '@/components/BottomNav';
 import FloatingActions from '@/components/FloatingActions';
 import ConversionLayer from '@/components/conversion/ConversionLayer';
-import { NewsletterSeedProvider } from '@/hooks/useNewsletterSeed';
 import { ConversionModalProvider } from '@/hooks/useConversionModal';
 
 const inter = Inter({
@@ -45,7 +44,6 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.variable} ${playfair.variable} font-sans bg-[#F7F2E8] min-h-screen`}>
         <ConversionModalProvider>
-          <NewsletterSeedProvider />
           <Ticker />
           <main className="pb-[90px] md:pb-0">
             {children}

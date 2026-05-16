@@ -6,7 +6,7 @@ import { useSurfaceGuard } from '@/hooks/useSurfaceGuard';
 
 export default function FloatingActions() {
   const { isPublicSurface } = { isPublicSurface: true };
-  // const { isPublicSurface } = useSurfaceGuard();
+  // useSurfaceGuard disabled - causes crash on /enterprise
   // if (!isPublicSurface) return null;
 
   return (

@@ -25,7 +25,7 @@ export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
   const { isPublicSurface } = { isPublicSurface: true };
-
+  // useSurfaceGuard disabled - causes crash on /enterprise
   // if (!isPublicSurface) return null;
 
   useEffect(() => {
