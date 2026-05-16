@@ -907,7 +907,7 @@ export default function HomePage() {
           </div>
           <div className="pt-8 border-t border-[#FFFDF9]/[0.05] flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-[12px] text-[#FFFDF9]/25">
-              &copy; {new Date().getFullYear()} AndyArt Cultural House. All rights reserved.
+              &copy; 2026 AndyArt Cultural House. All rights reserved.
             </p>
             <div className="flex gap-6 text-[12px] text-[#FFFDF9]/25">
               <Link href="/legal/terms" className="hover:text-[#C6A66B] transition-colors duration-300">Terms</Link>
