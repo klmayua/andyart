@@ -48,8 +48,8 @@ export default function OpsPaymentsPage() {
 
       <div className="grid lg:grid-cols-2 gap-6">
         {/* Recent Invoices */}
-        <div className="bg-white rounded-2xl border border-andy-stone/20 overflow-hidden">
-          <div className="flex items-center justify-between px-6 py-4 border-b border-andy-stone/10">
+        <div className="bg-[#FBF8F2] rounded-xl border border-black/[0.05] overflow-hidden">
+          <div className="flex items-center justify-between px-6 py-4 border-b border-black/[0.05]">
             <h2 className="font-serif text-lg font-bold text-andy-black">Recent Invoices</h2>
             <Link href="/ops/payments/invoices" className="text-xs text-andy-bronze hover:text-andy-gold">View all →</Link>
           </div>
