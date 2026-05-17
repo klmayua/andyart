@@ -98,7 +98,7 @@ export default function UnifiedShell({ children }: { children: React.ReactNode }
       </aside>
 
       <div className="flex-1 flex flex-col overflow-hidden">
-        <div className="h-14 bg-[#171614] border-b border-[#C6A66B] px-4 flex items-center justify-between flex-shrink-0">
+        <div className="h-16 bg-[#171614] border-b border-[#C6A66B] px-4 flex items-center justify-between flex-shrink-0">
           <div className="flex items-center gap-4">
             <button onClick={() => setSidebarOpen(!sidebarOpen)} className="p-1.5 rounded-lg hover:bg-[#2A2826] transition-colors">
               <Command size={16} className="text-[#A78345]" />
