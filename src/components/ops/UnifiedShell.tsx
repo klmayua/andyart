@@ -49,7 +49,7 @@ export default function UnifiedShell({ children }: { children: React.ReactNode }
 
   return (
     <div className="min-h-screen bg-[#F7F2E8] flex">
-      <aside className={`${sidebarOpen ? 'w-60' : 'w-0'} bg-[#171614] text-[#FFFDF9] flex flex-col flex-shrink-0 transition-all duration-300 overflow-hidden border-r border-[#FFFDF9]/20`}>
+      <aside className={`${sidebarOpen ? 'w-60' : 'w-0'} bg-[#171614] text-[#FFFDF9] flex flex-col flex-shrink-0 transition-all duration-300 overflow-hidden border-r border-[#C6A66B]/20`}>
         <div className="px-5 py-5 border-b border-[#FFFDF9]/[0.06]">
           <div className="flex items-center gap-2.5">
             <div className="w-8 h-8 bg-andy-gold rounded-lg flex items-center justify-center">
