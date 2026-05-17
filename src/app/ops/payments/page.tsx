@@ -22,7 +22,8 @@ export default function OpsPaymentsPage() {
   return (
     <div>
       <div className="mb-8">
-        <h1 className="font-serif text-2xl font-bold text-andy-black">Financial Operations</h1>
+        <h1 className="font-serif text-3xl font-bold text-andy-black">Financial Operations</h1>
+        <p className="text-sm text-andy-bronze mt-1">Payment processing and financial tracking</p>
       </div>
 
       {/* KPIs */}
@@ -33,7 +34,7 @@ export default function OpsPaymentsPage() {
           { label: 'Escrow Balance', value: `$${(stats.escrowBalance / 1000).toFixed(0)}k`, sub: `${stats.escrowFunded} funded`, icon: Shield, href: '/ops/payments/escrow' },
           { label: 'Pending Settlements', value: stats.pendingSettlements, sub: 'In pipeline', icon: Landmark, href: '/ops/payments/settlements' },
         ].map((kpi) => (
-          <Link key={kpi.label} href={kpi.href} className="bg-white rounded-2xl border border-andy-stone/20 p-5 hover:border-andy-gold/30 hover:shadow-premium transition-all group">
+          <Link key={kpi.label} href={kpi.href} className="bg-[#FAF8F3] rounded-xl border border-black/[0.06] p-5 hover:border-andy-gold/20 hover:shadow-[0_1px_2px_rgba(0,0,0,0.04)] transition-all group">
             <div className="flex items-center justify-between mb-3">
               <kpi.icon size={20} className="text-andy-gold" />
               <ArrowRight size={14} className="text-andy-bronze/40 group-hover:text-andy-gold transition-colors" />
