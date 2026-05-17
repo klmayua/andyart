@@ -82,8 +82,8 @@ export default function InsightsPage() {
   return (
     <div>
       <div className="mb-6">
-        <h1 className="font-serif text-2xl font-bold text-andy-black">Insights</h1>
-        <p className="text-sm text-andy-bronze mt-1">Performance metrics and pipeline intelligence</p>
+        <h1 className="font-serif text-3xl font-bold text-[#F5EBDD]">Insights</h1>
+        <p className="text-sm text-[#B9A48A] mt-1">Performance metrics and pipeline intelligence</p>
       </div>
 
       {/* KPI Row */}
@@ -94,9 +94,9 @@ export default function InsightsPage() {
           { label: 'Conversion Rate', value: `${conversionRate}%`, icon: TrendingUp, trend: null },
           { label: 'Pipeline Value', value: `$${(pipelineValue / 1000).toFixed(0)}k`, icon: DollarSign, trend: null },
         ].map((kpi) => (
-          <div key={kpi.label} className="bg-white rounded-2xl border border-andy-stone/20 p-5">
+          <div key={kpi.label} className="bg-[linear-gradient(180deg,rgba(34,29,25,0.88)_0%,rgba(24,20,18,0.96)_100%)] rounded-xl border border-[rgba(214,170,92,0.10)] p-5 shadow-[0_4px_20px_rgba(0,0,0,0.35)]">
             <div className="flex items-center justify-between mb-3">
-              <kpi.icon size={20} className="text-andy-gold" />
+              <kpi.icon size={20} className="text-[#C89B4F]" />
             </div>
             <p className="text-2xl font-bold text-andy-black">{kpi.value}</p>
             <p className="text-xs text-andy-bronze mt-1">{kpi.label}</p>

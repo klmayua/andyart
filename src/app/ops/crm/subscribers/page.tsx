@@ -56,8 +56,8 @@ export default function SubscribersPage() {
     <div>
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h1 className="font-serif text-2xl font-bold text-andy-black">Subscribers</h1>
-          <p className="text-sm text-andy-bronze mt-1">{subs.length} total subscribers</p>
+          <h1 className="font-serif text-3xl font-bold text-[#F5EBDD]">Subscribers</h1>
+          <p className="text-sm text-[#B9A48A] mt-1">{subs.length} total subscribers</p>
         </div>
       </div>
 
@@ -66,7 +66,7 @@ export default function SubscribersPage() {
           const color = getTierColor(tier);
           const count = counts[tier];
           return (
-            <div key={tier} className="bg-white rounded-2xl border border-andy-stone/20 p-5">
+            <div key={tier} className="bg-[linear-gradient(180deg,rgba(34,29,25,0.88)_0%,rgba(24,20,18,0.96)_100%)] rounded-xl border border-[rgba(214,170,92,0.10)] p-5 shadow-[0_4px_20px_rgba(0,0,0,0.35)]">
               <div className="flex items-center justify-between mb-3">
                 <div className={`w-10 h-10 rounded-xl ${color.bg} flex items-center justify-center`}>
                   {tier === 'vip' ? <Crown size={18} className={color.text} /> : <Users size={18} className={color.text} />}
@@ -75,8 +75,8 @@ export default function SubscribersPage() {
                   {Math.round((count / subs.length) * 100) || 0}%
                 </span>
               </div>
-              <p className="text-2xl font-bold text-andy-black">{count}</p>
-              <p className="text-sm text-andy-bronze mt-0.5">{getTierLabel(tier)}</p>
+              <p className="text-2xl font-bold text-[#FFF3DF]">{count}</p>
+              <p className="text-sm text-[#7B6854] mt-0.5">{getTierLabel(tier)}</p>
             </div>
           );
         })}
