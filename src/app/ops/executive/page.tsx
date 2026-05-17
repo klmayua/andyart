@@ -69,14 +69,16 @@ export default function ExecutiveDashboardPage() {
           { label: 'Escrow Balance', value: `$${(paymentStats.escrowBalance / 1000).toFixed(0)}k`, sub: `${paymentStats.escrowFunded} funded cases`, icon: Shield, href: '/ops/payments/escrow' },
           { label: 'Active Reservations', value: paymentStats.activeReservations, sub: 'Deposit held', icon: Heart, href: '/ops/payments' },
         ].map((kpi) => (
-          <Link key={kpi.label} href={kpi.href} className={`bg-[linear-gradient(180deg,rgba(34,29,25,0.88)_0%,rgba(24,20,18,0.96)_100%)] rounded-xl border border-[rgba(214,170,92,0.10)] backdrop-blur-md p-5 shadow-[0_4px_20px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.02)] hover:border-[rgba(214,170,92,0.18)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.4)] hover:-translate-y-0.5 transition-all group ${kpi.accent ? 'border-t border-t-[rgba(214,170,92,0.4)]' : ''}`}>
+          <Link key={kpi.label} href={kpi.href} className={`bg-[linear-gradient(180deg,rgba(28,23,20,0.94)_0%,rgba(22,18,16,0.98)_100%)] rounded-[26px] border border-[rgba(214,170,92,0.08)] backdrop-blur-sm p-5 shadow-[0_2px_10px_rgba(0,0,0,0.16)] hover:border-[rgba(214,170,92,0.16)] hover:bg-[linear-gradient(180deg,rgba(32,26,23,0.96)_0%,rgba(24,20,18,1)_100%)] transition-[border,background] duration-200 ease group ${kpi.accent ? 'border-t border-t-[rgba(214,170,92,0.25)]' : ''}`}>
             <div className="flex items-center justify-between mb-3">
-              <kpi.icon size={18} className="text-[#C89B4F]" />
-              <ArrowRight size={14} className="text-[#B9A48A]/40 group-hover:text-[#C89B4F] transition-colors" />
+              <div className="w-8 h-8 rounded-lg bg-[rgba(214,170,92,0.06)] border border-[rgba(214,170,92,0.10)] flex items-center justify-center">
+                <kpi.icon size={16} className="text-[#C89B4F]" />
+              </div>
+              <ArrowRight size={14} className="text-[#9D8466] group-hover:text-[#C89B4F] transition-colors" />
             </div>
-            <p className="text-3xl font-bold text-[#FFF3DF] tracking-tight">{kpi.value}</p>
-            <p className="text-[11px] text-[#B9A48A] mt-1 uppercase tracking-wide">{kpi.label}</p>
-            <p className="text-xs text-[#B9A48A]/50">{kpi.sub}</p>
+            <p className="text-2xl font-bold text-[#F3E7D3] tracking-tight">{kpi.value}</p>
+            <p className="text-[11px] text-[#9D8466] mt-1 uppercase tracking-wide">{kpi.label}</p>
+            <p className="text-xs text-[#73614E]">{kpi.sub}</p>
           </Link>
         ))}
       </div>
@@ -89,21 +91,23 @@ export default function ExecutiveDashboardPage() {
           { label: 'Pipeline Value', value: `$${(totalPipelineValue / 1000).toFixed(0)}k`, sub: `${leads.length} total leads`, icon: GitBranch, href: '/ops/crm/pipeline' },
           { label: 'Concierge', value: urgentRequests, sub: `${activeCommissions} active commissions`, icon: MessageSquare, href: '/ops/concierge/requests' },
         ].map((kpi) => (
-          <Link key={kpi.label} href={kpi.href} className="bg-[linear-gradient(180deg,rgba(34,29,25,0.88)_0%,rgba(24,20,18,0.96)_100%)] rounded-xl border border-[rgba(214,170,92,0.10)] backdrop-blur-md p-5 shadow-[0_4px_20px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.02)] hover:border-[rgba(214,170,92,0.18)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.4)] hover:-translate-y-0.5 transition-all group">
+          <Link key={kpi.label} href={kpi.href} className="bg-[linear-gradient(180deg,rgba(28,23,20,0.94)_0%,rgba(22,18,16,0.98)_100%)] rounded-[26px] border border-[rgba(214,170,92,0.08)] backdrop-blur-sm p-5 shadow-[0_2px_10px_rgba(0,0,0,0.16)] hover:border-[rgba(214,170,92,0.16)] hover:bg-[linear-gradient(180deg,rgba(32,26,23,0.96)_0%,rgba(24,20,18,1)_100%)] transition-[border,background] duration-200 ease group">
             <div className="flex items-center justify-between mb-3">
-              <kpi.icon size={18} className="text-[#C89B4F]" />
-              <ArrowRight size={14} className="text-[#B9A48A]/40 group-hover:text-[#C89B4F] transition-colors" />
+              <div className="w-8 h-8 rounded-lg bg-[rgba(214,170,92,0.06)] border border-[rgba(214,170,92,0.10)] flex items-center justify-center">
+                <kpi.icon size={16} className="text-[#C89B4F]" />
+              </div>
+              <ArrowRight size={14} className="text-[#9D8466] group-hover:text-[#C89B4F] transition-colors" />
             </div>
-            <p className="text-2xl font-bold text-[#FFF3DF] tracking-tight">{kpi.value}</p>
-            <p className="text-[11px] text-[#B9A48A] mt-1 uppercase tracking-wide">{kpi.label}</p>
-            <p className="text-xs text-[#B9A48A]/50">{kpi.sub}</p>
+            <p className="text-2xl font-bold text-[#F3E7D3] tracking-tight">{kpi.value}</p>
+            <p className="text-[11px] text-[#9D8466] mt-1 uppercase tracking-wide">{kpi.label}</p>
+            <p className="text-xs text-[#73614E]">{kpi.sub}</p>
           </Link>
         ))}
       </div>
 
       <div className="grid lg:grid-cols-3 gap-6">
         {/* Activity Feed */}
-        <div className="lg:col-span-2 bg-[linear-gradient(180deg,rgba(34,29,25,0.88)_0%,rgba(24,20,18,0.96)_100%)] rounded-[28px] border border-[rgba(214,170,92,0.10)] backdrop-blur-md shadow-[0_12px_40px_rgba(0,0,0,0.42),0_4px_14px_rgba(0,0,0,0.24),inset_0_1px_0_rgba(255,255,255,0.02)] overflow-hidden border-t-2 border-t-andy-gold">
+        <div className="lg:col-span-2 bg-[linear-gradient(180deg,rgba(28,23,20,0.94)_0%,rgba(22,18,16,0.98)_100%)] rounded-[26px] border border-[rgba(214,170,92,0.08)] backdrop-blur-sm shadow-[0_2px_10px_rgba(0,0,0,0.16)] overflow-hidden border-t border-t-[rgba(214,170,92,0.25)]">
           <div className="flex items-center justify-between px-6 py-4 border-b border-black/[0.05]">
             <div className="flex items-center gap-2">
               <Activity size={18} className="text-[#C89B4F]" />
@@ -131,7 +135,7 @@ export default function ExecutiveDashboardPage() {
 
         {/* System Health */}
         <div className="space-y-4">
-          <div className="bg-[linear-gradient(180deg,rgba(34,29,25,0.88)_0%,rgba(24,20,18,0.96)_100%)] rounded-[28px] border border-[rgba(214,170,92,0.10)] backdrop-blur-md shadow-[0_12px_40px_rgba(0,0,0,0.42),0_4px_14px_rgba(0,0,0,0.24),inset_0_1px_0_rgba(255,255,255,0.02)] p-6">
+          <div className="bg-[linear-gradient(180deg,rgba(28,23,20,0.94)_0%,rgba(22,18,16,0.98)_100%)] rounded-[26px] border border-[rgba(214,170,92,0.08)] backdrop-blur-sm shadow-[0_2px_10px_rgba(0,0,0,0.16)] p-6">
             <h2 className="font-serif text-base font-bold text-[#FFF3DF] mb-4">System Health</h2>
             <div className="space-y-3">
               <div className="flex items-center justify-between">
@@ -157,7 +161,7 @@ export default function ExecutiveDashboardPage() {
             </div>
           </div>
 
-          <div className="bg-[linear-gradient(180deg,rgba(34,29,25,0.88)_0%,rgba(24,20,18,0.96)_100%)] rounded-[28px] border border-[rgba(214,170,92,0.10)] backdrop-blur-md shadow-[0_12px_40px_rgba(0,0,0,0.42),0_4px_14px_rgba(0,0,0,0.24),inset_0_1px_0_rgba(255,255,255,0.02)] p-6">
+          <div className="bg-[linear-gradient(180deg,rgba(28,23,20,0.94)_0%,rgba(22,18,16,0.98)_100%)] rounded-[26px] border border-[rgba(214,170,92,0.08)] backdrop-blur-sm shadow-[0_2px_10px_rgba(0,0,0,0.16)] p-6">
             <h2 className="font-serif text-base font-bold text-[#FFF3DF] mb-4">Alerts</h2>
             <div className="space-y-2">
               {paymentStats.overdueInvoices > 0 && (
@@ -202,7 +206,7 @@ export default function ExecutiveDashboardPage() {
             </div>
           </div>
 
-          <div className="bg-[linear-gradient(180deg,rgba(34,29,25,0.88)_0%,rgba(24,20,18,0.96)_100%)] rounded-[28px] border border-[rgba(214,170,92,0.10)] backdrop-blur-md shadow-[0_12px_40px_rgba(0,0,0,0.42),0_4px_14px_rgba(0,0,0,0.24),inset_0_1px_0_rgba(255,255,255,0.02)] p-6">
+          <div className="bg-[linear-gradient(180deg,rgba(28,23,20,0.94)_0%,rgba(22,18,16,0.98)_100%)] rounded-[26px] border border-[rgba(214,170,92,0.08)] backdrop-blur-sm shadow-[0_2px_10px_rgba(0,0,0,0.16)] p-6">
             <h2 className="font-serif text-base font-bold text-[#FFF3DF] mb-4">Quick Links</h2>
             <div className="space-y-1">
               <Link href="/ops/crm/leads" className="flex items-center gap-2 px-3 py-2 rounded-lg text-xs text-[#B9A48A] hover:bg-andy-stone/5 hover:text-[#FFF3DF] transition-all"><Users size={12} /> Lead Table</Link>
