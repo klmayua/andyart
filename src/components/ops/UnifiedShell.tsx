@@ -7,7 +7,7 @@ import {
   LayoutDashboard, Users, GitBranch, UserCheck, BarChart3,
   MessageSquare, Calendar, Palette, Building2, Crown,
   CreditCard, Receipt, Shield, Landmark, TrendingUp,
-  Eye, LogOut, ChevronDown, Search, Command,
+  Eye, LogOut, ChevronDown, Search, Command, Bell, Plus, X,
 } from 'lucide-react';
 
 interface NavSection {
@@ -99,18 +99,41 @@ export default function UnifiedShell({ children }: { children: React.ReactNode }
 
       <div className="flex-1 flex flex-col overflow-hidden">
         <div className="h-14 bg-[#171614] border-b border-[#C6A66B] px-4 flex items-center justify-between flex-shrink-0">
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-4">
             <button onClick={() => setSidebarOpen(!sidebarOpen)} className="p-1.5 rounded-lg hover:bg-[#2A2826] transition-colors">
               <Command size={16} className="text-[#A78345]" />
             </button>
+            <div className="relative w-[280px]">
+              <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#A78345]/60" />
+              <input
+                type="text"
+                placeholder="Search collectors, invoices, requests..."
+                className="w-full h-8 pl-9 pr-3 bg-[#1E1C1A] rounded-lg text-xs text-[#FFFDF9] placeholder:text-[#FFFDF9]/30 focus:outline-none focus:ring-1 focus:ring-[#C6A66B] border border-[#FFFDF9]/[0.06]"
+              />
+            </div>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3">
+            <div className="flex items-center gap-1.5 px-2 py-1">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#4ADE80]"></span>
+              <span className="text-[10px] text-[#FFFDF9]/40">System Healthy</span>
+            </div>
+            <div className="relative">
+              <button className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-[#C6A66B] text-[#171614] text-xs font-medium hover:bg-[#D4B67A] transition-colors">
+                <Plus size={14} />
+                Create
+                <ChevronDown size={12} />
+              </button>
+            </div>
             <button className="relative p-1.5 rounded-lg hover:bg-[#2A2826] transition-colors">
-              <Search size={16} className="text-[#A78345]" />
+              <Bell size={16} className="text-[#A78345]" />
+              <span className="absolute top-0.5 right-0.5 w-1.5 h-1.5 bg-[#C6A66B] rounded-full"></span>
             </button>
-            <div className="flex items-center gap-2 px-2 py-1 rounded-lg bg-[#1E1C1A]">
+            <div className="flex items-center gap-2 px-2 py-1 rounded-lg bg-[#1E1C1A] cursor-pointer hover:bg-[#252220] transition-colors">
               <div className="w-6 h-6 bg-[#C6A66B] text-[#171614] rounded-full flex items-center justify-center text-[10px] font-bold">D</div>
-              <span className="text-xs text-[#A78345]">Demo</span>
+              <div className="flex flex-col">
+                <span className="text-xs text-[#FFFDF9]">Demo</span>
+                <span className="text-[9px] text-[#A78345]">Operations Admin</span>
+              </div>
             </div>
           </div>
         </div>
