@@ -69,8 +69,8 @@ export default function ExecutiveDashboardPage() {
           { label: 'Escrow Balance', value: `$${(paymentStats.escrowBalance / 1000).toFixed(0)}k`, sub: `${paymentStats.escrowFunded} funded cases`, icon: Shield, href: '/ops/payments/escrow' },
           { label: 'Active Reservations', value: paymentStats.activeReservations, sub: 'Deposit held', icon: Heart, href: '/ops/payments' },
         ].map((kpi) => (
-          <Link key={kpi.label} href={kpi.href} className={`bg-[linear-gradient(180deg,rgba(34,29,25,0.88)_0%,rgba(24,20,18,0.96)_100%)] rounded-[28px] border border-[rgba(214,170,92,0.10)] backdrop-blur-md p-6 shadow-[0_12px_40px_rgba(0,0,0,0.42),0_4px_14px_rgba(0,0,0,0.24),inset_0_1px_0_rgba(255,255,255,0.02)] hover:border-[rgba(214,170,92,0.18)] hover:shadow-[0_22px_50px_rgba(0,0,0,0.44)] hover:-translate-y-0.5 transition-all group ${kpi.accent ? 'border-t border-t-[rgba(214,170,92,0.5)]' : ''}`}>
-            <div className="flex items-center justify-between mb-4">
+          <Link key={kpi.label} href={kpi.href} className={`bg-[linear-gradient(180deg,rgba(34,29,25,0.88)_0%,rgba(24,20,18,0.96)_100%)] rounded-xl border border-[rgba(214,170,92,0.10)] backdrop-blur-md p-5 shadow-[0_4px_20px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.02)] hover:border-[rgba(214,170,92,0.18)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.4)] hover:-translate-y-0.5 transition-all group ${kpi.accent ? 'border-t border-t-[rgba(214,170,92,0.4)]' : ''}`}>
+            <div className="flex items-center justify-between mb-3">
               <kpi.icon size={18} className="text-[#C89B4F]" />
               <ArrowRight size={14} className="text-[#B9A48A]/40 group-hover:text-[#C89B4F] transition-colors" />
             </div>
@@ -89,12 +89,12 @@ export default function ExecutiveDashboardPage() {
           { label: 'Pipeline Value', value: `$${(totalPipelineValue / 1000).toFixed(0)}k`, sub: `${leads.length} total leads`, icon: GitBranch, href: '/ops/crm/pipeline' },
           { label: 'Concierge', value: urgentRequests, sub: `${activeCommissions} active commissions`, icon: MessageSquare, href: '/ops/concierge/requests' },
         ].map((kpi) => (
-          <Link key={kpi.label} href={kpi.href} className="bg-[linear-gradient(180deg,rgba(34,29,25,0.88)_0%,rgba(24,20,18,0.96)_100%)] rounded-[28px] border border-[rgba(214,170,92,0.10)] backdrop-blur-md p-6 shadow-[0_12px_40px_rgba(0,0,0,0.42),0_4px_14px_rgba(0,0,0,0.24),inset_0_1px_0_rgba(255,255,255,0.02)] hover:border-[rgba(214,170,92,0.18)] hover:shadow-[0_22px_50px_rgba(0,0,0,0.44)] hover:-translate-y-0.5 transition-all group">
-            <div className="flex items-center justify-between mb-4">
+          <Link key={kpi.label} href={kpi.href} className="bg-[linear-gradient(180deg,rgba(34,29,25,0.88)_0%,rgba(24,20,18,0.96)_100%)] rounded-xl border border-[rgba(214,170,92,0.10)] backdrop-blur-md p-5 shadow-[0_4px_20px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.02)] hover:border-[rgba(214,170,92,0.18)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.4)] hover:-translate-y-0.5 transition-all group">
+            <div className="flex items-center justify-between mb-3">
               <kpi.icon size={18} className="text-[#C89B4F]" />
               <ArrowRight size={14} className="text-[#B9A48A]/40 group-hover:text-[#C89B4F] transition-colors" />
             </div>
-            <p className="text-3xl font-bold text-[#FFF3DF] tracking-tight">{kpi.value}</p>
+            <p className="text-2xl font-bold text-[#FFF3DF] tracking-tight">{kpi.value}</p>
             <p className="text-[11px] text-[#B9A48A] mt-1 uppercase tracking-wide">{kpi.label}</p>
             <p className="text-xs text-[#B9A48A]/50">{kpi.sub}</p>
           </Link>

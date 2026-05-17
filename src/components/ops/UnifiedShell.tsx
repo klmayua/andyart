@@ -49,7 +49,7 @@ export default function UnifiedShell({ children }: { children: React.ReactNode }
 
   return (
     <div className="min-h-screen bg-[#F7F2E8] flex">
-      <aside className={`${sidebarOpen ? 'w-60' : 'w-0'} bg-[#171614] text-[#FFFDF9] flex flex-col flex-shrink-0 transition-all duration-300 overflow-hidden border-r border-[#C6A66B]/20`}>
+      <aside className={`${sidebarOpen ? 'w-60' : 'w-0'} bg-[#0A0A0A] text-[#FFFDF9] flex flex-col flex-shrink-0 transition-all duration-300 overflow-hidden border-r border-[rgba(214,170,92,0.08)]`}>
         <div className="px-5 py-5 border-b border-[#FFFDF9]/[0.06]">
           <div className="flex items-center gap-2.5">
             <div className="w-8 h-8 bg-andy-gold rounded-lg flex items-center justify-center">
@@ -98,7 +98,7 @@ export default function UnifiedShell({ children }: { children: React.ReactNode }
       </aside>
 
       <div className="flex-1 flex flex-col overflow-hidden">
-        <div className="h-16 bg-[#171614] border-b border-[#C6A66B] px-4 flex items-center justify-between flex-shrink-0">
+        <div className="h-16 bg-[#0A0A0A] border-b border-[rgba(214,170,92,0.15)] px-4 flex items-center justify-between flex-shrink-0">
           <div className="flex items-center gap-4">
             <button onClick={() => setSidebarOpen(!sidebarOpen)} className="p-1.5 rounded-lg hover:bg-[#2A2826] transition-colors">
               <Command size={16} className="text-[#A78345]" />
