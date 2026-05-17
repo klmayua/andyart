@@ -48,25 +48,25 @@ export default function OpsPaymentsPage() {
 
       <div className="grid lg:grid-cols-2 gap-6">
         {/* Recent Invoices */}
-        <div className="bg-[#FBF8F2] rounded-xl border border-black/[0.05] overflow-hidden">
-          <div className="flex items-center justify-between px-6 py-4 border-b border-black/[0.05]">
-            <h2 className="font-serif text-lg font-bold text-andy-black">Recent Invoices</h2>
-            <Link href="/ops/payments/invoices" className="text-xs text-andy-bronze hover:text-andy-gold">View all →</Link>
+        <div className="bg-[linear-gradient(180deg,rgba(34,29,25,0.88)_0%,rgba(24,20,18,0.96)_100%)] rounded-xl border border-[rgba(214,170,92,0.10)] overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.35)]">
+          <div className="flex items-center justify-between px-6 py-4 border-b border-[rgba(214,170,92,0.08)]">
+            <h2 className="font-serif text-lg font-bold text-[#E8D8C2]">Recent Invoices</h2>
+            <Link href="/ops/payments/invoices" className="text-xs text-[#7B6854] hover:text-[#C89B4F]">View all →</Link>
           </div>
-          <div className="divide-y divide-andy-stone/5">
+          <div className="divide-y divide-[rgba(255,255,255,0.03)]">
             {recentInvoices.map((i) => (
-              <div key={i.id} className="flex items-center justify-between px-6 py-4 hover:bg-andy-stone/5 transition-colors">
+              <div key={i.id} className="flex items-center justify-between px-6 py-4 hover:bg-[rgba(255,255,255,0.025)] transition-colors">
                 <div>
-                  <p className="text-sm font-semibold text-andy-black">{i.invoiceNumber}</p>
-                  <p className="text-xs text-andy-bronze/60">{i.collectorName} · {i.artworkTitle || 'General'}</p>
+                  <p className="text-sm font-semibold text-[#F5EBDD]">{i.invoiceNumber}</p>
+                  <p className="text-xs text-[#7B6854]">{i.collectorName} · {i.artworkTitle || 'General'}</p>
                 </div>
                 <div className="text-right">
-                  <p className="text-sm font-bold text-andy-black">${(i.total / 1000).toFixed(0)}k</p>
+                  <p className="text-sm font-bold text-[#FFF3DF]">${(i.total / 1000).toFixed(0)}k</p>
                   <span className={`text-[10px] px-2 py-0.5 rounded-full ${INVOICE_STATUS_COLORS[i.status]}`}>{INVOICE_STATUS_LABELS[i.status]}</span>
                 </div>
               </div>
             ))}
-            {recentInvoices.length === 0 && <div className="px-6 py-12 text-center text-sm text-andy-bronze/40">No invoices</div>}
+            {recentInvoices.length === 0 && <div className="px-6 py-12 text-center text-sm text-[#7B6854]/40">No invoices</div>}
           </div>
         </div>
 
