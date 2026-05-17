@@ -98,19 +98,19 @@ export default function UnifiedShell({ children }: { children: React.ReactNode }
       </aside>
 
       <div className="flex-1 flex flex-col overflow-hidden">
-        <div className="h-14 bg-white border-b border-andy-stone/10 px-4 flex items-center justify-between flex-shrink-0">
+        <div className="h-14 bg-[#171614] border-b border-[#2A2826] px-4 flex items-center justify-between flex-shrink-0">
           <div className="flex items-center gap-3">
-            <button onClick={() => setSidebarOpen(!sidebarOpen)} className="p-2 rounded-lg hover:bg-andy-stone/10 transition-colors">
-              <Command size={16} className="text-andy-bronze" />
+            <button onClick={() => setSidebarOpen(!sidebarOpen)} className="p-2 rounded-lg hover:bg-[#2A2826] transition-colors">
+              <Command size={16} className="text-[#A78345]" />
             </button>
           </div>
           <div className="flex items-center gap-2">
-            <button className="relative p-2 rounded-lg hover:bg-andy-stone/10 transition-colors">
-              <Search size={18} className="text-andy-bronze" />
+            <button className="relative p-2 rounded-lg hover:bg-[#2A2826] transition-colors">
+              <Search size={18} className="text-[#A78345]" />
             </button>
-            <div className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg">
-              <div className="w-7 h-7 bg-andy-black text-andy-gold rounded-full flex items-center justify-center text-[10px] font-bold">D</div>
-              <span className="text-xs text-andy-bronze">Demo</span>
+            <div className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg bg-[#1E1C1A]">
+              <div className="w-7 h-7 bg-[#C6A66B] text-[#171614] rounded-full flex items-center justify-center text-[10px] font-bold">D</div>
+              <span className="text-xs text-[#A78345]">Demo</span>
             </div>
           </div>
         </div>
