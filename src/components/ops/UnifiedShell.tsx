@@ -98,18 +98,18 @@ export default function UnifiedShell({ children }: { children: React.ReactNode }
       </aside>
 
       <div className="flex-1 flex flex-col overflow-hidden">
-        <div className="h-14 bg-[#171614] border-b border-[#2A2826] px-4 flex items-center justify-between flex-shrink-0">
+        <div className="h-12 bg-[#171614] border-b border-[#C6A66B]/30 px-4 flex items-center justify-between flex-shrink-0">
           <div className="flex items-center gap-3">
-            <button onClick={() => setSidebarOpen(!sidebarOpen)} className="p-2 rounded-lg hover:bg-[#2A2826] transition-colors">
+            <button onClick={() => setSidebarOpen(!sidebarOpen)} className="p-1.5 rounded-lg hover:bg-[#2A2826] transition-colors">
               <Command size={16} className="text-[#A78345]" />
             </button>
           </div>
           <div className="flex items-center gap-2">
-            <button className="relative p-2 rounded-lg hover:bg-[#2A2826] transition-colors">
-              <Search size={18} className="text-[#A78345]" />
+            <button className="relative p-1.5 rounded-lg hover:bg-[#2A2826] transition-colors">
+              <Search size={16} className="text-[#A78345]" />
             </button>
-            <div className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg bg-[#1E1C1A]">
-              <div className="w-7 h-7 bg-[#C6A66B] text-[#171614] rounded-full flex items-center justify-center text-[10px] font-bold">D</div>
+            <div className="flex items-center gap-2 px-2 py-1 rounded-lg bg-[#1E1C1A]">
+              <div className="w-6 h-6 bg-[#C6A66B] text-[#171614] rounded-full flex items-center justify-center text-[10px] font-bold">D</div>
               <span className="text-xs text-[#A78345]">Demo</span>
             </div>
           </div>
