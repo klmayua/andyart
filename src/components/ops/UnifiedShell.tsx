@@ -138,7 +138,7 @@ export default function UnifiedShell({ children }: { children: React.ReactNode }
           </div>
         </div>
 
-        <main className="flex-1 overflow-auto p-6 lg:p-8 bg-[#F3EFE6]">
+        <main className="flex-1 overflow-auto p-8 bg-[#14110F] bg-[radial-gradient(circle_at_top_left,rgba(214,170,92,0.06)_0%,transparent_35%),radial-gradient(circle_at_top_right,rgba(214,170,92,0.04)_0%,transparent_30%),linear-gradient(180deg,#14110F_0%,#191512_100%)]">
           {children}
         </main>
       </div>
