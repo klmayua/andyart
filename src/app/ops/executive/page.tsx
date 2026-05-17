@@ -69,7 +69,7 @@ export default function ExecutiveDashboardPage() {
           { label: 'Escrow Balance', value: `$${(paymentStats.escrowBalance / 1000).toFixed(0)}k`, sub: `${paymentStats.escrowFunded} funded cases`, icon: Shield, href: '/ops/payments/escrow' },
           { label: 'Active Reservations', value: paymentStats.activeReservations, sub: 'Deposit held', icon: Heart, href: '/ops/payments' },
         ].map((kpi) => (
-          <Link key={kpi.label} href={kpi.href} className={`bg-[#FBF8F2] rounded-xl border border-black/[0.06] p-6 hover:border-andy-gold/30 hover:shadow-[0_1px_2px_rgba(0,0,0,0.04)] transition-all group ${kpi.accent ? 'border-t-2 border-t-andy-gold' : ''}`}>
+          <Link key={kpi.label} href={kpi.href} className={`bg-[rgba(255,255,255,0.68)] rounded-[20px] border border-[rgba(255,255,255,0.38)] backdrop-blur-sm p-6 hover:border-andy-gold/30 hover:shadow-[0_1px_1px_rgba(0,0,0,0.02),0_8px_24px_rgba(15,15,15,0.04)] transition-all group ${kpi.accent ? 'border-t-2 border-t-andy-gold' : ''}`}>
             <div className="flex items-center justify-between mb-4">
               <kpi.icon size={18} className="text-andy-gold" />
               <ArrowRight size={14} className="text-andy-bronze/40 group-hover:text-andy-gold transition-colors" />
@@ -89,7 +89,7 @@ export default function ExecutiveDashboardPage() {
           { label: 'Pipeline Value', value: `$${(totalPipelineValue / 1000).toFixed(0)}k`, sub: `${leads.length} total leads`, icon: GitBranch, href: '/ops/crm/pipeline' },
           { label: 'Concierge', value: urgentRequests, sub: `${activeCommissions} active commissions`, icon: MessageSquare, href: '/ops/concierge/requests' },
         ].map((kpi) => (
-          <Link key={kpi.label} href={kpi.href} className="bg-[#FBF8F2] rounded-xl border border-black/[0.06] p-6 hover:border-andy-gold/30 hover:shadow-[0_1px_2px_rgba(0,0,0,0.04)] transition-all group">
+          <Link key={kpi.label} href={kpi.href} className="bg-[rgba(255,255,255,0.68)] rounded-[20px] border border-[rgba(255,255,255,0.38)] backdrop-blur-sm p-6 hover:border-andy-gold/30 hover:shadow-[0_1px_1px_rgba(0,0,0,0.02),0_8px_24px_rgba(15,15,15,0.04)] transition-all group">
             <div className="flex items-center justify-between mb-4">
               <kpi.icon size={18} className="text-andy-gold" />
               <ArrowRight size={14} className="text-andy-bronze/40 group-hover:text-andy-gold transition-colors" />
@@ -103,8 +103,8 @@ export default function ExecutiveDashboardPage() {
 
       <div className="grid lg:grid-cols-3 gap-6">
         {/* Activity Feed */}
-        <div className="lg:col-span-2 bg-[#FBF8F2] rounded-xl border border-black/[0.06] overflow-hidden border-t-2 border-t-andy-gold">
-          <div className="flex items-center justify-between px-6 py-4 border-b border-black/[0.06]">
+        <div className="lg:col-span-2 bg-[rgba(255,255,255,0.68)] rounded-[20px] border border-[rgba(255,255,255,0.38)] backdrop-blur-sm overflow-hidden border-t-2 border-t-andy-gold">
+          <div className="flex items-center justify-between px-6 py-4 border-b border-black/[0.05]">
             <div className="flex items-center gap-2">
               <Activity size={18} className="text-andy-gold" />
               <h2 className="font-serif text-lg font-bold text-andy-black">Cross-System Activity</h2>
@@ -131,7 +131,7 @@ export default function ExecutiveDashboardPage() {
 
         {/* System Health */}
         <div className="space-y-4">
-          <div className="bg-[#FBF8F2] rounded-xl border border-black/[0.06] p-6">
+          <div className="bg-[rgba(255,255,255,0.68)] rounded-[20px] border border-[rgba(255,255,255,0.38)] backdrop-blur-sm p-6">
             <h2 className="font-serif text-base font-bold text-andy-black mb-4">System Health</h2>
             <div className="space-y-3">
               <div className="flex items-center justify-between">
@@ -157,7 +157,7 @@ export default function ExecutiveDashboardPage() {
             </div>
           </div>
 
-          <div className="bg-[#FBF8F2] rounded-xl border border-black/[0.06] p-6">
+          <div className="bg-[rgba(255,255,255,0.68)] rounded-[20px] border border-[rgba(255,255,255,0.38)] backdrop-blur-sm p-6">
             <h2 className="font-serif text-base font-bold text-andy-black mb-4">Alerts</h2>
             <div className="space-y-2">
               {paymentStats.overdueInvoices > 0 && (
@@ -202,7 +202,7 @@ export default function ExecutiveDashboardPage() {
             </div>
           </div>
 
-          <div className="bg-[#FBF8F2] rounded-xl border border-black/[0.06] p-6">
+          <div className="bg-[rgba(255,255,255,0.68)] rounded-[20px] border border-[rgba(255,255,255,0.38)] backdrop-blur-sm p-6">
             <h2 className="font-serif text-base font-bold text-andy-black mb-4">Quick Links</h2>
             <div className="space-y-1">
               <Link href="/ops/crm/leads" className="flex items-center gap-2 px-3 py-2 rounded-lg text-xs text-andy-bronze hover:bg-andy-stone/5 hover:text-andy-black transition-all"><Users size={12} /> Lead Table</Link>
