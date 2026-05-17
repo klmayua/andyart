@@ -33,15 +33,15 @@ export default function OpsInvoicesPage() {
       </div>
 
       <div className="grid grid-cols-3 gap-4 mb-6">
-        <div className="bg-white rounded-xl border border-andy-stone/10 p-4 text-center">
+        <div className="bg-[#FBF8F2] rounded-xl border border-black/[0.05] p-4 text-center">
           <p className="text-lg font-bold text-green-600">${(totals.paid / 1000).toFixed(0)}k</p>
           <p className="text-xs text-andy-bronze">Paid</p>
         </div>
-        <div className="bg-white rounded-xl border border-andy-stone/10 p-4 text-center">
+        <div className="bg-[#FBF8F2] rounded-xl border border-black/[0.05] p-4 text-center">
           <p className="text-lg font-bold text-blue-600">${(totals.pending / 1000).toFixed(0)}k</p>
           <p className="text-xs text-andy-bronze">Pending</p>
         </div>
-        <div className="bg-white rounded-xl border border-andy-stone/10 p-4 text-center">
+        <div className="bg-[#FBF8F2] rounded-xl border border-black/[0.05] p-4 text-center">
           <p className="text-lg font-bold text-red-500">${(totals.overdue / 1000).toFixed(0)}k</p>
           <p className="text-xs text-andy-bronze">Overdue</p>
         </div>
