@@ -45,11 +45,13 @@ export default function RootLayout({
       <body className={`${inter.variable} ${playfair.variable} font-sans bg-[#F7F2E8] min-h-screen`}>
         <ConversionModalProvider>
           <Ticker />
+          <Header />
           <main className="pb-[90px] md:pb-0">
             {children}
           </main>
           <BottomNav />
           <FloatingActions />
+          <ConversionLayer />
         </ConversionModalProvider>
       </body>
     </html>
