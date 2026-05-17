@@ -31,35 +31,35 @@ export default function OpsEscrowPage() {
   return (
     <div>
       <div className="mb-8">
-        <h1 className="font-serif text-2xl font-bold text-andy-black">Escrow</h1>
+        <h1 className="font-serif text-3xl font-bold text-[#F5EBDD]">Escrow</h1>
       </div>
 
       <div className="grid grid-cols-3 gap-4 mb-6">
-        <div className="bg-white rounded-xl border border-andy-stone/10 p-4 text-center">
-          <p className="text-lg font-bold text-andy-black">{counts.funded || 0}</p>
-          <p className="text-xs text-andy-bronze">Funded</p>
+        <div className="bg-[linear-gradient(180deg,rgba(34,29,25,0.88)_0%,rgba(24,20,18,0.96)_100%)] rounded-xl border border-[rgba(214,170,92,0.10)] p-4 text-center shadow-[0_4px_20px_rgba(0,0,0,0.35)]">
+          <p className="text-lg font-bold text-[#FFF3DF]">{counts.funded || 0}</p>
+          <p className="text-xs text-[#7B6854]">Funded</p>
         </div>
-        <div className="bg-white rounded-xl border border-andy-stone/10 p-4 text-center">
-          <p className="text-lg font-bold text-andy-black">{counts.released || 0}</p>
-          <p className="text-xs text-andy-bronze">Released</p>
+        <div className="bg-[linear-gradient(180deg,rgba(34,29,25,0.88)_0%,rgba(24,20,18,0.96)_100%)] rounded-xl border border-[rgba(214,170,92,0.10)] p-4 text-center shadow-[0_4px_20px_rgba(0,0,0,0.35)]">
+          <p className="text-lg font-bold text-[#FFF3DF]">{counts.released || 0}</p>
+          <p className="text-xs text-[#7B6854]">Released</p>
         </div>
-        <div className="bg-white rounded-xl border border-andy-stone/10 p-4 text-center">
-          <p className="text-lg font-bold text-andy-black">{counts.disputed || 0}</p>
-          <p className="text-xs text-andy-bronze">Disputed</p>
+        <div className="bg-[linear-gradient(180deg,rgba(34,29,25,0.88)_0%,rgba(24,20,18,0.96)_100%)] rounded-xl border border-[rgba(214,170,92,0.10)] p-4 text-center shadow-[0_4px_20px_rgba(0,0,0,0.35)]">
+          <p className="text-lg font-bold text-[#FFF3DF]">{counts.disputed || 0}</p>
+          <p className="text-xs text-[#7B6854]">Disputed</p>
         </div>
       </div>
 
       <div className="flex flex-wrap gap-2 mb-4">
         {(['all', 'pending', 'funded', 'released', 'disputed', 'refunded'] as const).map((s) => (
-          <button key={s} onClick={() => setFilter(s)} className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${filter === s ? 'bg-andy-gold text-andy-black' : 'bg-white text-andy-bronze border border-andy-stone/20'}`}>
+          <button key={s} onClick={() => setFilter(s)} className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${filter === s ? 'bg-[#C89B4F] text-[#0A0A0A]' : 'bg-[rgba(34,29,25,0.88)] text-[#B9A48A] border border-[rgba(214,170,92,0.15)]'}`}>
             {s === 'all' ? 'All' : ESCROW_STATUS_LABELS[s]} ({counts[s] || 0})
           </button>
         ))}
       </div>
 
       <div className="relative mb-4">
-        <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-andy-bronze" />
-        <input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search escrow..." className="w-full pl-9 pr-4 py-2.5 rounded-xl border border-andy-stone/20 text-sm focus:outline-none focus:ring-2 focus:ring-andy-gold/40" />
+        <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#7B6854]" />
+        <input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search escrow..." className="w-full pl-9 pr-4 py-2.5 rounded-xl border border-[rgba(214,170,92,0.15)] text-sm bg-[rgba(255,255,255,0.05)] text-[#F5EBDD] placeholder:text-[#7B6854] focus:outline-none focus:ring-2 focus:ring-[#C89B4F]/40" />
       </div>
 
       <div className="bg-white rounded-2xl border border-andy-stone/20 overflow-hidden">
