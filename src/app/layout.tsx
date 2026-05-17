@@ -2,12 +2,7 @@ import type { Metadata } from 'next';
 import { Inter, Playfair_Display } from 'next/font/google';
 import './globals.css';
 import '@/lib/runtime-boot';
-import Ticker from '@/components/Ticker';
-import Header from '@/components/Header';
-import BottomNav from '@/components/BottomNav';
-import FloatingActions from '@/components/FloatingActions';
-import ConversionLayer from '@/components/conversion/ConversionLayer';
-import { ConversionModalProvider } from '@/hooks/useConversionModal';
+import ClientLayout from './ClientLayout';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -43,16 +38,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} ${playfair.variable} font-sans bg-[#F7F2E8] min-h-screen`}>
-        <ConversionModalProvider>
-          <Ticker />
-          <Header />
-          <main className="pb-[90px] md:pb-0">
-            {children}
-          </main>
-          <BottomNav />
-          <FloatingActions />
-          <ConversionLayer />
-        </ConversionModalProvider>
+        <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
   );
