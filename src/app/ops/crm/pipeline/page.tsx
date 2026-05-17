@@ -75,10 +75,11 @@ export default function PipelinePage() {
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h1 className="font-serif text-2xl font-bold text-andy-black">Pipeline</h1>
+          <h1 className="font-serif text-3xl font-bold text-andy-black">Pipeline</h1>
           <p className="text-sm text-andy-bronze mt-1">
-            {leads.length} leads · Estimated pipeline value: ${totalValue.toLocaleString()}
+            Active acquisition opportunities and conversion flow
           </p>
+          <p className="text-xs text-andy-bronze/50 mt-1">${totalValue.toLocaleString()} pipeline value · {leads.length} leads</p>
         </div>
       </div>
 
@@ -97,7 +98,7 @@ export default function PipelinePage() {
           return (
             <div
               key={stage.key}
-              className={`flex-shrink-0 w-[280px] rounded-2xl border ${stage.color} p-4 flex flex-col`}
+              className="flex-shrink-0 w-[280px] rounded-xl bg-[#FAF8F3] border border-black/[0.06] p-4 flex flex-col"
             >
               {/* Stage Header */}
               <div className="flex items-center justify-between mb-4">
@@ -115,7 +116,7 @@ export default function PipelinePage() {
                 {stageLeads.map((lead) => (
                   <div
                     key={lead.id}
-                    className="bg-white rounded-xl border border-andy-stone/20 p-4 shadow-subtle hover:shadow-premium transition-shadow cursor-grab"
+                    className="bg-white rounded-lg border border-black/[0.06] p-4 hover:border-andy-gold/20 hover:shadow-[0_1px_2px_rgba(0,0,0,0.04)] transition-all cursor-grab"
                   >
                     {/* Temperature dot + Score */}
                     <div className="flex items-center justify-between mb-2">

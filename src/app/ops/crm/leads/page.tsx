@@ -86,8 +86,9 @@ export default function LeadsPage() {
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h1 className="font-serif text-2xl font-bold text-andy-black">Leads</h1>
-          <p className="text-sm text-andy-bronze mt-1">{filtered.length} of {allLeads.length} leads</p>
+          <h1 className="font-serif text-3xl font-bold text-andy-black">Leads</h1>
+          <p className="text-sm text-andy-bronze mt-1">Lead management and acquisition tracking</p>
+          <p className="text-xs text-andy-bronze/50 mt-1">{filtered.length} of {allLeads.length} leads</p>
         </div>
         <div className="flex items-center gap-3">
           <select
@@ -103,7 +104,7 @@ export default function LeadsPage() {
       </div>
 
       {/* Filters Bar */}
-      <div className="bg-white rounded-2xl border border-andy-stone/20 p-4 mb-6 space-y-3">
+      <div className="bg-[#FAF8F3] rounded-xl border border-black/[0.06] p-4 mb-6 space-y-3">
         <div className="flex flex-wrap items-center gap-3">
           <div className="relative flex-1 min-w-[200px]">
             <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-andy-bronze/50" />
