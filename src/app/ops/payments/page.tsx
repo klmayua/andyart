@@ -22,8 +22,8 @@ export default function OpsPaymentsPage() {
   return (
     <div>
       <div className="mb-8">
-        <h1 className="font-serif text-3xl font-bold text-andy-black">Financial Operations</h1>
-        <p className="text-sm text-andy-bronze mt-1">Payment processing and financial tracking</p>
+        <h1 className="font-serif text-3xl font-bold text-[#F5EBDD]">Financial Operations</h1>
+        <p className="text-sm text-[#B9A48A] mt-1">Payment processing and financial tracking</p>
       </div>
 
       {/* KPIs */}
@@ -34,14 +34,14 @@ export default function OpsPaymentsPage() {
           { label: 'Escrow Balance', value: `$${(stats.escrowBalance / 1000).toFixed(0)}k`, sub: `${stats.escrowFunded} funded`, icon: Shield, href: '/ops/payments/escrow' },
           { label: 'Pending Settlements', value: stats.pendingSettlements, sub: 'In pipeline', icon: Landmark, href: '/ops/payments/settlements' },
         ].map((kpi) => (
-          <Link key={kpi.label} href={kpi.href} className="bg-[#FAF8F3] rounded-xl border border-black/[0.06] p-5 hover:border-andy-gold/20 hover:shadow-[0_1px_2px_rgba(0,0,0,0.04)] transition-all group">
+          <Link key={kpi.label} href={kpi.href} className="bg-[linear-gradient(180deg,rgba(34,29,25,0.88)_0%,rgba(24,20,18,0.96)_100%)] rounded-xl border border-[rgba(214,170,92,0.10)] p-5 hover:border-[rgba(214,170,92,0.18)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.4)] transition-all group">
             <div className="flex items-center justify-between mb-3">
-              <kpi.icon size={20} className="text-andy-gold" />
-              <ArrowRight size={14} className="text-andy-bronze/40 group-hover:text-andy-gold transition-colors" />
+              <kpi.icon size={20} className="text-[#C89B4F]" />
+              <ArrowRight size={14} className="text-[#7B6854] group-hover:text-[#C89B4F] transition-colors" />
             </div>
-            <p className="text-2xl font-bold text-andy-black">{kpi.value}</p>
-            <p className="text-xs text-andy-bronze mt-0.5">{kpi.label}</p>
-            <p className="text-xs text-andy-bronze/50">{kpi.sub}</p>
+            <p className="text-2xl font-bold text-[#FFF3DF]">{kpi.value}</p>
+            <p className="text-xs text-[#A7885F] mt-0.5">{kpi.label}</p>
+            <p className="text-xs text-[#7B6854]">{kpi.sub}</p>
           </Link>
         ))}
       </div>

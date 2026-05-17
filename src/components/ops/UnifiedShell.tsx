@@ -48,8 +48,8 @@ export default function UnifiedShell({ children }: { children: React.ReactNode }
   const [sidebarOpen, setSidebarOpen] = useState(true);
 
   return (
-    <div className="min-h-screen bg-[#F7F2E8] flex">
-      <aside className={`${sidebarOpen ? 'w-60' : 'w-0'} bg-[#0A0A0A] text-[#FFFDF9] flex flex-col flex-shrink-0 transition-all duration-300 overflow-hidden border-r border-[rgba(214,170,92,0.08)]`}>
+    <div className="min-h-screen bg-[#14110F] flex">
+      <aside className={`${sidebarOpen ? 'w-60' : 'w-0'} bg-[#0A0A0A] text-[#FFFDF9] flex flex-col flex-shrink-0 transition-all duration-300 overflow-hidden border-r border-[rgba(214,170,92,0.08)] fixed top-0 left-0 h-screen z-40`}>
         <div className="px-5 py-5 border-b border-[#FFFDF9]/[0.06]">
           <div className="flex items-center gap-2.5">
             <div className="w-8 h-8 bg-andy-gold rounded-lg flex items-center justify-center">
@@ -97,8 +97,8 @@ export default function UnifiedShell({ children }: { children: React.ReactNode }
         </div>
       </aside>
 
-      <div className="flex-1 flex flex-col overflow-hidden">
-        <div className="h-16 bg-[#0A0A0A] border-b border-[rgba(214,170,92,0.15)] px-4 flex items-center justify-between flex-shrink-0">
+      <div className="flex-1 flex flex-col overflow-hidden ml-60">
+        <div className="h-16 bg-[#0A0A0A] border-b border-[rgba(214,170,92,0.15)] px-4 flex items-center justify-between flex-shrink-0 fixed top-0 right-0 left-60 z-30">
           <div className="flex items-center gap-4">
             <button onClick={() => setSidebarOpen(!sidebarOpen)} className="p-1.5 rounded-lg hover:bg-[#2A2826] transition-colors">
               <Command size={16} className="text-[#A78345]" />
@@ -138,7 +138,7 @@ export default function UnifiedShell({ children }: { children: React.ReactNode }
           </div>
         </div>
 
-        <main className="flex-1 overflow-auto p-8 bg-[#14110F] bg-[radial-gradient(circle_at_top_left,rgba(214,170,92,0.06)_0%,transparent_35%),radial-gradient(circle_at_top_right,rgba(214,170,92,0.04)_0%,transparent_30%),linear-gradient(180deg,#14110F_0%,#191512_100%)]">
+        <main className="flex-1 overflow-auto p-8 pt-20 bg-[#14110F] bg-[radial-gradient(circle_at_top_left,rgba(214,170,92,0.06)_0%,transparent_35%),radial-gradient(circle_at_top_right,rgba(214,170,92,0.04)_0%,transparent_30%),linear-gradient(180deg,#14110F_0%,#191512_100%)]">
           {children}
         </main>
       </div>
