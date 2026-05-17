@@ -28,7 +28,8 @@ export default function OpsInvoicesPage() {
   return (
     <div>
       <div className="mb-8">
-        <h1 className="font-serif text-2xl font-bold text-andy-black">Invoices</h1>
+        <h1 className="font-serif text-3xl font-bold text-andy-black">Invoices</h1>
+        <p className="text-sm text-andy-bronze mt-1">Invoice management and payment tracking</p>
       </div>
 
       <div className="grid grid-cols-3 gap-4 mb-6">
