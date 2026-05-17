@@ -105,15 +105,15 @@ const systems = [
 export default function EnterprisePage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#1a1816] to-[#252220] text-[#F7F2E8]">
-      <div className="max-w-7xl mx-auto p-8">
-        <div className="mb-10">
-          <div className="flex items-center gap-4 mb-3">
-            <div className="w-14 h-14 bg-gradient-to-br from-[#C6A66B] to-[#A78345] rounded-2xl flex items-center justify-center shadow-lg">
-              <Building2 className="w-7 h-7 text-[#171614]" />
+      <div className="max-w-7xl mx-auto pt-12 pb-8 px-8">
+        <div className="mb-12">
+          <div className="flex items-center gap-5 mb-4">
+            <div className="w-16 h-16 bg-gradient-to-br from-[#C6A66B] to-[#A78345] rounded-2xl flex items-center justify-center shadow-lg">
+              <Building2 className="w-8 h-8 text-[#171614]" />
             </div>
             <div>
-              <h1 className="text-3xl font-serif font-bold tracking-tight">Enterprise Operations</h1>
-              <p className="text-[#A78345] text-sm">AndyArt Cultural House - Backend Ecosystem</p>
+              <h1 className="text-4xl font-serif font-bold tracking-tight text-[#F7F2E8]">Enterprise Operations</h1>
+              <p className="text-[#A78345] text-sm mt-1">AndyArt Cultural House — Backend Ecosystem</p>
             </div>
           </div>
           <p className="text-[#D7CEC1] max-w-2xl text-base leading-relaxed">
