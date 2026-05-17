@@ -98,7 +98,7 @@ export default function PipelinePage() {
           return (
             <div
               key={stage.key}
-              className="flex-shrink-0 w-[280px] rounded-xl bg-[#FAF8F3] border border-black/[0.06] p-4 flex flex-col"
+              className="flex-shrink-0 w-[280px] rounded-[20px] bg-[rgba(255,255,255,0.68)] border border-[rgba(255,255,255,0.38)] backdrop-blur-sm p-4 flex flex-col"
             >
               {/* Stage Header */}
               <div className="flex items-center justify-between mb-4">
@@ -116,7 +116,7 @@ export default function PipelinePage() {
                 {stageLeads.map((lead) => (
                   <div
                     key={lead.id}
-                    className="bg-white rounded-lg border border-black/[0.06] p-4 hover:border-andy-gold/20 hover:shadow-[0_1px_2px_rgba(0,0,0,0.04)] transition-all cursor-grab"
+                    className="bg-[rgba(255,255,255,0.72)] rounded-xl border border-[rgba(255,255,255,0.45)] p-4 hover:border-andy-gold/20 hover:shadow-[0_1px_1px_rgba(0,0,0,0.02),0_4px_12px_rgba(15,15,15,0.04)] transition-all cursor-grab"
                   >
                     {/* Temperature dot + Score */}
                     <div className="flex items-center justify-between mb-2">

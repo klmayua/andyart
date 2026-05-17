@@ -103,12 +103,12 @@ export default function UnifiedShell({ children }: { children: React.ReactNode }
             <button onClick={() => setSidebarOpen(!sidebarOpen)} className="p-1.5 rounded-lg hover:bg-[#2A2826] transition-colors">
               <Command size={16} className="text-[#A78345]" />
             </button>
-            <div className="relative w-[280px]">
-              <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#A78345]/60" />
+            <div className="relative w-[300px]">
+              <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#A78345]/70" />
               <input
                 type="text"
                 placeholder="Search collectors, invoices, requests..."
-                className="w-full h-8 pl-9 pr-3 bg-[#1E1C1A] rounded-lg text-xs text-[#FFFDF9] placeholder:text-[#FFFDF9]/30 focus:outline-none focus:ring-1 focus:ring-[#C6A66B] border border-[#FFFDF9]/[0.06]"
+                className="w-full h-9 pl-9 pr-3 bg-[rgba(255,255,255,0.08)] backdrop-blur-sm rounded-lg text-xs text-[#FFFDF9] placeholder:text-[#FFFDF9]/35 focus:outline-none focus:ring-1 focus:ring-[#C6A66B] border border-[#FFFDF9]/15"
               />
             </div>
           </div>
