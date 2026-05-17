@@ -75,11 +75,11 @@ export default function PipelinePage() {
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h1 className="font-serif text-3xl font-bold text-andy-black">Pipeline</h1>
-          <p className="text-sm text-andy-bronze mt-1">
+          <h1 className="font-serif text-3xl font-bold text-[#F5EBDD]">Pipeline</h1>
+          <p className="text-sm text-[#B9A48A] mt-1">
             Active acquisition opportunities and conversion flow
           </p>
-          <p className="text-xs text-andy-bronze/50 mt-1">${totalValue.toLocaleString()} pipeline value · {leads.length} leads</p>
+          <p className="text-xs text-[#7B6854] mt-1">${totalValue.toLocaleString()} pipeline value · {leads.length} leads</p>
         </div>
       </div>
 
@@ -98,16 +98,16 @@ export default function PipelinePage() {
           return (
             <div
               key={stage.key}
-              className="flex-shrink-0 w-[280px] rounded-[20px] bg-[rgba(255,255,255,0.68)] border border-[rgba(255,255,255,0.38)] backdrop-blur-sm p-4 flex flex-col"
+              className="flex-shrink-0 w-[280px] rounded-[28px] bg-[linear-gradient(180deg,rgba(34,29,25,0.88)_0%,rgba(24,20,18,0.96)_100%)] border border-[rgba(214,170,92,0.10)] backdrop-blur-md p-4 flex flex-col shadow-[0_12px_40px_rgba(0,0,0,0.42),inset_0_1px_0_rgba(255,255,255,0.02)]"
             >
               {/* Stage Header */}
               <div className="flex items-center justify-between mb-4">
                 <div>
-                  <h3 className="font-semibold text-andy-black text-sm">{stage.label}</h3>
-                  <p className="text-xs text-andy-bronze">{stageLeads.length} leads</p>
+                  <h3 className="font-semibold text-[#E8D8C2] text-sm">{stage.label}</h3>
+                  <p className="text-xs text-[#7B6854]">{stageLeads.length} leads</p>
                 </div>
                 {stageValue > 0 && (
-                  <span className="text-xs font-bold text-andy-gold">${(stageValue / 1000).toFixed(0)}k</span>
+                  <span className="text-xs font-bold text-[#C89B4F]">${(stageValue / 1000).toFixed(0)}k</span>
                 )}
               </div>
 
@@ -116,23 +116,23 @@ export default function PipelinePage() {
                 {stageLeads.map((lead) => (
                   <div
                     key={lead.id}
-                    className="bg-[rgba(255,255,255,0.72)] rounded-xl border border-[rgba(255,255,255,0.45)] p-4 hover:border-andy-gold/20 hover:shadow-[0_1px_1px_rgba(0,0,0,0.02),0_4px_12px_rgba(15,15,15,0.04)] transition-all cursor-grab"
+                    className="bg-[rgba(26,22,19,0.72)] rounded-xl border border-[rgba(214,170,92,0.08)] backdrop-blur-md p-4 hover:border-[rgba(214,170,92,0.18)] hover:shadow-[0_4px_12px_rgba(0,0,0,0.2)] transition-all cursor-grab"
                   >
                     {/* Temperature dot + Score */}
                     <div className="flex items-center justify-between mb-2">
                       <div className="flex items-center gap-1.5">
                         <span className={`w-2 h-2 rounded-full ${TEMPERATURE_COLORS[lead.temperature]}`} />
-                        <span className="text-xs text-andy-bronze capitalize">{lead.segment.replace('_', ' ')}</span>
+                        <span className="text-xs text-[#7B6854] capitalize">{lead.segment.replace('_', ' ')}</span>
                       </div>
-                      <span className="text-xs font-bold text-andy-black">{lead.leadScore}</span>
+                      <span className="text-xs font-bold text-[#FFF3DF]">{lead.leadScore}</span>
                     </div>
 
                     {/* Name + Budget */}
-                    <p className="font-semibold text-andy-black text-sm mb-1">{lead.profile.fullName}</p>
-                    <p className="text-xs text-andy-bronze/70 mb-3">{lead.budgetBand.replace(/_/g, ' ')}</p>
+                    <p className="font-semibold text-[#E8D8C2] text-sm mb-1">{lead.profile.fullName}</p>
+                    <p className="text-xs text-[#7B6854] mb-3">{lead.budgetBand.replace(/_/g, ' ')}</p>
 
                     {/* Interest */}
-                    <p className="text-xs text-andy-bronze mb-3 truncate">{lead.interest.itemTitle || lead.interest.category}</p>
+                    <p className="text-xs text-[#9C8468] mb-3 truncate">{lead.interest.itemTitle || lead.interest.category}</p>
 
                     {/* Footer */}
                     <div className="flex items-center justify-between">
