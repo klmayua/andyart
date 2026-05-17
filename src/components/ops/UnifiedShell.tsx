@@ -138,7 +138,7 @@ export default function UnifiedShell({ children }: { children: React.ReactNode }
           </div>
         </div>
 
-        <main className="flex-1 overflow-auto p-6 lg:p-8">
+        <main className="flex-1 overflow-auto p-6 lg:p-8 bg-[#F3EEE4]">
           {children}
         </main>
       </div>
