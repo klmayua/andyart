@@ -63,7 +63,7 @@ export default function HomePage() {
   return (
     <div className="min-h-screen">
       {/* HERO CINEMATIC */}
-      <section className="relative h-[92vh] min-h-[640px] flex items-center justify-center overflow-hidden">
+      <section className="relative h-[92vh] min-h-[640px] flex items-center justify-center overflow-hidden pt-16 md:pt-0">
         <Image
           src={IMAGES.hero}
           alt="AndyArt Cultural House"
