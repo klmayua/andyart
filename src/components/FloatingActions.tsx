@@ -10,15 +10,7 @@ export default function FloatingActions() {
   // if (!isPublicSurface) return null;
 
   return (
-    <div
-      className="fixed flex flex-col items-center"
-      style={{
-        right: '24px',
-        bottom: '24px',
-        gap: '12px',
-        zIndex: 9999,
-      }}
-    >
+    <div className="fixed flex flex-col items-center bottom-[96px] right-4 md:bottom-6 md:right-6 gap-3 z-[9999]">
       <WhatsAppButton />
       <Chatbot />
     </div>

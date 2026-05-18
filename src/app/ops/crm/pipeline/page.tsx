@@ -98,7 +98,7 @@ export default function PipelinePage() {
           return (
             <div
               key={stage.key}
-              className="flex-shrink-0 w-[280px] rounded-[28px] bg-[linear-gradient(180deg,rgba(34,29,25,0.88)_0%,rgba(24,20,18,0.96)_100%)] border border-[rgba(214,170,92,0.10)] backdrop-blur-md p-4 flex flex-col shadow-[0_12px_40px_rgba(0,0,0,0.42),inset_0_1px_0_rgba(255,255,255,0.02)]"
+              className="flex-shrink-0 w-[280px] rounded-[20px] bg-[linear-gradient(180deg,rgba(28,23,20,0.94)_0%,rgba(22,18,16,0.98)_100%)] border border-[rgba(214,170,92,0.08)] p-4 flex flex-col shadow-[0_2px_10px_rgba(0,0,0,0.16)]"
             >
               {/* Stage Header */}
               <div className="flex items-center justify-between mb-4">
@@ -116,7 +116,7 @@ export default function PipelinePage() {
                 {stageLeads.map((lead) => (
                   <div
                     key={lead.id}
-                    className="bg-[rgba(26,22,19,0.72)] rounded-xl border border-[rgba(214,170,92,0.08)] backdrop-blur-md p-4 hover:border-[rgba(214,170,92,0.18)] hover:shadow-[0_4px_12px_rgba(0,0,0,0.2)] transition-all cursor-grab"
+                    className="bg-[rgba(26,22,19,0.72)] rounded-lg border border-[rgba(214,170,92,0.06)] p-4 hover:border-[rgba(214,170,92,0.12)] transition-all cursor-grab"
                   >
                     {/* Temperature dot + Score */}
                     <div className="flex items-center justify-between mb-2">
@@ -136,24 +136,24 @@ export default function PipelinePage() {
 
                     {/* Footer */}
                     <div className="flex items-center justify-between">
-                      <span className="text-[10px] text-andy-bronze/60">{formatDate(lead.createdAt)}</span>
+                      <span className="text-[10px] text-[#7B6854]/60">{formatDate(lead.createdAt)}</span>
                       <div className="flex items-center gap-1">
                         {stage.key !== 'new' && (
                           <button
                             onClick={(e) => { e.stopPropagation(); handleMoveLeft(lead.id, stage.key); }}
-                            className="p-1 rounded hover:bg-andy-stone/20 transition-colors"
+                            className="p-1 rounded hover:bg-[rgba(255,255,255,0.05)] transition-colors"
                             title="Move left"
                           >
-                            <ArrowLeft size={12} className="text-andy-bronze/60" />
+                            <ArrowLeft size={12} className="text-[#7B6854]/60" />
                           </button>
                         )}
                         {stage.key !== 'archived' && (
                           <button
                             onClick={(e) => { e.stopPropagation(); handleMoveRight(lead.id, stage.key); }}
-                            className="p-1 rounded hover:bg-andy-stone/20 transition-colors"
+                            className="p-1 rounded hover:bg-[rgba(255,255,255,0.05)] transition-colors"
                             title="Move right"
                           >
-                            <ArrowRight size={12} className="text-andy-bronze/60" />
+                            <ArrowRight size={12} className="text-[#7B6854]/60" />
                           </button>
                         )}
                       </div>
@@ -161,7 +161,7 @@ export default function PipelinePage() {
                   </div>
                 ))}
                 {stageLeads.length === 0 && (
-                  <div className="flex items-center justify-center h-20 text-xs text-andy-bronze/40">
+                  <div className="flex items-center justify-center h-20 text-xs text-[#7B6854]/40">
                     No leads
                   </div>
                 )}

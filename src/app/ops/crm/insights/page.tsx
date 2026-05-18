@@ -98,8 +98,8 @@ export default function InsightsPage() {
             <div className="flex items-center justify-between mb-3">
               <kpi.icon size={20} className="text-[#C89B4F]" />
             </div>
-            <p className="text-2xl font-bold text-andy-black">{kpi.value}</p>
-            <p className="text-xs text-andy-bronze mt-1">{kpi.label}</p>
+            <p className="text-2xl font-bold text-[#F5EBDD]">{kpi.value}</p>
+            <p className="text-xs text-[#7B6854] mt-1">{kpi.label}</p>
           </div>
         ))}
       </div>
@@ -107,21 +107,21 @@ export default function InsightsPage() {
       <div className="grid lg:grid-cols-2 gap-6">
         {/* Lead Growth */}
         <div className="bg-white rounded-2xl border border-andy-stone/20 p-6">
-          <h2 className="font-serif text-lg font-bold text-andy-black mb-6">Lead Acquisition (6 Months)</h2>
+          <h2 className="font-serif text-lg font-bold text-[#F5EBDD] mb-6">Lead Acquisition (6 Months)</h2>
           <div className="flex items-end gap-3 h-40">
             {byMonth.months.map((month, i) => {
               const count = byMonth.leadsPerMonth[i] || 0;
               const pct = (count / byMonth.maxVal) * 100;
               return (
                 <div key={month} className="flex-1 flex flex-col items-center gap-2">
-                  <span className="text-xs font-bold text-andy-black">{count}</span>
+                  <span className="text-xs font-bold text-[#F5EBDD]">{count}</span>
                   <div
-                    className="w-full bg-andy-gold/20 rounded-t-lg hover:bg-andy-gold/30 transition-colors relative"
+                    className="w-full bg-[#C89B4F]/20 rounded-t-lg hover:bg-[#C89B4F]/30 transition-colors relative"
                     style={{ height: `${pct || 4}%`, minHeight: count > 0 ? '8px' : '4px' }}
                   >
-                    <div className="absolute inset-0 bg-andy-gold rounded-t-lg" style={{ height: count > 0 ? '100%' : '0' }} />
+                    <div className="absolute inset-0 bg-[#C89B4F] rounded-t-lg" style={{ height: count > 0 ? '100%' : '0' }} />
                   </div>
-                  <span className="text-xs text-andy-bronze/70">{month}</span>
+                  <span className="text-xs text-[#7B6854]/70">{month}</span>
                 </div>
               );
             })}
@@ -130,7 +130,7 @@ export default function InsightsPage() {
 
         {/* Source Quality */}
         <div className="bg-white rounded-2xl border border-andy-stone/20 p-6">
-          <h2 className="font-serif text-lg font-bold text-andy-black mb-6">Source Quality</h2>
+          <h2 className="font-serif text-lg font-bold text-[#F5EBDD] mb-6">Source Quality</h2>
           <div className="space-y-4">
             {bySource.map(([source, count]) => {
               const sourceLeads = leads.filter((l) => l.source === source);
@@ -140,16 +140,16 @@ export default function InsightsPage() {
               return (
                 <div key={source}>
                   <div className="flex items-center justify-between mb-1.5">
-                    <span className="text-sm font-medium text-andy-black capitalize">{source}</span>
+                    <span className="text-sm font-medium text-[#F5EBDD] capitalize">{source}</span>
                     <div className="flex items-center gap-4">
-                      <span className="text-xs text-andy-bronze">{count} leads</span>
-                      <span className="text-xs font-bold text-andy-gold">avg {avg}</span>
+                      <span className="text-xs text-[#7B6854]">{count} leads</span>
+                      <span className="text-xs font-bold text-[#C89B4F]">avg {avg}</span>
                       <span className="text-xs text-green-600">{pct}% conv.</span>
                     </div>
                   </div>
                   <div className="w-full h-2 bg-andy-stone/20 rounded-full overflow-hidden">
                     <div
-                      className="h-full bg-andy-gold rounded-full"
+                      className="h-full bg-[#C89B4F] rounded-full"
                       style={{ width: `${(count / leads.length) * 100}%` }}
                     />
                   </div>
@@ -161,20 +161,20 @@ export default function InsightsPage() {
 
         {/* Segment Quality */}
         <div className="bg-white rounded-2xl border border-andy-stone/20 p-6">
-          <h2 className="font-serif text-lg font-bold text-andy-black mb-6">Segment Quality</h2>
+          <h2 className="font-serif text-lg font-bold text-[#F5EBDD] mb-6">Segment Quality</h2>
           <div className="space-y-4">
             {bySegment.map(({ seg, count, avgScore: segAvg }) => (
               <div key={seg} className="flex items-center justify-between py-2 border-b border-andy-stone/5 last:border-0">
-                <span className="text-sm capitalize text-andy-bronze">{seg.replace('_', ' ')}</span>
+                <span className="text-sm capitalize text-[#7B6854]">{seg.replace('_', ' ')}</span>
                 <div className="flex items-center gap-4">
-                  <span className="text-xs text-andy-bronze">{count} leads</span>
+                  <span className="text-xs text-[#7B6854]">{count} leads</span>
                   <div className="w-16 h-1.5 bg-andy-stone/20 rounded-full overflow-hidden">
                     <div
-                      className="h-full bg-andy-gold rounded-full"
+                      className="h-full bg-[#C89B4F] rounded-full"
                       style={{ width: `${(count / leads.length) * 100}%` }}
                     />
                   </div>
-                  <span className="text-xs font-bold text-andy-black w-8 text-right">{segAvg}</span>
+                  <span className="text-xs font-bold text-[#F5EBDD] w-8 text-right">{segAvg}</span>
                 </div>
               </div>
             ))}
@@ -183,17 +183,17 @@ export default function InsightsPage() {
 
         {/* High-Intent Categories */}
         <div className="bg-white rounded-2xl border border-andy-stone/20 p-6">
-          <h2 className="font-serif text-lg font-bold text-andy-black mb-6">Interest Categories</h2>
+          <h2 className="font-serif text-lg font-bold text-[#F5EBDD] mb-6">Interest Categories</h2>
           <div className="space-y-3">
             {topCategories.map(([cat, count]) => (
               <div key={cat}>
                 <div className="flex items-center justify-between mb-1.5">
-                  <span className="text-sm capitalize text-andy-bronze">{cat.replace('_', ' ')}</span>
-                  <span className="text-sm font-bold text-andy-black">{count}</span>
+                  <span className="text-sm capitalize text-[#7B6854]">{cat.replace('_', ' ')}</span>
+                  <span className="text-sm font-bold text-[#F5EBDD]">{count}</span>
                 </div>
                 <div className="w-full h-2 bg-andy-stone/20 rounded-full overflow-hidden">
                   <div
-                    className="h-full bg-andy-gold rounded-full"
+                    className="h-full bg-[#C89B4F] rounded-full"
                     style={{ width: `${(count / (topCategories[0]?.[1] || 1)) * 100}%` }}
                   />
                 </div>
@@ -202,8 +202,8 @@ export default function InsightsPage() {
           </div>
           {hottest && (
             <div className="mt-4 pt-3 border-t border-andy-stone/10">
-              <p className="text-xs text-andy-bronze">
-                Hottest interest: <span className="font-bold text-andy-gold capitalize">{hottest.replace('_', ' ')}</span>
+              <p className="text-xs text-[#7B6854]">
+                Hottest interest: <span className="font-bold text-[#C89B4F] capitalize">{hottest.replace('_', ' ')}</span>
               </p>
             </div>
           )}
@@ -211,7 +211,7 @@ export default function InsightsPage() {
 
         {/* Subscriber Tier Distribution */}
         <div className="bg-white rounded-2xl border border-andy-stone/20 p-6">
-          <h2 className="font-serif text-lg font-bold text-andy-black mb-6">Subscriber Tiers</h2>
+          <h2 className="font-serif text-lg font-bold text-[#F5EBDD] mb-6">Subscriber Tiers</h2>
           <div className="space-y-3">
             {(['vip', 'collector', 'prospect', 'reader'] as const).map((tier) => {
               const count = counts[tier];
@@ -219,15 +219,15 @@ export default function InsightsPage() {
               return (
                 <div key={tier}>
                   <div className="flex items-center justify-between mb-1.5">
-                    <span className="text-sm capitalize text-andy-bronze">{tier}</span>
+                    <span className="text-sm capitalize text-[#7B6854]">{tier}</span>
                     <div className="flex items-center gap-3">
-                      <span className="text-xs font-bold text-andy-black">{count}</span>
-                      <span className="text-xs text-andy-bronze/60">{pct}%</span>
+                      <span className="text-xs font-bold text-[#F5EBDD]">{count}</span>
+                      <span className="text-xs text-[#7B6854]/60">{pct}%</span>
                     </div>
                   </div>
                   <div className="w-full h-3 bg-andy-stone/20 rounded-full overflow-hidden">
                     <div
-                      className={`h-full rounded-full ${tier === 'vip' ? 'bg-andy-gold' : tier === 'collector' ? 'bg-andy-black' : 'bg-andy-stone'}`}
+                      className={`h-full rounded-full ${tier === 'vip' ? 'bg-[#C89B4F]' : tier === 'collector' ? 'bg-[#F5EBDD]' : 'bg-andy-stone'}`}
                       style={{ width: `${pct}%` }}
                     />
                   </div>
@@ -239,22 +239,22 @@ export default function InsightsPage() {
 
         {/* Top VIP Leads */}
         <div className="bg-white rounded-2xl border border-andy-stone/20 p-6">
-          <h2 className="font-serif text-lg font-bold text-andy-black mb-6">Top VIP Leads</h2>
+          <h2 className="font-serif text-lg font-bold text-[#F5EBDD] mb-6">Top VIP Leads</h2>
           <div className="space-y-3">
             {[...vipLeads, ...hotLeads].sort((a, b) => b.leadScore - a.leadScore).slice(0, 6).map((lead) => (
               <div key={lead.id} className="flex items-center justify-between py-2.5 border-b border-andy-stone/5 last:border-0">
                 <div>
-                  <p className="text-sm font-semibold text-andy-black">{lead.profile.fullName}</p>
-                  <p className="text-xs text-andy-bronze/60">{lead.interest.itemTitle || lead.interest.category}</p>
+                  <p className="text-sm font-semibold text-[#F5EBDD]">{lead.profile.fullName}</p>
+                  <p className="text-xs text-[#7B6854]/60">{lead.interest.itemTitle || lead.interest.category}</p>
                 </div>
                 <div className="text-right">
-                  <span className="text-sm font-bold text-andy-gold">{lead.leadScore}</span>
-                  <p className="text-xs text-andy-bronze/60">{formatDate(lead.createdAt)}</p>
+                  <span className="text-sm font-bold text-[#C89B4F]">{lead.leadScore}</span>
+                  <p className="text-xs text-[#7B6854]/60">{formatDate(lead.createdAt)}</p>
                 </div>
               </div>
             ))}
             {leads.length === 0 && (
-              <p className="text-sm text-andy-bronze/40 text-center py-8">No leads yet. Seed data loads on first visit.</p>
+              <p className="text-sm text-[#7B6854]/40 text-center py-8">No leads yet. Seed data loads on first visit.</p>
             )}
           </div>
         </div>

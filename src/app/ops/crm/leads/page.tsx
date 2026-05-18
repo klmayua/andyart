@@ -94,7 +94,7 @@ export default function LeadsPage() {
           <select
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value as typeof sortBy)}
-            className="px-4 py-2 rounded-full border border-andy-stone/30 bg-white text-sm text-[#B9A48A] focus:outline-none focus:ring-2 focus:ring-andy-gold/30"
+            className="px-4 py-2 rounded-full border border-[rgba(214,170,92,0.15)] bg-[rgba(255,255,255,0.05)] text-sm text-[#B9A48A] focus:outline-none focus:ring-2 focus:ring-[#C89B4F]/30"
           >
             <option value="score_desc">Score: High → Low</option>
             <option value="newest">Newest First</option>
@@ -104,38 +104,38 @@ export default function LeadsPage() {
       </div>
 
       {/* Filters Bar */}
-      <div className="bg-[#FAF8F3] rounded-xl border border-black/[0.06] p-4 mb-6 space-y-3">
+      <div className="bg-[linear-gradient(180deg,rgba(28,23,20,0.94)_0%,rgba(22,18,16,0.98)_100%)] rounded-[20px] border border-[rgba(214,170,92,0.08)] p-4 mb-6 space-y-3 shadow-[0_2px_10px_rgba(0,0,0,0.16)]">
         <div className="flex flex-wrap items-center gap-3">
           <div className="relative flex-1 min-w-[200px]">
-            <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#B9A48A]/50" />
+            <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#7B6854]" />
             <input
               type="text"
               placeholder="Search by name, email, interest..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-andy-stone/30 text-sm focus:outline-none focus:ring-2 focus:ring-andy-gold/30 bg-andy-ivory/50"
+              className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-[rgba(214,170,92,0.15)] text-sm focus:outline-none focus:ring-2 focus:ring-[#C89B4F]/30 bg-[rgba(255,255,255,0.05)] text-[#F5EBDD]"
             />
           </div>
-          <select value={filterSegment} onChange={(e) => setFilterSegment(e.target.value as typeof filterSegment)} className="px-3 py-2 rounded-lg border border-andy-stone/30 text-sm bg-white text-[#B9A48A] focus:outline-none">
+          <select value={filterSegment} onChange={(e) => setFilterSegment(e.target.value as typeof filterSegment)} className="px-3 py-2 rounded-lg border border-[rgba(214,170,92,0.15)] text-sm bg-[rgba(255,255,255,0.05)] text-[#B9A48A] focus:outline-none">
             <option value="all">All Segments</option>
             {SEGMENTS.map((s) => <option key={s} value={s}>{s.replace('_', ' ')}</option>)}
           </select>
-          <select value={filterSource} onChange={(e) => setFilterSource(e.target.value as typeof filterSource)} className="px-3 py-2 rounded-lg border border-andy-stone/30 text-sm bg-white text-[#B9A48A] focus:outline-none">
+          <select value={filterSource} onChange={(e) => setFilterSource(e.target.value as typeof filterSource)} className="px-3 py-2 rounded-lg border border-[rgba(214,170,92,0.15)] text-sm bg-[rgba(255,255,255,0.05)] text-[#B9A48A] focus:outline-none">
             <option value="all">All Sources</option>
             {SOURCES.map((s) => <option key={s} value={s}>{s}</option>)}
           </select>
-          <select value={filterTemperature} onChange={(e) => setFilterTemperature(e.target.value as typeof filterTemperature)} className="px-3 py-2 rounded-lg border border-andy-stone/30 text-sm bg-white text-[#B9A48A] focus:outline-none">
+          <select value={filterTemperature} onChange={(e) => setFilterTemperature(e.target.value as typeof filterTemperature)} className="px-3 py-2 rounded-lg border border-[rgba(214,170,92,0.15)] text-sm bg-[rgba(255,255,255,0.05)] text-[#B9A48A] focus:outline-none">
             <option value="all">All Temperatures</option>
             {TEMPERATURES.map((t) => <option key={t} value={t}>{t.replace('_', ' ')}</option>)}
           </select>
-          <select value={filterStatus} onChange={(e) => setFilterStatus(e.target.value as typeof filterStatus)} className="px-3 py-2 rounded-lg border border-andy-stone/30 text-sm bg-white text-[#B9A48A] focus:outline-none">
+          <select value={filterStatus} onChange={(e) => setFilterStatus(e.target.value as typeof filterStatus)} className="px-3 py-2 rounded-lg border border-[rgba(214,170,92,0.15)] text-sm bg-[rgba(255,255,255,0.05)] text-[#B9A48A] focus:outline-none">
             <option value="all">All Statuses</option>
             {Object.entries(STATUS_LABELS).map(([k, v]) => <option key={k} value={k}>{v}</option>)}
           </select>
           {(search || filterSegment !== 'all' || filterSource !== 'all' || filterTemperature !== 'all' || filterStatus !== 'all') && (
             <button
               onClick={() => { setSearch(''); setFilterSegment('all'); setFilterSource('all'); setFilterTemperature('all'); setFilterStatus('all'); }}
-              className="flex items-center gap-1 px-3 py-2 rounded-lg text-xs text-[#B9A48A] hover:bg-andy-stone/20 transition-colors"
+              className="flex items-center gap-1 px-3 py-2 rounded-lg text-xs text-[#B9A48A] hover:bg-[rgba(255,255,255,0.05)] transition-colors"
             >
               <X size={14} /> Clear
             </button>
@@ -144,11 +144,11 @@ export default function LeadsPage() {
       </div>
 
       {/* Table */}
-      <div className="bg-white rounded-2xl border border-andy-stone/20 overflow-hidden">
+      <div className="bg-[linear-gradient(180deg,rgba(28,23,20,0.94)_0%,rgba(22,18,16,0.98)_100%)] rounded-[26px] border border-[rgba(214,170,92,0.08)] overflow-hidden shadow-[0_2px_10px_rgba(0,0,0,0.16)]">
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-andy-stone/10 bg-andy-stone/5">
+              <tr className="border-b border-[rgba(214,170,92,0.08)] bg-[rgba(255,255,255,0.02)]">
                 <th className="text-left px-5 py-3.5 text-xs font-semibold text-[#B9A48A] uppercase tracking-wider">Lead</th>
                 <th className="text-left px-4 py-3.5 text-xs font-semibold text-[#B9A48A] uppercase tracking-wider">Segment</th>
                 <th className="text-left px-4 py-3.5 text-xs font-semibold text-[#B9A48A] uppercase tracking-wider">Interest</th>
@@ -166,7 +166,7 @@ export default function LeadsPage() {
               ) : filtered.map((lead) => {
                 const temp = TEMPERATURE_STYLES[lead.temperature];
                 return (
-                  <tr key={lead.id} className="border-b border-andy-stone/5 hover:bg-andy-stone/5 transition-colors">
+                  <tr key={lead.id} className="border-b border-[rgba(255,255,255,0.03)] hover:bg-[rgba(255,255,255,0.025)] transition-colors">
                     <td className="px-5 py-4">
                       <div>
                         <p className="font-semibold text-[#F5EBDD]">{lead.profile.fullName}</p>
@@ -191,9 +191,9 @@ export default function LeadsPage() {
                     </td>
                     <td className="px-4 py-4">
                       <div className="flex items-center gap-2">
-                        <div className="w-12 h-1.5 bg-andy-stone/20 rounded-full overflow-hidden">
+                        <div className="w-12 h-1.5 bg-[rgba(255,255,255,0.1)] rounded-full overflow-hidden">
                           <div
-                            className={`h-full rounded-full ${lead.leadScore >= 76 ? 'bg-andy-gold' : lead.leadScore >= 50 ? 'bg-green-500' : 'bg-blue-400'}`}
+                            className={`h-full rounded-full ${lead.leadScore >= 76 ? 'bg-[#C89B4F]' : lead.leadScore >= 50 ? 'bg-green-500' : 'bg-blue-400'}`}
                             style={{ width: `${lead.leadScore}%` }}
                           />
                         </div>
@@ -231,17 +231,17 @@ export default function LeadsPage() {
       {/* Lead Detail Drawer */}
       {selectedLead && (
         <div className="fixed inset-0 z-50 flex justify-end" onClick={() => setSelectedLead(null)}>
-          <div className="absolute inset-0 bg-andy-black/30 backdrop-blur-sm" />
+          <div className="absolute inset-0 bg-[#0A0A0A]/30 backdrop-blur-sm" />
           <div
-            className="relative w-full max-w-lg bg-[#F7F2E8] shadow-premium overflow-y-auto"
+            className="relative w-full max-w-lg bg-[linear-gradient(180deg,rgba(28,23,20,0.94)_0%,rgba(22,18,16,0.98)_100%)] shadow-[0_2px_10px_rgba(0,0,0,0.16)] overflow-y-auto border-l border-[rgba(214,170,92,0.08)]"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="sticky top-0 bg-white border-b border-andy-stone/20 px-6 py-4 flex items-center justify-between z-10">
+            <div className="sticky top-0 bg-[linear-gradient(180deg,rgba(28,23,20,0.94)_0%,rgba(22,18,16,0.98)_100%)] border-b border-[rgba(214,170,92,0.08)] px-6 py-4 flex items-center justify-between z-10">
               <div>
                 <h2 className="font-serif text-xl font-bold text-[#F5EBDD]">{selectedLead.profile.fullName}</h2>
                 <p className="text-sm text-[#B9A48A]">{selectedLead.profile.email}</p>
               </div>
-              <button onClick={() => setSelectedLead(null)} className="p-2 hover:bg-andy-stone/10 rounded-lg transition-colors">
+              <button onClick={() => setSelectedLead(null)} className="p-2 hover:bg-[rgba(255,255,255,0.05)] rounded-lg transition-colors">
                 <X size={20} className="text-[#B9A48A]" />
               </button>
             </div>
@@ -250,18 +250,18 @@ export default function LeadsPage() {
               {/* Score + Temperature */}
               <div className="flex items-center gap-4">
                 <div className="flex-1">
-                  <p className="text-xs text-[#B9A48A] uppercase tracking-wider mb-1">Lead Score</p>
+                  <p className="text-xs text-[#7B6854] uppercase tracking-wider mb-1">Lead Score</p>
                   <div className="flex items-center gap-3">
-                    <div className="w-full h-2 bg-andy-stone/20 rounded-full overflow-hidden">
+                    <div className="w-full h-2 bg-[rgba(255,255,255,0.1)] rounded-full overflow-hidden">
                       <div
-                        className="h-full bg-andy-gold rounded-full"
+                        className="h-full bg-[#C89B4F] rounded-full"
                         style={{ width: `${selectedLead.leadScore}%` }}
                       />
                     </div>
-                    <span className="font-bold text-andy-gold text-lg">{selectedLead.leadScore}</span>
+                    <span className="font-bold text-[#C89B4F] text-lg">{selectedLead.leadScore}</span>
                   </div>
                 </div>
-                <div className={`px-4 py-2 rounded-xl text-sm font-semibold ${TEMPERATURE_STYLES[selectedLead.temperature].bg} ${TEMPERATURE_STYLES[selectedLead.temperature].dot.includes('gold') ? 'text-andy-gold' : 'text-red-600'}`}>
+                <div className={`px-4 py-2 rounded-xl text-sm font-semibold ${TEMPERATURE_STYLES[selectedLead.temperature].bg} ${TEMPERATURE_STYLES[selectedLead.temperature].dot.includes('gold') ? 'text-[#C89B4F]' : 'text-red-400'}`}>
                   {TEMPERATURE_STYLES[selectedLead.temperature].label}
                 </div>
               </div>

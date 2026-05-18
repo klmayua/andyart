@@ -50,9 +50,9 @@ export default function ExecutiveDashboardPage() {
 
   return (
     <div>
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-5">
         <div>
-          <h1 className="font-serif text-3xl font-bold text-[#F5EBDD]">Executive Command</h1>
+          <h1 className="font-serif text-2xl sm:text-3xl font-bold text-[#F5EBDD]">Executive Command</h1>
           <p className="text-sm text-[#B9A48A] mt-1">Operational overview and system intelligence</p>
         </div>
         <div className="flex items-center gap-2 text-xs text-[#7B6854]">
@@ -62,21 +62,21 @@ export default function ExecutiveDashboardPage() {
       </div>
 
       {/* Revenue Row */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-5">
         {[
           { label: 'Total Revenue', value: `$${(paymentStats.totalVolume / 1000).toFixed(0)}k`, sub: `${paymentStats.completedPayments} transactions`, icon: TrendingUp, href: '/ops/payments', accent: true },
           { label: 'Pending Volume', value: `$${(paymentStats.pendingVolume / 1000).toFixed(0)}k`, sub: 'In pipeline', icon: CreditCard, href: '/ops/payments/invoices' },
           { label: 'Escrow Balance', value: `$${(paymentStats.escrowBalance / 1000).toFixed(0)}k`, sub: `${paymentStats.escrowFunded} funded cases`, icon: Shield, href: '/ops/payments/escrow' },
           { label: 'Active Reservations', value: paymentStats.activeReservations, sub: 'Deposit held', icon: Heart, href: '/ops/payments' },
         ].map((kpi) => (
-          <Link key={kpi.label} href={kpi.href} className={`bg-[linear-gradient(180deg,rgba(28,23,20,0.94)_0%,rgba(22,18,16,0.98)_100%)] rounded-[26px] border border-[rgba(214,170,92,0.08)] backdrop-blur-sm p-5 shadow-[0_2px_10px_rgba(0,0,0,0.16)] hover:border-[rgba(214,170,92,0.16)] hover:bg-[linear-gradient(180deg,rgba(32,26,23,0.96)_0%,rgba(24,20,18,1)_100%)] transition-[border,background] duration-200 ease group ${kpi.accent ? 'border-t border-t-[rgba(214,170,92,0.25)]' : ''}`}>
-            <div className="flex items-center justify-between mb-3">
+          <Link key={kpi.label} href={kpi.href} className={`bg-[linear-gradient(180deg,rgba(28,23,20,0.94)_0%,rgba(22,18,16,0.98)_100%)] rounded-[26px] border border-[rgba(214,170,92,0.08)] backdrop-blur-sm p-4 sm:p-5 shadow-[0_2px_10px_rgba(0,0,0,0.16)] hover:border-[rgba(214,170,92,0.16)] hover:bg-[linear-gradient(180deg,rgba(32,26,23,0.96)_0%,rgba(24,20,18,1)_100%)] transition-[border,background] duration-200 ease group ${kpi.accent ? 'border-t border-t-[rgba(214,170,92,0.25)]' : ''}`}>
+            <div className="flex items-center justify-between mb-2 sm:mb-3">
               <div className="w-8 h-8 rounded-lg bg-[rgba(214,170,92,0.06)] border border-[rgba(214,170,92,0.10)] flex items-center justify-center">
                 <kpi.icon size={16} className="text-[#C89B4F]" />
               </div>
               <ArrowRight size={14} className="text-[#9D8466] group-hover:text-[#C89B4F] transition-colors" />
             </div>
-            <p className="text-2xl font-bold text-[#F3E7D3] tracking-tight">{kpi.value}</p>
+            <p className="text-xl sm:text-2xl font-bold text-[#F3E7D3] tracking-tight">{kpi.value}</p>
             <p className="text-[11px] text-[#9D8466] mt-1 uppercase tracking-wide">{kpi.label}</p>
             <p className="text-xs text-[#73614E]">{kpi.sub}</p>
           </Link>
@@ -84,40 +84,40 @@ export default function ExecutiveDashboardPage() {
       </div>
 
       {/* Collector & Pipeline Row */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-5">
         {[
           { label: 'Collectors', value: collectors.length, sub: 'Registered', icon: Users, href: '/ops/crm' },
           { label: 'VIP Leads', value: vipLeads, sub: `${hotLeads} hot`, icon: Crown, href: '/ops/crm/leads' },
           { label: 'Pipeline Value', value: `$${(totalPipelineValue / 1000).toFixed(0)}k`, sub: `${leads.length} total leads`, icon: GitBranch, href: '/ops/crm/pipeline' },
           { label: 'Concierge', value: urgentRequests, sub: `${activeCommissions} active commissions`, icon: MessageSquare, href: '/ops/concierge/requests' },
         ].map((kpi) => (
-          <Link key={kpi.label} href={kpi.href} className="bg-[linear-gradient(180deg,rgba(28,23,20,0.94)_0%,rgba(22,18,16,0.98)_100%)] rounded-[26px] border border-[rgba(214,170,92,0.08)] backdrop-blur-sm p-5 shadow-[0_2px_10px_rgba(0,0,0,0.16)] hover:border-[rgba(214,170,92,0.16)] hover:bg-[linear-gradient(180deg,rgba(32,26,23,0.96)_0%,rgba(24,20,18,1)_100%)] transition-[border,background] duration-200 ease group">
-            <div className="flex items-center justify-between mb-3">
+          <Link key={kpi.label} href={kpi.href} className="bg-[linear-gradient(180deg,rgba(28,23,20,0.94)_0%,rgba(22,18,16,0.98)_100%)] rounded-[26px] border border-[rgba(214,170,92,0.08)] backdrop-blur-sm p-4 sm:p-5 shadow-[0_2px_10px_rgba(0,0,0,0.16)] hover:border-[rgba(214,170,92,0.16)] hover:bg-[linear-gradient(180deg,rgba(32,26,23,0.96)_0%,rgba(24,20,18,1)_100%)] transition-[border,background] duration-200 ease group">
+            <div className="flex items-center justify-between mb-2 sm:mb-3">
               <div className="w-8 h-8 rounded-lg bg-[rgba(214,170,92,0.06)] border border-[rgba(214,170,92,0.10)] flex items-center justify-center">
                 <kpi.icon size={16} className="text-[#C89B4F]" />
               </div>
               <ArrowRight size={14} className="text-[#9D8466] group-hover:text-[#C89B4F] transition-colors" />
             </div>
-            <p className="text-2xl font-bold text-[#F3E7D3] tracking-tight">{kpi.value}</p>
+            <p className="text-xl sm:text-2xl font-bold text-[#F3E7D3] tracking-tight">{kpi.value}</p>
             <p className="text-[11px] text-[#9D8466] mt-1 uppercase tracking-wide">{kpi.label}</p>
             <p className="text-xs text-[#73614E]">{kpi.sub}</p>
           </Link>
         ))}
       </div>
 
-      <div className="grid lg:grid-cols-3 gap-6">
+      <div className="grid md:grid-cols-3 gap-4 md:gap-6">
         {/* Activity Feed */}
-        <div className="lg:col-span-2 bg-[linear-gradient(180deg,rgba(28,23,20,0.94)_0%,rgba(22,18,16,0.98)_100%)] rounded-[26px] border border-[rgba(214,170,92,0.08)] backdrop-blur-sm shadow-[0_2px_10px_rgba(0,0,0,0.16)] overflow-hidden border-t border-t-[rgba(214,170,92,0.25)]">
-          <div className="flex items-center justify-between px-6 py-4 border-b border-black/[0.05]">
+        <div className="md:col-span-2 bg-[linear-gradient(180deg,rgba(28,23,20,0.94)_0%,rgba(22,18,16,0.98)_100%)] rounded-[26px] border border-[rgba(214,170,92,0.08)] backdrop-blur-sm shadow-[0_2px_10px_rgba(0,0,0,0.16)] overflow-hidden border-t border-t-[rgba(214,170,92,0.25)]">
+          <div className="flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 border-b border-black/[0.05]">
             <div className="flex items-center gap-2">
               <Activity size={18} className="text-[#C89B4F]" />
-              <h2 className="font-serif text-lg font-bold text-[#FFF3DF]">Cross-System Activity</h2>
+              <h2 className="font-serif text-base sm:text-lg font-bold text-[#FFF3DF]">Cross-System Activity</h2>
             </div>
             <span className="text-xs text-[#B9A48A]">{activities.length} recent</span>
           </div>
-          <div className="divide-y divide-andy-stone/5 max-h-[480px] overflow-y-auto">
+          <div className="divide-y divide-andy-stone/5 max-h-[320px] sm:max-h-[480px] overflow-y-auto">
             {activities.map((a) => (
-              <div key={a.id} className="flex items-start gap-3 px-6 py-3 hover:bg-andy-stone/5 transition-colors">
+              <div key={a.id} className="flex items-start gap-3 px-4 sm:px-6 py-3 hover:bg-andy-stone/5 transition-colors">
                 <div className={`w-2 h-2 rounded-full mt-1.5 flex-shrink-0 ${a.severity === 'critical' ? 'bg-red-500' : a.severity === 'warning' ? 'bg-orange-500' : a.severity === 'success' ? 'bg-green-500' : 'bg-andy-gold'}`} />
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2">
@@ -135,8 +135,8 @@ export default function ExecutiveDashboardPage() {
 
         {/* System Health */}
         <div className="space-y-4">
-          <div className="bg-[linear-gradient(180deg,rgba(28,23,20,0.94)_0%,rgba(22,18,16,0.98)_100%)] rounded-[26px] border border-[rgba(214,170,92,0.08)] backdrop-blur-sm shadow-[0_2px_10px_rgba(0,0,0,0.16)] p-6">
-            <h2 className="font-serif text-base font-bold text-[#FFF3DF] mb-4">System Health</h2>
+          <div className="bg-[linear-gradient(180deg,rgba(28,23,20,0.94)_0%,rgba(22,18,16,0.98)_100%)] rounded-[26px] border border-[rgba(214,170,92,0.08)] backdrop-blur-sm shadow-[0_2px_10px_rgba(0,0,0,0.16)] p-4 sm:p-6">
+            <h2 className="font-serif text-base font-bold text-[#FFF3DF] mb-3 sm:mb-4">System Health</h2>
             <div className="space-y-3">
               <div className="flex items-center justify-between">
                 <span className="text-xs text-[#B9A48A]">CRM</span>
@@ -161,8 +161,8 @@ export default function ExecutiveDashboardPage() {
             </div>
           </div>
 
-          <div className="bg-[linear-gradient(180deg,rgba(28,23,20,0.94)_0%,rgba(22,18,16,0.98)_100%)] rounded-[26px] border border-[rgba(214,170,92,0.08)] backdrop-blur-sm shadow-[0_2px_10px_rgba(0,0,0,0.16)] p-6">
-            <h2 className="font-serif text-base font-bold text-[#FFF3DF] mb-4">Alerts</h2>
+          <div className="bg-[linear-gradient(180deg,rgba(28,23,20,0.94)_0%,rgba(22,18,16,0.98)_100%)] rounded-[26px] border border-[rgba(214,170,92,0.08)] backdrop-blur-sm shadow-[0_2px_10px_rgba(0,0,0,0.16)] p-4 sm:p-6">
+            <h2 className="font-serif text-base font-bold text-[#FFF3DF] mb-3 sm:mb-4">Alerts</h2>
             <div className="space-y-2">
               {paymentStats.overdueInvoices > 0 && (
                 <div className="flex items-start gap-2 p-2.5 bg-red-50 rounded-xl border border-red-100">
@@ -206,14 +206,14 @@ export default function ExecutiveDashboardPage() {
             </div>
           </div>
 
-          <div className="bg-[linear-gradient(180deg,rgba(28,23,20,0.94)_0%,rgba(22,18,16,0.98)_100%)] rounded-[26px] border border-[rgba(214,170,92,0.08)] backdrop-blur-sm shadow-[0_2px_10px_rgba(0,0,0,0.16)] p-6">
-            <h2 className="font-serif text-base font-bold text-[#FFF3DF] mb-4">Quick Links</h2>
+          <div className="bg-[linear-gradient(180deg,rgba(28,23,20,0.94)_0%,rgba(22,18,16,0.98)_100%)] rounded-[26px] border border-[rgba(214,170,92,0.08)] backdrop-blur-sm shadow-[0_2px_10px_rgba(0,0,0,0.16)] p-4 sm:p-6">
+            <h2 className="font-serif text-base font-bold text-[#FFF3DF] mb-3 sm:mb-4">Quick Links</h2>
             <div className="space-y-1">
-              <Link href="/ops/crm/leads" className="flex items-center gap-2 px-3 py-2 rounded-lg text-xs text-[#B9A48A] hover:bg-andy-stone/5 hover:text-[#FFF3DF] transition-all"><Users size={12} /> Lead Table</Link>
-              <Link href="/ops/concierge/requests" className="flex items-center gap-2 px-3 py-2 rounded-lg text-xs text-[#B9A48A] hover:bg-andy-stone/5 hover:text-[#FFF3DF] transition-all"><MessageSquare size={12} /> Requests</Link>
-              <Link href="/ops/payments/invoices" className="flex items-center gap-2 px-3 py-2 rounded-lg text-xs text-[#B9A48A] hover:bg-andy-stone/5 hover:text-[#FFF3DF] transition-all"><CreditCard size={12} /> Invoices</Link>
-              <Link href="/ops/payments/escrow" className="flex items-center gap-2 px-3 py-2 rounded-lg text-xs text-[#B9A48A] hover:bg-andy-stone/5 hover:text-[#FFF3DF] transition-all"><Shield size={12} /> Escrow</Link>
-              <Link href="/ops/concierge/bookings" className="flex items-center gap-2 px-3 py-2 rounded-lg text-xs text-[#B9A48A] hover:bg-andy-stone/5 hover:text-[#FFF3DF] transition-all"><Calendar size={12} /> Viewings</Link>
+              <Link href="/ops/crm/leads" className="flex items-center gap-2 px-2 sm:px-3 py-2 rounded-lg text-xs text-[#B9A48A] hover:bg-andy-stone/5 hover:text-[#FFF3DF] transition-all min-h-[44px]"><Users size={12} /> Lead Table</Link>
+              <Link href="/ops/concierge/requests" className="flex items-center gap-2 px-2 sm:px-3 py-2 rounded-lg text-xs text-[#B9A48A] hover:bg-andy-stone/5 hover:text-[#FFF3DF] transition-all min-h-[44px]"><MessageSquare size={12} /> Requests</Link>
+              <Link href="/ops/payments/invoices" className="flex items-center gap-2 px-2 sm:px-3 py-2 rounded-lg text-xs text-[#B9A48A] hover:bg-andy-stone/5 hover:text-[#FFF3DF] transition-all min-h-[44px]"><CreditCard size={12} /> Invoices</Link>
+              <Link href="/ops/payments/escrow" className="flex items-center gap-2 px-2 sm:px-3 py-2 rounded-lg text-xs text-[#B9A48A] hover:bg-andy-stone/5 hover:text-[#FFF3DF] transition-all min-h-[44px]"><Shield size={12} /> Escrow</Link>
+              <Link href="/ops/concierge/bookings" className="flex items-center gap-2 px-2 sm:px-3 py-2 rounded-lg text-xs text-[#B9A48A] hover:bg-andy-stone/5 hover:text-[#FFF3DF] transition-all min-h-[44px]"><Calendar size={12} /> Viewings</Link>
             </div>
           </div>
         </div>

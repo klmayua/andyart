@@ -34,22 +34,24 @@ export default function OpsPaymentsPage() {
           { label: 'Escrow Balance', value: `$${(stats.escrowBalance / 1000).toFixed(0)}k`, sub: `${stats.escrowFunded} funded`, icon: Shield, href: '/ops/payments/escrow' },
           { label: 'Pending Settlements', value: stats.pendingSettlements, sub: 'In pipeline', icon: Landmark, href: '/ops/payments/settlements' },
         ].map((kpi) => (
-          <Link key={kpi.label} href={kpi.href} className="bg-[linear-gradient(180deg,rgba(34,29,25,0.88)_0%,rgba(24,20,18,0.96)_100%)] rounded-xl border border-[rgba(214,170,92,0.10)] p-5 hover:border-[rgba(214,170,92,0.18)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.4)] transition-all group">
+          <Link key={kpi.label} href={kpi.href} className="bg-[linear-gradient(180deg,rgba(28,23,20,0.94)_0%,rgba(22,18,16,0.98)_100%)] rounded-[26px] border border-[rgba(214,170,92,0.08)] p-5 shadow-[0_2px_10px_rgba(0,0,0,0.16)] hover:border-[rgba(214,170,92,0.16)] hover:bg-[linear-gradient(180deg,rgba(32,26,23,0.96)_0%,rgba(24,20,18,1)_100%)] transition-[border,background] duration-200 ease group">
             <div className="flex items-center justify-between mb-3">
-              <kpi.icon size={20} className="text-[#C89B4F]" />
-              <ArrowRight size={14} className="text-[#7B6854] group-hover:text-[#C89B4F] transition-colors" />
+              <div className="w-8 h-8 rounded-lg bg-[rgba(214,170,92,0.06)] border border-[rgba(214,170,92,0.10)] flex items-center justify-center">
+                <kpi.icon size={16} className="text-[#C89B4F]" />
+              </div>
+              <ArrowRight size={14} className="text-[#9D8466] group-hover:text-[#C89B4F] transition-colors" />
             </div>
-            <p className="text-2xl font-bold text-[#FFF3DF]">{kpi.value}</p>
-            <p className="text-xs text-[#A7885F] mt-0.5">{kpi.label}</p>
-            <p className="text-xs text-[#7B6854]">{kpi.sub}</p>
+            <p className="text-2xl font-bold text-[#F3E7D3]">{kpi.value}</p>
+            <p className="text-xs text-[#9D8466] mt-0.5">{kpi.label}</p>
+            <p className="text-xs text-[#73614E]">{kpi.sub}</p>
           </Link>
         ))}
       </div>
 
       <div className="grid lg:grid-cols-2 gap-6">
         {/* Recent Invoices */}
-        <div className="bg-[linear-gradient(180deg,rgba(34,29,25,0.88)_0%,rgba(24,20,18,0.96)_100%)] rounded-xl border border-[rgba(214,170,92,0.10)] overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.35)]">
-          <div className="flex items-center justify-between px-6 py-4 border-b border-[rgba(214,170,92,0.08)]">
+        <div className="bg-[linear-gradient(180deg,rgba(28,23,20,0.94)_0%,rgba(22,18,16,0.98)_100%)] rounded-[26px] border border-[rgba(214,170,92,0.08)] p-6 shadow-[0_2px_10px_rgba(0,0,0,0.16)]">
+          <div className="flex items-center justify-between mb-4">
             <h2 className="font-serif text-lg font-bold text-[#E8D8C2]">Recent Invoices</h2>
             <Link href="/ops/payments/invoices" className="text-xs text-[#7B6854] hover:text-[#C89B4F]">View all →</Link>
           </div>
@@ -71,53 +73,53 @@ export default function OpsPaymentsPage() {
         </div>
 
         {/* Escrow */}
-        <div className="bg-white rounded-2xl border border-andy-stone/20 overflow-hidden">
-          <div className="flex items-center justify-between px-6 py-4 border-b border-andy-stone/10">
-            <h2 className="font-serif text-lg font-bold text-andy-black">Escrow Activity</h2>
-            <Link href="/ops/payments/escrow" className="text-xs text-andy-bronze hover:text-andy-gold">View all →</Link>
+        <div className="bg-[linear-gradient(180deg,rgba(28,23,20,0.94)_0%,rgba(22,18,16,0.98)_100%)] rounded-[26px] border border-[rgba(214,170,92,0.08)] p-6 shadow-[0_2px_10px_rgba(0,0,0,0.16)]">
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="font-serif text-lg font-bold text-[#E8D8C2]">Escrow Activity</h2>
+            <Link href="/ops/payments/escrow" className="text-xs text-[#7B6854] hover:text-[#C89B4F]">View all →</Link>
           </div>
-          <div className="divide-y divide-andy-stone/5">
+          <div className="divide-y divide-[rgba(255,255,255,0.03)]">
             {recentEscrow.map((e) => (
-              <div key={e.id} className="flex items-center justify-between px-6 py-4 hover:bg-andy-stone/5 transition-colors">
+              <div key={e.id} className="flex items-center justify-between py-4 hover:bg-[rgba(255,255,255,0.025)] transition-colors">
                 <div>
-                  <p className="text-sm font-semibold text-andy-black">{e.escrowNumber}</p>
-                  <p className="text-xs text-andy-bronze/60">{e.buyerName} · {e.artworkTitle}</p>
+                  <p className="text-sm font-semibold text-[#F5EBDD]">{e.escrowNumber}</p>
+                  <p className="text-xs text-[#7B6854]">{e.buyerName} · {e.artworkTitle}</p>
                 </div>
                 <div className="text-right">
-                  <p className="text-sm font-bold text-andy-black">${(e.amount / 1000).toFixed(0)}k</p>
+                  <p className="text-sm font-bold text-[#FFF3DF]">${(e.amount / 1000).toFixed(0)}k</p>
                   <span className={`text-[10px] px-2 py-0.5 rounded-full ${ESCROW_STATUS_COLORS[e.status]}`}>{ESCROW_STATUS_LABELS[e.status]}</span>
                 </div>
               </div>
             ))}
-            {recentEscrow.length === 0 && <div className="px-6 py-12 text-center text-sm text-andy-bronze/40">No escrow</div>}
+            {recentEscrow.length === 0 && <div className="py-12 text-center text-sm text-[#7B6854]/40">No escrow</div>}
           </div>
         </div>
 
         {/* Transactions */}
-        <div className="bg-white rounded-2xl border border-andy-stone/20 overflow-hidden">
-          <div className="flex items-center justify-between px-6 py-4 border-b border-andy-stone/10">
-            <h2 className="font-serif text-lg font-bold text-andy-black">Recent Transactions</h2>
+        <div className="bg-[linear-gradient(180deg,rgba(28,23,20,0.94)_0%,rgba(22,18,16,0.98)_100%)] rounded-[26px] border border-[rgba(214,170,92,0.08)] p-6 shadow-[0_2px_10px_rgba(0,0,0,0.16)]">
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="font-serif text-lg font-bold text-[#E8D8C2]">Recent Transactions</h2>
           </div>
-          <div className="divide-y divide-andy-stone/5">
+          <div className="divide-y divide-[rgba(255,255,255,0.03)]">
             {recentTx.map((t) => (
-              <div key={t.id} className="flex items-center justify-between px-6 py-4 hover:bg-andy-stone/5 transition-colors">
+              <div key={t.id} className="flex items-center justify-between py-4 hover:bg-[rgba(255,255,255,0.025)] transition-colors">
                 <div>
-                  <p className="text-sm font-semibold text-andy-black">{t.description}</p>
-                  <p className="text-xs text-andy-bronze/60">{t.type.replace('_', ' ')} · {t.method}</p>
+                  <p className="text-sm font-semibold text-[#F5EBDD]">{t.description}</p>
+                  <p className="text-xs text-[#7B6854]">{t.type.replace('_', ' ')} · {t.method}</p>
                 </div>
                 <div className="text-right">
-                  <p className="text-sm font-bold text-andy-black">${(t.amount / 1000).toFixed(0)}k</p>
-                  <p className="text-[10px] text-andy-bronze/50">{new Date(t.createdAt).toLocaleDateString()}</p>
+                  <p className="text-sm font-bold text-[#FFF3DF]">${(t.amount / 1000).toFixed(0)}k</p>
+                  <p className="text-[10px] text-[#7B6854]/50">{new Date(t.createdAt).toLocaleDateString()}</p>
                 </div>
               </div>
             ))}
-            {recentTx.length === 0 && <div className="px-6 py-12 text-center text-sm text-andy-bronze/40">No transactions</div>}
+            {recentTx.length === 0 && <div className="py-12 text-center text-sm text-[#7B6854]/40">No transactions</div>}
           </div>
         </div>
 
         {/* Alerts */}
-        <div className="bg-white rounded-2xl border border-andy-stone/20 p-6">
-          <h2 className="font-serif text-lg font-bold text-andy-black mb-4">Alerts</h2>
+        <div className="bg-[linear-gradient(180deg,rgba(28,23,20,0.94)_0%,rgba(22,18,16,0.98)_100%)] rounded-[26px] border border-[rgba(214,170,92,0.08)] p-6 shadow-[0_2px_10px_rgba(0,0,0,0.16)]">
+          <h2 className="font-serif text-lg font-bold text-[#E8D8C2] mb-4">Alerts</h2>
           <div className="space-y-3">
             {stats.overdueInvoices > 0 && (
               <div className="flex items-start gap-3 p-3 bg-red-50 rounded-xl border border-red-100">

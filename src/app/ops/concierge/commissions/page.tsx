@@ -48,33 +48,33 @@ export default function CommissionsPage() {
     <div>
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h1 className="font-serif text-2xl font-bold text-andy-black">Commissions</h1>
-          <p className="text-sm text-andy-bronze mt-1">{filtered.length} of {all.length} cases</p>
+          <h1 className="font-serif text-2xl font-bold text-[#F5EBDD]">Commissions</h1>
+          <p className="text-sm text-[#7B6854] mt-1">{filtered.length} of {all.length} cases</p>
         </div>
       </div>
 
       <div className="flex flex-wrap gap-2 mb-6">
         {[{ v: 'all', l: 'All' },{ v: 'active', l: 'Active' },{ v: 'open', l: 'Open Briefs' },{ v: 'in_progress', l: 'In Progress' },{ v: 'delivered', l: 'Delivered' }].map((f) => (
-          <button key={f.v} onClick={() => setFilter(f.v)} className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${filter === f.v ? 'bg-andy-black text-andy-ivory' : 'bg-white border border-andy-stone/30 text-andy-bronze hover:bg-andy-stone/10'}`}>{f.l}</button>
+          <button key={f.v} onClick={() => setFilter(f.v)} className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${filter === f.v ? 'bg-[#C89B4F] text-[#0A0A0A]' : 'bg-[rgba(255,255,255,0.05)] border border-[rgba(214,170,92,0.15)] text-[#7B6854] hover:bg-[rgba(255,255,255,0.08)]'}`}>{f.l}</button>
         ))}
       </div>
 
       <div className="space-y-4">
         {filtered.map((c) => (
-          <div key={c.id} className="bg-white rounded-2xl border border-andy-stone/20 p-5 hover:border-andy-gold/30 transition-all">
+          <div key={c.id} className="bg-[linear-gradient(180deg,rgba(28,23,20,0.94)_0%,rgba(22,18,16,0.98)_100%)] rounded-[26px] border border-[rgba(214,170,92,0.08)] p-5 hover:border-[rgba(214,170,92,0.12)] transition-all shadow-[0_2px_10px_rgba(0,0,0,0.16)]">
             <div className="flex items-start justify-between gap-4">
               <div className="flex-1">
                 <div className="flex flex-wrap items-center gap-2 mb-2">
                   <span className={`text-xs font-medium px-2.5 py-1 rounded-full ${STATUS_COLORS[c.status]}`}>{c.status.replace('_', ' ')}</span>
-                  <span className={`text-xs font-bold ${c.priority === 'vip' || c.priority === 'executive' ? 'text-andy-gold' : 'text-andy-bronze/60'}`}>{c.priority.toUpperCase()}</span>
-                  {c.matchedArtist && <span className="text-xs bg-andy-stone/20 text-andy-bronze px-2 py-0.5 rounded-full">Artist: {c.matchedArtist}</span>}
+                  <span className={`text-xs font-bold ${c.priority === 'vip' || c.priority === 'executive' ? 'text-[#C89B4F]' : 'text-[#7B6854]/60'}`}>{c.priority.toUpperCase()}</span>
+                  {c.matchedArtist && <span className="text-xs bg-[rgba(255,255,255,0.05)] text-[#7B6854] px-2 py-0.5 rounded-full">Artist: {c.matchedArtist}</span>}
                 </div>
-                <h3 className="font-semibold text-andy-black mb-1">{c.clientName}</h3>
-                <p className="text-xs text-andy-bronze/70 line-clamp-2">{c.brief}</p>
+                <h3 className="font-semibold text-[#F5EBDD] mb-1">{c.clientName}</h3>
+                <p className="text-xs text-[#7B6854]/70 line-clamp-2">{c.brief}</p>
                 <div className="flex items-center gap-4 mt-2">
-                  {c.medium && <span className="text-xs text-andy-bronze">{c.medium}</span>}
-                  {c.dimensions && <span className="text-xs text-andy-bronze">{c.dimensions}</span>}
-                  {c.budgetRange && <span className="text-xs text-andy-gold font-medium">{c.budgetRange}</span>}
+                  {c.medium && <span className="text-xs text-[#7B6854]">{c.medium}</span>}
+                  {c.dimensions && <span className="text-xs text-[#7B6854]">{c.dimensions}</span>}
+                  {c.budgetRange && <span className="text-xs text-[#C89B4F] font-medium">{c.budgetRange}</span>}
                 </div>
               </div>
               <div className="flex flex-col items-end gap-2 min-w-[120px]">

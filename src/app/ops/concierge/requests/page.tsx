@@ -78,20 +78,20 @@ export default function RequestsPage() {
         </div>
       </div>
 
-      <div className="bg-[linear-gradient(180deg,rgba(34,29,25,0.88)_0%,rgba(24,20,18,0.96)_100%)] rounded-xl border border-[rgba(214,170,92,0.10)] p-4 mb-6 flex flex-wrap gap-3 shadow-[0_4px_20px_rgba(0,0,0,0.35)]">
+      <div className="bg-[linear-gradient(180deg,rgba(28,23,20,0.94)_0%,rgba(22,18,16,0.98)_100%)] rounded-[20px] border border-[rgba(214,170,92,0.08)] p-4 mb-6 flex flex-wrap gap-3 shadow-[0_2px_10px_rgba(0,0,0,0.16)]">
         <div className="relative flex-1 min-w-[200px]">
           <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#7B6854]" />
           <input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search requests..." className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-[rgba(214,170,92,0.15)] text-sm bg-[rgba(255,255,255,0.05)] text-[#F5EBDD] placeholder:text-[#7B6854] focus:outline-none focus:ring-2 focus:ring-[#C89B4F]/30" />
         </div>
-        <select value={filterStatus} onChange={(e) => setFilterStatus(e.target.value as typeof filterStatus)} className="px-3 py-2.5 rounded-xl border border-andy-stone/30 text-sm bg-white focus:outline-none">
+        <select value={filterStatus} onChange={(e) => setFilterStatus(e.target.value as typeof filterStatus)} className="px-3 py-2.5 rounded-xl border border-[rgba(214,170,92,0.15)] text-sm bg-[rgba(255,255,255,0.05)] text-[#B9A48A] focus:outline-none">
           <option value="all">All Statuses</option>
           {STATUS_OPTS.map((o) => <option key={o.key} value={o.key}>{o.label}</option>)}
         </select>
-        <select value={filterPriority} onChange={(e) => setFilterPriority(e.target.value as typeof filterPriority)} className="px-3 py-2.5 rounded-xl border border-andy-stone/30 text-sm bg-white focus:outline-none">
+        <select value={filterPriority} onChange={(e) => setFilterPriority(e.target.value as typeof filterPriority)} className="px-3 py-2.5 rounded-xl border border-[rgba(214,170,92,0.15)] text-sm bg-[rgba(255,255,255,0.05)] text-[#B9A48A] focus:outline-none">
           <option value="all">All Priority</option>
           {(['standard','priority','vip','executive'] as PriorityLevel[]).map((p) => <option key={p} value={p}>{p}</option>)}
         </select>
-        <select value={filterOwner} onChange={(e) => setFilterOwner(e.target.value)} className="px-3 py-2.5 rounded-xl border border-andy-stone/30 text-sm bg-white focus:outline-none">
+        <select value={filterOwner} onChange={(e) => setFilterOwner(e.target.value)} className="px-3 py-2.5 rounded-xl border border-[rgba(214,170,92,0.15)] text-sm bg-[rgba(255,255,255,0.05)] text-[#B9A48A] focus:outline-none">
           <option value="all">All Owners</option>
           {OWNERS.map((o) => <option key={o} value={o}>{o}</option>)}
         </select>
@@ -99,24 +99,24 @@ export default function RequestsPage() {
 
       <div className="space-y-3">
         {filtered.map((req) => (
-          <div key={req.id} className="bg-[#FAF8F3] rounded-xl border border-black/[0.06] p-5 hover:border-andy-gold/20 hover:shadow-[0_1px_2px_rgba(0,0,0,0.04)] transition-all">
+          <div key={req.id} className="bg-[linear-gradient(180deg,rgba(28,23,20,0.94)_0%,rgba(22,18,16,0.98)_100%)] rounded-[20px] border border-[rgba(214,170,92,0.08)] p-5 hover:border-[rgba(214,170,92,0.12)] transition-all shadow-[0_2px_10px_rgba(0,0,0,0.16)]">
             <div className="flex items-start justify-between gap-4">
               <div className="flex-1">
                 <div className="flex flex-wrap items-center gap-2 mb-2">
                   <span className={`text-xs font-bold px-2.5 py-1 rounded-full ${PRIORITY_COLORS[req.priority]}`}>{req.priority.toUpperCase()}</span>
-                  <span className="text-xs text-andy-bronze capitalize px-2 py-0.5 bg-andy-stone/20 rounded-full">{req.type.replace('_', ' ')}</span>
-                  {req.assignedTo && <span className="text-xs text-andy-bronze/60">→ {req.assignedTo}</span>}
+                  <span className="text-xs text-[#7B6854] capitalize px-2 py-0.5 bg-[rgba(255,255,255,0.05)] rounded-full">{req.type.replace('_', ' ')}</span>
+                  {req.assignedTo && <span className="text-xs text-[#7B6854]/60">→ {req.assignedTo}</span>}
                 </div>
-                <h3 className="font-semibold text-andy-black mb-1">{req.subject}</h3>
-                <p className="text-sm text-andy-bronze/70">{req.clientProfile.name} · {req.clientProfile.email} · {req.clientProfile.country}</p>
-                {req.budgetRange && <p className="text-xs text-andy-gold font-medium mt-1">Budget: {req.budgetRange}</p>}
+                <h3 className="font-semibold text-[#F5EBDD] mb-1">{req.subject}</h3>
+                <p className="text-sm text-[#7B6854]/70">{req.clientProfile.name} · {req.clientProfile.email} · {req.clientProfile.country}</p>
+                {req.budgetRange && <p className="text-xs text-[#C89B4F] font-medium mt-1">Budget: {req.budgetRange}</p>}
               </div>
               <div className="flex flex-col items-end gap-2">
                 <select value={req.status} onChange={(e) => handleStatus(req.id, e.target.value as RequestStatus)} className={`text-xs font-medium px-2.5 py-1.5 rounded-full border-0 focus:outline-none cursor-pointer ${STATUS_OPTS.find((o) => o.key === req.status)?.color}`}>
-                  {STATUS_OPTS.map((o) => <option key={o.key} value={o.key}>{o.label}</option>)}
+                  {STATUS_OPTS.find((o) => o.key === req.status)?.color.includes('bg-gray') ? 'bg-[rgba(255,255,255,0.1)] text-[#F5EBDD]' : STATUS_OPTS.find((o) => o.key === req.status)?.color}
                 </select>
-                <span className="text-xs text-andy-bronze/60">{formatDate(req.createdAt)}</span>
-                <button onClick={() => setSelected(req)} className="text-xs text-andy-gold hover:underline flex items-center gap-1">
+                <span className="text-xs text-[#7B6854]/60">{formatDate(req.createdAt)}</span>
+                <button onClick={() => setSelected(req)} className="text-xs text-[#C89B4F] hover:underline flex items-center gap-1">
                   Details <ExternalLink size={12} />
                 </button>
               </div>
@@ -124,12 +124,12 @@ export default function RequestsPage() {
           </div>
         ))}
         {filtered.length === 0 && (
-          <div className="bg-white rounded-2xl border border-andy-stone/20 p-8 text-center">
-            <div className="w-12 h-12 bg-andy-stone/10 rounded-full flex items-center justify-center mx-auto mb-3">
-              <MessageSquare size={20} className="text-andy-bronze/40" />
+          <div className="bg-[linear-gradient(180deg,rgba(28,23,20,0.94)_0%,rgba(22,18,16,0.98)_100%)] rounded-[20px] border border-[rgba(214,170,92,0.08)] p-8 text-center shadow-[0_2px_10px_rgba(0,0,0,0.16)]">
+            <div className="w-12 h-12 bg-[rgba(255,255,255,0.05)] rounded-full flex items-center justify-center mx-auto mb-3">
+              <MessageSquare size={20} className="text-[#7B6854]/40" />
             </div>
-            <p className="text-andy-bronze font-medium">No service requests</p>
-            <p className="text-xs text-andy-bronze/60 mt-1">Requests will appear here when clients submit inquiries</p>
+            <p className="text-[#7B6854] font-medium">No service requests</p>
+            <p className="text-xs text-[#7B6854]/60 mt-1">Requests will appear here when clients submit inquiries</p>
           </div>
         )}
       </div>

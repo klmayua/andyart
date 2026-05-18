@@ -57,17 +57,17 @@ export default function BookingsPage() {
     <div>
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h1 className="font-serif text-2xl font-bold text-andy-black">Bookings</h1>
-          <p className="text-sm text-andy-bronze mt-1">{all.length} total viewings</p>
+          <h1 className="font-serif text-2xl font-bold text-[#F5EBDD]">Bookings</h1>
+          <p className="text-sm text-[#7B6854] mt-1">{all.length} total viewings</p>
         </div>
       </div>
 
       <div className="flex flex-wrap gap-3 mb-6">
-        <select value={filterStatus} onChange={(e) => setFilterStatus(e.target.value as typeof filterStatus)} className="px-4 py-2.5 rounded-xl border border-andy-stone/30 text-sm bg-white focus:outline-none">
+        <select value={filterStatus} onChange={(e) => setFilterStatus(e.target.value as typeof filterStatus)} className="px-4 py-2.5 rounded-xl border border-[rgba(214,170,92,0.15)] text-sm bg-[rgba(255,255,255,0.05)] text-[#B9A48A] focus:outline-none">
           <option value="all">All Statuses</option>
           {Object.keys(STATUS_COLORS).map((s) => <option key={s} value={s}>{s}</option>)}
         </select>
-        <select value={filterType} onChange={(e) => setFilterType(e.target.value)} className="px-4 py-2.5 rounded-xl border border-andy-stone/30 text-sm bg-white focus:outline-none">
+        <select value={filterType} onChange={(e) => setFilterType(e.target.value)} className="px-4 py-2.5 rounded-xl border border-[rgba(214,170,92,0.15)] text-sm bg-[rgba(255,255,255,0.05)] text-[#B9A48A] focus:outline-none">
           <option value="all">All Types</option>
           {['virtual','in_gallery','private_home','corporate_consult','commission_consultation'].map((t) => <option key={t} value={t}>{t.replace('_', ' ')}</option>)}
         </select>
@@ -76,21 +76,21 @@ export default function BookingsPage() {
       <div className="space-y-8">
         {grouped.map(([dateStr, viewings]) => (
           <div key={dateStr}>
-            <h3 className="font-serif text-lg font-bold text-andy-black mb-3 sticky top-0 bg-[#F7F2E8] py-2 z-10">{formatDate(dateStr)}</h3>
+            <h3 className="font-serif text-lg font-bold text-[#E8D8C2] mb-3 sticky top-0 bg-[linear-gradient(180deg,rgba(28,23,20,0.94)_0%,rgba(22,18,16,0.98)_100%)] py-2 z-10">{formatDate(dateStr)}</h3>
             <div className="space-y-3">
               {viewings.map((v) => {
                 const Icon = TYPE_ICONS[v.viewingType] || Calendar;
                 return (
-                  <div key={v.id} className="bg-white rounded-2xl border border-andy-stone/20 p-5 hover:border-andy-gold/30 transition-all">
+                  <div key={v.id} className="bg-[linear-gradient(180deg,rgba(28,23,20,0.94)_0%,rgba(22,18,16,0.98)_100%)] rounded-[26px] border border-[rgba(214,170,92,0.08)] p-5 hover:border-[rgba(214,170,92,0.12)] transition-all shadow-[0_2px_10px_rgba(0,0,0,0.16)]">
                     <div className="flex items-start justify-between gap-4">
                       <div className="flex items-start gap-4">
-                        <div className="w-12 h-12 rounded-xl bg-andy-stone/20 flex items-center justify-center flex-shrink-0">
-                          <Icon size={20} className="text-andy-gold" />
+                        <div className="w-12 h-12 rounded-xl bg-[rgba(255,255,255,0.05)] flex items-center justify-center flex-shrink-0">
+                          <Icon size={20} className="text-[#C89B4F]" />
                         </div>
                         <div>
-                          <p className="font-semibold text-andy-black">{v.clientName}</p>
-                          <p className="text-xs text-andy-bronze capitalize">{v.viewingType.replace('_', ' ')}</p>
-                          <div className="flex items-center gap-4 mt-1.5 text-xs text-andy-bronze/70">
+                          <p className="font-semibold text-[#F5EBDD]">{v.clientName}</p>
+                          <p className="text-xs text-[#7B6854] capitalize">{v.viewingType.replace('_', ' ')}</p>
+                          <div className="flex items-center gap-4 mt-1.5 text-xs text-[#7B6854]/70">
                             <span className="flex items-center gap-1"><Clock size={12} />{v.time} · {v.duration} min</span>
                             {v.guestCount && <span className="flex items-center gap-1"><Users size={12} />{v.guestCount} guests</span>}
                             {v.location && <span className="flex items-center gap-1"><MapPin size={12} />{v.location}</span>}

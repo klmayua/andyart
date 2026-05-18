@@ -33,15 +33,15 @@ export default function OpsInvoicesPage() {
       </div>
 
       <div className="grid grid-cols-3 gap-4 mb-6">
-        <div className="bg-[linear-gradient(180deg,rgba(34,29,25,0.88)_0%,rgba(24,20,18,0.96)_100%)] rounded-xl border border-[rgba(214,170,92,0.10)] p-4 text-center shadow-[0_4px_20px_rgba(0,0,0,0.35)]">
+        <div className="bg-[linear-gradient(180deg,rgba(28,23,20,0.94)_0%,rgba(22,18,16,0.98)_100%)] rounded-[20px] border border-[rgba(214,170,92,0.08)] p-4 text-center shadow-[0_2px_10px_rgba(0,0,0,0.16)]">
           <p className="text-lg font-bold text-green-400">${(totals.paid / 1000).toFixed(0)}k</p>
           <p className="text-xs text-[#7B6854]">Paid</p>
         </div>
-        <div className="bg-[linear-gradient(180deg,rgba(34,29,25,0.88)_0%,rgba(24,20,18,0.96)_100%)] rounded-xl border border-[rgba(214,170,92,0.10)] p-4 text-center shadow-[0_4px_20px_rgba(0,0,0,0.35)]">
+        <div className="bg-[linear-gradient(180deg,rgba(28,23,20,0.94)_0%,rgba(22,18,16,0.98)_100%)] rounded-[20px] border border-[rgba(214,170,92,0.08)] p-4 text-center shadow-[0_2px_10px_rgba(0,0,0,0.16)]">
           <p className="text-lg font-bold text-blue-400">${(totals.pending / 1000).toFixed(0)}k</p>
           <p className="text-xs text-[#7B6854]">Pending</p>
         </div>
-        <div className="bg-[linear-gradient(180deg,rgba(34,29,25,0.88)_0%,rgba(24,20,18,0.96)_100%)] rounded-xl border border-[rgba(214,170,92,0.10)] p-4 text-center shadow-[0_4px_20px_rgba(0,0,0,0.35)]">
+        <div className="bg-[linear-gradient(180deg,rgba(28,23,20,0.94)_0%,rgba(22,18,16,0.98)_100%)] rounded-[20px] border border-[rgba(214,170,92,0.08)] p-4 text-center shadow-[0_2px_10px_rgba(0,0,0,0.16)]">
           <p className="text-lg font-bold text-red-400">${(totals.overdue / 1000).toFixed(0)}k</p>
           <p className="text-xs text-[#7B6854]">Overdue</p>
         </div>
@@ -60,38 +60,38 @@ export default function OpsInvoicesPage() {
         <input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search invoices..." className="w-full pl-9 pr-4 py-2.5 rounded-xl border border-[rgba(214,170,92,0.15)] text-sm bg-[rgba(255,255,255,0.05)] text-[#F5EBDD] placeholder:text-[#7B6854] focus:outline-none focus:ring-2 focus:ring-[#C89B4F]/40" />
       </div>
 
-      <div className="bg-[linear-gradient(180deg,rgba(34,29,25,0.88)_0%,rgba(24,20,18,0.96)_100%)] rounded-2xl border border-[rgba(214,170,92,0.10)] overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.35)]">
+      <div className="bg-[linear-gradient(180deg,rgba(28,23,20,0.94)_0%,rgba(22,18,16,0.98)_100%)] rounded-[26px] border border-[rgba(214,170,92,0.08)] overflow-hidden shadow-[0_2px_10px_rgba(0,0,0,0.16)]">
         <div className="px-6 py-4 border-b border-[rgba(214,170,92,0.08)] flex items-center justify-between">
-          <h2 className="font-serif text-lg font-bold text-andy-black">All Invoices</h2>
-          <span className="text-xs text-andy-bronze">{filtered.length} records</span>
+          <h2 className="font-serif text-lg font-bold text-[#E8D8C2]">All Invoices</h2>
+          <span className="text-xs text-[#7B6854]">{filtered.length} records</span>
         </div>
-        <div className="divide-y divide-andy-stone/5">
+        <div className="divide-y divide-[rgba(255,255,255,0.03)]">
           {filtered.map((i) => (
-            <div key={i.id} className="px-6 py-4 hover:bg-andy-stone/5 transition-colors">
+            <div key={i.id} className="px-6 py-4 hover:bg-[rgba(255,255,255,0.025)] transition-colors">
               <div className="flex items-start justify-between mb-2">
                 <div className="flex items-center gap-3">
-                  <Receipt size={16} className="text-andy-gold" />
+                  <Receipt size={16} className="text-[#C89B4F]" />
                   <div>
-                    <p className="text-sm font-semibold text-andy-black">{i.invoiceNumber}</p>
-                    <p className="text-xs text-andy-bronze/60">{i.collectorName} · {i.artworkTitle || 'General'}</p>
+                    <p className="text-sm font-semibold text-[#F5EBDD]">{i.invoiceNumber}</p>
+                    <p className="text-xs text-[#7B6854]">{i.collectorName} · {i.artworkTitle || 'General'}</p>
                   </div>
                 </div>
                 <div className="text-right">
-                  <p className="text-sm font-bold text-andy-black">${(i.total / 1000).toFixed(0)}k {i.currency}</p>
+                  <p className="text-sm font-bold text-[#FFF3DF]">${(i.total / 1000).toFixed(0)}k {i.currency}</p>
                   <span className={`text-[10px] px-2 py-0.5 rounded-full ${INVOICE_STATUS_COLORS[i.status]}`}>{INVOICE_STATUS_LABELS[i.status]}</span>
                 </div>
               </div>
-              <div className="flex items-center gap-3 text-xs text-andy-bronze">
+              <div className="flex items-center gap-3 text-xs text-[#7B6854]">
                 <span>Due: {new Date(i.dueDate).toLocaleDateString()}</span>
                 <span>Issued: {new Date(i.issuedDate).toLocaleDateString()}</span>
                 <div className="flex gap-2 ml-auto">
-                  <button className="flex items-center gap-1 px-2 py-1 border border-andy-stone/20 rounded-lg hover:bg-andy-stone/5"><Download size={10} /> PDF</button>
-                  {i.status !== 'paid' && <button className="flex items-center gap-1 px-2 py-1 bg-andy-gold text-andy-black rounded-lg"><Send size={10} /> Remind</button>}
+                  <button className="flex items-center gap-1 px-2 py-1 border border-[rgba(214,170,92,0.15)] rounded-lg hover:bg-[rgba(214,170,92,0.08)]"><Download size={10} /> PDF</button>
+                  {i.status !== 'paid' && <button className="flex items-center gap-1 px-2 py-1 bg-[#C89B4F] text-[#0A0A0A] rounded-lg"><Send size={10} /> Remind</button>}
                 </div>
               </div>
             </div>
           ))}
-          {filtered.length === 0 && <div className="px-6 py-12 text-center text-sm text-andy-bronze/40">No invoices</div>}
+          {filtered.length === 0 && <div className="px-6 py-12 text-center text-sm text-[#7B6854]/40">No invoices</div>}
         </div>
       </div>
     </div>

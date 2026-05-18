@@ -66,7 +66,7 @@ export default function SubscribersPage() {
           const color = getTierColor(tier);
           const count = counts[tier];
           return (
-            <div key={tier} className="bg-[linear-gradient(180deg,rgba(34,29,25,0.88)_0%,rgba(24,20,18,0.96)_100%)] rounded-xl border border-[rgba(214,170,92,0.10)] p-5 shadow-[0_4px_20px_rgba(0,0,0,0.35)]">
+            <div key={tier} className="bg-[linear-gradient(180deg,rgba(28,23,20,0.94)_0%,rgba(22,18,16,0.98)_100%)] rounded-[20px] border border-[rgba(214,170,92,0.08)] p-5 shadow-[0_2px_10px_rgba(0,0,0,0.16)]">
               <div className="flex items-center justify-between mb-3">
                 <div className={`w-10 h-10 rounded-xl ${color.bg} flex items-center justify-center`}>
                   {tier === 'vip' ? <Crown size={18} className={color.text} /> : <Users size={18} className={color.text} />}
@@ -83,22 +83,22 @@ export default function SubscribersPage() {
       </div>
 
       <div className="grid lg:grid-cols-2 gap-6">
-        <div className="bg-white rounded-2xl border border-andy-stone/20 p-6">
+        <div className="bg-[linear-gradient(180deg,rgba(28,23,20,0.94)_0%,rgba(22,18,16,0.98)_100%)] rounded-[26px] border border-[rgba(214,170,92,0.08)] p-6 shadow-[0_2px_10px_rgba(0,0,0,0.16)]">
           <div className="flex items-center gap-2 mb-5">
-            <TrendingUp size={18} className="text-andy-gold" />
-            <h2 className="font-serif text-lg font-bold text-andy-black">Interest Distribution</h2>
+            <TrendingUp size={18} className="text-[#C89B4F]" />
+            <h2 className="font-serif text-lg font-bold text-[#E8D8C2]">Interest Distribution</h2>
           </div>
           <div className="space-y-3">
             {byInterest.map(([interest, count]) => (
               <div key={interest} className="flex items-center gap-3">
                 <div className="w-full">
                   <div className="flex items-center justify-between mb-1">
-                    <span className="text-sm text-andy-bronze">{INTEREST_LABELS[interest]}</span>
-                    <span className="text-sm font-bold text-andy-black">{count}</span>
+                    <span className="text-sm text-[#7B6854]">{INTEREST_LABELS[interest]}</span>
+                    <span className="text-sm font-bold text-[#F5EBDD]">{count}</span>
                   </div>
-                  <div className="w-full h-2 bg-andy-stone/20 rounded-full overflow-hidden">
+                  <div className="w-full h-2 bg-[rgba(255,255,255,0.1)] rounded-full overflow-hidden">
                     <div
-                      className="h-full bg-andy-gold rounded-full"
+                      className="h-full bg-[#C89B4F] rounded-full"
                       style={{ width: `${(count / subs.length) * 100}%` }}
                     />
                   </div>
@@ -107,55 +107,55 @@ export default function SubscribersPage() {
             ))}
           </div>
           {hottest && (
-            <div className="mt-5 pt-4 border-t border-andy-stone/10">
+            <div className="mt-5 pt-4 border-t border-[rgba(214,170,92,0.08)]">
               <div className="flex items-center gap-2">
-                <Zap size={16} className="text-andy-gold" />
-                <span className="text-sm font-semibold text-andy-black">Hottest interest:</span>
-                <span className="text-sm text-andy-gold font-bold">{INTEREST_LABELS[hottest]}</span>
+                <Zap size={16} className="text-[#C89B4F]" />
+                <span className="text-sm font-semibold text-[#E8D8C2]">Hottest interest:</span>
+                <span className="text-sm text-[#C89B4F] font-bold">{INTEREST_LABELS[hottest]}</span>
               </div>
             </div>
           )}
         </div>
 
-        <div className="bg-white rounded-2xl border border-andy-stone/20 p-6">
+        <div className="bg-[linear-gradient(180deg,rgba(28,23,20,0.94)_0%,rgba(22,18,16,0.98)_100%)] rounded-[26px] border border-[rgba(214,170,92,0.08)] p-6 shadow-[0_2px_10px_rgba(0,0,0,0.16)]">
           <div className="flex items-center gap-2 mb-5">
-            <Globe size={18} className="text-andy-gold" />
-            <h2 className="font-serif text-lg font-bold text-andy-black">Geography</h2>
+            <Globe size={18} className="text-[#C89B4F]" />
+            <h2 className="font-serif text-lg font-bold text-[#E8D8C2]">Geography</h2>
           </div>
           <div className="space-y-3">
             {byCountry.slice(0, 12).map(([country, count]) => (
-              <div key={country} className="flex items-center justify-between py-2 border-b border-andy-stone/5 last:border-0">
-                <span className="text-sm text-andy-bronze">{country}</span>
+              <div key={country} className="flex items-center justify-between py-2 border-b border-[rgba(255,255,255,0.03)] last:border-0">
+                <span className="text-sm text-[#7B6854]">{country}</span>
                 <div className="flex items-center gap-3">
-                  <div className="w-24 h-1.5 bg-andy-stone/20 rounded-full overflow-hidden">
+                  <div className="w-24 h-1.5 bg-[rgba(255,255,255,0.1)] rounded-full overflow-hidden">
                     <div
-                      className="h-full bg-andy-gold rounded-full"
+                      className="h-full bg-[#C89B4F] rounded-full"
                       style={{ width: `${(count / byCountry[0][1]) * 100}%` }}
                     />
                   </div>
-                  <span className="text-sm font-bold text-andy-black w-6 text-right">{count}</span>
+                  <span className="text-sm font-bold text-[#F5EBDD] w-6 text-right">{count}</span>
                 </div>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="bg-white rounded-2xl border border-andy-stone/20 p-6">
-          <h2 className="font-serif text-lg font-bold text-andy-black mb-5">Email Cadence Preferences</h2>
+        <div className="bg-[linear-gradient(180deg,rgba(28,23,20,0.94)_0%,rgba(22,18,16,0.98)_100%)] rounded-[26px] border border-[rgba(214,170,92,0.08)] p-6 shadow-[0_2px_10px_rgba(0,0,0,0.16)]">
+          <h2 className="font-serif text-lg font-bold text-[#E8D8C2] mb-5">Email Cadence Preferences</h2>
           <div className="space-y-4">
             {(['weekly', 'biweekly', 'monthly', 'important_only'] as const).map((cadence) => {
               const count = subs.filter((s) => s.cadence === cadence).length;
               return (
                 <div key={cadence} className="flex items-center justify-between">
-                  <span className="text-sm text-andy-bronze capitalize">{cadence.replace('_', ' ')}</span>
+                  <span className="text-sm text-[#7B6854] capitalize">{cadence.replace('_', ' ')}</span>
                   <div className="flex items-center gap-3">
-                    <div className="w-32 h-2 bg-andy-stone/20 rounded-full overflow-hidden">
+                    <div className="w-32 h-2 bg-[rgba(255,255,255,0.1)] rounded-full overflow-hidden">
                       <div
-                        className="h-full bg-andy-black rounded-full"
+                        className="h-full bg-[#F5EBDD] rounded-full"
                         style={{ width: `${(count / subs.length) * 100}%` }}
                       />
                     </div>
-                    <span className="text-sm font-bold text-andy-black w-8 text-right">{count}</span>
+                    <span className="text-sm font-bold text-[#F5EBDD] w-8 text-right">{count}</span>
                   </div>
                 </div>
               );
@@ -163,24 +163,24 @@ export default function SubscribersPage() {
           </div>
         </div>
 
-        <div className="bg-white rounded-2xl border border-andy-stone/20 p-6">
-          <h2 className="font-serif text-lg font-bold text-andy-black mb-5">Segment Health</h2>
+        <div className="bg-[linear-gradient(180deg,rgba(28,23,20,0.94)_0%,rgba(22,18,16,0.98)_100%)] rounded-[26px] border border-[rgba(214,170,92,0.08)] p-6 shadow-[0_2px_10px_rgba(0,0,0,0.16)]">
+          <h2 className="font-serif text-lg font-bold text-[#E8D8C2] mb-5">Segment Health</h2>
           <div className="space-y-4">
             <div className="flex items-center justify-between">
-              <span className="text-sm text-andy-bronze">Average Score</span>
-              <span className="text-lg font-bold text-andy-gold">{avgScore}</span>
+              <span className="text-sm text-[#7B6854]">Average Score</span>
+              <span className="text-lg font-bold text-[#C89B4F]">{avgScore}</span>
             </div>
             <div className="flex items-center justify-between">
-              <span className="text-sm text-andy-bronze">With WhatsApp</span>
-              <span className="text-sm font-bold text-andy-black">{subs.filter((s) => s.identity.whatsapp).length}</span>
+              <span className="text-sm text-[#7B6854]">With WhatsApp</span>
+              <span className="text-sm font-bold text-[#F5EBDD]">{subs.filter((s) => s.identity.whatsapp).length}</span>
             </div>
             <div className="flex items-center justify-between">
-              <span className="text-sm text-andy-bronze">With Name</span>
-              <span className="text-sm font-bold text-andy-black">{subs.filter((s) => s.identity.fullName).length}</span>
+              <span className="text-sm text-[#7B6854]">With Name</span>
+              <span className="text-sm font-bold text-[#F5EBDD]">{subs.filter((s) => s.identity.fullName).length}</span>
             </div>
             <div className="flex items-center justify-between">
-              <span className="text-sm text-andy-bronze">Top Source</span>
-              <span className="text-sm font-bold text-andy-black capitalize">
+              <span className="text-sm text-[#7B6854]">Top Source</span>
+              <span className="text-sm font-bold text-[#F5EBDD] capitalize">
                 {(() => {
                   const srcCounts: Record<string, number> = {};
                   for (const s of subs) srcCounts[s.source || 'unknown'] = (srcCounts[s.source || 'unknown'] || 0) + 1;
