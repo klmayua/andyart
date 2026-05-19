@@ -2,7 +2,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, Star, Gem, Shield, Sparkles, Palette, Building2, Wine, Users, Brush, Compass, Heart, Eye } from 'lucide-react';
 import { IMAGES } from '@/lib/images';
-import FooterNewsletter from '@/components/newsletter/FooterNewsletter';
 
 const trustStrip = [
   { icon: Gem, label: 'Curated Originals' },
@@ -845,78 +844,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-      {/* LUXURY FOOTER */}
-      <footer className="pt-[68px] pb-[76px] px-4 bg-[#171614] text-[#FFFDF9] border-t border-[#FFFDF9]/[0.05]">
-        <div className="max-w-6xl mx-auto">
-          {/* Newsletter in footer */}
-          <div className="mb-12 pb-10 border-b border-[#FFFDF9]/[0.06]">
-            <h3 className="font-serif text-lg font-bold text-[#FFFDF9] mb-2 text-center">Join the Circle</h3>
-            <p className="text-[#FFFDF9]/40 text-sm text-center mb-6">Collector stories, artist insights, and exclusive access.</p>
-            <FooterNewsletter />
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-20">
-            <div className="col-span-2 md:col-span-1">
-              <div className="mb-5">
-                <span className="font-serif text-[22px] font-bold tracking-tight text-[#FFFDF9]">AndyArt</span>
-                <span className="block text-[10px] tracking-[0.18em] text-[#C6A66B] font-medium mt-1">
-                  Cultural House
-                </span>
-              </div>
-              <p className="text-[13px] text-[#FFFDF9]/35 leading-relaxed">
-                A premium cultural house where collecting, gathering, gifting, commissioning, and living with art converge.
-              </p>
-            </div>
-            <div>
-              <h4 className="font-serif text-[13px] font-semibold text-[#FFFDF9] mb-4 tracking-[0.04em]">Collect</h4>
-              <ul className="space-y-2.5 text-[13px] text-[#FFFDF9]/35">
-                <li><Link href="/gallery" className="hover:text-[#C6A66B] transition-colors duration-300">All Works</Link></li>
-                <li><Link href="/artists" className="hover:text-[#C6A66B] transition-colors duration-300">Artists</Link></li>
-                <li><Link href="/viewing-rooms" className="hover:text-[#C6A66B] transition-colors duration-300">Viewing Rooms</Link></li>
-                <li><Link href="/circle" className="hover:text-[#C6A66B] transition-colors duration-300">Circle Membership</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-serif text-[13px] font-semibold text-[#FFFDF9] mb-4 tracking-[0.04em]">Experience</h4>
-              <ul className="space-y-2.5 text-[13px] text-[#FFFDF9]/35">
-                <li><Link href="/events" className="hover:text-[#C6A66B] transition-colors duration-300">Upcoming</Link></li>
-                <li><Link href="/events/past" className="hover:text-[#C6A66B] transition-colors duration-300">Past Events</Link></li>
-                <li><Link href="/events/host" className="hover:text-[#C6A66B] transition-colors duration-300">Host an Event</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-serif text-[13px] font-semibold text-[#FFFDF9] mb-4 tracking-[0.04em]">Concierge</h4>
-              <ul className="space-y-2.5 text-[13px] text-[#FFFDF9]/35">
-                <li><Link href="/services" className="hover:text-[#C6A66B] transition-colors duration-300">All Services</Link></li>
-                <li><Link href="/consult" className="hover:text-[#C6A66B] transition-colors duration-300">Private Viewing</Link></li>
-                <li><Link href="/spaces" className="hover:text-[#C6A66B] transition-colors duration-300">Corporate Curation</Link></li>
-                <li><Link href="/partners/apply" className="hover:text-[#C6A66B] transition-colors duration-300">Partnerships</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-serif text-[13px] font-semibold text-[#FFFDF9] mb-4 tracking-[0.04em]">Connect</h4>
-              <ul className="space-y-2.5 text-[13px] text-[#FFFDF9]/35">
-                <li><a href="mailto:hello@andyart.gallery" className="hover:text-[#C6A66B] transition-colors duration-300">hello@andyart.gallery</a></li>
-                <li><a href="https://instagram.com/andyart" target="_blank" rel="noopener noreferrer" className="hover:text-[#C6A66B] transition-colors duration-300">@andyart</a></li>
-                <li><a href="https://linkedin.com/company/andyart" target="_blank" rel="noopener noreferrer" className="hover:text-[#C6A66B] transition-colors duration-300">LinkedIn</a></li>
-                <li><a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer" className="hover:text-[#C6A66B] transition-colors duration-300">WhatsApp</a></li>
-                <li><Link href="/auth/signin" className="hover:text-[#C6A66B] transition-colors duration-300">Member Access</Link></li>
-              </ul>
-            </div>
-          </div>
-          <div className="pt-8 border-t border-[#FFFDF9]/[0.05] flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-[12px] text-[#FFFDF9]/25">
-              &copy; 2026 AndyArt Cultural House. All rights reserved.
-            </p>
-            <div className="flex gap-6 text-[12px] text-[#FFFDF9]/25">
-              <Link href="/legal/terms" className="hover:text-[#C6A66B] transition-colors duration-300">Terms</Link>
-              <Link href="/legal/privacy" className="hover:text-[#C6A66B] transition-colors duration-300">Privacy</Link>
-              <Link href="/journal" className="hover:text-[#C6A66B] transition-colors duration-300">Journal</Link>
-            </div>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }

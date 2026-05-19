@@ -16,6 +16,14 @@ const navLinks = [
   { label: 'Journal', href: '/journal' },
 ];
 
+const navLinksCompact = [
+  { label: 'Home', href: '/' },
+  { label: 'Gallery', href: '/gallery' },
+  { label: 'Artists', href: '/artists' },
+  { label: 'Events', href: '/events' },
+  { label: 'Services', href: '/services' },
+];
+
 export default function FloatingNav() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -44,28 +52,45 @@ export default function FloatingNav() {
         className="nav-floating-container"
         style={{
           background: scrolled
-            ? 'rgba(247, 242, 232, 0.95)'
-            : 'rgba(247, 242, 232, 0.85)',
+            ? 'rgba(247, 242, 232, 0.98)'
+            : 'rgba(247, 242, 232, 0.92)',
           transition: 'all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)',
+          maxWidth: 'calc(100vw - 48px)',
         }}
       >
         {/* Brand */}
-        <Link href="/" className="flex flex-col items-center">
+        <Link href="/" className="flex flex-col items-center flex-shrink-0">
           <span
-            className="font-serif text-[22px] font-semibold tracking-tight"
+            className="font-serif text-lg md:text-[22px] font-semibold tracking-tight whitespace-nowrap"
             style={{ color: 'var(--ink)' }}
           >
             Andy<span style={{ color: 'var(--gold)' }}>Art</span>
           </span>
         </Link>
 
-        {/* Desktop Links */}
-        <div className="hidden lg:flex items-center" style={{ gap: '24px' }}>
+        {/* Desktop Links - xl screens */}
+        <div className="hidden xl:flex items-center flex-shrink-0" style={{ gap: '28px' }}>
           {navLinks.map((item) => (
             <Link
               key={item.label}
               href={item.href}
-              className="nav-floating-link"
+              className="nav-floating-link whitespace-nowrap"
+              style={{
+                color: isActive(item.href) ? 'var(--gold)' : 'var(--soft-black)',
+              }}
+            >
+              {item.label}
+            </Link>
+          ))}
+        </div>
+
+        {/* Desktop Links - lg screens (compact) */}
+        <div className="hidden lg:flex xl:hidden items-center flex-shrink-0" style={{ gap: '20px' }}>
+          {navLinksCompact.map((item) => (
+            <Link
+              key={item.label}
+              href={item.href}
+              className="nav-floating-link whitespace-nowrap text-sm"
               style={{
                 color: isActive(item.href) ? 'var(--gold)' : 'var(--soft-black)',
               }}
@@ -76,9 +101,9 @@ export default function FloatingNav() {
         </div>
 
         {/* Right Section */}
-        <div className="hidden lg:flex items-center" style={{ gap: '12px' }}>
+        <div className="hidden lg:flex items-center flex-shrink-0" style={{ gap: '12px', marginLeft: 'auto' }}>
           <button
-            className="icon-btn"
+            className="icon-btn flex-shrink-0"
             style={{
               width: '40px',
               height: '40px',
@@ -97,7 +122,7 @@ export default function FloatingNav() {
           </button>
           <Link
             href="/auth/signin"
-            className="btn-signin"
+            className="btn-signin flex-shrink-0 whitespace-nowrap"
             style={{
               padding: '10px 20px',
               fontSize: '0.8rem',
@@ -115,7 +140,7 @@ export default function FloatingNav() {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="lg:hidden p-2"
+          className="lg:hidden p-2 flex-shrink-0"
           aria-label="Toggle menu"
           style={{
             width: '40px',
