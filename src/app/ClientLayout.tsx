@@ -2,7 +2,7 @@
 
 import { usePathname } from 'next/navigation';
 import Ticker from '@/components/Ticker';
-import Header from '@/components/Header';
+import FloatingNav from '@/components/FloatingNav';
 import BottomNav from '@/components/BottomNav';
 import FloatingActions from '@/components/FloatingActions';
 import ConversionLayer from '@/components/conversion/ConversionLayer';
@@ -15,8 +15,8 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
   return (
     <ConversionModalProvider>
       {!isEnterpriseRoute && <Ticker />}
-      {!isEnterpriseRoute && <Header />}
-      <main className={isEnterpriseRoute ? '' : 'pb-[90px] md:pb-0'}>
+      {!isEnterpriseRoute && <FloatingNav />}
+      <main className={isEnterpriseRoute ? '' : 'pt-[120px] md:pt-[140px] pb-[90px] md:pb-0'}>
         {children}
       </main>
       {!isEnterpriseRoute && <BottomNav />}

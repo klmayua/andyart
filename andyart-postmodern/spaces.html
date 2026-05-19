@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spaces — AndyArt</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .page-header { padding: 160px 24px 80px; text-align: center; background: var(--warm-ivory); }
+    .spaces-showcase { max-width: 1400px; margin: 0 auto; padding: 0 24px 120px; }
+    .space-hero { position: relative; height: 500px; border-radius: 24px; overflow: hidden; margin-bottom: 48px; }
+    .space-hero img { width: 100%; height: 100%; object-fit: cover; }
+    .space-hero-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, rgba(23, 22, 20, 0.8) 100%); display: flex; flex-direction: column; justify-content: flex-end; padding: 48px; }
+    .space-hero-title { font-family: var(--font-display); font-size: 2.5rem; color: white; margin-bottom: 8px; }
+    .space-hero-desc { font-size: 1rem; color: rgba(255, 255, 255, 0.8); max-width: 500px; }
+    .spaces-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 32px; }
+    .space-card { background: var(--premium-white); border-radius: 16px; overflow: hidden; transition: all 0.4s var(--ease-smooth); }
+    .space-card:hover { transform: translateY(-8px); box-shadow: 0 24px 64px rgba(23, 22, 20, 0.12); }
+    .space-card-image { height: 240px; overflow: hidden; }
+    .space-card-image img { width: 100%; height: 100%; object-fit: cover; }
+    .space-card-content { padding: 24px; }
+    .space-card-title { font-family: var(--font-display); font-size: 1.375rem; font-weight: 500; margin-bottom: 8px; }
+    .space-card-meta { font-size: 0.85rem; color: var(--walnut); margin-bottom: 16px; }
+    .space-card-features { display: flex; flex-wrap: wrap; gap: 8px; }
+    .space-feature { font-size: 0.75rem; padding: 6px 12px; background: rgba(198, 166, 107, 0.1); color: var(--deep-bronze); border-radius: 100px; }
+  </style>
+</head>
+<body>
+  <nav class="nav-floating">
+    <a href="index.html" class="nav-brand">Andy<span>Art</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+      <li><a href="artists.html" class="nav-link">Artists</a></li>
+      <li><a href="events.html" class="nav-link">Events</a></li>
+      <li><a href="services.html" class="nav-link">Services</a></li>
+      <li><a href="spaces.html" class="nav-link">Spaces</a></li>
+      <li><a href="circle.html" class="nav-link">Circle</a></li>
+      <li><a href="journal.html" class="nav-link">Journal</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="icon-btn">🔍</button>
+      <a href="signin.html" class="btn-signin">Sign In</a>
+    </div>
+  </nav>
+
+  <header class="page-header">
+    <p class="section-label">Visit Us</p>
+    <h1 class="display-lg">Our Spaces</h1>
+    <p class="text-lg" style="max-width: 600px; margin: 16px auto 0; color: var(--walnut);">
+      Experience art in purpose-built spaces designed to showcase works at their finest.
+    </p>
+  </header>
+
+  <section class="spaces-showcase">
+    <div class="space-hero">
+      <img src="https://images.unsplash.com/photo-1577720643272-265f09367456?w=1200&q=80" alt="Main Gallery">
+      <div class="space-hero-overlay">
+        <h2 class="space-hero-title">AndyArt Gallery, London</h2>
+        <p class="space-hero-desc">Our flagship 15,000 sq ft space in the heart of Mayfair, featuring 6 exhibition halls and a private viewing suite.</p>
+      </div>
+    </div>
+
+    <div class="spaces-grid">
+      <article class="space-card">
+        <div class="space-card-image"><img src="https://images.unsplash.com/photo-1568992687947-868a62a9f521?w=600&q=80" alt="Space"></div>
+        <div class="space-card-content">
+          <h3 class="space-card-title">The Sculpture Garden</h3>
+          <p class="space-card-meta">Outdoor • Open Air</p>
+          <div class="space-card-features"><span class="space-feature">2,000 sq ft</span><span class="space-feature">Climate Controlled</span></div>
+        </div>
+      </article>
+      <article class="space-card">
+        <div class="space-card-image"><img src="https://images.unsplash.com/photo-1594642704655-5eb8b22e8b89?w=600&q=80" alt="Space"></div>
+        <div class="space-card-content">
+          <h3 class="space-card-title">Private Viewing Suite</h3>
+          <p class="space-card-meta">Indoor • By Appointment</p>
+          <div class="space-card-features"><span class="space-feature">500 sq ft</span><span class="space-feature">Catering Available</span></div>
+        </div>
+      </article>
+      <article class="space-card">
+        <div class="space-card-image"><img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=600&q=80" alt="Space"></div>
+        <div class="space-card-content">
+          <h3 class="space-card-title">Education Studio</h3>
+          <p class="space-card-meta">Indoor • Groups</p>
+          <div class="space-card-features"><span class="space-feature">800 sq ft</span><span class="space-feature">AV Equipment</span></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <div class="fab-container">
+    <button class="fab fab-chatbot">💬</button>
+    <button class="fab fab-whatsapp">📱</button>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-col"><h4>AndyArt Gallery</h4><p style="font-size: 0.85rem; color: rgba(247, 242, 232, 0.6); margin-top: 12px;">A leading contemporary art gallery.</p></div>
+      <div class="footer-col"><h4>Explore</h4><ul><li><a href="gallery.html">Gallery</a></li><li><a href="artists.html">Artists</a></li><li><a href="events.html">Events</a></li></ul></div>
+      <div class="footer-col"><h4>Services</h4><ul><li><a href="services.html">Art Advisory</a></li><li><a href="services.html">Collection Management</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a href="consult.html">Book Consultation</a></li><li><a href="circle.html">Join Circle</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">© 2026 AndyArt Gallery. All rights reserved.</div>
+  </footer>
+</body>
+</html>

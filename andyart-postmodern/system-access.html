@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>System Access — AndyArt</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .page-header { padding: 160px 24px 80px; text-align: center; background: var(--ink); color: var(--warm-ivory); }
+    .page-header .section-label { color: var(--gold); }
+    .page-header p { color: rgba(247, 242, 232, 0.7); max-width: 600px; margin: 16px auto 0; }
+    .access-grid { max-width: 900px; margin: 0 auto; padding: 64px 24px 120px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+    .access-card { background: var(--premium-white); border-radius: 16px; padding: 32px; display: flex; align-items: center; gap: 20px; transition: all 0.4s var(--ease-smooth); cursor: pointer; }
+    .access-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(23, 22, 20, 0.1); }
+    .access-icon { width: 56px; height: 56px; background: var(--ink); color: var(--gold); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0; }
+    .access-info h3 { font-family: var(--font-display); font-size: 1.125rem; margin-bottom: 4px; }
+    .access-info p { font-size: 0.85rem; color: var(--walnut); }
+  </style>
+</head>
+<body>
+  <nav class="nav-floating">
+    <a href="index.html" class="nav-brand">Andy<span>Art</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+      <li><a href="artists.html" class="nav-link">Artists</a></li>
+      <li><a href="events.html" class="nav-link">Events</a></li>
+      <li><a href="services.html" class="nav-link">Services</a></li>
+      <li><a href="spaces.html" class="nav-link">Spaces</a></li>
+      <li><a href="circle.html" class="nav-link">Circle</a></li>
+      <li><a href="journal.html" class="nav-link">Journal</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="icon-btn">🔍</button>
+      <a href="signin.html" class="btn-signin">Sign In</a>
+    </div>
+  </nav>
+
+  <header class="page-header">
+    <p class="section-label">Portals</p>
+    <h1 class="display-lg">System Access</h1>
+    <p>Select a portal to access your account and manage your activities.</p>
+  </header>
+
+  <section class="access-grid">
+    <a href="profile.html" class="access-card">
+      <div class="access-icon">👤</div>
+      <div class="access-info"><h3>Collector Portal</h3><p>View your collection, invoices, and viewings</p></div>
+    </a>
+    <a href="#" class="access-card">
+      <div class="access-icon">🎨</div>
+      <div class="access-info"><h3>Artist Portal</h3><p>Manage your profile, inventory, and analytics</p></div>
+    </a>
+    <a href="#" class="access-card">
+      <div class="access-icon">🏛️</div>
+      <div class="access-info"><h3>Operations Dashboard</h3><p>Admin access for gallery management</p></div>
+    </a>
+    <a href="#" class="access-card">
+      <div class="access-icon">📊</div>
+      <div class="access-info"><h3>Analytics</h3><p>Performance metrics and reporting</p></div>
+    </a>
+  </section>
+
+  <div class="fab-container">
+    <button class="fab fab-chatbot">💬</button>
+    <button class="fab fab-whatsapp">📱</button>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-col"><h4>AndyArt Gallery</h4><p style="font-size: 0.85rem; color: rgba(247, 242, 232, 0.6); margin-top: 12px;">A leading contemporary art gallery.</p></div>
+      <div class="footer-col"><h4>Explore</h4><ul><li><a href="gallery.html">Gallery</a></li><li><a href="artists.html">Artists</a></li><li><a href="events.html">Events</a></li></ul></div>
+      <div class="footer-col"><h4>Services</h4><ul><li><a href="services.html">Art Advisory</a></li><li><a href="services.html">Collection Management</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a href="consult.html">Book Consultation</a></li><li><a href="circle.html">Join Circle</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">© 2026 AndyArt Gallery. All rights reserved.</div>
+  </footer>
+</body>
+</html>

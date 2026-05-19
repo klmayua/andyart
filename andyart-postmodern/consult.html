@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book a Consultation — AndyArt</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .page-header { padding: 160px 24px 60px; text-align: center; background: var(--warm-ivory); }
+    .consult-container { max-width: 800px; margin: 0 auto; padding: 0 24px 120px; }
+    .consult-card { background: var(--premium-white); border-radius: 24px; padding: 48px; box-shadow: 0 8px 40px rgba(23, 22, 20, 0.06); }
+    .consult-intro { text-align: center; margin-bottom: 48px; }
+    .consult-intro h2 { font-family: var(--font-display); font-size: 2rem; margin-bottom: 12px; }
+    .consult-intro p { color: var(--walnut); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .form-group { margin-bottom: 24px; }
+    .form-label { display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: 8px; }
+    .form-select { width: 100%; padding: 14px 18px; font-family: var(--font-body); font-size: 1rem; border: 1.5px solid rgba(23, 22, 20, 0.15); border-radius: 8px; background: white; }
+    .form-textarea { width: 100%; padding: 14px 18px; font-family: var(--font-body); font-size: 1rem; border: 1.5px solid rgba(23, 22, 20, 0.15); border-radius: 8px; min-height: 120px; resize: vertical; }
+    .consult-submit { width: 100%; margin-top: 16px; }
+  </style>
+</head>
+<body>
+  <nav class="nav-floating">
+    <a href="index.html" class="nav-brand">Andy<span>Art</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+      <li><a href="artists.html" class="nav-link">Artists</a></li>
+      <li><a href="events.html" class="nav-link">Events</a></li>
+      <li><a href="services.html" class="nav-link">Services</a></li>
+      <li><a href="spaces.html" class="nav-link">Spaces</a></li>
+      <li><a href="circle.html" class="nav-link">Circle</a></li>
+      <li><a href="journal.html" class="nav-link">Journal</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="icon-btn">🔍</button>
+      <a href="signin.html" class="btn-signin">Sign In</a>
+    </div>
+  </nav>
+
+  <header class="page-header">
+    <p class="section-label">Get in Touch</p>
+    <h1 class="display-lg">Book a Consultation</h1>
+  </header>
+
+  <section class="consult-container">
+    <div class="consult-card">
+      <div class="consult-intro">
+        <h2>Let's Discuss Your Art Journey</h2>
+        <p>Our team of experts is here to help you find the perfect artwork or build your collection.</p>
+      </div>
+      <form>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">First Name *</label>
+            <input type="text" class="form-input" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Last Name *</label>
+            <input type="text" class="form-input" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Email *</label>
+            <input type="email" class="form-input" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Phone</label>
+            <input type="tel" class="form-input">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Consultation Type *</label>
+          <select class="form-select" required>
+            <option value="">Select a service...</option>
+            <option>Art Advisory</option>
+            <option>Collection Management</option>
+            <option>Authentication</option>
+            <option>Artist Representation</option>
+            <option>General Inquiry</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Tell us about your interests</label>
+          <textarea class="form-textarea" placeholder="What type of art are you interested in? What's your budget range? Any specific artists?"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary consult-submit">Request Consultation</button>
+      </form>
+    </div>
+  </section>
+
+  <div class="fab-container">
+    <button class="fab fab-chatbot">💬</button>
+    <button class="fab fab-whatsapp">📱</button>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-col"><h4>AndyArt Gallery</h4><p style="font-size: 0.85rem; color: rgba(247, 242, 232, 0.6); margin-top: 12px;">A leading contemporary art gallery.</p></div>
+      <div class="footer-col"><h4>Explore</h4><ul><li><a href="gallery.html">Gallery</a></li><li><a href="artists.html">Artists</a></li><li><a href="events.html">Events</a></li></ul></div>
+      <div class="footer-col"><h4>Services</h4><ul><li><a href="services.html">Art Advisory</a></li><li><a href="services.html">Collection Management</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a href="consult.html">Book Consultation</a></li><li><a href="circle.html">Join Circle</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">© 2026 AndyArt Gallery. All rights reserved.</div>
+  </footer>
+</body>
+</html>

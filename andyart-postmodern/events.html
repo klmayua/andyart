@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Events — AndyArt</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .page-header { padding: 160px 24px 80px; text-align: center; background: var(--warm-ivory); }
+    .events-tabs { display: flex; justify-content: center; gap: 8px; margin-top: 48px; }
+    .tab-btn { padding: 12px 24px; font-size: 0.85rem; font-weight: 500; border: none; background: transparent; cursor: pointer; position: relative; }
+    .tab-btn::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background: var(--gold); transition: width 0.3s; }
+    .tab-btn.active::after { width: 100%; }
+    .tab-btn.active { color: var(--gold); }
+    .events-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 32px; max-width: 1400px; margin: 0 auto; padding: 48px 24px 120px; }
+    .event-card { background: var(--premium-white); border-radius: 16px; overflow: hidden; transition: all 0.4s var(--ease-smooth); }
+    .event-card:hover { transform: translateY(-8px); box-shadow: 0 24px 64px rgba(23, 22, 20, 0.12); }
+    .event-image { height: 220px; overflow: hidden; position: relative; }
+    .event-image img { width: 100%; height: 100%; object-fit: cover; }
+    .event-date-badge { position: absolute; top: 16px; left: 16px; background: var(--ink); color: white; padding: 12px 16px; text-align: center; border-radius: 8px; }
+    .event-date-badge .month { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; }
+    .event-date-badge .day { font-family: var(--font-display); font-size: 1.5rem; font-weight: 600; }
+    .event-content { padding: 24px; }
+    .event-type { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+    .event-title { font-family: var(--font-display); font-size: 1.375rem; font-weight: 500; margin-bottom: 12px; }
+    .event-meta { display: flex; flex-direction: column; gap: 8px; font-size: 0.85rem; color: var(--walnut); }
+    .event-meta span { display: flex; align-items: center; gap: 8px; }
+  </style>
+</head>
+<body>
+  <nav class="nav-floating">
+    <a href="index.html" class="nav-brand">Andy<span>Art</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+      <li><a href="artists.html" class="nav-link">Artists</a></li>
+      <li><a href="events.html" class="nav-link">Events</a></li>
+      <li><a href="services.html" class="nav-link">Services</a></li>
+      <li><a href="spaces.html" class="nav-link">Spaces</a></li>
+      <li><a href="circle.html" class="nav-link">Circle</a></li>
+      <li><a href="journal.html" class="nav-link">Journal</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="icon-btn">🔍</button>
+      <a href="signin.html" class="btn-signin">Sign In</a>
+    </div>
+  </nav>
+
+  <header class="page-header">
+    <p class="section-label">What's On</p>
+    <h1 class="display-lg">Events & Exhibitions</h1>
+    <p class="text-lg" style="max-width: 600px; margin: 16px auto 0; color: var(--walnut);">
+      Join us for exhibitions, artist talks, workshops, and exclusive previews.
+    </p>
+    <div class="events-tabs">
+      <button class="tab-btn active">Upcoming</button>
+      <button class="tab-btn">Past</button>
+      <button class="tab-btn">Host an Event</button>
+    </div>
+  </header>
+
+  <section class="events-grid">
+    <article class="event-card">
+      <div class="event-image">
+        <img src="https://images.unsplash.com/photo-1531243269054-5ebf6f34081e?w=600&q=80" alt="Exhibition">
+        <div class="event-date-badge"><span class="month">Jun</span><span class="day">15</span></div>
+      </div>
+      <div class="event-content">
+        <p class="event-type">Exhibition Opening</p>
+        <h3 class="event-title">Elena Vasquez: Chromatic Horizons</h3>
+        <div class="event-meta">
+          <span>📍 Main Gallery, London</span>
+          <span>🕐 6:00 PM - 9:00 PM</span>
+          <span>🎫 Members Only</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="event-card">
+      <div class="event-image">
+        <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&q=80" alt="Artist Talk">
+        <div class="event-date-badge"><span class="month">Jun</span><span class="day">22</span></div>
+      </div>
+      <div class="event-content">
+        <p class="event-type">Artist Talk</p>
+        <h3 class="event-title">Marcus Chen: Sculpting the Future</h3>
+        <div class="event-meta">
+          <span>📍 Studio Space, London</span>
+          <span>🕐 2:00 PM - 4:00 PM</span>
+          <span>🎫 Free Admission</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="event-card">
+      <div class="event-image">
+        <img src="https://images.unsplash.com/photo-1554907984-15263bfd63bd?w=600&q=80" alt="Workshop">
+        <div class="event-date-badge"><span class="month">Jul</span><span class="day">05</span></div>
+      </div>
+      <div class="event-content">
+        <p class="event-type">Workshop</p>
+        <h3 class="event-title">Introduction to Contemporary Art Collecting</h3>
+        <div class="event-meta">
+          <span>📍 Education Room</span>
+          <span>🕐 10:00 AM - 1:00 PM</span>
+          <span>🎫 £75 per person</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="event-card">
+      <div class="event-image">
+        <img src="https://images.unsplash.com/photo-1518998053901-5348d3961a04?w=600&q=80" alt="Private View">
+        <div class="event-date-badge"><span class="month">Jul</span><span class="day">12</span></div>
+      </div>
+      <div class="event-content">
+        <p class="event-type">Private View</p>
+        <h3 class="event-title">Summer Collection Preview</h3>
+        <div class="event-meta">
+          <span>📍 All Galleries</span>
+          <span>🕐 5:00 PM - 8:00 PM</span>
+          <span>🎫 Circle Members</span>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <div class="fab-container">
+    <button class="fab fab-chatbot">💬</button>
+    <button class="fab fab-whatsapp">📱</button>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-col"><h4>AndyArt Gallery</h4><p style="font-size: 0.85rem; color: rgba(247, 242, 232, 0.6); margin-top: 12px;">A leading contemporary art gallery.</p></div>
+      <div class="footer-col"><h4>Explore</h4><ul><li><a href="gallery.html">Gallery</a></li><li><a href="artists.html">Artists</a></li><li><a href="events.html">Events</a></li></ul></div>
+      <div class="footer-col"><h4>Services</h4><ul><li><a href="services.html">Art Advisory</a></li><li><a href="services.html">Collection Management</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a href="consult.html">Book Consultation</a></li><li><a href="circle.html">Join Circle</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">© 2026 AndyArt Gallery. All rights reserved.</div>
+  </footer>
+</body>
+</html>

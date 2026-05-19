@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Profile — AndyArt</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .page-header { padding: 160px 24px 48px; text-align: center; background: var(--warm-ivory); }
+    .profile-container { max-width: 900px; margin: 0 auto; padding: 0 24px 120px; }
+    .profile-card { background: var(--premium-white); border-radius: 20px; padding: 48px; margin-bottom: 32px; }
+    .profile-header { display: flex; align-items: center; gap: 32px; margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid rgba(23, 22, 20, 0.08); }
+    .profile-avatar { width: 100px; height: 100px; border-radius: 50%; background: var(--gold); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 2rem; color: white; }
+    .profile-info h2 { font-family: var(--font-display); font-size: 1.75rem; margin-bottom: 8px; }
+    .profile-info p { color: var(--walnut); }
+    .profile-section { margin-bottom: 40px; }
+    .profile-section h3 { font-family: var(--font-display); font-size: 1.25rem; margin-bottom: 20px; }
+    .stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .stat-box { background: rgba(198, 166, 107, 0.08); border-radius: 12px; padding: 24px; text-align: center; }
+    .stat-value { font-family: var(--font-display); font-size: 2rem; font-weight: 600; color: var(--gold); }
+    .stat-label { font-size: 0.8rem; color: var(--walnut); margin-top: 8px; }
+    .activity-list { list-style: none; }
+    .activity-item { display: flex; align-items: center; gap: 16px; padding: 16px 0; border-bottom: 1px solid rgba(23, 22, 20, 0.06); }
+    .activity-icon { width: 40px; height: 40px; background: var(--ink); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    .activity-details h4 { font-size: 0.95rem; margin-bottom: 4px; }
+    .activity-details p { font-size: 0.8rem; color: var(--walnut); }
+  </style>
+</head>
+<body>
+  <nav class="nav-floating">
+    <a href="index.html" class="nav-brand">Andy<span>Art</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+      <li><a href="artists.html" class="nav-link">Artists</a></li>
+      <li><a href="events.html" class="nav-link">Events</a></li>
+      <li><a href="services.html" class="nav-link">Services</a></li>
+      <li><a href="spaces.html" class="nav-link">Spaces</a></li>
+      <li><a href="circle.html" class="nav-link">Circle</a></li>
+      <li><a href="journal.html" class="nav-link">Journal</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="icon-btn">🔍</button>
+      <a href="signin.html" class="btn-signin">Sign Out</a>
+    </div>
+  </nav>
+
+  <header class="page-header">
+    <h1 class="display-sm">My Profile</h1>
+  </header>
+
+  <section class="profile-container">
+    <div class="profile-card">
+      <div class="profile-header">
+        <div class="profile-avatar">JD</div>
+        <div class="profile-info">
+          <h2>John Doe</h2>
+          <p>Collector Member • john@example.com</p>
+        </div>
+      </div>
+
+      <div class="profile-section">
+        <h3>Collection Overview</h3>
+        <div class="stat-grid">
+          <div class="stat-box"><span class="stat-value">12</span><p class="stat-label">Works Owned</p></div>
+          <div class="stat-box"><span class="stat-value">5</span><p class="stat-label">Wishlist</p></div>
+          <div class="stat-box"><span class="stat-value">8</span><p class="stat-label">Viewings</p></div>
+          <div class="stat-box"><span class="stat-value">3</span><p class="stat-label">Events Attended</p></div>
+        </div>
+      </div>
+
+      <div class="profile-section">
+        <h3>Recent Activity</h3>
+        <ul class="activity-list">
+          <li class="activity-item">
+            <div class="activity-icon">🎨</div>
+            <div class="activity-details"><h4>Viewed "Composition VII"</h4><p>Jun 15, 2026</p></div>
+          </li>
+          <li class="activity-item">
+            <div class="activity-icon">♡</div>
+            <div class="activity-details"><h4>Added to Wishlist</h4><p>Jun 12, 2026</p></div>
+          </li>
+          <li class="activity-item">
+            <div class="activity-icon">📅</div>
+            <div class="activity-details"><h4>Booked Private Viewing</h4><p>Jun 10, 2026</p></div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="fab-container">
+    <button class="fab fab-chatbot">💬</button>
+    <button class="fab fab-whatsapp">📱</button>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-col"><h4>AndyArt Gallery</h4><p style="font-size: 0.85rem; color: rgba(247, 242, 232, 0.6); margin-top: 12px;">A leading contemporary art gallery.</p></div>
+      <div class="footer-col"><h4>Explore</h4><ul><li><a href="gallery.html">Gallery</a></li><li><a href="artists.html">Artists</a></li><li><a href="events.html">Events</a></li></ul></div>
+      <div class="footer-col"><h4>Services</h4><ul><li><a href="services.html">Art Advisory</a></li><li><a href="services.html">Collection Management</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a href="consult.html">Book Consultation</a></li><li><a href="circle.html">Join Circle</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">© 2026 AndyArt Gallery. All rights reserved.</div>
+  </footer>
+</body>
+</html>

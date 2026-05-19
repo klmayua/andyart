@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services — AndyArt</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .page-header { padding: 160px 24px 80px; text-align: center; background: var(--warm-ivory); }
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 32px; max-width: 1200px; margin: 0 auto; padding: 48px 24px 120px; }
+    .service-card { background: var(--premium-white); border-radius: 16px; padding: 40px 32px; transition: all 0.4s var(--ease-smooth); position: relative; overflow: hidden; }
+    .service-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--gold); transform: scaleX(0); transition: transform 0.4s var(--ease-smooth); }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-card:hover { transform: translateY(-8px); box-shadow: 0 24px 64px rgba(23, 22, 20, 0.12); }
+    .service-icon { width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; background: rgba(198, 166, 107, 0.1); border-radius: 16px; font-size: 1.75rem; margin-bottom: 24px; }
+    .service-title { font-family: var(--font-display); font-size: 1.5rem; font-weight: 500; margin-bottom: 12px; }
+    .service-desc { font-size: 0.95rem; color: var(--walnut); line-height: 1.7; margin-bottom: 20px; }
+    .service-link { font-size: 0.875rem; font-weight: 500; color: var(--gold); display: flex; align-items: center; gap: 8px; }
+    .service-link:hover { gap: 12px; }
+  </style>
+</head>
+<body>
+  <nav class="nav-floating">
+    <a href="index.html" class="nav-brand">Andy<span>Art</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+      <li><a href="artists.html" class="nav-link">Artists</a></li>
+      <li><a href="events.html" class="nav-link">Events</a></li>
+      <li><a href="services.html" class="nav-link">Services</a></li>
+      <li><a href="spaces.html" class="nav-link">Spaces</a></li>
+      <li><a href="circle.html" class="nav-link">Circle</a></li>
+      <li><a href="journal.html" class="nav-link">Journal</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="icon-btn">🔍</button>
+      <a href="signin.html" class="btn-signin">Sign In</a>
+    </div>
+  </nav>
+
+  <header class="page-header">
+    <p class="section-label">What We Offer</p>
+    <h1 class="display-lg">Our Services</h1>
+    <p class="text-lg" style="max-width: 600px; margin: 16px auto 0; color: var(--walnut);">
+      Comprehensive art services for collectors, institutions, and artists.
+    </p>
+  </header>
+
+  <section class="services-grid">
+    <article class="service-card">
+      <div class="service-icon">🎨</div>
+      <h3 class="service-title">Art Advisory</h3>
+      <p class="service-desc">Personalized guidance for building and curating your collection. We help you discover works that resonate with your vision.</p>
+      <a href="consult.html" class="service-link">Learn more →</a>
+    </article>
+
+    <article class="service-card">
+      <div class="service-icon">📊</div>
+      <h3 class="service-title">Collection Management</h3>
+      <p class="service-desc">Cataloging, conservation, insurance coordination, and strategic planning for your collection's long-term preservation.</p>
+      <a href="consult.html" class="service-link">Learn more →</a>
+    </article>
+
+    <article class="service-card">
+      <div class="service-icon">✓</div>
+      <h3 class="service-title">Authentication</h3>
+      <p class="service-desc">Expert verification and authentication services for artworks, including provenance research and certification.</p>
+      <a href="consult.html" class="service-link">Learn more →</a>
+    </article>
+
+    <article class="service-card">
+      <div class="service-icon">🏛️</div>
+      <h3 class="service-title">Museum Services</h3>
+      <p class="service-desc">Curatorial support, exhibition design, and collection loans for museums and cultural institutions.</p>
+      <a href="consult.html" class="service-link">Learn more →</a>
+    </article>
+
+    <article class="service-card">
+      <div class="service-icon">🤝</div>
+      <h3 name="service-title">Artist Representation</h3>
+      <p class="service-desc">Career development, exhibition opportunities, and business management for represented artists.</p>
+      <a href="consult.html" class="service-link">Learn more →</a>
+    </article>
+
+    <article class="service-card">
+      <div class="service-icon">💰</div>
+      <h3 class="service-title">Art Finance</h3>
+      <p class="service-desc">Leverage your collection for financing, with competitive rates and flexible terms backed by expert valuation.</p>
+      <a href="consult.html" class="service-link">Learn more →</a>
+    </article>
+  </section>
+
+  <div class="fab-container">
+    <button class="fab fab-chatbot">💬</button>
+    <button class="fab fab-whatsapp">📱</button>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-col"><h4>AndyArt Gallery</h4><p style="font-size: 0.85rem; color: rgba(247, 242, 232, 0.6); margin-top: 12px;">A leading contemporary art gallery.</p></div>
+      <div class="footer-col"><h4>Explore</h4><ul><li><a href="gallery.html">Gallery</a></li><li><a href="artists.html">Artists</a></li><li><a href="events.html">Events</a></li></ul></div>
+      <div class="footer-col"><h4>Services</h4><ul><li><a href="services.html">Art Advisory</a></li><li><a href="services.html">Collection Management</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a href="consult.html">Book Consultation</a></li><li><a href="circle.html">Join Circle</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">© 2026 AndyArt Gallery. All rights reserved.</div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout — AndyArt</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .page-header { padding: 160px 24px 48px; text-align: center; background: var(--warm-ivory); }
+    .checkout-container { max-width: 1100px; margin: 0 auto; padding: 0 24px 120px; display: grid; grid-template-columns: 1fr 400px; gap: 48px; }
+    .checkout-form { background: var(--premium-white); border-radius: 16px; padding: 40px; }
+    .checkout-summary { background: var(--premium-white); border-radius: 16px; padding: 32px; height: fit-content; position: sticky; top: 120px; }
+    .form-section { margin-bottom: 32px; }
+    .form-section h3 { font-family: var(--font-display); font-size: 1.25rem; margin-bottom: 20px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .summary-item { display: flex; gap: 16px; padding: 16px 0; border-bottom: 1px solid rgba(23, 22, 20, 0.06); }
+    .summary-item img { width: 80px; height: 100px; object-fit: cover; border-radius: 8px; }
+    .summary-details h4 { font-family: var(--font-display); font-size: 1rem; margin-bottom: 4px; }
+    .summary-details p { font-size: 0.85rem; color: var(--walnut); }
+    .summary-total { display: flex; justify-content: space-between; padding-top: 20px; margin-top: 16px; border-top: 2px solid var(--gold); }
+    .summary-total span:first-child { font-weight: 500; }
+    .summary-total span:last-child { font-family: var(--font-display); font-size: 1.5rem; font-weight: 600; color: var(--gold); }
+  </style>
+</head>
+<body>
+  <nav class="nav-floating">
+    <a href="index.html" class="nav-brand">Andy<span>Art</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+      <li><a href="artists.html" class="nav-link">Artists</a></li>
+      <li><a href="events.html" class="nav-link">Events</a></li>
+      <li><a href="services.html" class="nav-link">Services</a></li>
+      <li><a href="spaces.html" class="nav-link">Spaces</a></li>
+      <li><a href="circle.html" class="nav-link">Circle</a></li>
+      <li><a href="journal.html" class="nav-link">Journal</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="icon-btn">🔍</button>
+      <a href="signin.html" class="btn-signin">Sign In</a>
+    </div>
+  </nav>
+
+  <header class="page-header">
+    <h1 class="display-sm">Checkout</h1>
+  </header>
+
+  <section class="checkout-container">
+    <div class="checkout-form">
+      <div class="form-section">
+        <h3>Contact Information</h3>
+        <div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input" placeholder="your@email.com"></div>
+        <div class="form-group"><label class="form-label">Phone</label><input type="tel" class="form-input" placeholder="+1 234 567 890"></div>
+      </div>
+      <div class="form-section">
+        <h3>Billing Address</h3>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">First Name</label><input type="text" class="form-input"></div>
+          <div class="form-group"><label class="form-label">Last Name</label><input type="text" class="form-input"></div>
+        </div>
+        <div class="form-group"><label class="form-label">Address</label><input type="text" class="form-input"></div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">City</label><input type="text" class="form-input"></div>
+          <div class="form-group"><label class="form-label">Postal Code</label><input type="text" class="form-input"></div>
+        </div>
+      </div>
+      <div class="form-section">
+        <h3>Payment</h3>
+        <div class="form-group"><label class="form-label">Card Number</label><input type="text" class="form-input" placeholder="4242 4242 4242 4242"></div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">Expiry</label><input type="text" class="form-input" placeholder="MM/YY"></div>
+          <div class="form-group"><label class="form-label">CVC</label><input type="text" class="form-input" placeholder="123"></div>
+        </div>
+      </div>
+      <button class="btn btn-gold" style="width: 100%;">Complete Purchase</button>
+    </div>
+
+    <div class="checkout-summary">
+      <h3 style="font-family: var(--font-display); font-size: 1.25rem; margin-bottom: 24px;">Order Summary</h3>
+      <div class="summary-item">
+        <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=200&q=80" alt="Artwork">
+        <div class="summary-details">
+          <h4>Composition VII</h4>
+          <p>Wassily Kandinsky, 1913</p>
+          <p style="color: var(--gold); font-weight: 600; margin-top: 8px;">$245,000</p>
+        </div>
+      </div>
+      <div class="summary-total">
+        <span>Total</span>
+        <span>$245,000</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="fab-container">
+    <button class="fab fab-chatbot">💬</button>
+    <button class="fab fab-whatsapp">📱</button>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-col"><h4>AndyArt Gallery</h4><p style="font-size: 0.85rem; color: rgba(247, 242, 232, 0.6); margin-top: 12px;">A leading contemporary art gallery.</p></div>
+      <div class="footer-col"><h4>Explore</h4><ul><li><a href="gallery.html">Gallery</a></li><li><a href="artists.html">Artists</a></li><li><a href="events.html">Events</a></li></ul></div>
+      <div class="footer-col"><h4>Services</h4><ul><li><a href="services.html">Art Advisory</a></li><li><a href="services.html">Collection Management</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a href="consult.html">Book Consultation</a></li><li><a href="circle.html">Join Circle</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">© 2026 AndyArt Gallery. All rights reserved.</div>
+  </footer>
+</body>
+</html>

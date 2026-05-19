@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Artists — AndyArt</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .page-header { padding: 160px 24px 80px; text-align: center; background: var(--warm-ivory); position: relative; }
+    .page-header::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 1px; height: 80px; background: var(--gold); }
+    .artists-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 32px; max-width: 1400px; margin: 0 auto; padding: 48px 24px 120px; }
+    .artist-card { background: var(--premium-white); border-radius: 16px; overflow: hidden; transition: all 0.4s var(--ease-smooth); position: relative; }
+    .artist-card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 0; background: var(--gold); transition: height 0.4s var(--ease-smooth); }
+    .artist-card:hover::before { height: 100%; }
+    .artist-card:hover { transform: translateY(-8px); box-shadow: 0 24px 64px rgba(23, 22, 20, 0.12); }
+    .artist-image { aspect-ratio: 1; overflow: hidden; }
+    .artist-image img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(20%); transition: all 0.6s var(--ease-smooth); }
+    .artist-card:hover .artist-image img { filter: grayscale(0%); transform: scale(1.03); }
+    .artist-info { padding: 24px; }
+    .artist-name { font-family: var(--font-display); font-size: 1.5rem; font-weight: 500; margin-bottom: 4px; }
+    .artist-nationality { font-size: 0.85rem; color: var(--walnut); margin-bottom: 12px; }
+    .artist-specialties { display: flex; flex-wrap: wrap; gap: 8px; }
+    .artist-specialty { font-size: 0.75rem; padding: 4px 10px; background: rgba(198, 166, 107, 0.15); color: var(--deep-bronze); border-radius: 4px; }
+    .artist-stats { display: flex; justify-content: space-between; padding: 16px 24px; border-top: 1px solid rgba(23, 22, 20, 0.06); }
+    .artist-stat { text-align: center; }
+    .artist-stat-value { font-family: var(--font-display); font-size: 1.125rem; font-weight: 600; color: var(--ink); }
+    .artist-stat-label { font-size: 0.7rem; color: var(--walnut); text-transform: uppercase; letter-spacing: 0.1em; }
+  </style>
+</head>
+<body>
+  <nav class="nav-floating">
+    <a href="index.html" class="nav-brand">Andy<span>Art</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+      <li><a href="artists.html" class="nav-link">Artists</a></li>
+      <li><a href="events.html" class="nav-link">Events</a></li>
+      <li><a href="services.html" class="nav-link">Services</a></li>
+      <li><a href="spaces.html" class="nav-link">Spaces</a></li>
+      <li><a href="circle.html" class="nav-link">Circle</a></li>
+      <li><a href="journal.html" class="nav-link">Journal</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="icon-btn">🔍</button>
+      <a href="signin.html" class="btn-signin">Sign In</a>
+    </div>
+  </nav>
+
+  <header class="page-header">
+    <p class="section-label">Represented Artists</p>
+    <h1 class="display-lg">Our Artists</h1>
+    <p class="text-lg" style="max-width: 600px; margin: 16px auto 0; color: var(--walnut);">
+      Meet the visionary artists who define our collection — from established masters to emerging voices.
+    </p>
+  </header>
+
+  <section class="artists-grid">
+    <article class="artist-card">
+      <div class="artist-image"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80" alt="Artist"></div>
+      <div class="artist-info">
+        <h3 class="artist-name">Elena Vasquez</h3>
+        <p class="artist-nationality">Spain • Born 1978</p>
+        <div class="artist-specialties">
+          <span class="artist-specialty">Abstract</span>
+          <span class="artist-specialty">Oil</span>
+        </div>
+      </div>
+      <div class="artist-stats">
+        <div class="artist-stat"><span class="artist-stat-value">24</span><span class="artist-stat-label">Works</span></div>
+        <div class="artist-stat"><span class="artist-stat-value">8</span><span class="artist-stat-label">Exhibitions</span></div>
+        <div class="artist-stat"><span class="artist-stat-value">3</span><span class="artist-stat-label">Collections</span></div>
+      </div>
+    </article>
+
+    <article class="artist-card">
+      <div class="artist-image"><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80" alt="Artist"></div>
+      <div class="artist-info">
+        <h3 class="artist-name">Marcus Chen</h3>
+        <p class="artist-nationality">Taiwan • Born 1985</p>
+        <div class="artist-specialties">
+          <span class="artist-specialty">Sculpture</span>
+          <span class="artist-specialty">Installation</span>
+        </div>
+      </div>
+      <div class="artist-stats">
+        <div class="artist-stat"><span class="artist-stat-value">18</span><span class="artist-stat-label">Works</span></div>
+        <div class="artist-stat"><span class="artist-stat-value">12</span><span class="artist-stat-label">Exhibitions</span></div>
+        <div class="artist-stat"><span class="artist-stat-value">5</span><span class="artist-stat-label">Collections</span></div>
+      </div>
+    </article>
+
+    <article class="artist-card">
+      <div class="artist-image"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80" alt="Artist"></div>
+      <div class="artist-info">
+        <h3 class="artist-name">Sofia Andersson</h3>
+        <p class="artist-nationality">Sweden • Born 1992</p>
+        <div class="artist-specialties">
+          <span class="artist-specialty">Photography</span>
+          <span class="artist-specialty">Mixed Media</span>
+        </div>
+      </div>
+      <div class="artist-stats">
+        <div class="artist-stat"><span class="artist-stat-value">31</span><span class="artist-stat-label">Works</span></div>
+        <div class="artist-stat"><span class="artist-stat-value">6</span><span class="artist-stat-label">Exhibitions</span></div>
+        <div class="artist-stat"><span class="artist-stat-value">2</span><span class="artist-stat-label">Collections</span></div>
+      </div>
+    </article>
+
+    <article class="artist-card">
+      <div class="artist-image"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80" alt="Artist"></div>
+      <div class="artist-info">
+        <h3 class="artist-name">James Okonkwo</h3>
+        <p class="artist-nationality">Nigeria • Born 1980</p>
+        <div class="artist-specialties">
+          <span class="artist-specialty">Painting</span>
+          <span class="artist-specialty">Performance</span>
+        </div>
+      </div>
+      <div class="artist-stats">
+        <div class="artist-stat"><span class="artist-stat-value">15</span><span class="artist-stat-label">Works</span></div>
+        <div class="artist-stat"><span class="artist-stat-value">14</span><span class="artist-stat-label">Exhibitions</span></div>
+        <div class="artist-stat"><span class="artist-stat-value">4</span><span class="artist-stat-label">Collections</span></div>
+      </div>
+    </article>
+
+    <article class="artist-card">
+      <div class="artist-image"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80" alt="Artist"></div>
+      <div class="artist-info">
+        <h3 class="artist-name">Yuki Tanaka</h3>
+        <p class="artist-nationality">Japan • Born 1988</p>
+        <div class="artist-specialties">
+          <span class="artist-specialty">Digital</span>
+          <span class="artist-specialty">Video</span>
+        </div>
+      </div>
+      <div class="artist-stats">
+        <div class="artist-stat"><span class="artist-stat-value">9</span><span class="artist-stat-label">Works</span></div>
+        <div class="artist-stat"><span class="artist-stat-value">7</span><span class="artist-stat-label">Exhibitions</span></div>
+        <div class="artist-stat"><span class="artist-stat-value">1</span><span class="artist-stat-label">Collections</span></div>
+      </div>
+    </article>
+
+    <article class="artist-card">
+      <div class="artist-image"><img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&q=80" alt="Artist"></div>
+      <div class="artist-info">
+        <h3 class="artist-name">Pierre Dubois</h3>
+        <p class="artist-nationality">France • Born 1975</p>
+        <div class="artist-specialties">
+          <span class="artist-specialty">Sculpture</span>
+          <span class="artist-specialty">Bronze</span>
+        </div>
+      </div>
+      <div class="artist-stats">
+        <div class="artist-stat"><span class="artist-stat-value">22</span><span class="artist-stat-label">Works</span></div>
+        <div class="artist-stat"><span class="artist-stat-value">18</span><span class="artist-stat-label">Exhibitions</span></div>
+        <div class="artist-stat"><span class="artist-stat-value">6</span><span class="artist-stat-label">Collections</span></div>
+      </div>
+    </article>
+  </section>
+
+  <div class="fab-container">
+    <button class="fab fab-chatbot" title="Chat with us">💬</button>
+    <button class="fab fab-whatsapp" title="WhatsApp">📱</button>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>AndyArt Gallery</h4>
+        <p style="font-size: 0.85rem; color: rgba(247, 242, 232, 0.6); margin-top: 12px;">
+          A leading contemporary art gallery showcasing works from established and emerging artists worldwide.
+        </p>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="artists.html">Artists</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="viewing-rooms.html">Viewing Rooms</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html">Art Advisory</a></li>
+          <li><a href="services.html">Collection Management</a></li>
+          <li><a href="services.html">Authentication</a></li>
+          <li><a href="partners.html">Partnerships</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="consult.html">Book Consultation</a></li>
+          <li><a href="circle.html">Join Circle</a></li>
+          <li><a href="partners.html">Become a Partner</a></li>
+          <li><a href="signin.html">Sign In</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 AndyArt Gallery. All rights reserved.</div>
+  </footer>
+</body>
+</html>

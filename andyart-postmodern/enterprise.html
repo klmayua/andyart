@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enterprise — AndyArt</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .page-header { padding: 160px 24px 80px; text-align: center; background: var(--ink); color: var(--warm-ivory); }
+    .page-header .section-label { color: var(--gold); }
+    .page-header p { color: rgba(247, 242, 232, 0.7); max-width: 600px; margin: 16px auto 0; }
+    .enterprise-content { max-width: 1000px; margin: 0 auto; padding: 80px 24px 120px; }
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px; margin-bottom: 80px; }
+    .feature-card { background: var(--premium-white); border-radius: 16px; padding: 40px; text-align: center; transition: all 0.4s var(--ease-smooth); }
+    .feature-card:hover { transform: translateY(-8px); box-shadow: 0 24px 64px rgba(23, 22, 20, 0.12); }
+    .feature-icon { width: 64px; height: 64px; background: rgba(198, 166, 107, 0.1); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 1.75rem; margin: 0 auto 24px; }
+    .feature-title { font-family: var(--font-display); font-size: 1.25rem; margin-bottom: 12px; }
+    .feature-desc { font-size: 0.9rem; color: var(--walnut); line-height: 1.6; }
+    .cta-section { background: var(--premium-white); border-radius: 24px; padding: 64px; text-align: center; }
+    .cta-section h2 { font-family: var(--font-display); font-size: 2rem; margin-bottom: 16px; }
+    .cta-section p { color: var(--walnut); max-width: 500px; margin: 0 auto 32px; }
+  </style>
+</head>
+<body>
+  <nav class="nav-floating">
+    <a href="index.html" class="nav-brand">Andy<span>Art</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+      <li><a href="artists.html" class="nav-link">Artists</a></li>
+      <li><a href="events.html" class="nav-link">Events</a></li>
+      <li><a href="services.html" class="nav-link">Services</a></li>
+      <li><a href="spaces.html" class="nav-link">Spaces</a></li>
+      <li><a href="circle.html" class="nav-link">Circle</a></li>
+      <li><a href="journal.html" class="nav-link">Journal</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="icon-btn">🔍</button>
+      <a href="signin.html" class="btn-signin">Sign In</a>
+    </div>
+  </nav>
+
+  <header class="page-header">
+    <p class="section-label">Business Solutions</p>
+    <h1 class="display-lg">Enterprise</h1>
+    <p>Tailored art solutions for corporations, hotels, and institutions. Transform your spaces with curated collections.</p>
+  </header>
+
+  <section class="enterprise-content">
+    <div class="features-grid">
+      <article class="feature-card">
+        <div class="feature-icon">🏢</div>
+        <h3 class="feature-title">Corporate Collections</h3>
+        <p class="feature-desc">Build impressive art collections for offices, lobbies, and meeting rooms that inspire clients and employees.</p>
+      </article>
+
+      <article class="feature-card">
+        <div class="feature-icon">🏨</div>
+        <h3 class="feature-title">Hospitality</h3>
+        <p class="feature-desc">Curated artworks for hotels, resorts, and restaurants that create memorable guest experiences.</p>
+      </article>
+
+      <article class="feature-card">
+        <div class="feature-icon">🏛️</div>
+        <h3 class="feature-title">Museum Consulting</h3>
+        <p class="feature-desc">Expert guidance on acquisition strategy, exhibition design, and collection development for institutions.</p>
+      </article>
+
+      <article class="feature-card">
+        <div class="feature-icon">📈</div>
+        <h3 class="feature-title">Art Investment</h3>
+        <p class="feature-desc">Strategic art investment advisory for portfolio diversification and long-term value preservation.</p>
+      </article>
+    </div>
+
+    <div class="cta-section">
+      <h2>Partner With Us</h2>
+      <p>Let's discuss how we can transform your spaces with extraordinary art.</p>
+      <a href="consult.html" class="btn btn-primary">Contact Our Team</a>
+    </div>
+  </section>
+
+  <div class="fab-container">
+    <button class="fab fab-chatbot">💬</button>
+    <button class="fab fab-whatsapp">📱</button>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-col"><h4>AndyArt Gallery</h4><p style="font-size: 0.85rem; color: rgba(247, 242, 232, 0.6); margin-top: 12px;">A leading contemporary art gallery.</p></div>
+      <div class="footer-col"><h4>Explore</h4><ul><li><a href="gallery.html">Gallery</a></li><li><a href="artists.html">Artists</a></li><li><a href="events.html">Events</a></li></ul></div>
+      <div class="footer-col"><h4>Services</h4><ul><li><a href="services.html">Art Advisory</a></li><li><a href="services.html">Collection Management</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a href="consult.html">Book Consultation</a></li><li><a href="circle.html">Join Circle</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">© 2026 AndyArt Gallery. All rights reserved.</div>
+  </footer>
+</body>
+</html>

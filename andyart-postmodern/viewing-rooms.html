@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Viewing Rooms — AndyArt</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .page-header { padding: 160px 24px 80px; text-align: center; background: var(--ink); color: var(--warm-ivory); }
+    .page-header .section-label { color: var(--gold); }
+    .page-header p { color: rgba(247, 242, 232, 0.7); max-width: 600px; margin: 16px auto 0; }
+    .rooms-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 32px; max-width: 1200px; margin: 0 auto; padding: 64px 24px 120px; }
+    .room-card { background: var(--premium-white); border-radius: 16px; overflow: hidden; transition: all 0.4s var(--ease-smooth); }
+    .room-card:hover { transform: translateY(-8px); box-shadow: 0 24px 64px rgba(23, 22, 20, 0.12); }
+    .room-image { height: 280px; overflow: hidden; position: relative; }
+    .room-image img { width: 100%; height: 100%; object-fit: cover; }
+    .room-badge { position: absolute; top: 16px; left: 16px; background: var(--ink); color: white; padding: 8px 16px; font-size: 0.75rem; font-weight: 600; border-radius: 4px; }
+    .room-content { padding: 24px; }
+    .room-title { font-family: var(--font-display); font-size: 1.375rem; font-weight: 500; margin-bottom: 8px; }
+    .room-artist { font-size: 0.9rem; color: var(--walnut); margin-bottom: 12px; }
+    .room-desc { font-size: 0.85rem; color: var(--walnut); line-height: 1.6; margin-bottom: 16px; }
+    .room-stats { display: flex; gap: 24px; padding-top: 16px; border-top: 1px solid rgba(23, 22, 20, 0.06); }
+    .room-stat { font-size: 0.8rem; color: var(--muted-sage); }
+  </style>
+</head>
+<body>
+  <nav class="nav-floating">
+    <a href="index.html" class="nav-brand">Andy<span>Art</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+      <li><a href="artists.html" class="nav-link">Artists</a></li>
+      <li><a href="events.html" class="nav-link">Events</a></li>
+      <li><a href="services.html" class="nav-link">Services</a></li>
+      <li><a href="spaces.html" class="nav-link">Spaces</a></li>
+      <li><a href="circle.html" class="nav-link">Circle</a></li>
+      <li><a href="journal.html" class="nav-link">Journal</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="icon-btn">🔍</button>
+      <a href="signin.html" class="btn-signin">Sign In</a>
+    </div>
+  </nav>
+
+  <header class="page-header">
+    <p class="section-label">Virtual Exhibitions</p>
+    <h1 class="display-lg">Viewing Rooms</h1>
+    <p>Explore curated virtual exhibitions from anywhere in the world. Experience artworks in immersive detail.</p>
+  </header>
+
+  <section class="rooms-grid">
+    <article class="room-card">
+      <div class="room-image">
+        <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=600&q=80" alt="Room">
+        <span class="room-badge">Now Open</span>
+      </div>
+      <div class="room-content">
+        <h3 class="room-title">Chromatic Horizons</h3>
+        <p class="room-artist">Elena Vasquez</p>
+        <p class="room-desc">A journey through the Spanish artist's bold exploration of color and emotion.</p>
+        <div class="room-stats"><span>12 Works</span><span>5 Videos</span><span>35 min</span></div>
+      </div>
+    </article>
+
+    <article class="room-card">
+      <div class="room-image">
+        <img src="https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=600&q=80" alt="Room">
+        <span class="room-badge">Now Open</span>
+      </div>
+      <div class="room-content">
+        <h3 class="room-title">Sculpting Time</h3>
+        <p class="room-artist">Marcus Chen</p>
+        <p class="room-desc">Contemporary sculpture exploring the intersection of tradition and innovation.</p>
+        <div class="room-stats"><span>8 Works</span><span>3 Videos</span><span>20 min</span></div>
+      </div>
+    </article>
+
+    <article class="room-card">
+      <div class="room-image">
+        <img src="https://images.unsplash.com/photo-1549887534-1541e9326642?w=600&q=80" alt="Room">
+        <span class="room-badge">Coming Soon</span>
+      </div>
+      <div class="room-content">
+        <h3 class="room-title">Light & Shadow</h3>
+        <p class="room-artist">Impressionist Masters</p>
+        <p class="room-desc">A curated selection of impressionist works exploring the play of light.</p>
+        <div class="room-stats"><span>15 Works</span><span>4 Videos</span><span>45 min</span></div>
+      </div>
+    </article>
+  </section>
+
+  <div class="fab-container">
+    <button class="fab fab-chatbot">💬</button>
+    <button class="fab fab-whatsapp">📱</button>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-col"><h4>AndyArt Gallery</h4><p style="font-size: 0.85rem; color: rgba(247, 242, 232, 0.6); margin-top: 12px;">A leading contemporary art gallery.</p></div>
+      <div class="footer-col"><h4>Explore</h4><ul><li><a href="gallery.html">Gallery</a></li><li><a href="artists.html">Artists</a></li><li><a href="events.html">Events</a></li></ul></div>
+      <div class="footer-col"><h4>Services</h4><ul><li><a href="services.html">Art Advisory</a></li><li><a href="services.html">Collection Management</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a href="consult.html">Book Consultation</a></li><li><a href="circle.html">Join Circle</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">© 2026 AndyArt Gallery. All rights reserved.</div>
+  </footer>
+</body>
+</html>
