@@ -1,6 +1,7 @@
 import ServiceCard from '@/components/ServiceCard';
 import ServiceChannels from '@/components/ServiceChannels';
-import { Paintbrush, Building, Wine, Hammer, Clipboard, GlassWater, Calendar, Compass, Gift } from 'lucide-react';
+import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
 
 const services = [
   {
@@ -67,15 +68,15 @@ const services = [
 
 export default function ServicesPage() {
   return (
-    <div className="min-h-screen py-8 px-4 pt-24">
-      <div className="max-w-6xl mx-auto">
+    <div className="min-h-screen pb-32">
+      <div className="max-w-7xl mx-auto px-4">
         {/* Header */}
-        <div className="mb-10">
-          <p className="text-andy-bronze text-xs uppercase tracking-[0.25em] mb-2 font-medium">White Glove Service</p>
-          <h1 className="font-serif text-3xl md:text-5xl font-bold text-andy-black editorial-headline mb-3">
+        <div className="mb-16 pt-8">
+          <p className="section-label animate-fade-in-up">White Glove Service</p>
+          <h1 className="display-lg mb-6 text-[#171614] animate-fade-in-up delay-1">
             Concierge
           </h1>
-          <p className="text-andy-bronze max-w-xl leading-relaxed">
+          <p className="text-md max-w-2xl leading-relaxed animate-fade-in-up delay-2" style={{ color: 'rgba(93, 70, 51, 0.8)' }}>
             Sourcing, commissions, gifting, installation, framing, private viewings, and advisory.
             Our concierge team is at your service.
           </p>
@@ -84,26 +85,28 @@ export default function ServicesPage() {
         <ServiceChannels />
 
         {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service) => (
-            <ServiceCard key={service.id} {...service} />
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16">
+          {services.map((service, idx) => (
+            <div key={service.id} className="animate-fade-in-up" style={{ animationDelay: `${idx * 0.1}s` }}>
+              <ServiceCard {...service} />
+            </div>
           ))}
         </div>
 
         {/* Custom CTA */}
-        <div className="mt-12 bg-andy-stone/30 rounded-2xl p-8 text-center border border-andy-stone/20">
-          <h2 className="font-serif text-2xl font-bold text-andy-black mb-4">
+        <div className="mt-16 rounded-2xl p-8 text-center border" style={{ background: 'rgba(215,206,193,0.2)', borderColor: 'rgba(215,206,193,0.3)' }}>
+          <h2 className="font-serif text-2xl font-bold text-[#171614] mb-4">
             Something specific in mind?
           </h2>
-          <p className="text-andy-bronze mb-6 max-w-2xl mx-auto">
+          <p className="mb-6 max-w-2xl mx-auto" style={{ color: 'rgba(93,70,51,0.7)' }}>
             Our concierge team handles requests that don't fit a category. Tell us what you need.
           </p>
-          <a
+          <Link
             href="mailto:hello@andyart.gallery"
-            className="bg-andy-black text-andy-ivory px-8 py-3 rounded-full font-medium hover:bg-andy-black/80 transition-colors inline-block text-sm"
+            className="btn-postmodern-primary text-sm"
           >
             Email Concierge
-          </a>
+          </Link>
         </div>
       </div>
     </div>

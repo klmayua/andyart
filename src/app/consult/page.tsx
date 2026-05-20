@@ -46,29 +46,26 @@ export default function ConsultPage() {
 
   if (isSubmitted) {
     return (
-      <div className="min-h-screen py-8 px-4 pt-24">
-        <div className="max-w-2xl mx-auto text-center py-16">
-          <div className="w-20 h-20 bg-andy-gold rounded-full flex items-center justify-center mx-auto mb-6">
-            <CheckCircle className="w-10 h-10 text-andy-black" />
+      <div className="min-h-screen pb-32">
+        <div className="max-w-2xl mx-auto text-center py-20 px-4">
+          <div className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6" style={{ background: '#C6A66B' }}>
+            <CheckCircle className="w-10 h-10 text-[#171614]" />
           </div>
-          <h1 className="font-serif text-3xl md:text-4xl font-bold text-andy-black mb-4">
+          <h1 className="display-md mb-4 text-[#171614]">
             Request Received
           </h1>
-          <p className="text-lg text-andy-bronze mb-8">
+          <p className="text-lg mb-8" style={{ color: 'rgba(93,70,51,0.8)' }}>
             Our concierge team will contact you within 24 hours to confirm your appointment.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Link
-              href="/"
-              className="bg-andy-black text-andy-ivory px-8 py-3 rounded-full font-medium hover:bg-andy-black/80 transition-colors inline-block text-sm"
-            >
+            <Link href="/" className="btn-postmodern-primary text-sm">
               Return Home
             </Link>
             <a
               href="https://wa.me/2348002649278"
               target="_blank"
               rel="noopener noreferrer"
-              className="border border-andy-stone/30 text-andy-black px-8 py-3 rounded-full font-medium hover:bg-andy-stone/20 transition-colors inline-flex items-center justify-center gap-2 text-sm"
+              className="btn-postmodern-secondary text-sm inline-flex items-center justify-center gap-2"
             >
               <MessageCircle size={16} />
               WhatsApp Concierge
@@ -80,47 +77,42 @@ export default function ConsultPage() {
   }
 
   return (
-    <div className="min-h-screen py-8 px-4 pt-24">
-      <div className="max-w-2xl mx-auto">
-        <Link
-          href="/"
-          className="inline-flex items-center gap-2 text-andy-bronze hover:text-andy-black mb-6 text-sm"
-        >
+    <div className="min-h-screen pb-32">
+      <div className="max-w-2xl mx-auto px-4">
+        <Link href="/" className="inline-flex items-center gap-2 text-sm mb-6 hover:text-[#C6A66B] transition-colors" style={{ color: '#5D4633' }}>
           <ChevronLeft size={18} />
           Back to Home
         </Link>
 
-        <div className="mb-8">
-          <p className="text-andy-bronze text-xs uppercase tracking-[0.25em] mb-2 font-medium">White Glove Service</p>
-          <h1 className="font-serif text-3xl md:text-4xl font-bold text-andy-black editorial-headline mb-3">
+        <div className="mb-10">
+          <p className="section-label">White Glove Service</p>
+          <h1 className="display-md mb-4 text-[#171614]">
             Book a Consultation
           </h1>
-          <p className="text-andy-bronze leading-relaxed">
+          <p className="text-md leading-relaxed" style={{ color: 'rgba(93,70,51,0.8)' }}>
             Schedule a one-on-one session with our collector concierge. 
             Private viewings, sourcing advice, commission discussions, and more.
           </p>
         </div>
 
-        {/* Info Cards */}
-        <div className="grid grid-cols-2 gap-4 mb-8">
-          <div className="bg-white rounded-xl border border-andy-stone/30 p-5">
-            <Calendar className="text-andy-gold mb-2" size={22} />
-            <h3 className="font-semibold text-andy-black mb-1 text-sm">Availability</h3>
-            <p className="text-sm text-andy-bronze">Monday - Saturday</p>
-            <p className="text-sm text-andy-bronze">10am - 6pm</p>
+        <div className="grid grid-cols-2 gap-4 mb-10">
+          <div className="bg-white rounded-xl border p-5 card-postmodern">
+            <Calendar className="mb-3" size={22} style={{ color: '#C6A66B' }} />
+            <h3 className="font-semibold text-[#171614] mb-1 text-sm">Availability</h3>
+            <p className="text-sm" style={{ color: '#5D4633' }}>Monday - Saturday</p>
+            <p className="text-sm" style={{ color: '#5D4633' }}>10am - 6pm</p>
           </div>
-          <div className="bg-white rounded-xl border border-andy-stone/30 p-5">
-            <Clock className="text-andy-gold mb-2" size={22} />
-            <h3 className="font-semibold text-andy-black mb-1 text-sm">Duration</h3>
-            <p className="text-sm text-andy-bronze">60 - 90 minutes</p>
-            <p className="text-sm text-andy-bronze">Complimentary</p>
+          <div className="bg-white rounded-xl border p-5 card-postmodern">
+            <Clock className="mb-3" size={22} style={{ color: '#C6A66B' }} />
+            <h3 className="font-semibold text-[#171614] mb-1 text-sm">Duration</h3>
+            <p className="text-sm" style={{ color: '#5D4633' }}>60 - 90 minutes</p>
+            <p className="text-sm" style={{ color: '#5D4633' }}>Complimentary</p>
           </div>
         </div>
 
-        {/* Form */}
-        <form onSubmit={handleSubmit} className="bg-white rounded-2xl border border-andy-stone/30 p-6 md:p-8 space-y-6">
+        <form onSubmit={handleSubmit} className="bg-white rounded-2xl border p-6 md:p-8 space-y-6" style={{ borderColor: 'rgba(23,22,20,0.06)' }}>
           <div>
-            <label className="block text-sm font-medium text-andy-black mb-1">
+            <label className="block text-sm font-medium text-[#171614] mb-2">
               Full Name
             </label>
             <input
@@ -128,13 +120,14 @@ export default function ConsultPage() {
               required
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-              className="w-full px-4 py-2.5 border border-andy-stone/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-andy-gold/30 bg-andy-ivory/50 text-andy-black placeholder:text-andy-bronze/50"
+              className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 transition-all"
+              style={{ background: 'rgba(247,242,232,0.5)', borderColor: 'rgba(23,22,20,0.1)', color: '#171614' }}
             />
           </div>
 
           <div className="grid md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-andy-black mb-1">
+              <label className="block text-sm font-medium text-[#171614] mb-2">
                 Email
               </label>
               <input
@@ -142,25 +135,27 @@ export default function ConsultPage() {
                 required
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="w-full px-4 py-2.5 border border-andy-stone/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-andy-gold/30 bg-andy-ivory/50 text-andy-black placeholder:text-andy-bronze/50"
+                className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 transition-all"
+                style={{ background: 'rgba(247,242,232,0.5)', borderColor: 'rgba(23,22,20,0.1)', color: '#171614' }}
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-andy-black mb-1">
+              <label className="block text-sm font-medium text-[#171614] mb-2">
                 Phone
               </label>
               <input
                 type="tel"
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                className="w-full px-4 py-2.5 border border-andy-stone/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-andy-gold/30 bg-andy-ivory/50 text-andy-black placeholder:text-andy-bronze/50"
+                className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 transition-all"
+                style={{ background: 'rgba(247,242,232,0.5)', borderColor: 'rgba(23,22,20,0.1)', color: '#171614' }}
               />
             </div>
           </div>
 
           <div className="grid md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-andy-black mb-1">
+              <label className="block text-sm font-medium text-[#171614] mb-2">
                 Preferred Date
               </label>
               <input
@@ -168,17 +163,19 @@ export default function ConsultPage() {
                 required
                 value={formData.preferredDate}
                 onChange={(e) => setFormData({ ...formData, preferredDate: e.target.value })}
-                className="w-full px-4 py-2.5 border border-andy-stone/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-andy-gold/30 bg-andy-ivory/50 text-andy-black placeholder:text-andy-bronze/50"
+                className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 transition-all"
+                style={{ background: 'rgba(247,242,232,0.5)', borderColor: 'rgba(23,22,20,0.1)', color: '#171614' }}
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-andy-black mb-1">
+              <label className="block text-sm font-medium text-[#171614] mb-2">
                 Preferred Time
               </label>
               <select
                 value={formData.preferredTime}
                 onChange={(e) => setFormData({ ...formData, preferredTime: e.target.value })}
-                className="w-full px-4 py-2.5 border border-andy-stone/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-andy-gold/30 bg-andy-ivory/50 text-andy-black"
+                className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 transition-all"
+                style={{ background: 'rgba(247,242,232,0.5)', borderColor: 'rgba(23,22,20,0.1)', color: '#171614' }}
               >
                 <option value="morning">Morning (10am - 12pm)</option>
                 <option value="afternoon">Afternoon (12pm - 4pm)</option>
@@ -188,13 +185,14 @@ export default function ConsultPage() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-andy-black mb-1">
+            <label className="block text-sm font-medium text-[#171614] mb-2">
               Service Type
             </label>
             <select
               value={formData.serviceType}
               onChange={(e) => setFormData({ ...formData, serviceType: e.target.value })}
-              className="w-full px-4 py-2.5 border border-andy-stone/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-andy-gold/30 bg-andy-ivory/50 text-andy-black"
+              className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 transition-all"
+              style={{ background: 'rgba(247,242,232,0.5)', borderColor: 'rgba(23,22,20,0.1)', color: '#171614' }}
             >
               <option>Private Viewing</option>
               <option>Art Sourcing</option>
@@ -206,45 +204,38 @@ export default function ConsultPage() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-andy-black mb-1">
+            <label className="block text-sm font-medium text-[#171614] mb-2">
               Message (optional)
             </label>
             <textarea
               rows={4}
               value={formData.message}
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-              className="w-full px-4 py-2.5 border border-andy-stone/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-andy-gold/30 bg-andy-ivory/50 text-andy-black placeholder:text-andy-bronze/50"
+              className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 transition-all resize-none"
+              style={{ background: 'rgba(247,242,232,0.5)', borderColor: 'rgba(23,22,20,0.1)', color: '#171614' }}
               placeholder="Tell us about your project, taste, or any specific requirements..."
             />
           </div>
 
           {error && (
-            <p className="text-sm text-andy-wine bg-andy-wine/10 px-4 py-3 rounded-lg">{error}</p>
+            <p className="text-sm px-4 py-3 rounded-lg" style={{ background: 'rgba(184,76,76,0.1)', color: '#B84C4C' }}>{error}</p>
           )}
 
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full bg-andy-black text-andy-ivory py-3.5 rounded-full font-medium hover:bg-andy-black/80 transition-all text-sm tracking-wide disabled:opacity-60"
+            className="w-full btn-postmodern-primary py-3.5 text-sm tracking-wide disabled:opacity-60"
           >
             {isSubmitting ? 'Submitting...' : 'Request Consultation'}
           </button>
 
           <div className="flex items-center justify-center gap-4 pt-2">
-            <a
-              href="https://wa.me/2348002649278"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-xs text-andy-bronze hover:text-andy-gold transition-colors flex items-center gap-1"
-            >
+            <a href="https://wa.me/2348002649278" target="_blank" rel="noopener noreferrer" className="text-xs hover:text-[#C6A66B] transition-colors flex items-center gap-1" style={{ color: '#5D4633' }}>
               <MessageCircle size={12} />
               WhatsApp
             </a>
-            <span className="text-andy-stone">|</span>
-            <a
-              href="tel:+2348002649278"
-              className="text-xs text-andy-bronze hover:text-andy-gold transition-colors flex items-center gap-1"
-            >
+            <span style={{ color: '#D7CEC1' }}>|</span>
+            <a href="tel:+2348002649278" className="text-xs hover:text-[#C6A66B] transition-colors flex items-center gap-1" style={{ color: '#5D4633' }}>
               <Phone size={12} />
               Call
             </a>

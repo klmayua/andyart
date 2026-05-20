@@ -3,7 +3,7 @@
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Calendar, MapPin, Clock, Users, ChevronDown, Star, Mail, MessageCircle } from 'lucide-react';
+import { Calendar, MapPin, Clock, Users, Star, Mail, MessageCircle, ChevronRight, ChevronDown } from 'lucide-react';
 import { events, eventCategories } from '@/data/events';
 import { useAnalytics } from '@/hooks/useAnalytics';
 
@@ -66,15 +66,15 @@ export default function EventsPage() {
   const featuredEvent = useMemo(() => events.find((e) => e.featured), []);
 
   return (
-    <div className="min-h-screen pt-24 pb-24 px-4">
-      <div className="max-w-6xl mx-auto">
-        {/* Header */}
-        <div className="mb-10">
-          <p className="text-andy-bronze text-xs uppercase tracking-[0.25em] mb-2 font-medium">Gatherings</p>
-          <h1 className="font-serif text-3xl md:text-5xl font-bold text-andy-black editorial-headline mb-3">
+    <div className="min-h-screen pb-32">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+        {/* Section Header */}
+        <div className="mb-16">
+          <p className="section-label animate-fade-in-up">Gatherings</p>
+          <h1 className="display-lg mb-6 text-[#171614] animate-fade-in-up delay-1">
             AndyArt Experiences
           </h1>
-          <p className="text-andy-bronze max-w-xl leading-relaxed">
+          <p className="text-md max-w-2xl leading-relaxed animate-fade-in-up delay-2" style={{ color: 'rgba(93, 70, 51, 0.8)' }}>
             Immersive gatherings where art, culture, and connection converge.
             From intimate salons to corporate culture nights.
           </p>
@@ -82,44 +82,58 @@ export default function EventsPage() {
 
         {/* Featured Event Hero */}
         {featuredEvent && activeCategory === 'all' && sortBy === 'upcoming' && (
-          <div className="mb-12 relative aspect-[21/9] rounded-2xl overflow-hidden shadow-premium group">
-            <Image src={featuredEvent.image} alt={featuredEvent.title} fill sizes="100vw" className="object-cover" priority />
-            <div className="absolute inset-0 bg-gradient-to-t from-andy-black/80 via-andy-black/30 to-transparent" />
-            <div className="absolute bottom-0 left-0 p-8 md:p-10 w-full">
-              <div className="flex items-center gap-2 mb-3">
-                <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-andy-gold text-andy-black">Featured</span>
-                {featuredEvent.isPrivate && (
-                  <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-andy-wine text-andy-ivory">Private</span>
-                )}
-              </div>
-              <h2 className="font-serif text-2xl md:text-4xl font-bold text-andy-ivory editorial-headline mb-2 max-w-2xl">
-                {featuredEvent.title}
-              </h2>
-              <p className="text-andy-ivory/70 text-sm mb-4 max-w-xl">{featuredEvent.description}</p>
-              <div className="flex flex-wrap gap-3">
-                <Link
-                  href={`/events/${featuredEvent.slug}`}
-                  onClick={() => track('event_rsvp', { page: 'events_listing', slug: featuredEvent.slug, title: featuredEvent.title })}
-                  className="bg-andy-gold text-andy-black px-6 py-2.5 rounded-full font-semibold text-sm hover:bg-andy-ivory transition-colors"
-                >
-                  {featuredEvent.ticketPrice === 0 ? 'RSVP Free' : `RSVP — $${featuredEvent.ticketPrice}`}
-                </Link>
-                {featuredEvent.isPrivate && (
-                  <Link
-                    href="/consult"
-                    onClick={() => track('event_vip_preview', { page: 'events_listing', slug: featuredEvent.slug })}
-                    className="border border-andy-ivory/40 text-andy-ivory px-6 py-2.5 rounded-full font-medium text-sm hover:bg-andy-ivory/10 transition-colors"
-                  >
-                    Request VIP Access
-                  </Link>
-                )}
+          <div className="mb-20 animate-fade-in-up delay-3">
+            <p className="text-sm font-semibold mb-6" style={{ color: '#A78345', letterSpacing: '0.15em', textTransform: 'uppercase' }}>
+              Featured Gathering
+            </p>
+            <div className="relative rounded-2xl overflow-hidden card-postmodern">
+              <div className="relative aspect-[21/9]">
+                <Image src={featuredEvent.image} alt={featuredEvent.title} fill sizes="100vw" className="object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    <span className="text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-full bg-[#C6A66B] text-[#171614]">
+                      Featured
+                    </span>
+                    {featuredEvent.isPrivate && (
+                      <span className="text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-full bg-[#B84C4C] text-white">
+                        Private
+                      </span>
+                    )}
+                  </div>
+                  <h2 className="font-serif text-3xl md:text-5xl font-bold text-white mb-4 leading-tight max-w-3xl">
+                    {featuredEvent.title}
+                  </h2>
+                  <p className="text-white/70 text-base mb-8 max-w-2xl leading-relaxed">
+                    {featuredEvent.description}
+                  </p>
+                  <div className="flex flex-wrap gap-4">
+                    <Link
+                      href={`/events/${featuredEvent.slug}`}
+                      onClick={() => track('event_rsvp', { page: 'events_listing', slug: featuredEvent.slug, title: featuredEvent.title })}
+                      className="btn-postmodern-gold text-sm md:text-base"
+                    >
+                      {featuredEvent.ticketPrice === 0 ? 'RSVP Free' : `RSVP — $${featuredEvent.ticketPrice}`}
+                    </Link>
+                    {featuredEvent.isPrivate && (
+                      <Link
+                        href="/consult"
+                        onClick={() => track('event_vip_preview', { page: 'events_listing', slug: featuredEvent.slug })}
+                        className="btn-postmodern text-sm md:text-base"
+                        style={{ color: 'white', borderColor: 'rgba(255,255,255,0.3)' }}
+                      >
+                        Request VIP Access
+                      </Link>
+                    )}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         )}
 
         {/* Filters & Sort */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mb-12">
           <div className="flex flex-wrap gap-2">
             {eventCategories.map((cat) => (
               <button
@@ -128,10 +142,10 @@ export default function EventsPage() {
                   setActiveCategory(cat.value);
                   track('filter_apply', { page: 'events_listing', filter: cat.value });
                 }}
-                className={`px-4 py-2 rounded-full border text-sm font-medium transition-all ${
+                className={`postmodern-label px-4 py-2 text-sm transition-all ${
                   activeCategory === cat.value
-                    ? 'bg-andy-black text-andy-ivory border-andy-black'
-                    : 'bg-white text-andy-bronze border-andy-stone/30 hover:bg-andy-black hover:text-andy-ivory'
+                    ? 'bg-[#171614] text-[#FFFDF9] border-[#171614]'
+                    : 'bg-white text-[#5D4633] border-[rgba(23,22,20,0.1)] hover:bg-[#171614] hover:text-[#FFFDF9] hover:border-[#171614]'
                 }`}
               >
                 {cat.label}
@@ -142,13 +156,14 @@ export default function EventsPage() {
           <div className="relative">
             <button
               onClick={() => setIsSortOpen(!isSortOpen)}
-              className="flex items-center gap-2 px-4 py-2 rounded-full border border-andy-stone/30 bg-white text-sm font-medium text-andy-bronze hover:border-andy-gold/40 transition-all"
+              className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all border hover:bg-[#171614] hover:text-[#FFFDF9]"
+              style={{ background: 'rgba(255,253,249,0.5)', borderColor: 'rgba(23,22,20,0.1)', color: '#5D4633' }}
             >
               {sortOptions.find((s) => s.value === sortBy)?.label}
               <ChevronDown size={14} />
             </button>
             {isSortOpen && (
-              <div className="absolute right-0 mt-2 w-48 bg-white border border-andy-stone/30 rounded-xl shadow-premium z-20 overflow-hidden">
+              <div className="absolute right-0 mt-2 w-48 rounded-lg shadow-lg overflow-hidden z-20" style={{ background: 'white', borderColor: 'rgba(23,22,20,0.08)' }}>
                 {sortOptions.map((opt) => (
                   <button
                     key={opt.value}
@@ -158,7 +173,7 @@ export default function EventsPage() {
                       track('sort_apply', { page: 'events_listing', sort: opt.value });
                     }}
                     className={`w-full text-left px-4 py-2.5 text-sm transition-colors ${
-                      sortBy === opt.value ? 'bg-andy-stone/20 text-andy-black font-medium' : 'text-andy-bronze hover:bg-andy-stone/10'
+                      sortBy === opt.value ? 'bg-[#F7F2E8] text-[#171614] font-medium' : 'text-[#5D4633] hover:bg-[rgba(215,206,193,0.3)]'
                     }`}
                   >
                     {opt.label}
@@ -170,16 +185,20 @@ export default function EventsPage() {
         </div>
 
         {/* Host Event CTA */}
-        <div className="mb-12 bg-andy-black text-andy-ivory rounded-2xl p-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="mb-16 p-8 md:p-12 rounded-2xl" style={{ background: '#171614' }}>
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div>
-              <h2 className="font-serif text-xl font-bold mb-2">Want to host an experience?</h2>
-              <p className="text-andy-ivory/60 text-sm">We partner with venues, corporations, and private hosts for bespoke gatherings.</p>
+              <h2 className="font-serif text-2xl md:text-3xl font-bold text-white mb-3">
+                Want to host an experience?
+              </h2>
+              <p className="text-white/60 text-base max-w-xl">
+                We partner with venues, corporations, and private hosts for bespoke gatherings.
+              </p>
             </div>
             <Link
               href="/events/host"
               onClick={() => track('cta_click', { page: 'events_listing', cta: 'host_event' })}
-              className="bg-andy-gold text-andy-black px-6 py-3 rounded-full font-medium hover:bg-andy-ivory transition-colors whitespace-nowrap text-sm"
+              className="btn-postmodern-gold text-sm whitespace-nowrap"
             >
               Request to Host
             </Link>
@@ -188,7 +207,7 @@ export default function EventsPage() {
 
         {/* Events Grid */}
         {filtered.length > 0 ? (
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filtered.map((event) => {
               const startDate = new Date(event.startDatetime);
               const endDate = new Date(event.endDatetime);
@@ -197,118 +216,105 @@ export default function EventsPage() {
               const durationM = durationMin % 60;
 
               return (
-                <div
-                  key={event.id}
-                  className="rounded-2xl border border-andy-stone/30 bg-white shadow-subtle hover:shadow-premium transition-all duration-500 overflow-hidden group hover:-translate-y-1"
-                >
-                  <div className="relative aspect-[16/9] overflow-hidden">
+                <div key={event.id} className="card-postmodern overflow-hidden group">
+                  <div className="relative aspect-[16/9]">
                     <Image
                       src={event.image}
                       alt={event.title}
                       fill
-                      sizes="(max-width: 768px) 100vw, 50vw"
+                      sizes="(max-width: 768px) 100vw, 33vw"
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
                       loading="lazy"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-b from-andy-black/10 via-transparent to-transparent pointer-events-none" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/40" />
 
                     {event.featured && (
-                      <div className="absolute top-3 left-3 bg-andy-gold text-andy-black text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full flex items-center gap-1">
+                      <div className="absolute top-4 left-4 bg-[#C6A66B] text-[#171614] text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full flex items-center gap-1">
                         <Star size={10} /> Featured
                       </div>
                     )}
                     {event.isPrivate && (
-                      <div className="absolute top-3 right-3 bg-andy-wine text-andy-ivory text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full">
+                      <div className="absolute top-4 right-4 bg-[#B84C4C] text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full">
                         Private
                       </div>
                     )}
                     {event.remainingTickets !== null && event.remainingTickets < 10 && event.remainingTickets > 0 && (
-                      <div className="absolute bottom-3 right-3 bg-andy-black/80 backdrop-blur-sm text-andy-gold text-xs font-bold px-3 py-1.5 rounded-full">
+                      <div className="absolute bottom-4 right-4 bg-[#171614]/90 backdrop-blur-sm text-[#C6A66B] text-xs font-bold px-3 py-1.5 rounded-full">
                         Only {event.remainingTickets} left
                       </div>
                     )}
                     {event.ticketState === 'sold-out' && (
-                      <div className="absolute inset-0 bg-andy-black/60 flex items-center justify-center">
-                        <span className="text-andy-ivory font-serif text-xl font-bold">Sold Out</span>
+                      <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
+                        <span className="text-white font-serif text-xl font-bold">Sold Out</span>
                       </div>
                     )}
                   </div>
 
-                  <div className="p-5 space-y-3">
+                  <div className="p-6 space-y-4">
                     <div className="flex items-center gap-2">
-                      <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-andy-stone/20 text-andy-bronze">
+                      <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full" style={{ background: 'rgba(23, 22, 20, 0.08)', color: '#5D4633' }}>
                         {event.category.replace('-', ' ')}
                       </span>
                       {event.ticketPrice === 0 && (
-                        <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-andy-green/15 text-andy-green border border-andy-green/20">
+                        <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full" style={{ background: '#7D917D22', color: '#7D917D', border: '1px solid rgba(125,145,125,0.2)' }}>
                           Free
                         </span>
                       )}
                     </div>
 
-                    <h3 className="font-serif text-xl font-bold text-andy-black group-hover:text-andy-bronze transition-colors">
+                    <h3 className="font-serif text-xl font-bold text-[#171614] leading-tight">
                       {event.title}
                     </h3>
-                    <p className="text-sm text-andy-bronze line-clamp-2 leading-relaxed">{event.description}</p>
+                    <p className="text-sm line-clamp-2 leading-relaxed" style={{ color: 'rgba(93, 70, 51, 0.7)' }}>
+                      {event.description}
+                    </p>
 
-                    <div className="space-y-2.5 text-sm">
-                      <div className="flex items-center gap-2.5 text-andy-bronze">
-                        <Calendar size={14} className="text-andy-gold" />
+                    <div className="space-y-2 text-sm" style={{ color: 'rgba(93, 70, 51, 0.8)' }}>
+                      <div className="flex items-center gap-2.5">
+                        <Calendar size={16} style={{ color: '#C6A66B' }} />
                         <span>{formatDate(event.startDatetime)}</span>
                       </div>
-                      <div className="flex items-center gap-2.5 text-andy-bronze">
-                        <Clock size={14} className="text-andy-gold" />
+                      <div className="flex items-center gap-2.5">
+                        <Clock size={16} style={{ color: '#C6A66B' }} />
                         <span>
                           {formatTime(event.startDatetime)} – {formatTime(event.endDatetime)}
                           {durationH > 0 && ` (${durationH}h${durationM > 0 ? ` ${durationM}m` : ''})`}
                         </span>
                       </div>
-                      <div className="flex items-center gap-2.5 text-andy-bronze">
-                        <MapPin size={14} className="text-andy-gold" />
+                      <div className="flex items-center gap-2.5">
+                        <MapPin size={16} style={{ color: '#C6A66B' }} />
                         <span>{event.isVirtual ? 'Virtual Event' : event.location}</span>
                       </div>
                     </div>
 
-                    {/* Commercial Actions */}
-                    <div className="pt-3 border-t border-andy-stone/20 space-y-2">
-                      <div className="flex items-center justify-between">
+                    <div className="pt-4 border-t" style={{ borderColor: 'rgba(23,22,20,0.06)' }}>
+                      <div className="flex items-center justify-between mb-3">
                         <div>
-                          <span className="text-xl font-bold text-andy-gold">
+                          <span className="text-xl font-bold" style={{ color: '#C6A66B' }}>
                             {event.ticketPrice === null || event.ticketPrice === 0 ? 'Free' : `$${event.ticketPrice}`}
                           </span>
                           {event.ticketPrice && event.ticketPrice > 0 && (
-                            <p className="text-xs text-andy-bronze">per person</p>
+                            <p className="text-xs" style={{ color: 'rgba(93, 70, 51, 0.5)' }}>per person</p>
                           )}
                         </div>
-                        <div className="flex gap-2">
-                          <Link
-                            href={`/events/${event.slug}`}
-                            onClick={() => track('event_rsvp', { page: 'events_listing', slug: event.slug, title: event.title })}
-                            className="bg-andy-black text-andy-ivory px-5 py-2 rounded-full text-sm font-semibold hover:bg-andy-black/80 transition-all"
-                          >
-                            {event.ticketState === 'sold-out' ? 'Join Waitlist' : 'RSVP'}
-                          </Link>
-                        </div>
+                        <Link
+                          href={`/events/${event.slug}`}
+                          onClick={() => track('event_rsvp', { page: 'events_listing', slug: event.slug, title: event.title })}
+                          className="btn-postmodern-primary text-xs"
+                        >
+                          {event.ticketState === 'sold-out' ? 'Join Waitlist' : 'RSVP'}
+                        </Link>
                       </div>
 
-                      {/* Secondary CTAs */}
-                      <div className="flex flex-wrap gap-2 pt-1">
+                      <div className="flex flex-wrap gap-3 text-xs">
                         {event.isPrivate && event.ticketState !== 'sold-out' && (
                           <Link
                             href="/consult"
                             onClick={() => track('event_vip_preview', { page: 'events_listing', slug: event.slug })}
-                            className="text-xs text-andy-bronze hover:text-andy-gold transition-colors flex items-center gap-1"
+                            className="group/link flex items-center gap-1" style={{ color: 'rgba(93, 70, 51, 0.7)' }}
                           >
-                            <Star size={12} /> Request VIP Preview
-                          </Link>
-                        )}
-                        {event.category === 'corporate' && (
-                          <Link
-                            href="/events/host"
-                            onClick={() => track('event_sponsor_inquiry', { page: 'events_listing', slug: event.slug })}
-                            className="text-xs text-andy-bronze hover:text-andy-gold transition-colors flex items-center gap-1"
-                          >
-                            <Mail size={12} /> Sponsor Inquiry
+                            <Star size={12} style={{ color: '#C6A66B' }} /> Request VIP
+                            <ChevronRight size={12} className="group-hover/link:translate-x-1 transition-transform" />
                           </Link>
                         )}
                         <a
@@ -316,9 +322,10 @@ export default function EventsPage() {
                           target="_blank"
                           rel="noopener noreferrer"
                           onClick={() => track('service_call_concierge', { page: 'events_listing', channel: 'whatsapp', eventSlug: event.slug })}
-                          className="text-xs text-andy-bronze hover:text-andy-gold transition-colors flex items-center gap-1"
+                          className="group/link flex items-center gap-1" style={{ color: 'rgba(93, 70, 51, 0.7)' }}
                         >
-                          <MessageCircle size={12} /> WhatsApp Concierge
+                          <MessageCircle size={12} style={{ color: '#C6A66B' }} /> WhatsApp
+                          <ChevronRight size={12} className="group-hover/link:translate-x-1 transition-transform" />
                         </a>
                       </div>
                     </div>
@@ -329,16 +336,16 @@ export default function EventsPage() {
           </div>
         ) : (
           /* Empty State */
-          <div className="bg-andy-stone/20 rounded-2xl p-16 text-center border border-andy-stone/20">
-            <Users size={40} className="mx-auto mb-4 text-andy-bronze/50" />
-            <h3 className="font-serif text-xl font-semibold text-andy-black mb-2">No experiences found</h3>
-            <p className="text-andy-bronze mb-6">Try adjusting your filters or browse all upcoming events.</p>
+          <div className="rounded-2xl p-20 text-center" style={{ background: 'rgba(215,206,193,0.3)', border: '1px solid rgba(215,206,193,0.4)' }}>
+            <Users size={48} className="mx-auto mb-5" style={{ color: 'rgba(93, 70, 51, 0.3)' }} />
+            <h3 className="font-serif text-2xl font-semibold text-[#171614] mb-3">No experiences found</h3>
+            <p className="text-[#5D4633] mb-7">Try adjusting your filters or browse all upcoming events.</p>
             <button
               onClick={() => {
                 setActiveCategory('all');
                 setSortBy('upcoming');
               }}
-              className="bg-andy-black text-andy-ivory px-6 py-2.5 rounded-full font-medium text-sm hover:bg-andy-black/80 transition-colors"
+              className="btn-postmodern-primary text-sm"
             >
               View All Events
             </button>
@@ -346,13 +353,15 @@ export default function EventsPage() {
         )}
 
         {/* Past Events Link */}
-        <div className="mt-12 text-center">
+        <div className="mt-16 text-center">
           <Link
             href="/events/past"
             onClick={() => track('cta_click', { page: 'events_listing', cta: 'past_events' })}
-            className="text-andy-gold font-medium hover:underline inline-flex items-center gap-2 text-sm"
+            className="text-sm font-medium group/link flex items-center justify-center gap-2"
+            style={{ color: '#C6A66B' }}
           >
             View Past Experiences
+            <ChevronRight size={16} className="group-hover/link:translate-x-1 transition-transform" />
           </Link>
         </div>
       </div>
